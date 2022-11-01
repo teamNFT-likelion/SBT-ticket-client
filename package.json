@@ -42,7 +42,9 @@
   "devDependencies": {
     "babel-plugin-styled-components": "^2.0.7",
     "customize-cra": "^1.0.0",
+    "eslint-config-prettier": "^8.5.0",
     "msw": "^0.47.4",
+    "prettier": "^2.7.1",
     "react-app-rewired": "^2.2.1"
   },
   "msw": {
