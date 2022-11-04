@@ -11,7 +11,7 @@ const TDetailPage = () => {
       <LinkButton to="/list" name="카테고리" />
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div
-          style={{ border: '2px solid black', width: '50%', height: '500px' }}
+          style={{ border: '2px solid white', width: '50%', height: '500px' }}
         >
           공연상세 셜명
         </div>

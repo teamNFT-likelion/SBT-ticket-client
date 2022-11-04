@@ -1,5 +1,6 @@
 import React from 'react';
 import LinkButton from '@atoms/LinkButton';
+import heroimg from '@assets/img/landing_hero.png';
 
 const HeroArea = () => {
   return (
@@ -8,8 +9,8 @@ const HeroArea = () => {
       style={{
         width: '100%',
         height: 'calc(100vh - 122px)',
-        border: '2px solid black',
-        backgroundColor: '#463214',
+        background: `url(${heroimg}) no-repeat center`,
+        backgroundSize: 'cover',
         display: 'grid',
         gridTemplateRows: 'repeat(4,1fr)',
         flexDirection: 'column',
@@ -37,7 +38,7 @@ const HeroArea = () => {
           justifyContent: 'center',
         }}
       >
-        <LinkButton to="/list" name="다음페이지" />
+        <LinkButton to="/list" name="Get Started" />
       </div>
     </div>
   );

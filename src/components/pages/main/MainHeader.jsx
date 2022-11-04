@@ -1,37 +1,29 @@
 import React from 'react';
+import styled from 'styled-components';
+import logottot from '@assets/img/logo_ttot.png';
+import * as colors from '@styles/colors';
+
+const Container = styled('div')`
+  height: 122px;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  background-color: ${colors.bgPrimary};
+  z-index: 999;
+`;
+
+const LogoImage = styled('img')`
+  width: 100px;
+`;
 
 const MainHeader = ({ onNavClick }) => {
   return (
     //TODO: 인라인css 리팩토링필요
-    <div
-      style={{
-        //TODO: headerHeight 변수화 필요
-        height: '122px',
-        width: '100%',
-        border: '2px solid black',
-        alignItems: 'center',
-        display: 'flex',
-        padding: '0 20px',
-        position: 'fixed',
-        top: 0,
-        backgroundColor: '#FFFFF6',
-        zIndex: 999,
-      }}
-    >
-      <div
-        style={{
-          minWidth: '262px',
-          height: '52px',
-          backgroundColor: '#526600',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'white',
-          fontSize: '32px',
-        }}
-      >
-        로고
-      </div>
+    <Container>
+      <LogoImage src={logottot} />
       <div
         style={{
           display: 'flex',
@@ -64,7 +56,7 @@ const MainHeader = ({ onNavClick }) => {
           QnA
         </button>
       </div>
-    </div>
+    </Container>
   );
 };
 

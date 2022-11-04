@@ -6,9 +6,10 @@ import GoalArea from './main/GoalArea';
 import FAQArea from './main/FAQArea';
 import Footer from '@articles/Footer';
 import Anchor from '@atoms/Anchor';
+import * as colors from '@styles/colors';
 
 const TempBox = styled('div')`
-  border: 2px solid black;
+  border: 2px solid white;
   padding: 32px;
   display: flex;
   gap: 24px;
@@ -42,7 +43,7 @@ const MainPage = () => {
     //TODO: 인라인css 리팩토링필요
     <div
       style={{
-        backgroundColor: '#FFFFF6',
+        backgroundColor: colors.bgPrimary,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

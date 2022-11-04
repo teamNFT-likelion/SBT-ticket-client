@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Anchor from '../../atoms/Anchor';
 
 const Container = styled('div')`
-  border: 2px solid black;
+  border: 2px solid white;
   padding: 32px;
   display: flex;
   gap: 24px;
@@ -13,7 +13,7 @@ const Container = styled('div')`
 `;
 
 const TempBox = styled('div')`
-  border: 2px solid black;
+  border: 2px solid white;
   height: 300px;
   width: 40%;
   font-size: 32px;

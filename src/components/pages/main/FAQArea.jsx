@@ -5,7 +5,7 @@ import Anchor from '../../atoms/Anchor';
 
 const Container = styled('div')`
   position: relative;
-  border: 2px solid black;
+  border: 2px solid white;
   padding: 32px;
   display: flex;
   gap: 24px;

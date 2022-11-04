@@ -6,7 +6,7 @@ const CardByToggle = ({ title, text, initialOpen = false }) => {
     //TODO: 인라인css 리팩토링필요
     <div
       style={{
-        border: '2px solid black',
+        border: '2px solid white',
         padding: '20px',
         display: 'flex',
         flexDirection: 'column',
@@ -19,7 +19,7 @@ const CardByToggle = ({ title, text, initialOpen = false }) => {
           {isOpen ? '닫기' : '열기'}
         </button>
       </div>
-      {isOpen && <div style={{ color: 'rgba(0,0,0,0.5)' }}>{text}</div>}
+      {isOpen && <div style={{ color: 'white' }}>{text}</div>}
     </div>
   );
 };

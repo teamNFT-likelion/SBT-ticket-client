@@ -12,7 +12,7 @@ const TListPage = () => {
         style={{
           flex: 1,
           display: 'flex',
-          border: '2px solid black',
+          border: '2px solid white',
           flexDirection: 'column',
         }}
       >
