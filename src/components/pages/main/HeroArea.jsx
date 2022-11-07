@@ -1,6 +1,7 @@
 import React from 'react';
 import LinkButton from '@atoms/LinkButton';
-import heroimg from '@assets/img/landing_hero.png';
+// import heroimg from '@assets/img/landing_hero.png';
+import test from '@assets/img/test_ttot.gif';
 
 const HeroArea = () => {
   return (
@@ -9,7 +10,7 @@ const HeroArea = () => {
       style={{
         width: '100%',
         height: 'calc(100vh - 122px)',
-        background: `url(${heroimg}) no-repeat center`,
+        background: `url(${test}) no-repeat center`,
         backgroundSize: 'cover',
         display: 'grid',
         gridTemplateRows: 'repeat(4,1fr)',
