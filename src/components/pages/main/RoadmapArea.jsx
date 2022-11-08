@@ -1,20 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import * as colors from '@styles/colors';
 import bgRoadmap from '@assets/img/bgRoadmap.png';
 
 const Container = styled('div')`
   width: 100%;
   justify-content: center;
-  margin-top: 100px;
 `;
 
 const RoadmapContainer = styled('div')`
-  height: calc(100vh - 122px);
+  height: calc(100vh - 300px);
   background: url(${bgRoadmap}) no-repeat center;
   background-size: contain;
-  margin-top: 100px;
 `;
 
 const TitleWrapper = styled('div')`
@@ -22,6 +18,8 @@ const TitleWrapper = styled('div')`
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 52px;
+  margin-bottom: 100px;
 `;
 
 const Title = styled('span')`
