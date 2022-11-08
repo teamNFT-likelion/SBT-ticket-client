@@ -6,7 +6,12 @@ import SolvingAndProblem from './main/SolvingAndProblem';
 import FAQArea from './main/FAQArea';
 import Footer from '@articles/Footer';
 import Anchor from '@atoms/Anchor';
+<<<<<<< HEAD
 import TechnologyArea from './main/TechnologyArea';
+=======
+import * as colors from '@styles/colors';
+import RoadmapArea from './main/RoadmapArea';
+>>>>>>> f0090e6 (before test commit)
 
 const TempBox = styled('div')`
   border: 2px solid yellow;
@@ -52,10 +57,12 @@ const MainPage = () => {
       <HeroArea />
       <SolvingAndProblem ref={goalRef} />
       <TechnologyArea ref={technologyRef} />
+      <GoalArea ref={goalRef} />
       <TempBox>
-        <Anchor ref={roadmapRef} />
-        Road map
+        <Anchor ref={benefitRef} />
+        Features and BeneFits
       </TempBox>
+      <RoadmapArea ref={roadmapRef}/>
       <FAQArea ref={faqRef} />
       <Footer />
     </div>
