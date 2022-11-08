@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import logottot from '@assets/img/logo_ttot.png';
+import logo_ttot from '@assets/img/logo_ttot.png';
 import * as colors from '@styles/colors';
 
 const Container = styled('div')`
@@ -11,7 +11,7 @@ const Container = styled('div')`
   padding: 0 20px;
   position: fixed;
   top: 0;
-  background-color: ${colors.bgPrimary};
+  background-color: ${colors.bgBlack};
   z-index: 999;
 `;
 
@@ -19,43 +19,46 @@ const LogoImage = styled('img')`
   width: 100px;
 `;
 
+const ButtonsWrapper = styled('div')`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+  margin-left: 24px;
+  font-size: 32px;
+`;
+
+const Button = styled('button')`
+  font-size: 24px;
+  font-family: 'Shrikhand', cursive;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.282486px;
+  cursor: pointer;
+  padding: 1rem;
+`;
+
 const MainHeader = ({ onNavClick }) => {
   return (
-    //TODO: 인라인css 리팩토링필요
     <Container>
-      <LogoImage src={logottot} />
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-evenly',
-          width: '100%',
-          height: '100%',
-          marginLeft: '24px',
-          fontSize: '32px',
-        }}
-      >
-        <button style={{ fontSize: '32px' }} onClick={onNavClick} value="goal">
-          문제
-        </button>
-        <button
-          style={{ fontSize: '32px' }}
-          onClick={onNavClick}
-          value="benefit"
-        >
-          장점
-        </button>
-        <button
-          style={{ fontSize: '32px' }}
-          onClick={onNavClick}
-          value="roadmap"
-        >
-          로드맵
-        </button>
-        <button style={{ fontSize: '32px' }} onClick={onNavClick} value="faq">
-          QnA
-        </button>
-      </div>
+      <LogoImage src={logo_ttot} />
+      <ButtonsWrapper>
+        <Button onClick={onNavClick} value="goal">
+          PROBLEM &
+          <br /> SOLVING
+        </Button>
+        <Button onClick={onNavClick} value="technology">
+          KEY
+          <br /> TECHNOLOGY
+        </Button>
+        <Button onClick={onNavClick} value="faq">
+          ROAD MAP
+        </Button>
+        <Button onClick={onNavClick} value="roadmap">
+          Q&A
+        </Button>
+      </ButtonsWrapper>
     </Container>
   );
 };

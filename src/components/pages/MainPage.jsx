@@ -2,15 +2,15 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import HeroArea from './main/HeroArea';
 import MainHeader from './main/MainHeader';
-import GoalArea from './main/GoalArea';
+import SolvingAndProblem from './main/SolvingAndProblem';
 import FAQArea from './main/FAQArea';
 import Footer from '@articles/Footer';
 import Anchor from '@atoms/Anchor';
-import * as colors from '@styles/colors';
+import TechnologyArea from './main/TechnologyArea';
 
 const TempBox = styled('div')`
-  border: 2px solid white;
-  padding: 32px;
+  border: 2px solid yellow;
+  padding: 48px;
   display: flex;
   gap: 24px;
   flex-direction: column;
@@ -23,7 +23,7 @@ const TempBox = styled('div')`
 
 const MainPage = () => {
   const goalRef = useRef(null);
-  const benefitRef = useRef(null);
+  const technologyRef = useRef(null);
   const roadmapRef = useRef(null);
   const faqRef = useRef(null);
 
@@ -32,7 +32,7 @@ const MainPage = () => {
 
     let targetRef;
     if (clickedValue === 'goal') targetRef = goalRef.current;
-    if (clickedValue === 'benefit') targetRef = benefitRef.current;
+    if (clickedValue === 'technology') targetRef = technologyRef.current;
     if (clickedValue === 'roadmap') targetRef = roadmapRef.current;
     if (clickedValue === 'faq') targetRef = faqRef.current;
 
@@ -43,7 +43,6 @@ const MainPage = () => {
     //TODO: 인라인css 리팩토링필요
     <div
       style={{
-        backgroundColor: colors.bgPrimary,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -51,11 +50,8 @@ const MainPage = () => {
     >
       <MainHeader onNavClick={handleScrollByRef} />
       <HeroArea />
-      <GoalArea ref={goalRef} />
-      <TempBox>
-        <Anchor ref={benefitRef} />
-        Features and BeneFits
-      </TempBox>
+      <SolvingAndProblem ref={goalRef} />
+      <TechnologyArea ref={technologyRef} />
       <TempBox>
         <Anchor ref={roadmapRef} />
         Road map

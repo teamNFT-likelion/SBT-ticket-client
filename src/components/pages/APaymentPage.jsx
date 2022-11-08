@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '@articles/Header';
-import { TempWrapper } from '../atoms/Wrapper.style';
+import { TempWrapper } from '../atoms/wrappers.style';
 
 const APaymentPage = () => {
   return (

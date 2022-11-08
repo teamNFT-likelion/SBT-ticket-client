@@ -6,6 +6,9 @@ import TDetailPage from '@pages/TDetailPage';
 import TSearchPage from '@pages/TSearchPage';
 import APaymentPage from '@pages/APaymentPage';
 import AccountPage from '@pages/AccountPage';
+import '@fontsource/shrikhand'; // title TODO: refactoring 필요
+import '@fontsource/roboto-condensed'; // subtitle
+import '@fontsource/do-hyeon';
 
 function App() {
   return (

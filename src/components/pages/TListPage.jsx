@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '@articles/Header';
 import LinkButton from '@atoms/LinkButton';
-import { TempWrapper } from '../atoms/Wrapper.style';
+import { TempWrapper } from '../atoms/wrappers.style';
 
 const TListPage = () => {
   return (
