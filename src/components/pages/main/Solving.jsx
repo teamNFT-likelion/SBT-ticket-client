@@ -11,7 +11,6 @@ const SubTitle = styled('div')`
   text-align: center;
 `;
 
-//TODO:
 const LogoText = styled('div')`
   font-family: 'Shrikhand';
   font-style: italic;
