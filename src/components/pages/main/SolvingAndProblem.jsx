@@ -10,6 +10,7 @@ const Container = styled('div')`
   width: 100%;
   max-width: 1350px;
   position: relative;
+  overflow: hidden;
 `;
 
 const SolvingAndProblem = forwardRef((props, ref) => {

@@ -1,7 +1,29 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 import reset from 'styled-reset';
 import * as colors from '@styles/colors';
 // import * as colors from "@styles/colors";
+
+const combineStrings = (args, ...keys) => {
+  return args.reduce((initialValue, currentValue, currentIndex) => {
+    return `${initialValue}${keys[currentIndex - 1]}${currentValue}`;
+  });
+};
+
+export const mobile = (args, ...keys) => {
+  return css`
+    @media screen and (max-width: 600px) {
+      ${combineStrings(args, ...keys)}
+    }
+  `;
+};
+
+export const tablet = (args, ...keys) => {
+  return css`
+    @media screen and (max-width: 1024px) {
+      ${combineStrings(args, ...keys)}
+    }
+  `;
+};
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -9,6 +31,16 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Do Hyeon", sans-serif, -apple-system, BlinkMacSystemFont, system-ui, Roboto;
     color: ${colors.textWhite};
     font-weight: 400;
+  }
+
+  html{
+    ${tablet`
+      font-size: 12px;
+    `}
+
+    ${mobile`
+      font-size: 9px;
+    `}
   }
 
   body {

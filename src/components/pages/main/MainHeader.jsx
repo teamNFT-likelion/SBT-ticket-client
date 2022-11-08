@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import logo_ttot from '@assets/img/logo_ttot.png';
 import * as colors from '@styles/colors';
+import { tablet } from '@styles/GlobalStyle';
 
 const Container = styled('div')`
-  height: 122px;
+  height: 7.5rem;
   width: 100%;
   align-items: center;
   display: flex;
@@ -17,6 +18,11 @@ const Container = styled('div')`
 
 const LogoImage = styled('img')`
   width: 100px;
+  margin-right: 24px;
+
+  ${tablet`
+    display: none;
+  `}
 `;
 
 const ButtonsWrapper = styled('div')`
@@ -25,18 +31,17 @@ const ButtonsWrapper = styled('div')`
   justify-content: space-evenly;
   width: 100%;
   height: 100%;
-  margin-left: 24px;
   font-size: 32px;
 `;
 
 const Button = styled('button')`
-  font-size: 24px;
+  font-size: 1.25rem;
   font-family: 'Shrikhand', cursive;
   font-style: italic;
   font-weight: 400;
   letter-spacing: 0.282486px;
   cursor: pointer;
-  padding: 1rem;
+  padding: 1em;
 `;
 
 const MainHeader = ({ onNavClick }) => {
