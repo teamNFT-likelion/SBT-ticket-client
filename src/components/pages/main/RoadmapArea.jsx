@@ -47,10 +47,6 @@ const TempBox = styled('div')`
   }
 `;
 
-const ContentsBox = styled.div`
-    width: 100vw;
-    height: 100vh;
-`;
 
 
 const RoadmapArea = forwardRef((props, ref) => {
