@@ -1,24 +1,37 @@
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
+import { sm } from '@styles/GlobalStyle';
 
 export const Title = styled('span')`
-  font-size: 44px;
+  font-size: 34px;
   line-height: 130%;
   letter-spacing: 0.511785px;
+
+  ${sm`
+    font-size: 25.5px;
+  `}
 `;
 
 export const TitleBold = styled(Title)`
-  font-size: 64px;
+  font-size: 48px;
   color: ${colors.primary80};
+
+  ${sm`
+    font-size: 36px;
+  `}
 `;
 
-//TODO: 색 변수 처리 필요
+//TODO: 색 변수 처리 필요, 글자 단어별로 줄바꿈 속성 추가해야댐
 export const Desc = styled('span').attrs((props) => ({
   marginTop: props.marginTop || '0',
 }))`
-  font-size: 26.9768px;
+  font-size: 20px;
   line-height: 130%;
   letter-spacing: 0.307529px;
   color: #bac0a3;
   margin-top: ${({ marginTop }) => marginTop};
+
+  ${sm`
+    font-size: 15px;
+  `}
 `;

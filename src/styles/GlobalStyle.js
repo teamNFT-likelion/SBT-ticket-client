@@ -9,7 +9,7 @@ const combineStrings = (args, ...keys) => {
   });
 };
 
-export const mobile = (args, ...keys) => {
+export const sm = (args, ...keys) => {
   return css`
     @media screen and (max-width: 600px) {
       ${combineStrings(args, ...keys)}
@@ -17,7 +17,7 @@ export const mobile = (args, ...keys) => {
   `;
 };
 
-export const tablet = (args, ...keys) => {
+export const lg = (args, ...keys) => {
   return css`
     @media screen and (max-width: 1024px) {
       ${combineStrings(args, ...keys)}
@@ -34,11 +34,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html{
-    ${tablet`
+    ${lg`
       font-size: 12px;
     `}
 
-    ${mobile`
+    ${sm`
       font-size: 9px;
     `}
   }

@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import Anchor from '@atoms/Anchor';
 import landing_sbt from '@assets/img/landing_sbt.png';
-import { Row } from '@components/atoms/wrappers.style';
+import { Row } from '@components/atoms/wrapper.style';
 import { TitleBold, Title, Desc } from './main.style';
 import sbt_1 from '@assets/img/sbt_1.png';
 import sbt_2 from '@assets/img/sbt_2.png';
@@ -25,6 +25,10 @@ const TechnologyImg = styled('img')`
   height: auto;
   align-self: center;
   margin: 64px 0;
+`;
+
+const PurposeWrapper = styled(Row)`
+  gap: 56px;
 `;
 
 const ImgWrapper = styled('div')`
@@ -61,7 +65,7 @@ const TechnologyArea = forwardRef((props, ref) => {
       <Desc>
         이런 특성을 이용해 우리는 SBT를 다음과 같은 용도로 사용합니다.
       </Desc>
-      <Row gap="56px">
+      <PurposeWrapper>
         <ImgWrapper>
           <img src={sbt_1} alt="커뮤니티" />
         </ImgWrapper>
@@ -74,7 +78,7 @@ const TechnologyArea = forwardRef((props, ref) => {
         <ImgWrapper>
           <img src={sbt_4} alt="선거권" />
         </ImgWrapper>
-      </Row>
+      </PurposeWrapper>
     </Container>
   );
 });
