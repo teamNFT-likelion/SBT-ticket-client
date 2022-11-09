@@ -28,7 +28,7 @@ export const Desc = styled('span').attrs((props) => ({
   font-size: 20px;
   line-height: 130%;
   letter-spacing: 0.307529px;
-  color: #bac0a3;
+  color: ${colors.textTertiary};
   margin-top: ${({ marginTop }) => marginTop};
 
   ${sm`
