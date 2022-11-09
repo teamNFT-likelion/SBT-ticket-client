@@ -1,9 +1,23 @@
 import styled from 'styled-components';
+import { lg, sm } from '@styles/GlobalStyle';
 
 export const TempWrapper = styled('div')`
   display: flex;
   flex-direction: column;
   height: 100vh;
+`;
+
+export const Title = styled('span')`
+  font-family: 'Shrikhand', cursive;
+  font-size: 48.16px;
+
+  ${lg`
+    font-size: 38px;
+  `}
+
+  ${sm`
+    font-size: 25px;
+  `}
 `;
 
 export const Column = styled('div').attrs((props) => ({
