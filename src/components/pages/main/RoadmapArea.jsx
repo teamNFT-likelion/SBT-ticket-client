@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import bgRoadmap from '@assets/img/bgRoadmap.png';
+import Anchor from '@components/atoms/Anchor';
 
 const Container = styled('div')`
   width: 100%;
   justify-content: center;
+  position: relative;
 `;
 
 const RoadmapContainer = styled('div')`
@@ -31,9 +33,10 @@ const B = styled(Title)`
   font-size: 48.16px;
 `;
 
-const RoadmapArea = () => {
+const RoadmapArea = forwardRef((props, ref) => {
   return (
     <Container>
+      <Anchor ref={ref} />
       <TitleWrapper>
         <Title>
           <B>ttot Roadmap</B>
@@ -42,6 +45,6 @@ const RoadmapArea = () => {
       <RoadmapContainer />
     </Container>
   );
-};
+});
 
 export default RoadmapArea;

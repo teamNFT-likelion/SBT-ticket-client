@@ -24,7 +24,7 @@ const TextContainer = styled('div')`
 `;
 
 
-const CardByToggle = ({ title, text }) => {
+const CardByToggle = ({ title, children}) => {
   const initialSetting = { borderColor: '#6D6D6D' };
   const changedSetting = { borderColor: '#7E9E10' };
   const [isOpened, setIsOpened] = useState(false);
@@ -48,7 +48,7 @@ const CardByToggle = ({ title, text }) => {
           {isOpened ? '🔺' : '🔻'}
         </button>
       </div>
-      {isOpened && <TextContainer>{text}</TextContainer>}
+      {isOpened && <TextContainer>{children}</TextContainer>}
     </Container>
   );
 };
