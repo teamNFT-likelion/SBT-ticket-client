@@ -1,22 +1,23 @@
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import Anchor from '@atoms/Anchor';
-import landing_sbt from '@assets/img/landing_sbt.png';
-import { Row } from '@components/atoms/wrapper.style';
-import { TitleBold, Title, Desc } from './main.style';
+import { Row } from '@atoms/wrapper.style';
 import sbt_1 from '@assets/img/sbt_1.png';
 import sbt_2 from '@assets/img/sbt_2.png';
 import sbt_3 from '@assets/img/sbt_3.png';
 import sbt_4 from '@assets/img/sbt_4.png';
+import landing_sbt from '@assets/img/landing_sbt.png';
+import { TitleBold, Title, Desc } from './main.style';
+import { sm, lg } from '@styles/GlobalStyle';
 
 const Container = styled('div')`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 1350px;
-  position: relative;
-  padding: 48px;
-  margin-top: 120px;
+  padding: 2.75rem;
+  margin-top: 7.5rem;
 `;
 
 const TechnologyImg = styled('img')`
@@ -24,16 +25,26 @@ const TechnologyImg = styled('img')`
   max-width: 996px;
   height: auto;
   align-self: center;
-  margin: 64px 0;
+  margin: 3.5rem 0;
 `;
 
 const PurposeWrapper = styled(Row)`
   gap: 56px;
+  margin-top: 4rem;
+
+  ${lg`
+    gap: 20px;
+  `};
+
+  ${sm`
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  `};
 `;
 
 const ImgWrapper = styled('div')`
   flex: 1;
-  margin-top: 64px;
 
   & > img {
     width: 100%;
