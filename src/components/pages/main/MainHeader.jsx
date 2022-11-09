@@ -5,19 +5,19 @@ import * as colors from '@styles/colors';
 import { lg } from '@styles/GlobalStyle';
 
 const Container = styled('div')`
-  height: 7.5rem;
-  width: 100%;
-  align-items: center;
-  display: flex;
-  padding: 0 20px;
   position: fixed;
   top: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 7.5rem;
+  padding: 0 2.75rem;
   background-color: ${colors.bgBlack};
   z-index: 999;
 `;
 
 const LogoImage = styled('img')`
-  width: 100px;
+  width: 192px;
   margin-right: 24px;
 
   ${lg`

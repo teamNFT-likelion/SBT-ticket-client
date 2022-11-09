@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Column } from '@components/atoms/wrapper.style';
+import { Column } from '@atoms/wrapper.style';
 import { Title, TitleBold, Desc } from './main.style';
 import problem_1_img from '@assets/img/problem_1.png';
 import problem_2_img from '@assets/img/problem_2.png';
@@ -21,13 +21,13 @@ const Section = styled(Column)`
 
 // TODO: 색변수 지정 및 클래스네임 변경 필요
 const ImgContainer = styled('div')`
-  width: 100%;
-  height: auto;
-  align-self: center;
   display: flex;
   justify-content: space-between;
-  margin-top: 56px;
+  align-self: center;
+  width: 100%;
+  height: auto;
   padding: 0 3rem;
+  margin-top: 56px;
 
   ${lg`
     margin-top: 40px;
@@ -35,13 +35,14 @@ const ImgContainer = styled('div')`
   `}
 
   & > .left-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     width: 43%;
     height: auto;
     border-radius: 40px;
     padding: 1.75rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
     ${sm`
       display: none;
@@ -49,15 +50,15 @@ const ImgContainer = styled('div')`
   }
 
   & > .right-box {
-    width: 47%;
-    height: auto;
-    background: rgba(200, 245, 60, 0.1);
-    border: none;
-    border-radius: 40px;
-    padding: 1.75rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 47%;
+    height: auto;
+    padding: 1.75rem;
+    border: none;
+    border-radius: 40px;
+    background: rgba(200, 245, 60, 0.1);
 
     ${sm`
       width: 100%;
@@ -74,6 +75,7 @@ const ProblemDesc = styled('div')`
   width: 100%;
   text-align: center;
   font-size: 22px;
+  line-height: 29px;
 `;
 
 const Problem = () => {
@@ -124,8 +126,8 @@ const Problem = () => {
           <div className="right-box">
             <ProblemImage src={problem_4_img} alt="problem1" />
             <ProblemDesc>
-              ttot 티켓은
-              <br /> 양도가 불가능합니다.
+              ttot 티켓은 지갑에 쌓아두고
+              <br /> 팬 혜택을 누릴 수 있습니다.
             </ProblemDesc>
           </div>
         </ImgContainer>
@@ -146,15 +148,15 @@ const Problem = () => {
           <div className="left-box">
             <ProblemImage src={problem_5_img} alt="problem1" />
             <ProblemDesc>
-              기존 티켓은
-              <br /> 양도가 가능합니다.
+              기존 티켓은 신분 대조의 과정을 통해
+              <br /> 소유권을 증명합니다.
             </ProblemDesc>
           </div>
           <div className="right-box">
             <ProblemImage src={problem_6_img} alt="problem1" />
             <ProblemDesc>
-              ttot 티켓은
-              <br /> 양도가 불가능합니다.
+              ttot 티켓은 QR코드로
+              <br /> 간편하고 빠르게 소유권을 증명합니다.
             </ProblemDesc>
           </div>
         </ImgContainer>
