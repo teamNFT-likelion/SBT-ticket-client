@@ -9,14 +9,14 @@ export const TempWrapper = styled('div')`
 
 export const Title = styled('span')`
   font-family: 'Shrikhand', cursive;
-  font-size: 48.16px;
+  font-size: 3rem;
 
   ${lg`
-    font-size: 38px;
+    font-size: 2.9rem;
   `}
 
   ${sm`
-    font-size: 25px;
+    font-size: 2.5rem;
   `}
 `;
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Column, Row } from '@components/atoms/wrapper.style';
+import { Column} from '@components/atoms/wrapper.style';
 import * as colors from '@styles/colors';
 import { lg, sm } from '@styles/GlobalStyle';
 import { AiOutlineCaretUp } from 'react-icons/ai';
@@ -12,8 +12,9 @@ import { AiOutlineCaretUp } from 'react-icons/ai';
 //  [O] border에서 A면 어떤거 아니면 기본
 //  [O] colors (1)가져다쓰고 (2)많이 쓰는거 등록
 //  [O] inline 빼는게 좋다!(for 가독성)
-//  [ ] react-icons 이용해서 버튼 색 수정
+//  [O] react-icons 이용해서 버튼 색 수정
 //  [O] 반응형 적용 (Roadmap, FAQ)
+//  [ ] Answer 열리는거 transtition 적용해주고싶다
 
  
 const Button = styled(Column)`
@@ -25,64 +26,60 @@ const Button = styled(Column)`
 const ContentsContainer = styled(Column)`
   border: 3px solid
     ${(props) => (props.isOpened ? colors.primary40 : colors.bgFAQ)};
-  border-radius: 30px;
+  border-radius: 2.6rem;
   white-space: wrap;
   margin: 20px;
   padding: 28px;
   width: 80vw;
-  transition: all 0.1s;
 
   &:hover {
     background-color: ${(props) => !props.isOpened && colors.bgFAQ};
   }
 
   ${lg`
-    gap: 23px;
-    margin: 23px 44px;
-    padding: 23px;
-    border-radius: 23px;
+    margin: 2.3rem 4rem;
+    padding: 2.3rem;
+    border-radius: 2.6rem;
   `}
 
   ${sm`
-    gap: 19px;
-    margin: 19px 33px;
-    padding: 19px;
-    border-radius: 19px;
+    margin: 1.9rem 3rem;
+    padding: 1.9rem;
+    border-radius: 2.6rem;
   `}
 `;
 
 const TextContainer = styled(Column)`
   line-height: 150%;
-  font-size: 20.3px;
+  font-size: 2rem;
   text-align: left;
   align-items: center;
   justify-content: center;
-  margin-top: 28px;
+  margin-top: 3rem;
   overflow: hidden;
 
   ${lg`
-    font-size: 15px;
-    margin-top: 23px;
+    font-size: 1.5rem;
+    margin-top: 2.3rem;
   `}
 
   ${sm`
-    font-size: 12px;
-    margin-top: 19px;
+    font-size: 1.2rem;
+    margin-top: 1.9rem;
   `}
 `;
 
 const TitleContainer = styled(TextContainer)`
-  font-size: 28px;
+  font-size: 2.6rem;
   margin-top: 0px;
   flex-direction: row;
-  transition: all 1s ease-in-out;
 
   ${lg`
-    font-size: 23px;
+    font-size: 2.3rem;
   `}
 
   ${sm`
-    font-size: 19px;
+    font-size: 1.9rem;
   `}
 `;
 
