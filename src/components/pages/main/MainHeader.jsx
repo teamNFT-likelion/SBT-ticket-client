@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import logo_ttot from '@assets/img/logo_ttot.png';
 import * as colors from '@styles/colors';
 import { lg } from '@styles/GlobalStyle';
+import { APP_HEADER_H } from '@constants/styleConst';
 
 const Container = styled('div')`
   position: fixed;
@@ -10,7 +11,7 @@ const Container = styled('div')`
   display: flex;
   align-items: center;
   width: 100%;
-  height: 7.5rem;
+  height: ${APP_HEADER_H};
   padding: 0 2.75rem;
   background-color: ${colors.bgBlack};
   z-index: 999;

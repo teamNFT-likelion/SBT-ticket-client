@@ -1,8 +1,13 @@
 import React, { forwardRef } from 'react';
+import { APP_HEADER_H } from '@constants/styleConst';
 
 const Anchor = forwardRef((props, ref) => {
-  //TODO: 인라인css 리팩토링필요
-  return <div ref={ref} style={{ position: 'absolute', top: '-7.5rem' }}></div>;
+  return (
+    <div
+      ref={ref}
+      style={{ position: 'absolute', top: `-${APP_HEADER_H}` }}
+    ></div>
+  );
 });
 
 export default Anchor;
