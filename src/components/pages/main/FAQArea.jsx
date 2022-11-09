@@ -12,21 +12,15 @@ const Container = styled('div')`
 
 
 const TitleWrapper = styled('div')`
-  grid-row: 1;
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 52px;
-  margin: 70px 100px;
-  margin-bottom: 100px;
+  margin: 100px 100px;
 `;
 
 const Title = styled('span')`
   font-family: 'Shrikhand', cursive;
   font-size: 72px;
-`;
-
-const B = styled(Title)`
   font-size: 48.16px;
 `;
 
@@ -40,8 +34,8 @@ const Ul = styled('ul')`
 `;
 
 const Li = styled('li')`
-  color: #bac0a3;
   padding-left: 20px;
+  color: #bac0a3;
 `;
 
 const Ol = styled('ol')`
@@ -54,10 +48,10 @@ const FAQArea = forwardRef((props, ref) => {
       <Anchor ref={ref} />
       <TitleWrapper>
         <Title>
-          <B>Frequently Asked Question</B>
+          Frequently Asked Question
         </Title>
       </TitleWrapper>
-      <CardByToggle initialOpen title="Q1. 예매 방법?">
+      <CardByToggle title="Q1. 예매 방법?">
         <ContentsContainer>
           tott 내 예매 방법은 두 가지 종류가 있습니다.
           <Ul>
