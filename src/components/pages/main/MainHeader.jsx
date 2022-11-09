@@ -52,11 +52,11 @@ const MainHeader = ({ onNavClick }) => {
           KEY
           <br /> TECHNOLOGY
         </Button>
-        <Button onClick={onNavClick} value="faq">
+        <Button onClick={onNavClick} value="roadmap">
           ROAD MAP
         </Button>
-        <Button onClick={onNavClick} value="roadmap">
-          Q&A
+        <Button onClick={onNavClick} value="faq">
+          FAQ
         </Button>
       </ButtonsWrapper>
     </Container>

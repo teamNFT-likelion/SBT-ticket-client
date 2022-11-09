@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import CardByToggle from '@articles/CardByToggle';
 import Anchor from '../../atoms/Anchor';
+import * as colors from "@styles/colors";
 
 const Container = styled('div')`
   position: relative;
@@ -32,6 +33,19 @@ const B = styled(Title)`
   font-size: 48.16px;
 `;
 
+const ContentsContainer = styled('div')`
+  color: ${colors.primary40};
+`;
+
+const ContentsWrapper = styled('div')`
+  padding-top: 20px;
+  padding-left: 20px;
+`;
+
+const TextWrapper = styled('div')`
+  color: ${colors.primary40};
+`;
+
 const Ul = styled('ul')`
   padding-left: 20px;
 `;
@@ -45,26 +59,32 @@ const FAQArea = forwardRef((props, ref) => {
           <B>Frequently Asked Question</B>
         </Title>
       </TitleWrapper>
-      <CardByToggle
-        initialOpen
-        title="Q1. 예매 방법?"
-        text={
-          <div>
-            tott 내 예매 방법은 두 가지 종류가 있습니다.
-            <Ul>
-              <br />
-              <li>
-                👉 일반 예매 : 현금 혹은 코인 결제 시, 로그인한 지갑으로 SBT
-                티켓이 발급됩니다.
-              </li>
-              <li>
-                👉 팬 사전 예매 : 주최 측에서 정한 콘서트 티켓(이미 사용한
-                SBT티켓) 보유 시, 사전 예매 좌석 구매 기회가 제공됩니다.
-              </li>
-            </Ul>
-          </div>
-        }
-      />
+      <CardByToggle initialOpen title="Q1. 예매 방법?">
+        <ContentsContainer>
+          tott 내 예매 방법은 두 가지 종류가 있습니다.
+          <ContentsWrapper>
+            <TextWrapper>
+              👉 일반 예매 : 현금 혹은 코인 결제 시, 로그인한 지갑으로 SBT
+              티켓이 발급됩니다.
+            </TextWrapper>
+            <TextWrapper>
+              👉 팬 사전 예매 : 주최 측에서 정한 콘서트 티켓(이미 사용한
+              SBT티켓) 보유 시, 사전 예매 좌석 구매 기회가 제공됩니다.
+            </TextWrapper>
+          </ContentsWrapper>
+          <Ul>
+            <br />
+            <li>
+              👉 일반 예매 : 현금 혹은 코인 결제 시, 로그인한 지갑으로 SBT
+              티켓이 발급됩니다.
+            </li>
+            <li>
+              👉 팬 사전 예매 : 주최 측에서 정한 콘서트 티켓(이미 사용한
+              SBT티켓) 보유 시, 사전 예매 좌석 구매 기회가 제공됩니다.
+            </li>
+          </Ul>
+        </ContentsContainer>
+      </CardByToggle>
       <CardByToggle
         title="Q2. 티켓 이용 방법?"
         text={
@@ -102,12 +122,12 @@ const FAQArea = forwardRef((props, ref) => {
               <li>
                 👉 카테고리별 티어 시스템(구매 횟수와 일정 구매 금액별)
                 <Ul>
-                  <li>=>🥈실버 : 할인 + 쿠폰 + 적립금</li>
+                  <li>🥈실버 : 할인 + 쿠폰 + 적립금</li>
                   <li>
-                    =>🥇골드 : 할인 + 쿠폰 + 적립금, 관심 콘서트 등록 시 알림.
+                    🥇골드 : 할인 + 쿠폰 + 적립금, 관심 콘서트 등록 시 알림.
                   </li>
                   <li>
-                    =>💎플레티넘 : 할인 + 쿠폰 + 적립금, 취소 좌석 알림, 관심
+                    💎플레티넘 : 할인 + 쿠폰 + 적립금, 취소 좌석 알림, 관심
                     콘서트 등록 시 알림, (래플 참여권 1개)
                   </li>
                 </Ul>

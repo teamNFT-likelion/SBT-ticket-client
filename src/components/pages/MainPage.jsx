@@ -7,7 +7,6 @@ import Footer from '@articles/Footer';
 import TechnologyArea from './main/TechnologyArea';
 import RoadmapArea from './main/RoadmapArea';
 
-
 const MainPage = () => {
   const goalRef = useRef(null);
   const technologyRef = useRef(null);
@@ -39,7 +38,7 @@ const MainPage = () => {
       <HeroArea />
       <SolvingAndProblem ref={goalRef} />
       <TechnologyArea ref={technologyRef} />
-      <RoadmapArea ref={roadmapRef}/>
+      <RoadmapArea ref={roadmapRef} />
       <FAQArea ref={faqRef} />
       <Footer />
     </div>
