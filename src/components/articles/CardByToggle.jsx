@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Column } from '@components/atoms/wrapper.style';
 import * as colors from '@styles/colors';
+import { lg, sm } from '@styles/GlobalStyle';
+
 
 //  [ing] 겹치는 것들 atom으로
 //  [O] props 없애주기
@@ -12,28 +15,72 @@ import * as colors from '@styles/colors';
 //  [O] 반응형 적용 (Roadmap, FAQ)
 
  
-const Container = styled('div')`
+const Button = styled(Column)`
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+`;
+
+const ContentsContainer = styled(Column)`
   border: 3px solid
     ${(props) => (props.isOpened ? colors.primary40 : colors.bgFAQ)};
   border-radius: 30px;
-  margin: 20px 150px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
+  white-space: wrap;
+  margin: 20px;
+  padding: 28px;
+  width: 80vw;
   height: auto;
   transition: background 0.1s ease-in-out;
 
   &:hover {
     background-color: ${(props) => !props.isOpened && colors.bgFAQ};
   }
+
+  ${lg`
+    gap: 23px;
+    margin: 23px 44px;
+    padding: 23px;
+  `}
+
+  ${sm`
+    gap: 19px;
+    margin: 19px 33px;
+    padding: 19px;
+  `}
 `;
 
-const TextContainer = styled('div')`
-  padding-top: 30px;
+const TextContainer = styled(Column)`
   line-height: 150%;
   font-size: 20.3px;
-  padding-left: 10px;
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+  margin-top: 28px;
+
+  ${lg`
+    font-size: 15px;
+    margin-top: 23px;
+  `}
+
+  ${sm`
+    font-size: 12px;
+    margin-top: 19px;
+  `}
 `;
+
+const TitleContainer = styled(TextContainer)`
+  font-size: 28px;
+  margin-top: 0px;
+  ${lg`
+    font-size: 23px;
+  `}
+
+  ${sm`
+    font-size: 19px;
+  `}
+`;
+
+
 
 
 const CardByToggle = ({ title, children}) => {
@@ -41,16 +88,18 @@ const CardByToggle = ({ title, children}) => {
 
   return (
     //TODO: 인라인css 리팩토링필요
-    <Container isOpened={isOpened}>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <span style={{ fontSize: '30px' }}>{title}</span>
-        <button
-          onClick={() => {setIsOpened((prev) => !prev);}} >
-          {isOpened ? '🔺' : '🔻'}
-        </button>
-      </div>
-      {isOpened && <TextContainer>{children}</TextContainer>}
-    </Container>
+    <Button
+      onClick={() => {
+        setIsOpened((prev) => !prev);
+      }}
+    >
+      <ContentsContainer isOpened={isOpened}>
+        <TitleContainer>
+          <span>{title}</span>
+        </TitleContainer>
+        {isOpened && <TextContainer>{children}</TextContainer>}
+      </ContentsContainer>
+    </Button>
   );
 };
 
