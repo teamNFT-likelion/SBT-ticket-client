@@ -3,6 +3,7 @@
 // export const textSecondary = 'rgba(255, 255, 255, 0.64)';
 // export const textYellow = '#FFD121';
 // export const textGreen = '#22c55e';
+export const textTertiary = '#bac0a3';
 
 // export const textRed = '#ef4444';
 export const primary80 = '#c8f53c';
