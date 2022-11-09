@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import * as colors from '@styles/colors';
 
-//  [ ] 겹치는 것들 atom으로
-//  [ ] props 없애주기
+//  [ing] 겹치는 것들 atom으로
+//  [O] props 없애주기
 //  [ ] div-span버튼 크게 하나로
-//  [ ] border에서 A면 어떤거 아니면 기본
-//  [ ] colors (1)가져다쓰고 (2)많이 쓰는거 등록
+//  [O] border에서 A면 어떤거 아니면 기본
+//  [O] colors (1)가져다쓰고 (2)많이 쓰는거 등록
 //  [ ] inline 빼는게 좋다!(for 가독성)
 //  [ ] react-icons 이용해서 버튼 색 수정
-
+//  [O] 반응형 적용 (Roadmap, FAQ)
 
  
 const Container = styled('div')`
-  border: 3px solid ${(props) => (props.isOpened ? '#7E9E10' : '#dfffb411')};
+  border: 3px solid
+    ${(props) => (props.isOpened ? colors.primary40 : colors.bgFAQ)};
   border-radius: 30px;
   margin: 20px 150px;
   padding: 30px;
@@ -22,7 +24,7 @@ const Container = styled('div')`
   transition: background 0.1s ease-in-out;
 
   &:hover {
-    background-color: ${(props) => !props.isOpened && '#dfffb411'};
+    background-color: ${(props) => !props.isOpened && colors.bgFAQ};
   }
 `;
 
