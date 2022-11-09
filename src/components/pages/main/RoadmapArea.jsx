@@ -1,18 +1,26 @@
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import bgRoadmap from '@assets/img/bgRoadmap.png';
+import { lg, sm } from '@styles/GlobalStyle';
 import Anchor from '@components/atoms/Anchor';
+import { Column } from '@components/atoms/wrapper.style';
 
 const Container = styled('div')`
-  width: 100%;
-  justify-content: center;
-  position: relative;
-`;
-
-const RoadmapContainer = styled('div')`
-  height: calc(100vh - 300px);
+  width: 90%;
+  height: calc(100vh - 7.5rem);
   background: url(${bgRoadmap}) no-repeat center;
   background-size: contain;
+  justify-content: center;
+
+  ${lg`
+    margin: 30px 44px;
+    padding: 0;
+  `}
+
+  ${sm`
+    margin: 0px 33px;
+    padding: 0;
+  `}
 `;
 
 const TitleWrapper = styled('div')`
@@ -20,8 +28,7 @@ const TitleWrapper = styled('div')`
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 52px;
-  margin-bottom: 100px;
+  margin: 50px;
 `;
 
 const Title = styled('span')`
@@ -29,21 +36,17 @@ const Title = styled('span')`
   font-size: 73px;
 `;
 
-const B = styled(Title)`
-  font-size: 48.16px;
-`;
-
 const RoadmapArea = forwardRef((props, ref) => {
   return (
-    <Container>
-      <Anchor ref={ref} />
-      <TitleWrapper>
-        <Title>
-          <B>ttot Roadmap</B>
-        </Title>
-      </TitleWrapper>
-      <RoadmapContainer />
-    </Container>
+    <>
+      <Column alignItems="center" marginTop="15vh">
+        <Anchor ref={ref} />
+        <TitleWrapper>
+          <Title>ttot Roadmap</Title>
+        </TitleWrapper>
+      </Column>
+      <Container />
+    </>
   );
 });
 
