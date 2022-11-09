@@ -1,19 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import heroimg from '@assets/img/landing_hero.png';
+import hero_img from '@assets/img/landing_hero.png';
 import * as colors from '@styles/colors';
+import { APP_HEADER_H } from '@constants/styleConst';
 
 const Container = styled('div')`
-  width: 100%;
-  height: calc(100vh - 7.5rem);
-  background: url(${heroimg}) no-repeat center;
-  background-size: cover;
   display: grid;
   grid-template-rows: repeat(7, 1fr);
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 7.5rem;
+  width: 100%;
+  height: calc(100vh - ${APP_HEADER_H});
+  padding: 0 2.75rem;
+  margin-top: ${APP_HEADER_H};
+  background: url(${hero_img}) no-repeat center;
+  background-size: cover;
 `;
 
 const TitleWrapper = styled('div')`
@@ -21,7 +21,6 @@ const TitleWrapper = styled('div')`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 0 2rem;
 `;
 
 const Title = styled('span')`
@@ -40,7 +39,7 @@ const Subtitle = styled('span')`
   font-size: 2rem;
   letter-spacing: 1.3px;
   text-align: center;
-  padding: 0 2rem;
+  line-height: 1.6;
 `;
 
 const ButtonWrapper = styled('div')`

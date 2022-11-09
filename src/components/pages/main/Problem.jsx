@@ -16,7 +16,7 @@ const Container = styled(Column)`
 
 const Section = styled(Column)`
   width: 100%;
-  padding: 2.75rem;
+  padding: 2.75rem 0;
 `;
 
 // TODO: 색변수 지정 및 클래스네임 변경 필요
@@ -39,7 +39,7 @@ const ImgContainer = styled('div')`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 43%;
+    width: 38%;
     height: auto;
     border-radius: 40px;
     padding: 1.75rem;
@@ -53,7 +53,7 @@ const ImgContainer = styled('div')`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 47%;
+    width: 38%;
     height: auto;
     padding: 1.75rem;
     border: none;

@@ -3,14 +3,16 @@ import styled from 'styled-components';
 import Anchor from '@atoms/Anchor';
 import Solving from './Solving';
 import Problem from './Problem';
+import { APP_MAX_W } from '@constants/styleConst';
 
 const Container = styled('div')`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1350px;
+  max-width: ${APP_MAX_W}px;
   position: relative;
   overflow: hidden;
+  padding: 0 2.75rem;
 `;
 
 const SolvingAndProblem = forwardRef((props, ref) => {

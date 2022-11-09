@@ -7,21 +7,23 @@ import sbt_2 from '@assets/img/sbt_2.png';
 import sbt_3 from '@assets/img/sbt_3.png';
 import sbt_4 from '@assets/img/sbt_4.png';
 import landing_sbt from '@assets/img/landing_sbt.png';
-import { TitleBold, Title, Desc } from './main.style';
 import { sm, lg } from '@styles/GlobalStyle';
+import { APP_MAX_W } from '@constants/styleConst';
+import { TitleBold, Title, Desc } from './main.style';
+import * as colors from '@styles/colors';
 
 const Container = styled('div')`
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1350px;
+  max-width: ${APP_MAX_W}px;
   padding: 2.75rem;
   margin-top: 7.5rem;
 `;
 
 const TechnologyImg = styled('img')`
-  width: 100%;
+  width: 75%;
   max-width: 996px;
   height: auto;
   align-self: center;
@@ -49,6 +51,26 @@ const ImgWrapper = styled('div')`
   & > img {
     width: 100%;
     height: auto;
+  }
+`;
+
+const Conclusion = styled('div')`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8.25rem;
+
+  & .logo-en {
+    font-family: 'Shrikhand', cursive;
+    font-size: 5rem;
+    color: ${colors.primary40};
+    line-height: 1.3;
+  }
+
+  & .logo-ko {
+    font-size: 1.85rem;
+    font-weight: 100;
+    color: ${colors.primary40};
   }
 `;
 
@@ -90,6 +112,15 @@ const TechnologyArea = forwardRef((props, ref) => {
           <img src={sbt_4} alt="선거권" />
         </ImgWrapper>
       </PurposeWrapper>
+      <Conclusion>
+        <div className="logo-en">
+          ttot&nbsp;
+          <span className="logo-ko">[ 또트 ]</span>
+        </div>
+        <span style={{ fontSize: '1.85rem' }}>
+          : 티켓 SBT를 통해 2차 거래를 방지하는 플랫폼입니다.
+        </span>
+      </Conclusion>
     </Container>
   );
 });

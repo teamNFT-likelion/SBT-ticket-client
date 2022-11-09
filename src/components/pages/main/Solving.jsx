@@ -10,7 +10,6 @@ const SubTitle = styled('div')`
   line-height: 130%;
   letter-spacing: 0.5px;
   text-align: center;
-  padding: 0 2rem;
 
   ${sm`
     font-size: 27px;
@@ -35,7 +34,7 @@ const LogoText = styled('div')`
 
 const Solving = () => {
   return (
-    <Column alignItems="center" marginTop="25vh" marginBottom="25vh">
+    <Column alignItems="center" marginTop="30vh" marginBottom="20vh">
       <SubTitle>
         양도불가능한 신원증명 토큰(SBT)으로
         <br /> 2차 티켓 거래를 방지하는 시스템
