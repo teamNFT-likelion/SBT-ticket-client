@@ -1,30 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
-import { Column } from '@components/atoms/wrappers.style';
+import { Column } from '@components/atoms/wrapper.style';
+import { sm } from '../../../styles/GlobalStyle';
 
 const SubTitle = styled('div')`
   font-weight: 400;
-  font-size: 44.8944px;
+  font-size: 36px;
   line-height: 130%;
   letter-spacing: 0.5px;
   text-align: center;
+  padding: 0 2rem;
+
+  ${sm`
+    font-size: 27px;
+  `}
 `;
 
 const LogoText = styled('div')`
+  display: flex;
+  align-items: center;
+  margin-top: 2.8rem;
+  color: ${colors.primary40};
   font-family: 'Shrikhand';
   font-style: italic;
   font-weight: 400;
-  font-size: 159.805px;
-  display: flex;
-  align-items: center;
+  font-size: 120px;
   letter-spacing: 1.42683px;
-  color: ${colors.primary40};
+
+  ${sm`
+    font-size: 90px;
+  `}
 `;
 
 const Solving = () => {
   return (
-    <Column alignItems="center" marginTop="80px" marginBottom="120px">
+    <Column alignItems="center" marginTop="25vh" marginBottom="25vh">
       <SubTitle>
         양도불가능한 신원증명 토큰(SBT)으로
         <br /> 2차 티켓 거래를 방지하는 시스템

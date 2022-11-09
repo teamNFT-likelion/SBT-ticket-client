@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '@articles/Header';
 import LinkButton from '@atoms/LinkButton';
-import { TempWrapper } from '@components/atoms/wrappers.style';
+import { TempWrapper } from '@components/atoms/wrapper.style';
 
 const TSearchPage = () => {
   return (

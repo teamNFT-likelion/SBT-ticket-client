@@ -50,8 +50,8 @@ const ButtonWrapper = styled('div')`
 `;
 
 const NextButton = styled(Link)`
-  width: 27rem;
   height: 6rem;
+  padding: 0 5rem;
   font-family: 'Shrikhand', cursive;
   font-style: italic;
   font-weight: 400;

@@ -1,7 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Column } from '@components/atoms/wrappers.style';
+import { Column } from '@components/atoms/wrapper.style';
 import { Title, TitleBold, Desc } from './main.style';
+import problem_1_img from '@assets/img/problem_1.png';
+import problem_2_img from '@assets/img/problem_2.png';
+import problem_3_img from '@assets/img/problem_3.png';
+import problem_4_img from '@assets/img/problem_4.png';
+import problem_5_img from '@assets/img/problem_5.png';
+import problem_6_img from '@assets/img/problem_6.png';
+import { lg, sm } from '@styles/GlobalStyle';
 
 const Container = styled(Column)`
   gap: 48px;
@@ -9,29 +16,64 @@ const Container = styled(Column)`
 
 const Section = styled(Column)`
   width: 100%;
-  padding: 48px;
+  padding: 2.75rem;
 `;
 
 // TODO: 색변수 지정 및 클래스네임 변경 필요
-const ImgsWrapper = styled('div')`
-  width: 1165px;
-  height: 443px;
+const ImgContainer = styled('div')`
+  width: 100%;
+  height: auto;
   align-self: center;
   display: flex;
   justify-content: space-between;
-  margin-top: 68px;
+  margin-top: 56px;
+  padding: 0 3rem;
 
-  & > .img-box {
-    width: 535px;
-    height: 443px;
-    border: 2px solid white;
+  ${lg`
+    margin-top: 40px;
+    padding: 0;
+  `}
+
+  & > .left-box {
+    width: 43%;
+    height: auto;
     border-radius: 40px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    ${sm`
+      display: none;
+    `}
   }
 
-  & > .bg-primary {
+  & > .right-box {
+    width: 47%;
+    height: auto;
     background: rgba(200, 245, 60, 0.1);
     border: none;
+    border-radius: 40px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    ${sm`
+      width: 100%;
+    `}
   }
+`;
+
+const ProblemImage = styled('img')`
+  width: 100%;
+  margin-bottom: 47px;
+`;
+
+const ProblemDesc = styled('div')`
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
 `;
 
 const Problem = () => {
@@ -46,10 +88,22 @@ const Problem = () => {
           </Desc>
           <Desc>양도가 불가능하여 인증수단으로 사용될 수 있습니다.</Desc>
         </Column>
-        <ImgsWrapper>
-          <div className="img-box"></div>
-          <div className="img-box bg-primary"></div>
-        </ImgsWrapper>
+        <ImgContainer>
+          <div className="left-box">
+            <ProblemImage src={problem_1_img} alt="problem1" />
+            <ProblemDesc>
+              기존 티켓은
+              <br /> 양도가 가능합니다.
+            </ProblemDesc>
+          </div>
+          <div className="right-box">
+            <ProblemImage src={problem_2_img} alt="problem1" />
+            <ProblemDesc>
+              ttot 티켓은
+              <br /> 양도가 불가능합니다.
+            </ProblemDesc>
+          </div>
+        </ImgContainer>
       </Section>
       <Section>
         <Column>
@@ -60,10 +114,21 @@ const Problem = () => {
           </Desc>
           <Desc>팬이 아닌 이들과 차별화된 혜택을 누릴 수 있습니다.</Desc>
         </Column>
-        <ImgsWrapper>
-          <div className="img-box"></div>
-          <div className="img-box bg-primary"></div>
-        </ImgsWrapper>
+        <ImgContainer>
+          <div className="left-box">
+            <ProblemImage src={problem_3_img} alt="problem1" />
+            <ProblemDesc>
+              기존 티켓은 <br /> 일회성 입니다.
+            </ProblemDesc>
+          </div>
+          <div className="right-box">
+            <ProblemImage src={problem_4_img} alt="problem1" />
+            <ProblemDesc>
+              ttot 티켓은
+              <br /> 양도가 불가능합니다.
+            </ProblemDesc>
+          </div>
+        </ImgContainer>
       </Section>
       <Section>
         <Column>
@@ -77,10 +142,22 @@ const Problem = () => {
             SBT 티켓 사용 시 복잡한 신분대조 없이 빠르게 입장할 수 있습니다.
           </Desc>
         </Column>
-        <ImgsWrapper>
-          <div className="img-box"></div>
-          <div className="img-box bg-primary"></div>
-        </ImgsWrapper>
+        <ImgContainer>
+          <div className="left-box">
+            <ProblemImage src={problem_5_img} alt="problem1" />
+            <ProblemDesc>
+              기존 티켓은
+              <br /> 양도가 가능합니다.
+            </ProblemDesc>
+          </div>
+          <div className="right-box">
+            <ProblemImage src={problem_6_img} alt="problem1" />
+            <ProblemDesc>
+              ttot 티켓은
+              <br /> 양도가 불가능합니다.
+            </ProblemDesc>
+          </div>
+        </ImgContainer>
       </Section>
     </Container>
   );

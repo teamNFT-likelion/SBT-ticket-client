@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '@articles/Header';
-import { TempWrapper } from '../atoms/wrappers.style';
+import { TempWrapper } from '../atoms/wrapper.style';
 
 const AccountPage = () => {
   return (
