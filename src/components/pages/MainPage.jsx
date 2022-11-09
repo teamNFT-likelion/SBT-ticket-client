@@ -1,27 +1,12 @@
 import React, { useRef } from 'react';
-import styled from 'styled-components';
 import HeroArea from './main/HeroArea';
 import MainHeader from './main/MainHeader';
 import SolvingAndProblem from './main/SolvingAndProblem';
 import FAQArea from './main/FAQArea';
 import Footer from '@articles/Footer';
-import Anchor from '@atoms/Anchor';
 import TechnologyArea from './main/TechnologyArea';
-import * as colors from '@styles/colors';
 import RoadmapArea from './main/RoadmapArea';
 
-const TempBox = styled('div')`
-  border: 2px solid yellow;
-  padding: 48px;
-  display: flex;
-  gap: 24px;
-  flex-direction: column;
-  height: 500px;
-  font-size: 32px;
-  max-width: 1350px;
-  width: 100%;
-  position: relative;
-`;
 
 const MainPage = () => {
   const goalRef = useRef(null);
