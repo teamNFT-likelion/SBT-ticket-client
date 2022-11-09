@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import bgRoadmap from '@assets/img/bgRoadmap.png';
 import { lg, sm } from '@styles/GlobalStyle';
 import Anchor from '@components/atoms/Anchor';
-import { Column } from '@components/atoms/wrapper.style';
+import { Column, Title } from '@components/atoms/wrapper.style';
 
 const Container = styled('div')`
   width: 90%;
@@ -23,28 +23,26 @@ const Container = styled('div')`
   `}
 `;
 
-const TitleWrapper = styled('div')`
-  grid-row: 1;
+
+const TitleColumn = styled(Column)`
+  white-space: nowrap;
+  align-items: 'center';
+  margin-top: 15vh;
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
   margin: 50px;
 `;
 
-const Title = styled('span')`
-  font-family: 'Shrikhand', cursive;
-  font-size: 73px;
-`;
 
 const RoadmapArea = forwardRef((props, ref) => {
   return (
     <>
-      <Column alignItems="center" marginTop="15vh">
+      <TitleColumn>
         <Anchor ref={ref} />
-        <TitleWrapper>
           <Title>ttot Roadmap</Title>
-        </TitleWrapper>
-      </Column>
+      </TitleColumn>
       <Container />
     </>
   );
