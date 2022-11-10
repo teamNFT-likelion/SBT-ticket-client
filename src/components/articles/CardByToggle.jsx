@@ -51,22 +51,24 @@ const ContentsContainer = styled(Column)`
 
 const TextContainer = styled(Column)`
   line-height: 150%;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   text-align: left;
   align-items: center;
   justify-content: center;
   margin-top: 3rem;
   overflow: hidden;
+  padding: 0.5rem 1.5rem;
 
   ${lg`
-    font-size: 1.6rem;
-    margin-top: 1.6rem;
+    font-size: 1.4rem;
+    padding: 0.5rem 1.4rem;
+    margin-top: 1.4rem;
   `}
-
   ${sm`
-    font-size: 1.3rem;
-    margin-top: 1.3rem;
-  `}
+    font-size: 1.2rem;
+    padding: 0.5rem 1.2rem;
+    margin-top: 1.2rem;
+  `};
 `;
 
 const TitleContainer = styled(TextContainer)`
