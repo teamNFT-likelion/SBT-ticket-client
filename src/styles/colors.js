@@ -4,6 +4,7 @@
 // export const textYellow = '#FFD121';
 // export const textGreen = '#22c55e';
 export const textTertiary = '#bac0a3';
+export const natural95 = '#F8F77C';
 
 // export const textRed = '#ef4444';
 export const primary80 = '#c8f53c';
