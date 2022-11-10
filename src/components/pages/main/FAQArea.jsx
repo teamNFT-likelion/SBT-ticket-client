@@ -6,12 +6,17 @@ import { lg, sm } from '@styles/GlobalStyle';
 import * as colors from '@styles/colors';
 import { Column, Title } from '@components/atoms/wrapper.style';
 
-export const ContentsContainer = styled(Column)`
+const Container = styled(Column)`
+  align-items: center;
   justify-content: center;
+  margin-bottom: 300px;
+`;
+
+
+const ContentsContainer = styled(Column)`
   line-height: 150%;
   font-size: 1.5rem;
   text-align: left;
-  align-items: center;
   margin-top: 3rem;
   overflow: hidden;
   padding: 0.5rem 1.5rem;
@@ -43,15 +48,15 @@ const Ol = styled('ol')`
 
 const TitleColumn = styled(Column)`
   white-space: nowrap;
-  margin: 11vh;
+  margin: 500px 0 6rem 0;
   position: relative;
 
   ${lg`
-    margin: 10vh 44px;
+    margin: 250px 0 2rem 0 ;
   `}
 
   ${sm`
-    margin: 0 33px 5vh 33px;
+    margin: 150px 0 100px0;
   `}
 `;
 
@@ -127,7 +132,7 @@ const Q3 = () => {
 
 const FAQArea = forwardRef((props, ref) => {
   return (
-    <>
+    <Container>
       <TitleColumn>
         <Anchor ref={ref} />
           <Title>Frequently Asked Questions</Title>
@@ -135,7 +140,7 @@ const FAQArea = forwardRef((props, ref) => {
       <Q1/>
       <Q2/>
       <Q3/>
-    </>
+    </Container>
   );
 });
 
