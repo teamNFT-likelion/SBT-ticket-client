@@ -23,13 +23,15 @@ const Button = styled(Column)`
   margin: auto;
 `;
 
-const ContentsContainer = styled(Column)`
+const CardContainer = styled(Column)`
   border: 3px solid
     ${(props) => (props.isOpened ? colors.primary40 : colors.bgFAQ)};
   border-radius: 1.4rem;
   white-space: wrap;
   margin: 1rem;
   padding: 1.3rem;
+  align-items: center;
+  justify-content: center;
   width: 76vw;
 
   &:hover {
@@ -49,29 +51,13 @@ const ContentsContainer = styled(Column)`
   `}
 `;
 
-const TextContainer = styled(Column)`
+const TitleContainer = styled(Column)`
   line-height: 150%;
-  font-size: 1.5rem;
   text-align: left;
   align-items: center;
   justify-content: center;
-  margin-top: 3rem;
   overflow: hidden;
   padding: 0.5rem 1.5rem;
-
-  ${lg`
-    font-size: 1.4rem;
-    padding: 0.5rem 1.4rem;
-    margin-top: 1.4rem;
-  `}
-  ${sm`
-    font-size: 1.2rem;
-    padding: 0.5rem 1.2rem;
-    margin-top: 1.2rem;
-  `};
-`;
-
-const TitleContainer = styled(TextContainer)`
   font-size: 1.9rem;
   margin-top: 0px;
   flex-direction: row;
@@ -88,7 +74,7 @@ const TitleContainer = styled(TextContainer)`
 const ToggleButton = styled(AiOutlineCaretUp)`
   transition: 0.3s;
   transform: ${(props) =>
-    props.isOpened && 'rotate(180deg)'};
+    !props.isOpened ? 'rotate(90deg)' : 'rotate(180deg)'};
   color: ${colors.primary80};
   margin: 4px;
 `;
@@ -105,13 +91,13 @@ const CardByToggle = ({ title, children}) => {
         setIsOpened((prev) => !prev);
       }}
     >
-      <ContentsContainer isOpened={isOpened}>
+      <CardContainer isOpened={isOpened}>
         <TitleContainer>
           <span>{title}</span> &nbsp;
           <ToggleButton isOpened={isOpened} />
         </TitleContainer>
-        {isOpened && <TextContainer>{children}</TextContainer>}
-      </ContentsContainer>
+        {isOpened && children}
+      </CardContainer>
     </Button>
   );
 };

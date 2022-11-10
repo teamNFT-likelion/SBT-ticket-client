@@ -6,9 +6,26 @@ import { lg, sm } from '@styles/GlobalStyle';
 import * as colors from '@styles/colors';
 import { Column, Title } from '@components/atoms/wrapper.style';
 
-const ContentsContainer = styled(Column)`
-  width: 100%;
+export const ContentsContainer = styled(Column)`
   justify-content: center;
+  line-height: 150%;
+  font-size: 1.5rem;
+  text-align: left;
+  align-items: center;
+  margin-top: 3rem;
+  overflow: hidden;
+  padding: 0.5rem 1.5rem;
+
+  ${lg`
+    font-size: 1.4rem;
+    padding: 0.5rem 1.4rem;
+    margin-top: 1.4rem;
+  `}
+  ${sm`
+    font-size: 1.2rem;
+    padding: 0.5rem 1.2rem;
+    margin-top: 1.2rem;
+  `};
 `;
 
 const Ul = styled('ul')`
