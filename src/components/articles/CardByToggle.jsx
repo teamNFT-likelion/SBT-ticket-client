@@ -28,7 +28,7 @@ const ContentsContainer = styled(Column)`
     ${(props) => (props.isOpened ? colors.primary40 : colors.bgFAQ)};
   border-radius: 2.6rem;
   white-space: wrap;
-  margin: 20px;
+  margin: 2rem;
   padding: 28px;
   width: 80vw;
 
@@ -37,21 +37,21 @@ const ContentsContainer = styled(Column)`
   }
 
   ${lg`
-    margin: 2.3rem 4rem;
-    padding: 2.3rem;
-    border-radius: 2.6rem;
+    margin: 1.9rem 4rem;
+    padding: 1.9rem;
+    border-radius: 1.9rem;
   `}
 
   ${sm`
-    margin: 1.9rem 3rem;
-    padding: 1.9rem;
-    border-radius: 2.6rem;
+    margin: 1.7rem 3rem;
+    padding: 1.7rem;
+    border-radius: 1.7rem;
   `}
 `;
 
 const TextContainer = styled(Column)`
   line-height: 150%;
-  font-size: 2rem;
+  font-size: 1.7rem;
   text-align: left;
   align-items: center;
   justify-content: center;
@@ -59,32 +59,32 @@ const TextContainer = styled(Column)`
   overflow: hidden;
 
   ${lg`
-    font-size: 1.5rem;
-    margin-top: 2.3rem;
+    font-size: 1.6rem;
+    margin-top: 1.6remrem;
   `}
 
   ${sm`
-    font-size: 1.2rem;
-    margin-top: 1.9rem;
+    font-size: 1.3rem;
+    margin-top: 1.3rem;
   `}
 `;
 
 const TitleContainer = styled(TextContainer)`
-  font-size: 2.6rem;
+  font-size: 2rem;
   margin-top: 0px;
   flex-direction: row;
 
   ${lg`
-    font-size: 2.3rem;
+    font-size: 1.9rem;
   `}
 
   ${sm`
-    font-size: 1.9rem;
+    font-size: 1.7rem;
   `}
 `;
 
 const ToggleButton = styled(AiOutlineCaretUp)`
-  transition: all 0.3s ease-out;
+  transition: 0.3s;
   transform: ${(props) =>
     props.isOpened && 'rotate(180deg)'};
   color: ${colors.primary80};
