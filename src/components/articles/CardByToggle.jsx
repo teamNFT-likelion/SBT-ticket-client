@@ -26,26 +26,26 @@ const Button = styled(Column)`
 const ContentsContainer = styled(Column)`
   border: 3px solid
     ${(props) => (props.isOpened ? colors.primary40 : colors.bgFAQ)};
-  border-radius: 2.6rem;
+  border-radius: 1.4rem;
   white-space: wrap;
-  margin: 2rem;
-  padding: 28px;
-  width: 80vw;
+  margin: 1rem;
+  padding: 1.3rem;
+  width: 76vw;
 
   &:hover {
     background-color: ${(props) => !props.isOpened && colors.bgFAQ};
   }
 
   ${lg`
-    margin: 1.9rem 4rem;
-    padding: 1.9rem;
-    border-radius: 1.9rem;
+    margin: 1.4rem 4rem;
+    padding: 1.2rem
+    border-radius: 1.4rem;
   `}
 
   ${sm`
-    margin: 1.7rem 3rem;
-    padding: 1.7rem;
-    border-radius: 1.7rem;
+    margin: 1.3rem 3rem;
+    padding: 1.3rem;
+    border-radius: 1.2rem;
   `}
 `;
 
@@ -60,7 +60,7 @@ const TextContainer = styled(Column)`
 
   ${lg`
     font-size: 1.6rem;
-    margin-top: 1.6remrem;
+    margin-top: 1.6rem;
   `}
 
   ${sm`
@@ -70,7 +70,7 @@ const TextContainer = styled(Column)`
 `;
 
 const TitleContainer = styled(TextContainer)`
-  font-size: 2rem;
+  font-size: 1.9rem;
   margin-top: 0px;
   flex-direction: row;
 
@@ -105,8 +105,8 @@ const CardByToggle = ({ title, children}) => {
     >
       <ContentsContainer isOpened={isOpened}>
         <TitleContainer>
-            <span>{title}</span>
-            <ToggleButton isOpened={isOpened} />
+          <span>{title}</span> &nbsp;
+          <ToggleButton isOpened={isOpened} />
         </TitleContainer>
         {isOpened && <TextContainer>{children}</TextContainer>}
       </ContentsContainer>

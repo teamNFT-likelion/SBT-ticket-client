@@ -2,17 +2,13 @@ import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import CardByToggle from '@articles/CardByToggle';
 import Anchor from '../../atoms/Anchor';
-import * as colors from "@styles/colors";
+import { lg, sm } from '@styles/GlobalStyle';
+import * as colors from '@styles/colors';
 import { Column, Title } from '@components/atoms/wrapper.style';
 
-const Container = styled(Column)`
-  width: 100%;
-  position: relative;
-  justify-content: center;
-`;
-
-
 const ContentsContainer = styled(Column)`
+  width: 100%;
+  justify-content: center;
 `;
 
 const Ul = styled('ul')`
@@ -30,13 +26,16 @@ const Ol = styled('ol')`
 
 const TitleColumn = styled(Column)`
   white-space: nowrap;
-  align-items: 'center';
-  margin-top: 15vh;
+  margin: 11vh;
   position: relative;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin: 100px 100px;
+
+  ${lg`
+    margin: 10vh 44px;
+  `}
+
+  ${sm`
+    margin: 0 33px 5vh 33px;
+  `}
 `;
 
 const FAQArea = forwardRef((props, ref) => {
@@ -46,7 +45,6 @@ const FAQArea = forwardRef((props, ref) => {
         <Anchor ref={ref} />
           <Title>Frequently Asked Questions</Title>
       </TitleColumn>
-      <Container>
         <CardByToggle title="Q1. 예매 방법?">
           <ContentsContainer>
             tott 내 예매 방법은 두 가지 종류가 있습니다.
@@ -108,7 +106,6 @@ const FAQArea = forwardRef((props, ref) => {
             </Ul>
           </ContentsContainer>
         </CardByToggle>
-      </Container>
     </>
   );
 });

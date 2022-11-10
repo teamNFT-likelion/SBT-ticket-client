@@ -7,32 +7,32 @@ import { Column, Title } from '@components/atoms/wrapper.style';
 
 const Container = styled('div')`
   width: 90%;
-  height: calc(100vh - 7.5rem);
+  height: 90vh;
   background: url(${bgRoadmap}) no-repeat center;
   background-size: contain;
   justify-content: center;
 
   ${lg`
-    margin: 30px 44px;
-    padding: 0;
+    margin: 0px 44px;
+    height: 60vh;
   `}
 
   ${sm`
     margin: 0px 33px;
-    padding: 0;
   `}
 `;
 
 
 const TitleColumn = styled(Column)`
   white-space: nowrap;
-  align-items: 'center';
   margin-top: 15vh;
   position: relative;
-  display: flex;
   align-items: center;
-  flex-direction: column;
-  margin: 50px;
+  margin: 5rem 0 2rem 0;
+
+  ${sm`
+    margin: 5rem 0 0 0;
+  `}
 `;
 
 
