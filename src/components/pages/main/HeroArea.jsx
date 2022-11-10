@@ -1,26 +1,37 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import hero_img from '@assets/img/landing_hero.png';
+import heroImg from '@assets/img/landing_hero_2.svg';
 import * as colors from '@styles/colors';
 import { APP_HEADER_H } from '@constants/styleConst';
 
 const Container = styled('div')`
+  width: 100%;
+  height: calc(100vh - 7.5rem);
+  background: url(${heroImg}) no-repeat center;
+  background-size: cover;
   display: grid;
   grid-template-rows: repeat(7, 1fr);
-  width: 100%;
-  height: calc(100vh - ${APP_HEADER_H});
   padding: 0 2.75rem;
   margin-top: ${APP_HEADER_H};
-  background: url(${hero_img}) no-repeat center;
-  background-size: cover;
 `;
 
 const TitleWrapper = styled('div')`
   grid-row: 2;
   display: flex;
+  position: relative;
   align-items: center;
   flex-direction: column;
+`;
+
+const Back = styled('div')`
+  width: 100%;
+  height: 300%;
+  border-radius: 20%;
+  position: absolute;
+  z-index: -3;
+  filter: blur(100px);
+  background-color: ${colors.primary40};
 `;
 
 const Title = styled('span')`
@@ -74,6 +85,7 @@ const HeroArea = () => {
   return (
     <Container>
       <TitleWrapper>
+        <Back />
         <Title>
           <B>t</B>icket<B> </B> <B>to t</B>oken
         </Title>
