@@ -25,9 +25,9 @@ const TitleWrapper = styled('div')`
 `;
 
 const Back = styled('div')`
-  width: 100%;
+  width: 50%;
   height: 300%;
-  border-radius: 20%;
+  border-radius: 25%;
   position: absolute;
   z-index: -3;
   filter: blur(100px);
@@ -68,6 +68,7 @@ const NextButton = styled(Link)`
   font-size: 2.5rem;
   text-align: center;
   letter-spacing: 2.44906px;
+  color: ${colors.natural95};
   background: ${colors.bgRed};
   border-radius: 50px;
   opacity: 0.85;
