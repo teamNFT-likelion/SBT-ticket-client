@@ -18,7 +18,7 @@ const Container = styled('div')`
 `;
 
 const LogoImage = styled('img')`
-  width: 192px;
+  width: 130px;
   margin-right: 24px;
 
   ${lg`
@@ -33,13 +33,22 @@ const ButtonsWrapper = styled('div')`
   width: 100%;
   height: 100%;
   font-size: 32px;
+  flex: 7;
+`;
+
+const Space = styled('div')`
+  flex: 1;
+
+  ${lg`
+    display: none;
+  `}
 `;
 
 const Button = styled('button')`
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-family: 'Shrikhand', cursive;
   font-style: italic;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 0.282486px;
   cursor: pointer;
   padding: 0.7em;
@@ -51,20 +60,19 @@ const MainHeader = ({ onNavClick }) => {
       <LogoImage src={logo_ttot} />
       <ButtonsWrapper>
         <Button onClick={onNavClick} value="goal">
-          PROBLEM &
-          <br /> SOLVING
+          PROBLEM & SOLVING
         </Button>
         <Button onClick={onNavClick} value="technology">
-          KEY
-          <br /> TECHNOLOGY
+          KEY TECHNOLOGY
         </Button>
         <Button onClick={onNavClick} value="roadmap">
           ROAD MAP
         </Button>
         <Button onClick={onNavClick} value="faq">
-          FAQ
+          Frequently Asked Questions
         </Button>
       </ButtonsWrapper>
+      <Space />
     </Container>
   );
 };
