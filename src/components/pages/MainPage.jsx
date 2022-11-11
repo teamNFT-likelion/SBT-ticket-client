@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
+import { useScroll, useSpring } from 'framer-motion';
 import Footer from '@articles/Footer';
 import { Column } from '@atoms/wrapper.style';
+import ScrollProgressBar from '@atoms/ScrollProgressBar';
 import HeroArea from './main/HeroArea';
 import MainHeader from './main/MainHeader';
 import SolvingAndProblem from './main/SolvingAndProblem';
@@ -13,6 +15,8 @@ const MainPage = () => {
   const technologyRef = useRef(null);
   const roadmapRef = useRef(null);
   const faqRef = useRef(null);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 700, damping: 300 });
 
   const handleScrollByRef = (e) => {
     const clickedValue = e.target.value;
@@ -28,6 +32,7 @@ const MainPage = () => {
 
   return (
     <Column alignItems="center">
+      <ScrollProgressBar scaleX={scaleX} />
       <MainHeader onNavClick={handleScrollByRef} />
       <HeroArea />
       <SolvingAndProblem ref={goalRef} />
