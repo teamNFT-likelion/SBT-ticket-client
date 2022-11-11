@@ -18,6 +18,7 @@ import { AiOutlineCaretUp } from 'react-icons/ai';
 
  
 const Button = styled(Column)`
+width: 100%;
   justify-content: center;
   align-items: center;
   margin: auto;
@@ -81,24 +82,25 @@ const ToggleButton = styled(AiOutlineCaretUp)`
 
 
 
-const CardByToggle = ({ title, children}) => {
+const CardByToggle = ({ title, children }) => {
   const [isOpened, setIsOpened] = useState(false);
 
   return (
     //TODO: 인라인css 리팩토링필요
-    <Button
-      onClick={() => {
-        setIsOpened((prev) => !prev);
-      }}
-    >
-      <CardContainer isOpened={isOpened}>
-        <TitleContainer>
-          <span>{title}</span> &nbsp;
-          <ToggleButton isOpened={isOpened} />
-        </TitleContainer>
-        {isOpened && children}
-      </CardContainer>
-    </Button>
+
+    <CardContainer isOpened={isOpened}>
+      <Button
+        onClick={() => {
+          setIsOpened((prev) => !prev);
+        }}
+      >
+      <TitleContainer>
+        <span>{title}</span> &nbsp;
+        <ToggleButton isOpened={isOpened} />
+      </TitleContainer>
+      </Button>
+      <div>{isOpened && children}</div>
+    </CardContainer>
   );
 };
 
