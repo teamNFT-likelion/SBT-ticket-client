@@ -16,13 +16,6 @@ import { AiOutlineCaretUp } from 'react-icons/ai';
 //  [O] 반응형 적용 (Roadmap, FAQ)
 //  [ ] Answer 열리는거 transtition 적용해주고싶다
 
- 
-const Button = styled(Column)`
-width: 100%;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-`;
 
 const CardContainer = styled(Column)`
   border: 3px solid
@@ -30,7 +23,7 @@ const CardContainer = styled(Column)`
   border-radius: 1.4rem;
   white-space: wrap;
   margin: 1rem;
-  padding: 1.3rem;
+  /* padding: 1.3rem; */
   align-items: center;
   justify-content: center;
   width: 76vw;
@@ -41,24 +34,24 @@ const CardContainer = styled(Column)`
 
   ${lg`
     margin: 1.4rem 4rem;
-    padding: 1.2rem
     border-radius: 1.4rem;
   `}
 
   ${sm`
     margin: 1.3rem 3rem;
-    padding: 1.3rem;
     border-radius: 1.2rem;
   `}
 `;
 
 const TitleContainer = styled(Column)`
   line-height: 150%;
+  width:100%;
+  height:100%;
   text-align: left;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 0.5rem 1.5rem;
+  padding: 1.3rem 1.5rem;
   font-size: 1.9rem;
   margin-top: 0px;
   flex-direction: row;
@@ -86,20 +79,12 @@ const CardByToggle = ({ title, children }) => {
   const [isOpened, setIsOpened] = useState(false);
 
   return (
-    //TODO: 인라인css 리팩토링필요
-
     <CardContainer isOpened={isOpened}>
-      <Button
-        onClick={() => {
-          setIsOpened((prev) => !prev);
-        }}
-      >
-      <TitleContainer>
-        <span>{title}</span> &nbsp;
+      <TitleContainer onClick={() => setIsOpened((prev) => !prev)}>
+        {title}
         <ToggleButton isOpened={isOpened} />
       </TitleContainer>
-      </Button>
-      <div>{isOpened && children}</div>
+      {isOpened && children}
     </CardContainer>
   );
 };

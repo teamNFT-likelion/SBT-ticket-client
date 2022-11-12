@@ -17,19 +17,19 @@ const ContentsContainer = styled(Column)`
   line-height: 150%;
   font-size: 1.5rem;
   text-align: left;
-  margin-top: 3rem;
   overflow: hidden;
   padding: 0.5rem 1.5rem;
+  margin-bottom: 1.5rem;
 
   ${lg`
     font-size: 1.4rem;
     padding: 0.5rem 1.4rem;
-    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
   `}
   ${sm`
     font-size: 1.2rem;
     padding: 0.5rem 1.2rem;
-    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
   `};
 `;
 
