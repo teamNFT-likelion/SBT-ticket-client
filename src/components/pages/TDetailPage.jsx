@@ -1,23 +1,145 @@
 import React from 'react';
-import Header from '@articles/Header';
+import styled from 'styled-components';
 import LinkButton from '@atoms/LinkButton';
-import { TempWrapper } from '../atoms/wrapper.style';
+import logo_ttot from '@assets/img/logo_ttot.png';
+import * as colors from '@styles/colors';
+import { Link } from 'react-router-dom';
+import { lg } from '@styles/GlobalStyle';
+import { APP_HEADER_H } from '@constants/styleConst';
+import { Column, Row } from '@components/atoms/wrapper.style';
+import Footer from '@components/articles/Footer';
 
-const TDetailPage = () => {
+
+const Container = styled('div')`
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: ${APP_HEADER_H};
+  padding: 0 2.75rem;
+  background-color: ${colors.bgBlack};
+  z-index: 999;
+  flex-wrap: wrap;
+`;
+
+
+const LogoImage = styled('img')`
+  width: 130px;
+  margin-right: 24px;
+
+  ${lg`
+    display: none;
+  `}
+`;
+
+
+const ButtonsWrapper = styled('div')`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+  font-size: 32px;
+  flex: 7;
+
+  gap: 4px;
+  
+`;
+const CategoryButtonsWrapper = styled(ButtonsWrapper)`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 9rem 0px 4rem 0px;
+`;
+
+const ContentsInfoBody = styled(Row)`
+  // HEADER 높이 5rem + 여분 9rem
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin: 5rem;
+`;
+
+const ContentsInfo = styled(Column)`
+  width: 273px;
+  height: 345px;
+  border: 3px solid white;
+  justify-content: center;
+  align-items: center;
+`;
+
+
+const CalenderInfo = styled(Column)`
+  display: flex;
+  border: 3px solid white;
+  width: 300px;
+  height: 300px;
+`;
+
+const ContentButton = ({ to = '/', name = '홈으러' }) => {
   return (
-    <TempWrapper>
-      <div>티켓상세페이지~</div>
-      <Header />
-      <LinkButton to="/list" name="카테고리" />
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <div
-          style={{ border: '2px solid white', width: '50%', height: '500px' }}
-        >
-          공연상세 셜명
-        </div>
-        <LinkButton to="/payment" name="결제" />
-      </div>
-    </TempWrapper>
+    //TODO: 인라인css 리팩토링필요
+    <Link to={to}>
+      <button
+        style={{
+          backgroundColor: '#526600',
+          color: 'white',
+          width: '160px',
+          height: '260px',
+          fontSize: '20px',
+        }}
+      >
+        {name}
+      </button>
+    </Link>
+  );
+};
+
+const TDetailPage = ({onNavClick}) => {
+  return (
+    <>
+      <Container>
+        <LogoImage src={logo_ttot} />
+        <ButtonsWrapper>
+          <div>TDP</div>
+          <LinkButton to="/search" name="검색" />
+          <LinkButton to="/account" name="지갑" />
+        </ButtonsWrapper>
+      </Container>
+      <CategoryButtonsWrapper>
+        <LinkButton to="/list" name="공연" />
+        <LinkButton to="/list" name="전시" />
+        <LinkButton to="/list" name="스포츠" />
+      </CategoryButtonsWrapper>
+      <ContentsInfoBody>
+        <ContentsInfo>Info</ContentsInfo>
+        <ContentsInfo>Poster</ContentsInfo>
+      </ContentsInfoBody>
+      <ContentsInfoBody>
+        <CalenderInfo>달력</CalenderInfo>
+        <CalenderInfo>회차정보</CalenderInfo>
+        <CalenderInfo>
+          잔여석
+          <ButtonsWrapper>
+            <LinkButton to="/payment" name="결제" />
+          </ButtonsWrapper>
+        </CalenderInfo>
+      </ContentsInfoBody>
+      Relative
+      <ContentsInfoBody style={{ gap: '10px' }}>
+        <ContentButton to="/list" name="1번" />
+        <ContentButton to="/list" name="2번" />
+        <ContentButton to="/list" name="3번" />
+        <ContentButton to="/list" name="4번" />
+        <ContentButton to="/list" name="5번" />
+      </ContentsInfoBody>
+      공연정보
+      <ContentsInfoBody>
+        <ContentsInfo style={{width:'896px', height:'1541px'}}>공연 상세정보 이미지</ContentsInfo>
+      </ContentsInfoBody>
+      <Footer />
+    </>
   );
 };
 
