@@ -7,7 +7,7 @@ import { APP_HEADER_H } from '@constants/styleConst';
 
 const Container = styled('div')`
   width: 100%;
-  height: calc(100vh - 7.5rem);
+  height: calc(100vh - ${APP_HEADER_H});
   background: url(${heroImg}) no-repeat center;
   background-size: cover;
   display: grid;
