@@ -9,9 +9,9 @@ const LinkButton = ({ to = '/', name = '홈으러' }) => {
         style={{
           backgroundColor: '#526600',
           color: 'white',
-          width: '300px',
+          width: '100px',
           height: '64px',
-          fontSize: '32px',
+          fontSize: '20px',
         }}
       >
         {name}

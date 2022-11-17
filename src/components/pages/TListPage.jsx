@@ -1,40 +1,46 @@
 import React from 'react';
 import Header from '@articles/Header';
-import LinkButton from '@atoms/LinkButton';
-import { TempWrapper } from '../atoms/wrapper.style';
+import PosterItems from './ticketList/PosterItems';
+import { Column } from '@components/atoms/wrapper.style';
+import BigPoster from './ticketList/BigPoster';
+import Footer from '@articles/Footer';
 
 const TListPage = () => {
   return (
-    <TempWrapper>
-      <div>티켓리스트페이지~</div>
+    <Column alignItems="center">
       <Header />
       <div
         style={{
-          flex: 1,
-          display: 'flex',
-          border: '2px solid white',
-          flexDirection: 'column',
+          width: '1350px',
+          padding: '0 20px',
+          marginBottom: '150px',
         }}
       >
         <div
-          style={{ width: '100%', height: '100px', backgroundColor: 'yellow' }}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '120px',
+            fontSize: '30px',
+            marginTop: '40px',
+            marginBottom: '40px',
+          }}
         >
-          카테고리 분류 영역
+          <span>공연</span>
+          <span>전시</span>
+          <span>스포츠</span>
         </div>
-        <div>
-          리스트 1
-          <LinkButton to="/detail" name="예매1" />
-        </div>
-        <div>
-          리스트 2
-          <LinkButton to="/detail" name="예매2" />
-        </div>
-        <div>
-          리스트 3
-          <LinkButton to="/detail" name="예매3" />
+
+        <BigPoster />
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
+          <PosterItems />
+          <PosterItems />
+          <PosterItems />
         </div>
       </div>
-    </TempWrapper>
+      <Footer />
+    </Column>
   );
 };
 
