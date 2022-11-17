@@ -1,26 +1,44 @@
 import React from 'react';
 import Header from '@articles/Header';
-import LinkButton from '@atoms/LinkButton';
-import { TempWrapper } from '@components/atoms/wrapper.style';
+import Footer from '@articles/Footer';
+import SearchBar from '@articles/SearchBar';
+import { Column } from '@components/atoms/wrapper.style';
+import PosterItems from './ticketList/PosterItems';
 
 const TSearchPage = () => {
   return (
-    <TempWrapper>
-      <div>티켓검색결과페이지~</div>
+    <Column alignItems="center">
       <Header />
-      <div>
-        검색결과 1
-        <LinkButton to="/detail" name="예매하기" />
+      <div
+        style={{
+          width: '1350px',
+          padding: '0 20px',
+          marginBottom: '150px',
+        }}
+      >
+        <div
+          style={{
+            marginTop: '40px',
+            marginBottom: '60px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <SearchBar />
+          <div style={{ marginTop: '40px', fontSize: '40px' }}>
+            ‘ 마틸다 ’ 에 대한 검색 결과 (1)
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
+          <PosterItems />
+          <PosterItems />
+          <PosterItems />
+        </div>
       </div>
-      <div>
-        검색결과 1
-        <LinkButton to="/detail" name="예매하기" />
-      </div>
-      <div>
-        검색결과 2
-        <LinkButton to="/detail" name="예매하기" />
-      </div>
-    </TempWrapper>
+      <Footer />
+    </Column>
   );
 };
 
