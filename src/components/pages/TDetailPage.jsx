@@ -9,7 +9,6 @@ import { APP_HEADER_H } from '@constants/styleConst';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import Footer from '@components/articles/Footer';
 
-
 const Container = styled('div')`
   position: fixed;
   top: 0;
@@ -23,7 +22,6 @@ const Container = styled('div')`
   flex-wrap: wrap;
 `;
 
-
 const LogoImage = styled('img')`
   width: 130px;
   margin-right: 24px;
@@ -32,7 +30,6 @@ const LogoImage = styled('img')`
     display: none;
   `}
 `;
-
 
 const ButtonsWrapper = styled('div')`
   display: flex;
@@ -44,7 +41,6 @@ const ButtonsWrapper = styled('div')`
   flex: 7;
 
   gap: 4px;
-  
 `;
 const CategoryButtonsWrapper = styled(ButtonsWrapper)`
   display: flex;
@@ -68,7 +64,6 @@ const ContentsInfo = styled(Column)`
   justify-content: center;
   align-items: center;
 `;
-
 
 const CalenderInfo = styled(Column)`
   display: flex;
@@ -96,7 +91,7 @@ const ContentButton = ({ to = '/', name = '홈으러' }) => {
   );
 };
 
-const TDetailPage = ({onNavClick}) => {
+const TDetailPage = ({ onNavClick }) => {
   return (
     <>
       <Container>
@@ -136,7 +131,9 @@ const TDetailPage = ({onNavClick}) => {
       </ContentsInfoBody>
       공연정보
       <ContentsInfoBody>
-        <ContentsInfo style={{width:'896px', height:'1541px'}}>공연 상세정보 이미지</ContentsInfo>
+        <ContentsInfo style={{ width: '896px', height: '1541px' }}>
+          공연 상세정보 이미지
+        </ContentsInfo>
       </ContentsInfoBody>
       <Footer />
     </>
