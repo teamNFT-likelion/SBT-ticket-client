@@ -1,21 +1,22 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const LinkButton = ({ to = '/', name = '홈으러' }) => {
+const ButtonWrapper = styled('button')`
+  background-color: #526600;
+  color: white;
+  width: 100px;
+  height: 64px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 3px;
+`;
+
+const LinkButton = ({ to = '/', name = '홈으로' }) => {
   return (
-    //TODO: 인라인css 리팩토링필요
     <Link to={to}>
-      <button
-        style={{
-          backgroundColor: '#526600',
-          color: 'white',
-          width: '100px',
-          height: '64px',
-          fontSize: '20px',
-        }}
-      >
-        {name}
-      </button>
+      <ButtonWrapper>{name}</ButtonWrapper>
     </Link>
   );
 };

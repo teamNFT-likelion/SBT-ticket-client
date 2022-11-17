@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom';
 import { lg } from '@styles/GlobalStyle';
 import { APP_HEADER_H } from '@constants/styleConst';
 import { Column, Row } from '@components/atoms/wrapper.style';
-import Footer from '@components/articles/Footer';
+import Footer from '@articles/Footer';
+import Header from '@articles/Header';
 
 const Container = styled('div')`
   position: fixed;
@@ -94,14 +95,7 @@ const ContentButton = ({ to = '/', name = '홈으러' }) => {
 const TDetailPage = ({ onNavClick }) => {
   return (
     <>
-      <Container>
-        <LogoImage src={logo_ttot} />
-        <ButtonsWrapper>
-          <div>TDP</div>
-          <LinkButton to="/search" name="검색" />
-          <LinkButton to="/account" name="지갑" />
-        </ButtonsWrapper>
-      </Container>
+      <Header />
       <CategoryButtonsWrapper>
         <LinkButton to="/list" name="공연" />
         <LinkButton to="/list" name="전시" />
