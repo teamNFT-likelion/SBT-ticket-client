@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import ttotLogo from '@assets/img/logo_ttot.png';
 import { BsTwitter, BsYoutube, BsDiscord } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const Container = styled('div')`
   width: 100%;
@@ -65,15 +66,29 @@ const Footer = () => {
   return (
     <Container>
       <FooterHeadContainer>
-        <TtotLogoImage src={ttotLogo} />
+        <Link to={'/'}>
+          <TtotLogoImage src={ttotLogo} />
+        </Link>
         <EmojiWrapper>
-          <EmojiButton>
+          <EmojiButton
+            onClick={() => {
+              window.open('https://twitter.com/');
+            }}
+          >
             <BsTwitter />
           </EmojiButton>
-          <EmojiButton>
+          <EmojiButton
+            onClick={() => {
+              window.open('https://www.youtube.com/');
+            }}
+          >
             <BsYoutube />
           </EmojiButton>
-          <EmojiButton>
+          <EmojiButton
+            onClick={() => {
+              window.open('https://discord.com/');
+            }}
+          >
             <BsDiscord />
           </EmojiButton>
         </EmojiWrapper>

@@ -13,7 +13,7 @@ export const textWhite = '#FFFFF6';
 
 export const bgBlack = '#0F0F0F';
 export const bgRed = '#f74b46';
-// export const bgSecondary = '#27272a';
+export const bgSecondary = '#27272a';
 // export const bgBlack = 'black';
 // export const bgBannerButton = 'rgba(0, 0, 0, 0.4)';
 export const bgFAQ = '#dfffb411';
