@@ -37,6 +37,22 @@ const APaymentPage = () => {
       >
         api테스트
       </button>
+      <button
+        style={{
+          border: '2px solid #fae54d',
+          color: '#fae54d',
+          backgroundColor: '#3b1f1e',
+          width: '300px',
+          height: '100px',
+          fontSize: '30px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        onClick={onClick}
+      >
+        Kakao 테스트
+      </button>
       <a
         style={{
           border: '2px solid green',
