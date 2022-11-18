@@ -6,6 +6,7 @@ import kaikasImageUrl from '@assets/icon/Kaikas.png';
 import metamaskImageUrl from '@assets/icon/MetaMask.png';
 import { BiWalletAlt } from 'react-icons/bi';
 import CustomModal from './components/CustomModal';
+import formatAddress from '@utils/formatAddress';
 
 const AddressContainer = styled('button')`
   display: flex;
@@ -63,16 +64,6 @@ const ImageWrapper = styled('img')`
   border-radius: 10px;
   object-fit: contain;
 `;
-
-// 지갑 주소 단축
-function formatAddress(address) {
-  if (address) {
-    const add1 = address.substring(0, 4);
-    const add2 = address.substring(address.length - 4);
-    const finalAddress = `${add1}...${add2}`;
-    return finalAddress;
-  }
-}
 
 const klaytn = window.klaytn;
 const ethereum = window.ethereum;
@@ -190,11 +181,11 @@ export default function Wallet() {
         show={showWalletOptions}
         toggleModal={() => setShowWalletOptions(false)}
       >
-        <StyledButton onClick={() => handleMetamaskLogin()}>
+        <StyledButton onClick={handleMetamaskLogin}>
           <ImageWrapper src={metamaskImageUrl} />
           Metamask
         </StyledButton>
-        <StyledButton onClick={() => handleKaikasLogin()}>
+        <StyledButton onClick={handleKaikasLogin}>
           <ImageWrapper src={kaikasImageUrl} />
           Kaikas
         </StyledButton>
@@ -205,11 +196,7 @@ export default function Wallet() {
         toggleModal={() => setShowDisconnectWallet(false)}
       >
         {formatAddress(account)}
-        <StyledButton
-          onClick={() => {
-            handleDisconnect();
-          }}
-        >
+        <StyledButton onClick={handleDisconnect}>
           <BiWalletAlt size="30" />
           Disconnect
         </StyledButton>
