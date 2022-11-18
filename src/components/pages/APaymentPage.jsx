@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Header from '@articles/Header';
 import axios from 'axios';
 import { TempWrapper } from '@atoms/wrapper.style';
-import { naverOauthUrl } from '@constants/urlConst';
+import { kakaoOauthUrl, naverOauthUrl } from '@constants/urlConst';
 import { getCookie } from '@utils/cookie';
 
 const APaymentPage = () => {
@@ -37,7 +37,7 @@ const APaymentPage = () => {
       >
         api테스트
       </button>
-      <button
+      <a
         style={{
           border: '2px solid #fae54d',
           color: '#fae54d',
@@ -49,10 +49,10 @@ const APaymentPage = () => {
           justifyContent: 'center',
           alignItems: 'center',
         }}
-        onClick={onClick}
+        href={kakaoOauthUrl}
       >
         Kakao 테스트
-      </button>
+      </a>
       <a
         style={{
           border: '2px solid green',
