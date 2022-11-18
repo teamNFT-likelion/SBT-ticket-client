@@ -4,6 +4,7 @@ import PosterItems from './ticketList/PosterItems';
 import { Column } from '@components/atoms/wrapper.style';
 import BigPoster from './ticketList/BigPoster';
 import Footer from '@articles/Footer';
+import LinkButton from '@components/atoms/LinkButton';
 
 const TListPage = () => {
   return (
@@ -20,15 +21,15 @@ const TListPage = () => {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            gap: '120px',
+            gap: '4px',
             fontSize: '30px',
-            marginTop: '40px',
+            marginTop: '9rem',
             marginBottom: '40px',
           }}
         >
-          <span>공연</span>
-          <span>전시</span>
-          <span>스포츠</span>
+          <LinkButton to="/list" name="공연" />
+          <LinkButton to="/list" name="전시" />
+          <LinkButton to="/list" name="스포츠" />
         </div>
 
         <BigPoster />
