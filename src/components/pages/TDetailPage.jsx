@@ -1,36 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import LinkButton from '@atoms/LinkButton';
-import logo_ttot from '@assets/img/logo_ttot.png';
-import * as colors from '@styles/colors';
+// import * as colors from '@styles/colors';
 import { Link } from 'react-router-dom';
-import { lg } from '@styles/GlobalStyle';
-import { APP_HEADER_H } from '@constants/styleConst';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import Footer from '@articles/Footer';
 import Header from '@articles/Header';
-
-const Container = styled('div')`
-  position: fixed;
-  top: 0;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: ${APP_HEADER_H};
-  padding: 0 2.75rem;
-  background-color: ${colors.bgBlack};
-  z-index: 999;
-  flex-wrap: wrap;
-`;
-
-const LogoImage = styled('img')`
-  width: 130px;
-  margin-right: 24px;
-
-  ${lg`
-    display: none;
-  `}
-`;
 
 const ButtonsWrapper = styled('div')`
   display: flex;
