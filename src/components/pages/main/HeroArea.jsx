@@ -8,7 +8,15 @@ import { APP_HEADER_H } from '@constants/styleConst';
 const Container = styled('div')`
   width: 100%;
   height: calc(100vh - ${APP_HEADER_H});
-  background: url(${heroImg}) no-repeat center;
+  background: linear-gradient(
+      to bottom,
+      rgba(15, 15, 15, 0) 50%,
+      rgba(15, 15, 15, 0.5) 60%,
+      rgba(15, 15, 15, 0.7) 70%,
+      rgba(15, 15, 15, 1) 80%,
+      rgba(15, 15, 15, 1) 100%
+    ),
+    url(${heroImg}) no-repeat center;
   background-size: cover;
   display: grid;
   grid-template-rows: repeat(7, 1fr);
