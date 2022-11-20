@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import LinkButton from '@atoms/LinkButton';
-// import * as colors from '@styles/colors';
 import { Link } from 'react-router-dom';
 import { Column, Row } from '@components/atoms/wrapper.style';
-import Footer from '@articles/Footer';
-import Header from '@articles/Header';
+import Layout from '@articles/Layout';
 
 const ButtonsWrapper = styled('div')`
   display: flex;
@@ -15,7 +13,6 @@ const ButtonsWrapper = styled('div')`
   height: 100%;
   font-size: 32px;
   flex: 7;
-
   gap: 4px;
 `;
 const CategoryButtonsWrapper = styled(ButtonsWrapper)`
@@ -69,8 +66,7 @@ const ContentButton = ({ to = '/', name = '홈으러' }) => {
 
 const TDetailPage = ({ onNavClick }) => {
   return (
-    <>
-      <Header />
+    <Layout>
       <CategoryButtonsWrapper>
         <LinkButton to="/list" name="공연" />
         <LinkButton to="/list" name="전시" />
@@ -104,8 +100,7 @@ const TDetailPage = ({ onNavClick }) => {
           공연 상세정보 이미지
         </ContentsInfo>
       </ContentsInfoBody>
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

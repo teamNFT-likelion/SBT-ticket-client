@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { BsTwitter, BsYoutube, BsDiscord } from 'react-icons/bs';
 import * as colors from '@styles/colors';
 import ttotLogo from '@assets/img/logo_ttot.png';
-import { BsTwitter, BsYoutube, BsDiscord } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { FOOTER_H, FOOTER_MT } from '@constants/styleConst';
 
 const Container = styled('div')`
   width: 100%;
-  height: 200px;
+  height: ${FOOTER_H}px;
   padding: 20px;
   background-color: black;
-  margin-top: 50px;
+  margin-top: ${FOOTER_MT}px;
 `;
 const TtotLogoImage = styled('img')`
   height: 30px;
