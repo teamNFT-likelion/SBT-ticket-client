@@ -1,14 +1,12 @@
 import React from 'react';
-import Header from '@articles/Header';
-import { TempWrapper } from '../atoms/wrapper.style';
+import Layout from '@articles/Layout';
 
 const AccountPage = () => {
   return (
-    <TempWrapper>
+    <Layout>
       <div>지갑내역페이지~</div>
-      <Header />
       sbt목록...
-    </TempWrapper>
+    </Layout>
   );
 };
 
