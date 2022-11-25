@@ -9,7 +9,7 @@ const APaymentPage = () => {
   const navigate = useNavigate();
   const oauthData = getCookie('oauthData');
 
-  const params = new URL(window.location).searchParams;
+  const params = new URL(window.location).searchParams; //TODO: 이거 react-router-dom hook 있음 리팩토링필요
   const code = params.get('code');
   const state = params.get('state');
 
