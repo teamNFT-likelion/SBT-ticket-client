@@ -4,7 +4,6 @@ import * as colors from '@styles/colors';
 import logo_ttot from '@assets/img/logo_ttot.png';
 import { BiUser } from 'react-icons/bi';
 import { APP_HEADER_H } from '@constants/styleConst';
-import SearchBar from './SearchBar';
 import { Link } from 'react-router-dom';
 import Wallet from '@components/wallets/Wallet';
 
@@ -30,6 +29,7 @@ const SearchBarWrapper = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 20px;
 `;
 
 const ButtonsWrapper = styled('div')`
@@ -40,14 +40,22 @@ const ButtonsWrapper = styled('div')`
   gap: 15px;
 `;
 
-const Header = () => {
+const Header = ({ page }) => {
   return (
     <Container>
       <Link to={'/'}>
         <LogoImage src={logo_ttot} />
       </Link>
       <SearchBarWrapper>
-        <SearchBar />
+        {/* {page === 'list-page' ? (
+          <>
+            <LinkButton to="/list" name="공연" />
+            <LinkButton to="/list" name="전시" />
+            <LinkButton to="/list" name="스포츠" />
+          </>
+        ) : ( */}
+        {/* <SearchBar /> */}
+        {/* )} */}
       </SearchBarWrapper>
       <ButtonsWrapper>
         <Wallet />

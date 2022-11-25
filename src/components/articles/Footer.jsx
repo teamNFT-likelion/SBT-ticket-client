@@ -49,6 +49,7 @@ const FooterLinks = styled.div`
   width: 260px;
   margin-top: 26px;
 `;
+
 const Divider = () => {
   return (
     <svg
