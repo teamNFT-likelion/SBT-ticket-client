@@ -14,14 +14,14 @@ const ContentWrapper = styled('div')`
   width: ${APP_MAX_W}px;
   padding: 0 20px;
   margin-top: ${APP_HEADER_H};
-  border: 2px solid yellow;
   min-height: calc(100vh - ${APP_HEADER_H} - ${FOOTER_H}px - ${FOOTER_MT}px);
+  padding-top: 16px;
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, page }) => {
   return (
     <Column alignItems="center">
-      <Header />
+      <Header page={page} />
       <ContentWrapper>{children}</ContentWrapper>
       <Footer />
     </Column>
