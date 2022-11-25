@@ -17,14 +17,11 @@ const APaymentPage = () => {
     // 인가코드 서버에 전달 및 프로필데이터 응답처리
     const getOauthData = (_state, _code) => {
       axios
-        .get(
-          `https://ec2-13-114-237-105.ap-northeast-1.compute.amazonaws.com:5000/${_state}/callback`,
-          {
-            params: {
-              code: _code,
-            },
+        .get(`https://13.114.237.105:5000/${_state}/callback`, {
+          params: {
+            code: _code,
           },
-        )
+        })
         .then(({ data }) => {
           setCookie('oauthData', data.data, {
             expires: new Date(Date.now() + 1000 * 60 * 5),
