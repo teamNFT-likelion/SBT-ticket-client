@@ -1,8 +1,5 @@
 const naverState = 'naver';
 const naverClientId = process.env.REACT_APP_NAVER_CLIENT_ID;
-// const naverRedirectUri = window.origin.includes('localhost')
-//   ? 'http://localhost:3000/payment'
-//   : 'https://ttot.netlify.app/payment';
 const naverRedirectUri = window.origin.includes('localhost')
   ? 'http://localhost:3000/payment'
   : 'https://ttot.netlify.app/payment';
