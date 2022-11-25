@@ -18,7 +18,7 @@ const APaymentPage = () => {
     const getOauthData = (_state, _code) => {
       axios
         .get(
-          `http://ec2-13-114-237-105.ap-northeast-1.compute.amazonaws.com:5000/${_state}/callback`,
+          `https://ec2-13-114-237-105.ap-northeast-1.compute.amazonaws.com:5000/${_state}/callback`,
           {
             params: {
               code: _code,
