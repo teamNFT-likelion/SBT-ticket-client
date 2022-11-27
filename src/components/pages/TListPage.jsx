@@ -3,7 +3,6 @@ import PosterItems from './ticketList/PosterItems';
 import BigPoster from './ticketList/BigPoster';
 import LinkButton from '@components/atoms/LinkButton';
 import Layout from '@articles/Layout';
-import Footer from '@articles/Footer';
 
 const TListPage = () => {
   return (
