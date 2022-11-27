@@ -220,7 +220,7 @@ const AccountPage = () => {
       <AddressWrapper>
         {walletType === 'eth' ? (
           <ImageWrapper src={metamaskImageUrl} />
-        ) : walletType == 'klaytn' ? (
+        ) : walletType === 'klaytn' ? (
           <ImageWrapper src={kaikasImageUrl} />
         ) : null}
         {account}
