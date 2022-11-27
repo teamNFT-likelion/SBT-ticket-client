@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import kaikasImageUrl from '@assets/icon/Kaikas.png';
 import metamaskImageUrl from '@assets/icon/MetaMask.png';
 import { BiWalletAlt } from 'react-icons/bi';
-import CustomModal from './components/CustomModal';
+import CustomModal from '@articles/CustomModal';
 import formatAddress from '@utils/formatAddress';
 
 const AddressContainer = styled('button')`
@@ -138,14 +138,14 @@ export default function Wallet() {
   function handleMetamaskLogin() {
     loginWithMetamask();
     setShowWalletOptions(false);
-    // window.location.reload();
+    window.location.reload();
   }
 
   // 카이카스 로그인 핸들러
   function handleKaikasLogin() {
     loginWithKaikas();
     setShowWalletOptions(false);
-    // window.location.reload();
+    window.location.reload();
   }
 
   // 지갑 로그아웃 핸들러
@@ -156,7 +156,7 @@ export default function Wallet() {
     localStorage.removeItem('_user');
     localStorage.removeItem('_wallet');
     setShowDisconnectWallet(false);
-    // window.location.reload();
+    window.location.reload();
   }
 
   return (

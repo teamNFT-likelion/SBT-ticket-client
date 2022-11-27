@@ -4,8 +4,6 @@ import LinkButton from '@atoms/LinkButton';
 import { Link } from 'react-router-dom';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import Layout from '@articles/Layout';
-import Footer from '@articles/Footer';
-import Header from '@articles/Header';
 
 const ButtonsWrapper = styled('div')`
   display: flex;

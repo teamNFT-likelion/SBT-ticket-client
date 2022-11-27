@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as colors from '@styles/colors'
+import * as colors from '@styles/colors';
 
 const ModalContainer = styled('div')`
   display: ${(props) => (props.show ? 'block' : 'none')};
@@ -20,8 +20,9 @@ const ModalContent = styled('div')`
   justify-content: center;
   align-items: center;
   width: 350px;
-  height: 50%;
-  font-weight: 600;
+  height: auto;
+  font-size: 30px;
+  font-weight: 400;
   background: ${colors.bgSecondary};
   border-radius: 8px;
   padding: 40px;
