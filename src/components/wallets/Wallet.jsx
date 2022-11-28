@@ -102,6 +102,7 @@ export default function Wallet() {
       setWalletType('eth');
       localStorage.setItem('_user', accounts[0]);
       localStorage.setItem('_wallet', 'eth');
+      window.location.reload();
       toast.success(`${formatAddress(accounts[0])}님 환영합니다.`);
     } catch {
       toast.error('로그인 실패. 다시 시도해주세요.');
@@ -128,6 +129,7 @@ export default function Wallet() {
       setWalletType('klaytn');
       localStorage.setItem('_user', accounts[0]);
       localStorage.setItem('_wallet', 'klaytn');
+      window.location.reload();
       toast.success(`${formatAddress(accounts[0])}님 환영합니다.`);
     } catch {
       toast.error('로그인 실패. 다시 시도해주세요.');
@@ -138,14 +140,12 @@ export default function Wallet() {
   function handleMetamaskLogin() {
     loginWithMetamask();
     setShowWalletOptions(false);
-    window.location.reload();
   }
 
   // 카이카스 로그인 핸들러
   function handleKaikasLogin() {
     loginWithKaikas();
     setShowWalletOptions(false);
-    window.location.reload();
   }
 
   // 지갑 로그아웃 핸들러
