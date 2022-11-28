@@ -15,7 +15,7 @@ const PosterItems = ({ type }) => {
         flexDirection: 'column',
       }}
     >
-      <div>{getTitle(type)}</div>
+      <div style={{fontSize: "25px"}}>{getTitle(type)}</div>
       <div
         style={{
           display: 'flex',
