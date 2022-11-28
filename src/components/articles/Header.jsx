@@ -6,6 +6,7 @@ import { BiUser } from 'react-icons/bi';
 import { APP_HEADER_H } from '@constants/styleConst';
 import { Link } from 'react-router-dom';
 import Wallet from '@components/wallets/Wallet';
+import SearchBar from './SearchBar';
 
 const Container = styled('div')`
   position: fixed;
@@ -47,15 +48,7 @@ const Header = ({ page }) => {
         <LogoImage src={logo_ttot} />
       </Link>
       <SearchBarWrapper>
-        {/* {page === 'list-page' ? (
-          <>
-            <LinkButton to="/list" name="공연" />
-            <LinkButton to="/list" name="전시" />
-            <LinkButton to="/list" name="스포츠" />
-          </>
-        ) : ( */}
-        {/* <SearchBar /> */}
-        {/* )} */}
+        <SearchBar />
       </SearchBarWrapper>
       <ButtonsWrapper>
         <Wallet />
