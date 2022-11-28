@@ -17,7 +17,7 @@ const APaymentPage = () => {
     // 인가코드 서버에 전달 및 프로필데이터 응답처리
     const getOauthData = (_state, _code) => {
       axios
-        .get(`http://ttot.tk/${_state}/callback`, {
+        .get(`https://ttot.tk/${_state}/callback`, {
           params: {
             code: _code,
           },
