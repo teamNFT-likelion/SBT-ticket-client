@@ -4,6 +4,8 @@ import LinkButton from '@atoms/LinkButton';
 import { Link } from 'react-router-dom';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import Layout from '@articles/Layout';
+import DetailInfo from '@components/atoms/DetailInfo';
+import CategoryNav from '@components/articles/CategoryNav';
 
 const ButtonsWrapper = styled('div')`
   display: flex;
@@ -15,13 +17,6 @@ const ButtonsWrapper = styled('div')`
   flex: 7;
   gap: 4px;
 `;
-const CategoryButtonsWrapper = styled(ButtonsWrapper)`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 9rem 0px 4rem 0px;
-`;
-
 const ContentsInfoBody = styled(Row)`
   // HEADER 높이 5rem + 여분 9rem
   color: white;
@@ -67,15 +62,8 @@ const ContentButton = ({ to = '/', name = '홈으러' }) => {
 const TDetailPage = ({ onNavClick }) => {
   return (
     <Layout>
-      <CategoryButtonsWrapper>
-        <LinkButton to="/list" name="공연" />
-        <LinkButton to="/list" name="전시" />
-        <LinkButton to="/list" name="스포츠" />
-      </CategoryButtonsWrapper>
-      <ContentsInfoBody>
-        <ContentsInfo>Info</ContentsInfo>
-        <ContentsInfo>Poster</ContentsInfo>
-      </ContentsInfoBody>
+      <CategoryNav />
+      <DetailInfo />
       <ContentsInfoBody>
         <CalenderInfo>달력</CalenderInfo>
         <CalenderInfo>회차정보</CalenderInfo>
