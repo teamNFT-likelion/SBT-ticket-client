@@ -1,17 +1,22 @@
 import React, { useEffect } from 'react';
+import * as colors from '@styles/colors';
+import styled from 'styled-components';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import Layout from '@articles/Layout';
 import { setCookie, getCookie } from '@utils/cookie';
 import { kakaoOauthUrl, naverOauthUrl } from '@constants/urlConst';
+import DetailInfo from '@components/atoms/DetailInfo';
+import CategoryNav from '@components/articles/CategoryNav';
+
 
 const APaymentPage = () => {
   const navigate = useNavigate();
   const oauthData = getCookie('oauthData');
 
   const params = new URL(window.location).searchParams; //TODO: 이거 react-router-dom hook 있음 리팩토링필요
-  const code = params.get('code');
   const state = params.get('state');
+  const code = params.get('code');
 
   useEffect(() => {
     // 인가코드 서버에 전달 및 프로필데이터 응답처리
@@ -48,41 +53,46 @@ const APaymentPage = () => {
   }, [oauthData]);
 
   return (
-    <Layout>
-      결제 1단계...
-      <a
-        style={{
-          border: '2px solid #fae54d',
-          color: '#fae54d',
-          backgroundColor: '#3b1f1e',
-          width: '300px',
-          height: '100px',
-          fontSize: '30px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-        href={kakaoOauthUrl}
-      >
-        Kakao 테스트
-      </a>
-      <a
-        style={{
-          border: '2px solid green',
-          color: 'green',
-          backgroundColor: 'white',
-          width: '300px',
-          height: '100px',
-          fontSize: '30px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-        href={naverOauthUrl}
-      >
-        네이버 테스트
-      </a>
-    </Layout>
+    <Layout page="a-payment-page">
+      <CategoryNav />
+      <DetailInfo />
+
+      <Layout>
+        결제 1단계...
+        <a
+          style={{
+            border: '2px solid #fae54d',
+            color: '#fae54d',
+            backgroundColor: '#3b1f1e',
+            width: '300px',
+            height: '100px',
+            fontSize: '30px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          href={kakaoOauthUrl}
+        >
+          Kakao 테스트
+        </a>
+        <a
+          style={{
+            border: '2px solid green',
+            color: 'green',
+            backgroundColor: 'white',
+            width: '300px',
+            height: '100px',
+            fontSize: '30px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          href={naverOauthUrl}
+        >
+          네이버 테스트
+        </a>
+      </Layout>
+      </Layout>
   );
 };
 
