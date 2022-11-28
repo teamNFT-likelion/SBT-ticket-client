@@ -35,25 +35,6 @@ const QueryEmphasize = styled('span')`
   color: ${colors.natural95};
 `
 
-const DummyData = [
-  {
-    id: 0,
-    title: 'A',
-  },
-  {
-    id: 1,
-    title: 'B',
-  },
-  {
-    id: 2,
-    title: 'C',
-  },
-  {
-    id: 3,
-    title: 'D',
-  },
-];
-
 const TSearchPage = () => {
   const location = useLocation();
   const { query } = location.state;
