@@ -1,7 +1,12 @@
 import React from 'react';
 import PosterItem from './PosterItem';
 
-const PosterItems = () => {
+const PosterItems = ({ type }) => {
+  const getTitle = (_type) => {
+    if (_type === 'concert') return '공연';
+    if (_type === 'exhibit') return '전시';
+    if (_type === 'sports') return '스포츠';
+  };
   return (
     <div
       style={{
@@ -10,7 +15,7 @@ const PosterItems = () => {
         flexDirection: 'column',
       }}
     >
-      <div>공연</div>
+      <div>{getTitle(type)}</div>
       <div
         style={{
           display: 'flex',

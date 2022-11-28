@@ -78,7 +78,7 @@ export const ButtonWrapper = styled('div')`
 
 export const Title = styled('span')`
   align-self: center;
-  font-size: 44px;
+  font-size: 30px;
 `;
 
 export const Info = styled('span')`

@@ -28,30 +28,37 @@ const TListPage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const paramType = searchParams.get('type');
-  const [type, setType] = useState(0);
+  const [type, setType] = useState('concert');
 
   React.useEffect(() => {
     //TODO: 페이지타입별로 데이터 바꿔 줘야됨 setData 바꿔줘야댐
-    if (paramType === null) setType(0);
-    if (paramType === 'exhibit') setType(1);
-    if (paramType === 'sports') setType(2);
-  }, [paramType]);
+    if (paramType === null) {
+      setType('concert');
+    } else if (paramType === 'exhibit' || paramType === 'sports') {
+      setType(paramType);
+    } else {
+      navigate('/list');
+    }
+  }, [paramType, navigate]);
 
   return (
     <Layout page="list-page">
       {/* //TODO: 컴포넌트로 뺄까 */}
       <PageTypeWrapper>
-        <PageTypeText isActive={type === 0} onClick={() => navigate('/list')}>
+        <PageTypeText
+          isActive={type === 'concert'}
+          onClick={() => navigate('/list')}
+        >
           공연
         </PageTypeText>
         <PageTypeText
-          isActive={type === 1}
+          isActive={type === 'exhibit'}
           onClick={() => navigate('/list?type=exhibit')}
         >
           전시
         </PageTypeText>
         <PageTypeText
-          isActive={type === 2}
+          isActive={type === 'sports'}
           onClick={() => navigate('/list?type=sports')}
         >
           스포츠
@@ -60,7 +67,7 @@ const TListPage = () => {
       <BigPoster />
       {/* //TODO: 래퍼 리팩토링 필요 */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
-        <PosterItems />
+        <PosterItems type={type} />
       </div>
     </Layout>
   );
