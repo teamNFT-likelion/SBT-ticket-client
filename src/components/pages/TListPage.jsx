@@ -21,6 +21,7 @@ const PageTypeText = styled('span')`
   border-right: 2px solid white;
   width: 130px;
   text-align: center;
+  cursor: pointer;
   color: ${({ isActive }) => (isActive ? colors.primary80 : colors.textWhite)};
 `;
 

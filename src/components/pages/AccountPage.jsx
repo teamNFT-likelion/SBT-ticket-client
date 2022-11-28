@@ -7,6 +7,8 @@ import metamaskImageUrl from '@assets/icon/MetaMask.png';
 import CustomModal from '@articles/CustomModal';
 import QRCode from 'qrcode.react';
 
+// TODO : 5초마다 qr코드 갱신 / 캡쳐불가
+
 const AddressWrapper = styled('div')`
   display: flex;
   justify-content: center;
@@ -32,13 +34,15 @@ const TabNavigation = styled('div')`
 `;
 
 const TabButton = styled('button')`
-  background-color: ${colors.primary40};
   width: 15.6%;
   height: 64px;
   font-size: 20px;
   cursor: pointer;
   border-radius: 5px;
   margin: 3px;
+  border: 3px solid;
+  color: ${({ isActive }) => (isActive ? colors.primary80 : null)};
+  background-color: ${({ isActive }) => (isActive ? colors.primary40 : null)};
 `;
 
 const TicketContainer = styled('div')`
@@ -227,6 +231,7 @@ const AccountPage = () => {
       </AddressWrapper>
       <TabNavigation>
         <TabButton
+          isActive={tab === "ALL"}
           value="ALL"
           onClick={(newTab) => {
             setTab(newTab.target.value);
@@ -235,6 +240,7 @@ const AccountPage = () => {
           ALL
         </TabButton>
         <TabButton
+          isActive={tab === "ACTIVE"}
           value="ACTIVE"
           onClick={(newTab) => {
             setTab(newTab.target.value);
@@ -244,6 +250,7 @@ const AccountPage = () => {
           ACTIVE
         </TabButton>
         <TabButton
+          isActive={tab === "INACTIVE"}
           value="INACTIVE"
           onClick={(newTab) => {
             setTab(newTab.target.value);
@@ -297,7 +304,11 @@ const AccountPage = () => {
         ) : null}
       </TicketContainer>
       <CustomModal show={showUseQr} toggleModal={() => setShowUseQr(false)}>
-        {qrvalue !== 'DEFAULT' ? <QRCode value={qrvalue} size={256} /> : "QR을 발행하기 위해서는 먼저 본인 인증을 진행해주세요."}
+        {qrvalue !== 'DEFAULT' ? (
+          <QRCode value={qrvalue} size={256} />
+        ) : (
+          'QR을 발행하기 위해서는 먼저 본인 인증을 진행해주세요.'
+        )}
         <ModalButtonWrapper>
           <ModalButton
             buttonColor={`${colors.primary40}`}
