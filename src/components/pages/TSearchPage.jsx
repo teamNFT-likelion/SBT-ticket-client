@@ -59,12 +59,12 @@ const TSearchPage = () => {
   const { query } = location.state;
 
   // 원하는 검색어 찾기 기능
-  const filterTitle = DummyData.filter((q) => {
-    return q.title
-      .replace(' ', '')
-      .toLocaleLowerCase()
-      .includes(query.toLocaleLowerCase());
-  });
+//   const filterTitle = DummyData.filter((q) => {
+//     return q.title
+//       .replace(' ', '')
+//       .toLocaleLowerCase()
+//       .includes(query.toLocaleLowerCase());
+//   });
 
   return (
     <Layout>
