@@ -1,7 +1,7 @@
-import {Container,PageTitle,SubTitle,TabButton,TempBox,} from '@components/atoms/AAP_styles';
+import {PageTitle,SubTitle,TabButton,} from '@components/atoms/AAP_styles';
 import styled from 'styled-components';
 import { Column, Row } from '@components/atoms/wrapper.style';
-import * as colors from '@styles/colors';
+
 
 
 const SeatsSelectBox = styled(Column)`
