@@ -6,9 +6,6 @@ import kaikasImageUrl from '@assets/icon/Kaikas.png';
 import metamaskImageUrl from '@assets/icon/MetaMask.png';
 import CustomModal from '@articles/CustomModal';
 import QRCode from 'qrcode.react';
-import { Column } from '@components/atoms/wrapper.style';
-
-// TODO : 5초마다 qr코드 갱신 / 캡쳐불가
 
 // TODO : 5초마다 qr코드 갱신 / 캡쳐불가
 
