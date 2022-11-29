@@ -7,7 +7,40 @@ import Layout from '@articles/Layout';
 import { setCookie, getCookie } from '@utils/cookie';
 import { kakaoOauthUrl, naverOauthUrl } from '@constants/urlConst';
 import DetailInfo from '@components/atoms/DetailInfo';
-import CategoryNav from '@components/articles/CategoryNav';
+import { Column } from '@components/atoms/wrapper.style';
+
+const Container = styled(Column)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const PageTitle = styled('div')`
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: white;
+`;
+const SubTitle = styled(PageTitle)`
+  font-size: 22px;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  color: ${colors.primary80};
+`;
+
+// const TabButton = styled('button')`
+//   background-color: ${colors.primary40};
+//   width: 15.6%;
+//   height: 64px;
+//   font-size: 20px;
+//   cursor: pointer;
+//   border-radius: 5px;
+//   margin: 3px;
+// `;
+
+// const TempBox = styled(Column)`
+//   height: 500px;
+//   border: white 4px solid;
+// `;
 
 
 const APaymentPage = () => {
@@ -17,6 +50,14 @@ const APaymentPage = () => {
   const params = new URL(window.location).searchParams; //TODO: 이거 react-router-dom hook 있음 리팩토링필요
   const state = params.get('state');
   const code = params.get('code');
+
+  // tap 키 저장 state
+  // const [tab, setTab] = useState('ALL');
+
+
+// const AAP_1 = <TempBox>AAP_1 입니다~</TempBox>;
+// const AAP_2 = <TempBox>AAP_2 입니다~</TempBox>;
+// const AAP_3 = <TempBox>AAP_3 입니다~</TempBox>;
 
   useEffect(() => {
     // 인가코드 서버에 전달 및 프로필데이터 응답처리
@@ -54,9 +95,19 @@ const APaymentPage = () => {
 
   return (
     <Layout page="a-payment-page">
-      <CategoryNav />
-      <DetailInfo />
-
+      <Container>
+        <PageTitle>티켓 결제</PageTitle>
+        <SubTitle>| 선택한 공연 정보 |</SubTitle>
+        <DetailInfo />
+        {/* <TabButton
+          value="예매"
+          onClick={(newTab) => {
+            setTab(newTab.target.value);
+          }}
+        >
+          예매하기
+        </TabButton> */}
+      </Container>
       <Layout>
         결제 1단계...
         <a
@@ -92,7 +143,7 @@ const APaymentPage = () => {
           네이버 테스트
         </a>
       </Layout>
-      </Layout>
+    </Layout>
   );
 };
 
