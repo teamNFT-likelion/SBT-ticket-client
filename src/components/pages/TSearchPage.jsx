@@ -1,9 +1,10 @@
 import React from 'react';
 import Layout from '@articles/Layout';
-import PosterItems from './ticketList/PosterItems';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
-import * as colors from '@styles/colors'
+import * as colors from '@styles/colors';
+import items from './ticketList/items.json';
+import PosterItem from './ticketList/PosterItem';
 
 const Container = styled('div')`
   width: 1350px;
@@ -21,11 +22,12 @@ const TitleContainer = styled('div')`
 const TitleWrapper = styled('div')`
   margin-top: 40px;
   font-size: 40px;
-`
+`;
 
 const PosterWrapper = styled('div')`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  height: 300px;
+  grid-template-columns: repeat(5, 1fr);
   gap: 60px;
 `;
 
@@ -33,53 +35,42 @@ const QueryEmphasize = styled('span')`
   font-size: 45px;
   font-weight: 600;
   color: ${colors.natural95};
-`
-
-const DummyData = [
-  {
-    id: 0,
-    title: 'A',
-  },
-  {
-    id: 1,
-    title: 'B',
-  },
-  {
-    id: 2,
-    title: 'C',
-  },
-  {
-    id: 3,
-    title: 'D',
-  },
-];
+`;
 
 const TSearchPage = () => {
   const location = useLocation();
-  const { query } = location.state;
+  const { typing } = location.state;
 
   // 원하는 검색어 찾기 기능
-  const filterTitle = DummyData.filter((q) => {
+  const filterTitle = items.filter((q) => {
     return q.title
       .replace(' ', '')
       .toLocaleLowerCase()
-      .includes(query.toLocaleLowerCase());
+      .includes(typing.toLocaleLowerCase());
   });
 
   return (
     <Layout>
+      {console.log(filterTitle)}
       <Container>
         <TitleContainer>
           <TitleWrapper>
-            '{' '}
-            <QueryEmphasize>{query}</QueryEmphasize>
-            {' '}' 에 대한 검색 결과 (25)
+            ' <QueryEmphasize>{typing}</QueryEmphasize> ' 에 대한 검색 결과 (
+            {filterTitle.length})
           </TitleWrapper>
         </TitleContainer>
         <PosterWrapper>
-          <PosterItems type="concert" />
-          <PosterItems type="exhibit" />
-          <PosterItems type="sports" />
+          {filterTitle.map((data) => {
+            return(
+              <PosterItem
+                key={data.id}
+                posterImgUrl={data.posterImgUrl}
+                title={data.title}
+                startDate={data.startDate}
+                endDate={data.endDate}
+              />
+            );
+          })}
         </PosterWrapper>
       </Container>
     </Layout>

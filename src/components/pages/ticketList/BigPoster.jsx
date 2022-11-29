@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
+import items from './items.json'
 import {
   BigPosterWrapper,
   PosterCard,
@@ -11,49 +12,6 @@ import {
   Info,
   ButtonWrapper,
 } from './BigPoster.style';
-
-const items = [
-  {
-    id: '343d3182-c273-4ea1-b2c9-6ace189013c6',
-    topic: '전시',
-    posterImgUrl:
-      'https://image.toast.com/aaaaab/ticketlink/TKL_6/펭미팅_대표이미지_405X500.jpg',
-    title: '2022 펭수 연말 펭미팅',
-    place: '경희대학교 평화의전당',
-    cashPrice: 59000,
-    tokenPrice: 0.04,
-    startDate: 1671807600000,
-    endDate: 1671894000000,
-    runningTime: 90,
-    cast: '펭수',
-    viewAgeName: '8세이상',
-    dateInfo: {
-      '2022-09-01': { startTime: '9시 30분', seatCount: 12 },
-      '2022-09-02': { startTime: '10시 30분', seatCount: 5 },
-      '2022-09-03': { startTime: '23시 30분', seatCount: 8 },
-    },
-  },
-  {
-    id: '343d3182-c273-4ea1-b2d9-6ace189013c6',
-    topic: '전시',
-    posterImgUrl:
-      'https://image.toast.com/aaaaab/ticketlink/TKL_8/poster(220915)b.jpg',
-    title: '2022 푸에르자부르타 웨이라 인 서울',
-    place: '잠실종합운동장 FB씨어터',
-    cashPrice: 121000,
-    tokenPrice: 0.04,
-    startDate: 1664377200000,
-    endDate: 1671980400000,
-    runningTime: 90,
-    cast: '푸에르자부르타',
-    viewAgeName: '8세이상',
-    dateInfo: {
-      '2022-09-01': { startTime: '9시 30분', seatCount: 12 },
-      '2022-09-02': { startTime: '10시 30분', seatCount: 5 },
-      '2022-09-03': { startTime: '23시 30분', seatCount: 8 },
-    },
-  },
-];
 
 const BigPoster = () => {
   const [activePosterId, setActivePosterId] = useState(0);
