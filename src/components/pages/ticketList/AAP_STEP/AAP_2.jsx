@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import {Container,PageTitle,SubTitle,TabButton,TempBox,} from '@components/atoms/AAP_styles';
+import React, { useState } from 'react';
+import {PageTitle,SubTitle,TabButton,} from '@components/atoms/AAP_styles';
 import styled from 'styled-components';
 import { Column, Row } from '@components/atoms/wrapper.style';
-import * as colors from '@styles/colors';
 import kakaoLoginApiImg from '@assets/icon/kakaoLoginApiImg.png';
 import naverLoginApiImg from '@assets/icon/naverLoginApiImg.png';
 import RowIcon from '@assets/icon/rowIcon(Right).png';
 import CustomModal from '@components/articles/CustomModal';
 import { kakaoOauthUrl, naverOauthUrl } from '@constants/urlConst';
 import kginicisImg from '@assets/img/kginicis.jpg';
-import { useNavigate } from 'react-router-dom';
 import useOauth from '@hooks/useOauth';
 
 

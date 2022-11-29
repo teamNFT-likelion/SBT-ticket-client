@@ -1,6 +1,6 @@
 import * as colors from '@styles/colors';
 import styled from 'styled-components';
-import { Column, Row } from '@components/atoms/wrapper.style';
+import { Column } from '@components/atoms/wrapper.style';
 
 export const Container = styled(Column)`
   display: flex;

@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import * as colors from '@styles/colors';
-import styled from 'styled-components';
+import React, { useState } from 'react';
 import Layout from '@articles/Layout';
 import LinkButton from '@atoms/LinkButton';
 import DetailInfo from '@components/atoms/DetailInfo';
-import { Column, Row } from '@components/atoms/wrapper.style';
+import { Row } from '@components/atoms/wrapper.style';
 import { Ticket } from '@components/articles/AAP-inactive';
 import { DummyData } from './ticketList/tempData/DummyData';
 import {Container,PageTitle,SubTitle,TabButton,TempBox,} from '@components/atoms/AAP_styles';
