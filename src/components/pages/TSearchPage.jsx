@@ -6,6 +6,7 @@ import * as colors from '@styles/colors';
 import items from './ticketList/items.json';
 import PosterItem from './ticketList/PosterItem';
 
+
 const Container = styled('div')`
   width: 1350px;
   padding: 0 20px;
@@ -36,6 +37,7 @@ const QueryEmphasize = styled('span')`
   font-weight: 600;
   color: ${colors.natural95};
 `;
+
 
 const TSearchPage = () => {
   const location = useLocation();

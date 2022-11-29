@@ -10,6 +10,8 @@ import { Column } from '@components/atoms/wrapper.style';
 
 // TODO : 5초마다 qr코드 갱신 / 캡쳐불가
 
+// TODO : 5초마다 qr코드 갱신 / 캡쳐불가
+
 const AddressWrapper = styled('div')`
   display: flex;
   justify-content: center;
