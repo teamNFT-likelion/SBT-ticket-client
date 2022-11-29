@@ -7,7 +7,7 @@ const ContentsInfoBody = styled(Row)`
   color: white;
   display: flex;
   justify-content: center;
-  margin: 5rem;
+  margin: 2rem;
 `;
 
 const ContentsInfo = styled(Column)`
