@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import LinkButton from '@atoms/LinkButton';
-import { Link } from 'react-router-dom';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import Layout from '@articles/Layout';
 import DetailInfo from '@components/atoms/DetailInfo';
