@@ -37,7 +37,7 @@ const QueryEmphasize = styled('span')`
 
 const TSearchPage = () => {
   const location = useLocation();
-  const { query } = location.state;
+  const { typing } = location.state;
 
   // 원하는 검색어 찾기 기능
 //   const filterTitle = DummyData.filter((q) => {
@@ -53,7 +53,7 @@ const TSearchPage = () => {
         <TitleContainer>
           <TitleWrapper>
             '{' '}
-            <QueryEmphasize>{query}</QueryEmphasize>
+            <QueryEmphasize>{typing}</QueryEmphasize>
             {' '}' 에 대한 검색 결과 (25)
           </TitleWrapper>
         </TitleContainer>
