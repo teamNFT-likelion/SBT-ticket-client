@@ -6,6 +6,8 @@ import { Column, Row } from '@components/atoms/wrapper.style';
 import Layout from '@articles/Layout';
 import DetailInfo from '@components/atoms/DetailInfo';
 import CategoryNav from '@components/articles/CategoryNav';
+import PosterItems from './ticketList/PosterItems';
+
 
 const ButtonsWrapper = styled('div')`
   display: flex;
@@ -40,25 +42,6 @@ const CalenderInfo = styled(Column)`
   height: 300px;
 `;
 
-const ContentButton = ({ to = '/', name = '홈으러' }) => {
-  return (
-    //TODO: 인라인css 리팩토링필요
-    <Link to={to}>
-      <button
-        style={{
-          backgroundColor: '#526600',
-          color: 'white',
-          width: '160px',
-          height: '260px',
-          fontSize: '20px',
-        }}
-      >
-        {name}
-      </button>
-    </Link>
-  );
-};
-
 const TDetailPage = ({ onNavClick }) => {
   return (
     <Layout>
@@ -75,13 +58,9 @@ const TDetailPage = ({ onNavClick }) => {
         </CalenderInfo>
       </ContentsInfoBody>
       Relative
-      <ContentsInfoBody style={{ gap: '10px' }}>
-        <ContentButton to="/list" name="1번" />
-        <ContentButton to="/list" name="2번" />
-        <ContentButton to="/list" name="3번" />
-        <ContentButton to="/list" name="4번" />
-        <ContentButton to="/list" name="5번" />
-      </ContentsInfoBody>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
+        <PosterItems />
+      </div>
       공연정보
       <ContentsInfoBody>
         <ContentsInfo style={{ width: '896px', height: '1541px' }}>
