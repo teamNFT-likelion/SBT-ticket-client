@@ -3,9 +3,8 @@ import Layout from '@articles/Layout';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import * as colors from '@styles/colors';
-import items from './ticketList/items.json';
+import { mainItems as items } from '@mock/items.js';
 import PosterItem from './ticketList/PosterItem';
-
 
 const Container = styled('div')`
   width: 1350px;
@@ -38,7 +37,6 @@ const QueryEmphasize = styled('span')`
   color: ${colors.natural95};
 `;
 
-
 const TSearchPage = () => {
   const location = useLocation();
   const { typing } = location.state;
@@ -63,7 +61,7 @@ const TSearchPage = () => {
         </TitleContainer>
         <PosterWrapper>
           {filterTitle.map((data) => {
-            return(
+            return (
               <PosterItem
                 key={data.id}
                 posterImgUrl={data.posterImgUrl}

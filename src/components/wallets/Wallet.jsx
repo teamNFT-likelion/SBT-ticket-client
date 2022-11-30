@@ -6,7 +6,7 @@ import kaikasImageUrl from '@assets/icon/Kaikas.png';
 import metamaskImageUrl from '@assets/icon/MetaMask.png';
 import { BiWalletAlt } from 'react-icons/bi';
 import CustomModal from '@articles/CustomModal';
-import formatAddress from '@utils/formatAddress';
+import { formatAddress } from '@utils/parser';
 
 const AddressContainer = styled('button')`
   display: flex;

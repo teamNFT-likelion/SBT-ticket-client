@@ -7,6 +7,7 @@
       "@styles/*": ["./src/styles/*"],
       "@utils/*": ["./src/utils/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@mock/*": ["./src/mock/*"],
       "@constants/*": ["./src/constants/*"],
       "@pages/*": ["./src/components/pages/*"],
       "@atoms/*": ["./src/components/atoms/*"],

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PosterItem from './PosterItem';
-import items from './items.json';
 import styled from 'styled-components';
+import { parseItemType } from '@utils/parser';
 
 const Container = styled('div')`
   height: 300px;
@@ -23,18 +23,27 @@ const PosterWrapper = styled('div')`
   gap: 60px;
 `;
 
-const PosterItems = ({ type }) => {
+const PosterItems = ({ type, items }) => {
+  const [typeItems, setTypeItems] = useState(items);
   const getTitle = (_type) => {
     if (_type === 'concert') return '공연';
     if (_type === 'exhibit') return '전시';
     if (_type === 'sports') return '스포츠';
   };
 
+  useEffect(() => {
+    const filteredList = items.filter(
+      (item) => item.topic === parseItemType(type),
+    );
+
+    setTypeItems(filteredList);
+  }, [type, items]);
+
   return (
     <Container>
       <TitleWrapper>{getTitle(type)}</TitleWrapper>
       <PosterWrapper>
-        {items.map((data) => (
+        {typeItems.map((data) => (
           <PosterItem
             key={data.id}
             posterImgUrl={data.posterImgUrl}
