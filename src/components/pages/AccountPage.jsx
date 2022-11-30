@@ -60,7 +60,7 @@ const TicketWrapper = styled('div')`
 
 const TicketImage = styled('div')`
   height: 80%;
-  background-color: #ffffff97;
+  border-bottom: 3px solid ${colors.primary40};
 `;
 
 const TicketContent = styled('div')`
@@ -69,7 +69,6 @@ const TicketContent = styled('div')`
   align-items: center;
   justify-content: center;
   height: 20%;
-  background-color: gray;
 `;
 
 const TextWrapper = styled('span')`
@@ -78,6 +77,7 @@ const TextWrapper = styled('span')`
 
 const TicketButtonWrapper = styled('div')`
   display: flex;
+  flex-direction: ${(props) => props.direction};
   justify-content: center;
   align-items: center;
   margin-top: 10px;
@@ -166,6 +166,7 @@ const AccountPage = () => {
   // 모달을 위한 state
   const [showUseQr, setShowUseQr] = useState(false);
   const [showRefund, setShowRefund] = useState(false);
+  const [showFan, setShowFan] = useState(false);
 
   // 지금 로그인한 지갑 정보 저장 state
   const [account, setAccount] = useState('');
@@ -213,7 +214,18 @@ const AccountPage = () => {
                 환불
               </TicketButton>
             </TicketButtonWrapper>
-          ) : null}
+          ) : (
+            <TicketButtonWrapper>
+              <TicketButton
+                buttonColor={`#af00a7`}
+                onClick={() => {
+                  setShowFan(true);
+                }}
+              >
+                팬 혜택
+              </TicketButton>
+            </TicketButtonWrapper>
+          )}
         </TicketContent>
       </TicketWrapper>
     );
@@ -231,7 +243,7 @@ const AccountPage = () => {
       </AddressWrapper>
       <TabNavigation>
         <TabButton
-          isActive={tab === "ALL"}
+          isActive={tab === 'ALL'}
           value="ALL"
           onClick={(newTab) => {
             setTab(newTab.target.value);
@@ -240,7 +252,7 @@ const AccountPage = () => {
           ALL
         </TabButton>
         <TabButton
-          isActive={tab === "ACTIVE"}
+          isActive={tab === 'ACTIVE'}
           value="ACTIVE"
           onClick={(newTab) => {
             setTab(newTab.target.value);
@@ -250,7 +262,7 @@ const AccountPage = () => {
           ACTIVE
         </TabButton>
         <TabButton
-          isActive={tab === "INACTIVE"}
+          isActive={tab === 'INACTIVE'}
           value="INACTIVE"
           onClick={(newTab) => {
             setTab(newTab.target.value);
@@ -340,6 +352,30 @@ const AccountPage = () => {
             buttonColor={`${colors.bgBlack}`}
             onClick={() => {
               setShowRefund(false);
+            }}
+          >
+            취소
+          </ModalButton>
+        </ModalButtonWrapper>
+      </CustomModal>
+      <CustomModal show={showFan} toggleModal={() => setShowFan(false)}>
+        팬 혜택을 고르세요.
+        <ModalButtonWrapper>
+          <ModalButton buttonColor={`#af00a7`} onClick={() => {}}>
+            사전 예매
+          </ModalButton>
+          <ModalButton buttonColor={`#af00a7`} onClick={() => {}}>
+            래플 이벤트
+          </ModalButton>
+        </ModalButtonWrapper>
+        <ModalButtonWrapper>
+          <ModalButton buttonColor={`#af00a7`} onClick={() => {}}>
+            굿즈 구매
+          </ModalButton>
+          <ModalButton
+            buttonColor={`${colors.bgBlack}`}
+            onClick={() => {
+              setShowFan(false);
             }}
           >
             취소
