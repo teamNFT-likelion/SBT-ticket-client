@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Layout from '@articles/Layout';
 import PosterItems from './ticketList/PosterItems';
 import BigPoster from './ticketList/BigPoster';
+import { mainItems } from '@mock/items.js';
 
 const PageTypeWrapper = styled('div')`
   display: flex;
@@ -31,7 +32,7 @@ const TListPage = () => {
   const paramType = searchParams.get('type');
   const [type, setType] = useState('concert');
 
-  React.useEffect(() => {
+  useEffect(() => {
     //TODO: 페이지타입별로 데이터 바꿔 줘야됨 setData 바꿔줘야댐
     if (paramType === null) {
       setType('concert');
@@ -44,7 +45,6 @@ const TListPage = () => {
 
   return (
     <Layout page="list-page">
-      {/* //TODO: 컴포넌트로 뺄까 */}
       <PageTypeWrapper>
         <PageTypeText
           isActive={type === 'concert'}
@@ -65,10 +65,9 @@ const TListPage = () => {
           스포츠
         </PageTypeText>
       </PageTypeWrapper>
-      <BigPoster />
-      {/* //TODO: 래퍼 리팩토링 필요 */}
+      <BigPoster type={type} items={mainItems} />
       <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
-        <PosterItems type={type} />
+        <PosterItems type={type} items={mainItems} />
       </div>
     </Layout>
   );
