@@ -14,11 +14,11 @@ export const mainItems = [
     runningTime: 90,
     cast: '펭수',
     viewAgeName: '8세이상',
-    dateInfo: {
-      '2022-09-01': { startTime: '9시 30분', seatCount: 12 },
-      '2022-09-02': { startTime: '10시 30분', seatCount: 5 },
-      '2022-09-03': { startTime: '23시 30분', seatCount: 8 },
-    },
+    dateInfo: [
+      { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
+      { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
+      { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
+    ],
     detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_2/MD_1128.jpg',
   },
   {
@@ -57,11 +57,11 @@ export const mainItems = [
     runningTime: 90,
     cast: '알버트 왓슨',
     viewAgeName: '19세이상',
-    dateInfo: {
-      '2022-09-01': { startTime: '9시 30분', seatCount: 12 },
-      '2022-09-02': { startTime: '10시 30분', seatCount: 5 },
-      '2022-09-03': { startTime: '23시 30분', seatCount: 8 },
-    },
+    dateInfo: [
+      { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
+      { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
+      { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
+    ],
     detailInfoImg:
       'http://image.toast.com/aaaaab/ticketlink/TKL_3/221116_AW_700.jpg',
   },
@@ -79,11 +79,11 @@ export const mainItems = [
     runningTime: 90,
     cast: 'museum',
     viewAgeName: '전체관람가',
-    dateInfo: {
-      '2022-09-01': { startTime: '9시 30분', seatCount: 12 },
-      '2022-09-02': { startTime: '10시 30분', seatCount: 5 },
-      '2022-09-03': { startTime: '23시 30분', seatCount: 8 },
-    },
+    dateInfo: [
+      { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
+      { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
+      { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
+    ],
     detailInfoImg:
       'http://image.toast.com/aaaaab/ticketlink/TKL_6/tech_info0308-01.jpg',
   },
@@ -101,11 +101,11 @@ export const mainItems = [
     runningTime: 90,
     cast: '파퀴아오, DK YOO',
     viewAgeName: '15세이상',
-    dateInfo: {
-      '2022-09-01': { startTime: '9시 30분', seatCount: 12 },
-      '2022-09-02': { startTime: '10시 30분', seatCount: 5 },
-      '2022-09-03': { startTime: '23시 30분', seatCount: 8 },
-    },
+    dateInfo: [
+      { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
+      { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
+      { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
+    ],
     detailInfoImg:
       'https://ticketimage.interpark.com/Play/image/etc/22/22015838-01.jpg',
   },
@@ -123,11 +123,11 @@ export const mainItems = [
     runningTime: 90,
     cast: '토트넘',
     viewAgeName: '11세이상',
-    dateInfo: {
-      '2022-09-01': { startTime: '9시 30분', seatCount: 12 },
-      '2022-09-02': { startTime: '10시 30분', seatCount: 5 },
-      '2022-09-03': { startTime: '23시 30분', seatCount: 8 },
-    },
+    dateInfo: [
+      { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
+      { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
+      { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
+    ],
     detailInfoImg:
       'https://www.jejutwn.com/data/photos/20220624/art_16554512927773_d72133.jpg',
   },
