@@ -4,7 +4,7 @@ import LinkButton from '@atoms/LinkButton';
 import DetailInfo from '@components/atoms/DetailInfo';
 import { Row } from '@components/atoms/wrapper.style';
 import { Ticket } from '@components/articles/AAP-inactive';
-import { DummyData } from './ticketList/tempData/DummyData';
+import { DummyData } from './tempData/DummyData';
 import {Container,PageTitle,SubTitle,TabButton,TempBox,} from '@components/atoms/AAP_styles';
 import { AAP_1 } from './AAP_STEP/AAP_1';
 import { AAP_2 } from './AAP_STEP/AAP_2';
