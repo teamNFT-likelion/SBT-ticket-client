@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import 'react-calendar/dist/Calendar.css';
 import GlobalStyle from '@styles/GlobalStyle';
 import MainPage from '@pages/MainPage';
 import TListPage from '@pages/TListPage';
