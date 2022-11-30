@@ -57,7 +57,10 @@ const Button = styled('button')`
 const MainHeader = ({ onNavClick }) => {
   return (
     <Container>
-      <LogoImage src={logo_ttot} />
+      <LogoImage
+        src={logo_ttot}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      />
       <ButtonsWrapper>
         <Button onClick={onNavClick} value="goal">
           PROBLEM & SOLVING

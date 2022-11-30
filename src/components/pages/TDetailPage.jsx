@@ -6,7 +6,7 @@ import Layout from '@articles/Layout';
 import DetailInfo from '@components/atoms/DetailInfo';
 import CategoryNav from '@components/articles/CategoryNav';
 import PosterItems from './ticketList/PosterItems';
-
+import { mainItems } from '@mock/items.js';
 
 const ButtonsWrapper = styled('div')`
   display: flex;
@@ -58,7 +58,9 @@ const TDetailPage = ({ onNavClick }) => {
       </ContentsInfoBody>
       Relative
       <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
-        <PosterItems />
+        {/* TODO: 임시 로 items랑 타입 넘겨줌 아이템에 맞게 수정해야함. 아이템별 url
+        접속 고려 해야함 */}
+        <PosterItems type="concert" items={mainItems} />
       </div>
       공연정보
       <ContentsInfoBody>
