@@ -20,12 +20,6 @@ const LoginImageWrapper = styled('img')`
   height: 50px;
 `;
 
-// const ImgWrapper = styled('img')`
-//   object-fit: contain;
-//   width: 183px;
-//   height: 50px;
-// `;
-
 const UserInfoWrapper = styled(Column)`
   background-color: white;
   color: black;
@@ -39,7 +33,7 @@ export const AAP_2 = ({ tab, setTab }) => {
   // 모달을 위한 state
   const [showUseKginicis, setShowUseKginicis] = useState(false);
 
-  const oauthData = useOauth();
+  const oauthData = useOauth(tab);
 
   return (
     <>

@@ -8,14 +8,22 @@ import { DummyData } from './ticketList/tempData/DummyData';
 import {Container,PageTitle,SubTitle,TabButton,TempBox,} from '@components/atoms/AAP_styles';
 import { AAP_1 } from './ticketList/AAP_STEP/AAP_1';
 import { AAP_2 } from './ticketList/AAP_STEP/AAP_2';
-import { createContext } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
-
-export const tabContext = createContext();
 
 const APaymentPage = () => {
   // tap 키 저장 state
   const [tab, setTab] = useState('aap_0');
+    let location = useLocation();
+
+  useEffect(()=>{
+    // console.log(location);
+  if(location.search){
+    setTab("aap_2");
+  }
+  },[location]);
+  
 
 const AAP_0 = (
   <>
@@ -67,9 +75,7 @@ const AAP_3 = (
       <Container>
         {tab === 'aap_0' ? AAP_0 : null}
         {tab === 'aap_1' ? <AAP_1 tab={tab} setTab={setTab} /> : null}
-        <tabContext.Provider value={{tab}}>
-          {tab === 'aap_2' ? <AAP_2 tab={tab} setTab={setTab} /> : null}
-        </tabContext.Provider>
+        {tab === 'aap_2' ? <AAP_2 tab={tab} setTab={setTab} /> : null}
         {tab === 'aap_3' ? AAP_3 : null}
       </Container>
     </Layout>
