@@ -9,7 +9,7 @@ import CustomModal from '@components/articles/CustomModal';
 import { kakaoOauthUrl, naverOauthUrl } from '@constants/urlConst';
 import kginicisImg from '@assets/img/kginicis.jpg';
 import useOauth from '@hooks/useOauth';
-
+import ReCAPTCHA from 'react-google-recaptcha';
 
 
 
@@ -28,6 +28,9 @@ const UserInfoWrapper = styled(Column)`
   height: 90px;
 `;
 
+function onChange(value){
+  console.log("Captcah value:", value);
+}
 
 export const AAP_2 = ({ tab, setTab }) => {
   // 모달을 위한 state
@@ -39,7 +42,7 @@ export const AAP_2 = ({ tab, setTab }) => {
     <>
       <PageTitle>티켓 결제</PageTitle>
       <SubTitle>| 정보 입력 및 결제 |</SubTitle>
-      <Row>
+      <Row marginBottom={'40px'}>
         <Column marginTop="24px">
           <LoginImageWrapper
             src={kakaoLoginApiImg}
@@ -80,8 +83,12 @@ export const AAP_2 = ({ tab, setTab }) => {
             : null}
         </UserInfoWrapper>
       </Row>
+      <ReCAPTCHA
+        sitekey={'6Lf2GEUjAAAAAI0WtrRYHEacUJrsrssZN-qA_H35'}
+        onChange={onChange}
+      />
       <SubTitle>| 결제 수단을 선택해주세요. |</SubTitle>
-      <Row>
+      <Row marginBottom={'50px'} marginTop={'24px'}>
         <TabButton
           value="byKginicis"
           onClick={(newTab) => {
