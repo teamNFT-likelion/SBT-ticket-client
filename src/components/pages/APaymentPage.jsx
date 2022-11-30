@@ -16,6 +16,7 @@ const APaymentPage = () => {
   // tap 키 저장 state
   const [tab, setTab] = useState('aap_0');
   let location = useLocation();
+  const dataId = location.state.dataId;
 
   useEffect(() => {
     // console.log(location);
@@ -28,7 +29,7 @@ const APaymentPage = () => {
     <>
       <PageTitle>티켓 결제</PageTitle>
       <SubTitle>| 선택한 공연 정보 |</SubTitle>
-      <DetailInfo />
+      <DetailInfo dataId={dataId} />
       <SubTitle>| YOUR INACTIVE TICKETS |</SubTitle>
       <Row>
         {DummyData.map((ticket) => (

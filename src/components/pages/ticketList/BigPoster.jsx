@@ -58,8 +58,20 @@ const BigPoster = ({ type, items }) => {
               <Info marginTop="30px">CAST : {typeItems[0].cast}</Info>
             </InfoWrapper>
             <ButtonWrapper>
-              <button onClick={() => navigate('/detail')}>상세정보</button>
-              <button onClick={() => navigate('/payment')}>예매하기</button>
+              <button
+                onClick={() =>
+                  navigate('/detail', { state: { dataId: typeItems[0].id } })
+                }
+              >
+                상세정보
+              </button>
+              <button
+                onClick={() =>
+                  navigate('/payment', { state: { dataId: typeItems[0].id } })
+                }
+              >
+                예매하기
+              </button>
             </ButtonWrapper>
           </div>
         </DescCard>
@@ -87,8 +99,20 @@ const BigPoster = ({ type, items }) => {
               </Info>
             </InfoWrapper>
             <ButtonWrapper>
-              <button onClick={() => navigate('/detail')}>상세정보</button>
-              <button onClick={() => navigate('/payment')}>예매하기</button>
+              <button
+                onClick={() =>
+                  navigate('/detail', { state: { dataId: typeItems[1].id } })
+                }
+              >
+                상세정보
+              </button>
+              <button
+                onClick={() =>
+                  navigate('/payment', { state: { dataId: typeItems[1].id } })
+                }
+              >
+                예매하기
+              </button>
             </ButtonWrapper>
           </div>
         </DescCard>
