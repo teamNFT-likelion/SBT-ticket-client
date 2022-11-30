@@ -13,10 +13,10 @@ const ButtonWrapper = styled('button')`
   margin: 3px;
 `;
 
-const LinkButton = ({ to = '/', name = '홈으로' }) => {
+const LinkButton = ({ to = '/', name = '홈으로', dataId}) => {
   return (
-    <Link to={to}>
-      <ButtonWrapper>{name}</ButtonWrapper>
+    <Link to={to} state={{dataId: dataId}} >
+      <ButtonWrapper>{name}, {dataId}</ButtonWrapper>
     </Link>
   );
 };

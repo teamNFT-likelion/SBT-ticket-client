@@ -42,14 +42,14 @@ const DateWrapper = styled('div')`
 `
 
 
-const PosterItem = ({ posterImgUrl, title, startDate, endDate }) => {
+const PosterItem = ({ dataId, posterImgUrl, title, startDate, endDate }) => {
   const [hoverRef, isHover] = useHover();
   return (
     <Container ref={hoverRef}>
       {isHover && (
         <HoverWrapper>
-          <LinkButton to="/detail" name="상세정보" />
-          <LinkButton to="/payment" name="예매하기" />
+          <LinkButton to="/detail" name="상세정보" dataId={dataId} />
+          <LinkButton to="/payment" name="예매하기" dataId={dataId} />
         </HoverWrapper>
       )}
       <TicketImg src={posterImgUrl} />
