@@ -15,60 +15,53 @@ import { useEffect } from 'react';
 const APaymentPage = () => {
   // tap 키 저장 state
   const [tab, setTab] = useState('aap_0');
-    let location = useLocation();
+  let location = useLocation();
 
-  useEffect(()=>{
+  useEffect(() => {
     // console.log(location);
-  if(location.search){
-    setTab("aap_2");
-  }
-  },[location]);
-  
+    if (location.search) {
+      setTab("aap_2");
+    }
+  }, [location]);
 
-const AAP_0 = (
-  <>
-    <PageTitle>티켓 결제</PageTitle>
-    <SubTitle>| 선택한 공연 정보 |</SubTitle>
-    <DetailInfo />
-    <SubTitle>| YOUR INACTIVE TICKETS |</SubTitle>
-    <Row>
-      {DummyData.map((ticket) => (
-        <Ticket
-          id={ticket.id}
-          image={ticket.image}
-          title={ticket.title}
-          date={ticket.date}
-          active={ticket.active}
-          key={ticket.id}
-        />
-      ))}
-    </Row>
+  const AAP_0 = (
+    <>
+      <PageTitle>티켓 결제</PageTitle>
+      <SubTitle>| 선택한 공연 정보 |</SubTitle>
+      <DetailInfo />
+      <SubTitle>| YOUR INACTIVE TICKETS |</SubTitle>
+      <Row>
+        {DummyData.map((ticket) => (
+          <Ticket
+            id={ticket.id}
+            image={ticket.image}
+            title={ticket.title}
+            date={ticket.date}
+            active={ticket.active}
+            key={ticket.id}
+          />
+        ))}
+      </Row>
 
-    <TabButton
-      value="aap_1"
-      onClick={(newTab) => {
-        setTab(newTab.target.value);
-      }}
-    >
-      예매하기
-    </TabButton>
-  </>
-);
+      <TabButton
+        value="aap_1"
+        onClick={(newTab) => {
+          setTab(newTab.target.value);
+        }}
+      >
+        예매하기
+      </TabButton>
+    </>
+  );
 
-
-
-
-const AAP_3 = (
-  <>
-    <PageTitle>결제가 완료되었습니다.</PageTitle>
-    <SubTitle>| 결제 정보 |</SubTitle>
-    <TempBox>결제된 티켓의 정보</TempBox>
-    <LinkButton to="/account" name="티켓 확인하러가기" />
-  </>
-);
-
-
- 
+  const AAP_3 = (
+    <>
+      <PageTitle>결제가 완료되었습니다.</PageTitle>
+      <SubTitle>| 결제 정보 |</SubTitle>
+      <TempBox>결제된 티켓의 정보</TempBox>
+      <LinkButton to="/account" name="티켓 확인하러가기" />
+    </>
+  );
 
   return (
     <Layout page="a-payment-page">

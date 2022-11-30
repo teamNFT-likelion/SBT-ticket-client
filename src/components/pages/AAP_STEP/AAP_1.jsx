@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Column, Row } from '@components/atoms/wrapper.style';
 
 
-
 const SeatsSelectBox = styled(Column)`
   height: 570px;
   width: 600px;
