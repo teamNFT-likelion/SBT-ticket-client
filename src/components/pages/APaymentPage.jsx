@@ -6,8 +6,8 @@ import { Row } from '@components/atoms/wrapper.style';
 import { Ticket } from '@components/articles/AAP-inactive';
 import { DummyData } from './ticketList/tempData/DummyData';
 import {Container,PageTitle,SubTitle,TabButton,TempBox,} from '@components/atoms/AAP_styles';
-import { AAP_1 } from './ticketList/AAP_STEP/AAP_1';
-import { AAP_2 } from './ticketList/AAP_STEP/AAP_2';
+import { AAP_1 } from './AAP_STEP/AAP_1';
+import { AAP_2 } from './AAP_STEP/AAP_2';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
