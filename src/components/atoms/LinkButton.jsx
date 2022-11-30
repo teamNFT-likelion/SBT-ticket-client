@@ -16,7 +16,7 @@ const ButtonWrapper = styled('button')`
 const LinkButton = ({ to = '/', name = '홈으로', dataId}) => {
   return (
     <Link to={to} state={{dataId: dataId}} >
-      <ButtonWrapper>{name}, {dataId}</ButtonWrapper>
+      <ButtonWrapper>{name}</ButtonWrapper>
     </Link>
   );
 };
