@@ -19,6 +19,7 @@ export const mainItems = [
       '2022-09-02': { startTime: '10시 30분', seatCount: 5 },
       '2022-09-03': { startTime: '23시 30분', seatCount: 8 },
     },
+    detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_2/MD_1128.jpg',
   },
   {
     id: '39958',
@@ -39,6 +40,8 @@ export const mainItems = [
       '2022-09-02': { startTime: '10시 30분', seatCount: 5 },
       '2022-09-03': { startTime: '23시 30분', seatCount: 8 },
     },
+    detailInfoImg:
+      'http://image.toast.com/aaaaab/ticketlink/TKL_4/fu_web_1_220825.jpg',
   },
   {
     id: '41177',
@@ -59,6 +62,8 @@ export const mainItems = [
       '2022-09-02': { startTime: '10시 30분', seatCount: 5 },
       '2022-09-03': { startTime: '23시 30분', seatCount: 8 },
     },
+    detailInfoImg:
+      'http://image.toast.com/aaaaab/ticketlink/TKL_3/221116_AW_700.jpg',
   },
   {
     id: '37726',
@@ -79,6 +84,8 @@ export const mainItems = [
       '2022-09-02': { startTime: '10시 30분', seatCount: 5 },
       '2022-09-03': { startTime: '23시 30분', seatCount: 8 },
     },
+    detailInfoImg:
+      'http://image.toast.com/aaaaab/ticketlink/TKL_6/tech_info0308-01.jpg',
   },
   {
     id: '22015838',
@@ -99,6 +106,8 @@ export const mainItems = [
       '2022-09-02': { startTime: '10시 30분', seatCount: 5 },
       '2022-09-03': { startTime: '23시 30분', seatCount: 8 },
     },
+    detailInfoImg:
+      'https://ticketimage.interpark.com/Play/image/etc/22/22015838-01.jpg',
   },
   {
     id: '64100',
@@ -119,6 +128,8 @@ export const mainItems = [
       '2022-09-02': { startTime: '10시 30분', seatCount: 5 },
       '2022-09-03': { startTime: '23시 30분', seatCount: 8 },
     },
+    detailInfoImg:
+      'https://www.jejutwn.com/data/photos/20220624/art_16554512927773_d72133.jpg',
   },
 ];
 
