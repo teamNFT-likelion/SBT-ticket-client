@@ -1,7 +1,7 @@
 //빅 포스터용 데이터 6개
 export const mainItems = [
   {
-    id: '343d3182-c273-4ea1-b2c9-6ace189013c6',
+    id: '41342',
     topic: '공연',
     posterImgUrl:
       'https://image.toast.com/aaaaab/ticketlink/TKL_6/펭미팅_대표이미지_405X500.jpg',
@@ -21,7 +21,7 @@ export const mainItems = [
     },
   },
   {
-    id: '343d3182-c273-4ea1-b2d9-6ace189013c6',
+    id: '39958',
     topic: '공연',
     posterImgUrl:
       'https://image.toast.com/aaaaab/ticketlink/TKL_8/poster(220915)b.jpg',
@@ -41,7 +41,7 @@ export const mainItems = [
     },
   },
   {
-    id: '343d3182-c273-4ea1-b2e9-6ace189013c6',
+    id: '41177',
     topic: '전시',
     posterImgUrl:
       'https:////image.toast.com/aaaaab/ticketlink/TKL_5/티켓링크_405x500.jpg',
@@ -61,7 +61,7 @@ export const mainItems = [
     },
   },
   {
-    id: '343d3182-c273-4ea1-b2f9-6ace189013c6',
+    id: '37726',
     topic: '전시',
     posterImgUrl:
       'https://image.toast.com/aaaaab/ticketlink/TKL_6/tech_pst0308.jpg',
@@ -81,7 +81,7 @@ export const mainItems = [
     },
   },
   {
-    id: '343d3182-c273-4ea1-b2g9-6ace189013c6',
+    id: '22015838',
     topic: '스포츠',
     posterImgUrl:
       'https://ticketimage.interpark.com/Play/image/large/22/22015838_p.gif',
@@ -101,7 +101,7 @@ export const mainItems = [
     },
   },
   {
-    id: '343d3182-c273-4ea1-b2h9-6ace189013c6',
+    id: '64100',
     topic: '스포츠',
     posterImgUrl:
       'https://news.nateimg.co.kr/orgImg/na/2022/04/14/5317599_high.jpg',
