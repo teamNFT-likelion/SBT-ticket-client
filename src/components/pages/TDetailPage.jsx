@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import * as colors from '@styles/colors';
 import styled from 'styled-components';
 import LinkButton from '@atoms/LinkButton';
 import { Column, Row } from '@components/atoms/wrapper.style';
@@ -9,6 +10,9 @@ import PosterItems from './ticketList/PosterItems';
 import { mainItems } from 'src/mock/items';
 import { useLocation } from 'react-router-dom';
 import { TabButton } from '@components/atoms/AAP_styles';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import verticalLine from '@assets/img/verticalLine.png';
 
 
 const ButtonsWrapper = styled('div')`
@@ -29,19 +33,76 @@ const ContentsInfoBody = styled(Row)`
   margin: 5rem;
 `;
 
-const ContentsInfo = styled(Column)`
-  width: 273px;
-  height: 345px;
-  border: 3px solid white;
+const SelectInfo = styled('div')`
+  display: flex;
+  background-color: #d9d9d915;
+  border: 0.75px #eaecd9 solid;
+  border-radius: 30px;
   justify-content: center;
   align-items: center;
+  width:800px;
+  font-size: 17px;
 `;
 
-const CalenderInfo = styled(Column)`
+const PartButtonContainer = styled(Row)`
+  margin: 24px 5px 50px 5px;
+`;
+const SelectInfoBox = styled(Column)`
   display: flex;
-  border: 3px solid white;
   width: 300px;
   height: 300px;
+  margin: 0px 15px;
+  padding: 20px 0px;
+`;
+
+const CalendarStyle = styled.div`
+  width: 250px;
+  margin: 0px 15px;
+
+  .react-calendar {
+    background-color: #00000000;
+    border: none;
+  }
+
+  .react-calendar__navigation {
+    display: flex;
+    height: 30px;
+    margin-bottom: 1em;
+  }
+  .react-calendar__navigation button {
+    min-width: 44px;
+    background: none;
+  }
+  .react-calendar__navigation button:disabled {
+    background-color: #00000000;
+    border-radius: 10px;
+    align-items: center;
+    color:${colors.primary80}
+  }
+  .react-calendar__navigation button:enabled:hover,
+  .react-calendar__navigation button:enabled:focus {
+    background-color: #5151517e;
+    align-items: center;
+  }
+
+  .react-calendar__tile {
+    max-width: 100%;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    background: none;
+    text-align: center;
+    line-height: 16px;
+    border-radius: 50%;
+  }
+
+  .react-calendar__tile:disabled {
+    background-color: #f0f0f0;
+  }
+  .react-calendar__tile:enabled:hover,
+  .react-calendar__tile:enabled:focus {
+    background-color: ${colors.primary40};
+  }
 `;
 
 const TDetailPage = ({ onNavClick }) => {
@@ -49,39 +110,63 @@ const TDetailPage = ({ onNavClick }) => {
   const dataId= location.state.dataId;
   const data = mainItems.filter((item)=>item.id===dataId)[0];
   const [partState, setPartState] = useState(0);
+  const [value, onChange] = useState(new Date());
 
   return (
     <Layout>
       <CategoryNav />
       <DetailInfo dataId={dataId} />
-      <Row justifyContent={"center"}>
-        <CalenderInfo>달력</CalenderInfo>
-        <CalenderInfo>
-          회차
-          <Row marginBottom={'50px'} marginTop={'24px'}>
-            {data.dateInfo.map((_, index) => (
-              <TabButton
-                value={index}
-                onClick={(newTab) => {
-                  setPartState(newTab.target.value);
-                }}
-                style={{ width: '90px', height: '40px' }}
-              >
-                {index + 1}회차
-              </TabButton>
-            ))}
-          </Row>
-          CAST
-          <div>{data.cast}</div>
-        </CalenderInfo>
-        <CalenderInfo>
-          잔여석
-          {data.dateInfo[partState].seatCount}
-          <ButtonsWrapper>
-            <LinkButton to="/payment" name="결제" />
-          </ButtonsWrapper>
-        </CalenderInfo>
-      </Row>
+      <ContentsInfoBody>
+        <SelectInfo>
+          <CalendarStyle>
+            <Calendar
+              onChange={onChange}
+              value={value}
+              minDetail="month" // 상단 네비게이션에서 '월' 단위만 보이게 설정
+              maxDetail="month"
+              calendarType="US"
+              formatDay={(locale, date) =>
+                date.toLocaleString('en', { day: 'numeric' })
+              }
+            />
+          </CalendarStyle>
+          <img src={verticalLine} alt="verticalLine" height="260px" />
+          <SelectInfoBox>
+            회차
+            <PartButtonContainer>
+              {data.dateInfo.map((_, index) => (
+                <TabButton
+                  value={index}
+                  onClick={(newTab) => {
+                    setPartState(newTab.target.value);
+                  }}
+                  style={{ width: '70px', height: '30px', fontSize: '15px' }}
+                >
+                  {index + 1}회차
+                </TabButton>
+              ))}
+            </PartButtonContainer>
+            CAST
+            <span
+              style={{ paddingTop: '10px'}}
+            >
+              {data.cast}
+            </span>
+          </SelectInfoBox>
+          <img src={verticalLine} alt="verticalLine" height="260px" />
+          <SelectInfoBox>
+            잔여석
+            <span
+              style={{ padding: '10px', fontSize: '20px', color: colors.bgRed }}
+            >
+              {data.dateInfo[partState].seatCount}석
+            </span>
+            <ButtonsWrapper>
+              <LinkButton to="/payment" name="결제" />
+            </ButtonsWrapper>
+          </SelectInfoBox>
+        </SelectInfo>
+      </ContentsInfoBody>
       Relative
       <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
         <PosterItems type="concert" items={mainItems} />
