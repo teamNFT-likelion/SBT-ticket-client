@@ -6,7 +6,9 @@ import Layout from '@articles/Layout';
 import DetailInfo from '@components/atoms/DetailInfo';
 import CategoryNav from '@components/articles/CategoryNav';
 import PosterItems from './ticketList/PosterItems';
-import { mainItems } from '@mock/items.js';
+import { mainItems } from 'src/mock/items';
+import { useLocation } from 'react-router-dom';
+
 
 const ButtonsWrapper = styled('div')`
   display: flex;
@@ -42,10 +44,13 @@ const CalenderInfo = styled(Column)`
 `;
 
 const TDetailPage = ({ onNavClick }) => {
+  const location = useLocation();
+  const dataId= location.state.dataId;
+
   return (
     <Layout>
       <CategoryNav />
-      <DetailInfo />
+      <DetailInfo dataId={dataId}/>
       <ContentsInfoBody>
         <CalenderInfo>달력</CalenderInfo>
         <CalenderInfo>회차정보</CalenderInfo>
@@ -58,8 +63,6 @@ const TDetailPage = ({ onNavClick }) => {
       </ContentsInfoBody>
       Relative
       <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
-        {/* TODO: 임시 로 items랑 타입 넘겨줌 아이템에 맞게 수정해야함. 아이템별 url
-        접속 고려 해야함 */}
         <PosterItems type="concert" items={mainItems} />
       </div>
       공연정보
