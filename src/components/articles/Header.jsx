@@ -44,7 +44,7 @@ const ButtonsWrapper = styled('div')`
 const Header = ({ page }) => {
   return (
     <Container>
-      <Link to={'/'}>
+      <Link to={'/list'}>
         <LogoImage src={logo_ttot} />
       </Link>
       <SearchBarWrapper>
