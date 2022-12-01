@@ -114,9 +114,7 @@ const TDetailPage = ({ onNavClick }) => {
   const parsed = parse(location.search);
 
   const dataId = parsed.id;
-  console.log("dataId", dataId);
   let data = mainItems.filter((item)=>item.id === dataId)[0];
-  console.log(data);
 
   return (
     <Layout>

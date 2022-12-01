@@ -36,7 +36,6 @@ const ConcertInfoItem = styled('div')`
 
 
 const DetailInfo = ({dataId}) => {
-  console.log("DetailInfo : ", dataId);
   const data = mainItems.filter((item)=>item.id === dataId)[0];
   return (
     <ContentsInfoBody>

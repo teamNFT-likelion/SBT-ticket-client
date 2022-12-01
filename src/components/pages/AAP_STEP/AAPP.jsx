@@ -47,12 +47,10 @@ const AAPP = () => {
   // tap 키 저장 state
   const navigate = useNavigate();
   const dataId = getCookie('dataId');
-  console.log("AAPP-dataId : ", dataId);
 
   // 모달을 위한 state 
   const [showUseKginicis, setShowUseKginicis] =useState(false);
   const userData = useOauth(dataId);
-  console.log(userData);
 
   return (
     <Layout page="a-payment-page">

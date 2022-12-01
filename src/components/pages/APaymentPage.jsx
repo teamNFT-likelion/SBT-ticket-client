@@ -17,7 +17,6 @@ const AAP_0 = ({tab, setTab, dataId}) => {
 
   const data = mainItems.filter((item) => item.id === dataId)[0];
   console.log(data);
-  console.log("aap-0-tab", tab);
 
 
   return(<>

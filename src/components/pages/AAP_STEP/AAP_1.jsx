@@ -20,7 +20,6 @@ const SeatsInfoBox = styled(Column)`
 
 export const AAP_1 = ({tab,setTab,dataId}) => {
   const navigate = useNavigate();
-  console.log(dataId);
 
     return(<>
       <PageTitle>티켓 결제</PageTitle>
@@ -42,8 +41,9 @@ export const AAP_1 = ({tab,setTab,dataId}) => {
           value="aap_2"
           onClick={(newTab) => {
             setTab(newTab.target.value);
-            console.log("다음단계 눌렀더니 : ", dataId);
-            setCookie('dataId',dataId);
+            setCookie('dataId',dataId, {
+            expires: new Date(Date.now() + 1000 * 60 * 5),
+          });
             navigate('/payment');
           }}
         >
