@@ -10,12 +10,10 @@ import { AAP_2 } from './AAP_STEP/AAP_2';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { DummyData } from './tempData/DummyData';
-import { getCookie } from '@utils/cookie';
+import { setCookie } from '@utils/cookie';
 import { mainItems } from 'src/mock/items';
 
-const AAP_0 = ({setTab}) => {
-  const dataId = getCookie('dataId');
-  console.log('aap-cookie-aap0 : ', getCookie('dataId'));
+const AAP_0 = ({setTab, dataId}) => {
   const data = mainItems.filter((item) => item.id === dataId)[0];
   console.log(data);
 
@@ -63,9 +61,10 @@ const APaymentPage = () => {
   // tap 키 저장 state
   const [tab, setTab] = useState('aap_0');
   let location = useLocation();
-  // const dataId = location.state?.dataId;
-  // const dataId = getCookie('dataId');
-  console.log("aap-cookie : ", getCookie('dataId'));
+  const locationDataId = location.state?.dataId;
+
+  setCookie('dataId', locationDataId);
+
 
   useEffect(() => {
     if (location.search) {
@@ -77,10 +76,12 @@ const APaymentPage = () => {
   return (
     <Layout page="a-payment-page">
       <Container>
-        {tab === 'aap_0' ? <AAP_0 setTab={setTab} /> : null}
+        {tab === 'aap_0' ? (
+          <AAP_0 setTab={setTab} dataId={locationDataId} />
+        ) : null}
         {tab === 'aap_1' ? <AAP_1 tab={tab} setTab={setTab} /> : null}
-        {tab === 'aap_2' ? <AAP_2 setTab={setTab}/> : null}
-        {tab === 'aap_3' ? <AAP_3/> : null}
+        {tab === 'aap_2' ? <AAP_2 setTab={setTab} /> : null}
+        {tab === 'aap_3' ? <AAP_3 /> : null}
       </Container>
     </Layout>
   );
