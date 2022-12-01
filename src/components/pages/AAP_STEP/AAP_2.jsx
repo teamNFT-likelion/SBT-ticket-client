@@ -10,6 +10,7 @@ import { kakaoOauthUrl, naverOauthUrl } from '@constants/urlConst';
 import kginicisImg from '@assets/img/kginicis.jpg';
 import useOauth from '@hooks/useOauth';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { getCookie } from '@utils/cookie';
 
 
 
@@ -32,11 +33,15 @@ function onChange(value){
   console.log("Captcah value:", value);
 }
 
-export const AAP_2 = ({ tab, setTab }) => {
+export const AAP_2 = ({ setTab }) => {
+  const userData = useOauth();
+
   // 모달을 위한 state
   const [showUseKginicis, setShowUseKginicis] = useState(false);
+  const dataId = getCookie('dataId');
+  console.log('aap2: ', dataId);
 
-  const oauthData = useOauth(tab);
+  console.log(userData);
 
   return (
     <>
@@ -76,10 +81,10 @@ export const AAP_2 = ({ tab, setTab }) => {
           />
         </Column>
         <UserInfoWrapper>
-          {oauthData
-            ? oauthData.email
-              ? oauthData.email
-              : oauthData.kakao_account.email
+          {userData
+            ? userData.email
+              ? userData.email
+              : userData.kakao_account.email
             : null}
         </UserInfoWrapper>
       </Row>
@@ -134,4 +139,4 @@ export const AAP_2 = ({ tab, setTab }) => {
       </Row>
     </>
   );
-};;
+};

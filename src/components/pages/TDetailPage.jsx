@@ -13,6 +13,7 @@ import { TabButton } from '@components/atoms/AAP_styles';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import verticalLine from '@assets/img/verticalLine.png';
+import { getCookie, setCookie } from '@utils/cookie';
 
 
 const ButtonsWrapper = styled('div')`
@@ -107,15 +108,24 @@ const CalendarStyle = styled.div`
 
 const TDetailPage = ({ onNavClick }) => {
   const location = useLocation();
-  const dataId= location.state.dataId;
-  const data = mainItems.filter((item)=>item.id===dataId)[0];
+  const locationDataId= location.state?.dataId;
   const [partState, setPartState] = useState(0);
   const [value, onChange] = useState(new Date());
+  console.log("location안에 state : " ,locationDataId);
+
+  setCookie('dataId', locationDataId);
+  
+  const data = mainItems.filter((item) => item.id === locationDataId)[0];
+  console.log('버튼 클릭하면 cookie에 id값 저장되나?', locationDataId);
+  console.log(data);
+
+
+  console.log("cookie : ", getCookie("dataId"));
 
   return (
     <Layout>
       <CategoryNav />
-      <DetailInfo dataId={dataId} />
+      <DetailInfo dataId={locationDataId} />
       <ContentsInfoBody>
         <SelectInfo>
           <CalendarStyle>
@@ -141,17 +151,14 @@ const TDetailPage = ({ onNavClick }) => {
                     setPartState(newTab.target.value);
                   }}
                   style={{ width: '70px', height: '30px', fontSize: '15px' }}
+                  key={index}
                 >
                   {index + 1}회차
                 </TabButton>
               ))}
             </PartButtonContainer>
             CAST
-            <span
-              style={{ paddingTop: '10px'}}
-            >
-              {data.cast}
-            </span>
+            <span style={{ paddingTop: '10px' }}>{data.cast}</span>
           </SelectInfoBox>
           <img src={verticalLine} alt="verticalLine" height="260px" />
           <SelectInfoBox>
@@ -162,7 +169,7 @@ const TDetailPage = ({ onNavClick }) => {
               {data.dateInfo[partState].seatCount}석
             </span>
             <ButtonsWrapper>
-              <LinkButton to="/payment" name="결제" />
+              <LinkButton to="/payment" dataId={locationDataId} name="결제" />
             </ButtonsWrapper>
           </SelectInfoBox>
         </SelectInfo>

@@ -4,14 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { setCookie, getCookie } from '@utils/cookie';
 
 
-export default function useOauth(tab){
+export default function useOauth(){
   const navigate = useNavigate();
+  const oauthData = getCookie('oauthData');
   const params = new URL(window.location).searchParams; //TODO: 이거 react-router-dom hook 있음 리팩토링필요
 
   const state = params.get('state');
   const code = params.get('code');
-
-  const oauthData = getCookie('oauthData');
   
 
   useEffect(() => {

@@ -36,31 +36,34 @@ const ConcertInfoItem = styled('div')`
 
 
 const DetailInfo = ({dataId}) => {
+  console.log("DetailInfo : ", dataId);
   const data = mainItems.filter((item)=>item.id === dataId)[0];
   console.log(data);
   return (
     <ContentsInfoBody>
       <ContentsInfo>
-        <SubTitle style={{marginBottom:"24px", fontSize:"25px"}}>{data.title}</SubTitle>
+        <SubTitle style={{ marginBottom: '24px', fontSize: '25px' }}>
+          {data?.title}
+        </SubTitle>
         <ConcertInfo>
           <ConcertInfoItem>공연기간</ConcertInfoItem>
           <ConcertInfoItem>
-            {format(new Date(data.startDate), 'yyyy.MM.dd')} ~
-            {format(new Date(data.endDate), 'yyyy.MM.dd')}
+            {format(new Date(data?.startDate), 'yyyy.MM.dd')} ~
+            {format(new Date(data?.endDate), 'yyyy.MM.dd')}
           </ConcertInfoItem>
           <ConcertInfoItem>장소</ConcertInfoItem>
-          <ConcertInfoItem>{data.place}</ConcertInfoItem>
+          <ConcertInfoItem>{data?.place}</ConcertInfoItem>
           <ConcertInfoItem>공연시간</ConcertInfoItem>
-          <ConcertInfoItem>{data.runningTime}분</ConcertInfoItem>
+          <ConcertInfoItem>{data?.runningTime}분</ConcertInfoItem>
           <ConcertInfoItem>관람연령</ConcertInfoItem>
-          <ConcertInfoItem>{data.viewAgeName}</ConcertInfoItem>
+          <ConcertInfoItem>{data?.viewAgeName}</ConcertInfoItem>
           <ConcertInfoItem>현금구매가</ConcertInfoItem>
-          <ConcertInfoItem>₩ {data.cashPrice}</ConcertInfoItem>
+          <ConcertInfoItem>₩ {data?.cashPrice}</ConcertInfoItem>
           <ConcertInfoItem>코인구매가</ConcertInfoItem>
-          <ConcertInfoItem>MATIC {data.tokenPrice}</ConcertInfoItem>
+          <ConcertInfoItem>MATIC {data?.tokenPrice}</ConcertInfoItem>
         </ConcertInfo>
       </ContentsInfo>
-      <img src={data.posterImgUrl} width="270px" height="345px" alt="poster" />
+      <img src={data?.posterImgUrl} width="270px" height="345px" alt="poster" />
     </ContentsInfoBody>
   );
 };
