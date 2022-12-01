@@ -73,7 +73,7 @@ const APaymentPage = () => {
 
 
   useEffect(() => {
-    if (location.state.tab==='aap_3') {
+    if (location.state?.tab==='aap_3') {
       setTab('aap_3');
     }
   }, [location]);
