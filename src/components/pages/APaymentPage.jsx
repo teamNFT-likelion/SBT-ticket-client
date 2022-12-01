@@ -6,16 +6,18 @@ import { Row } from '@components/atoms/wrapper.style';
 import { Ticket } from '@components/articles/AAP-inactive';
 import {Container,PageTitle,SubTitle,TabButton,TempBox,} from '@components/atoms/AAP_styles';
 import { AAP_1 } from './AAP_STEP/AAP_1';
-import { AAP_2 } from './AAP_STEP/AAP_2';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { DummyData } from './tempData/DummyData';
-import { setCookie } from '@utils/cookie';
 import { mainItems } from 'src/mock/items';
+import { parse } from 'query-string';
 
-const AAP_0 = ({setTab, dataId}) => {
+
+const AAP_0 = ({tab, setTab, dataId}) => {
+
   const data = mainItems.filter((item) => item.id === dataId)[0];
   console.log(data);
+  console.log("aap-0-tab", tab);
 
 
   return(<>
@@ -47,7 +49,7 @@ const AAP_0 = ({setTab, dataId}) => {
   </>);
 };
 
-  const AAP_3 = () => {
+  const AAP_3 = (dataId) => {
     return (
       <>
         <PageTitle>결제가 완료되었습니다.</PageTitle>
@@ -60,28 +62,33 @@ const AAP_0 = ({setTab, dataId}) => {
 const APaymentPage = () => {
   // tap 키 저장 state
   const [tab, setTab] = useState('aap_0');
+  const navigate = useNavigate();
   let location = useLocation();
-  const locationDataId = location.state?.dataId;
 
-  setCookie('dataId', locationDataId);
+  const parsed = parse(location.search);
+
+  const dataId = parsed.id;
+  console.log(location);
+
 
 
   useEffect(() => {
-    if (location.search) {
-      setTab("aap_2");
+    if (location.state.tab==='aap_3') {
+      setTab('aap_3');
     }
   }, [location]);
+
 
 
   return (
     <Layout page="a-payment-page">
       <Container>
-        {tab === 'aap_0' ? (
-          <AAP_0 setTab={setTab} dataId={locationDataId} />
+        {tab === 'aap_0' ? <AAP_0 tab={tab} setTab={setTab} dataId={dataId} /> : null}
+        {tab === 'aap_1' ? (
+          <AAP_1 tab={tab} setTab={setTab} dataId={dataId} />
         ) : null}
-        {tab === 'aap_1' ? <AAP_1 tab={tab} setTab={setTab} /> : null}
-        {tab === 'aap_2' ? <AAP_2 setTab={setTab} /> : null}
-        {tab === 'aap_3' ? <AAP_3 /> : null}
+        {tab === 'app_2' ? navigate({pathname:'/payment', state:{dataId:dataId, setTab:setTab, tab:tab}}):null}
+        {tab === 'aap_3' ? <AAP_3 dataId={dataId} /> : null}
       </Container>
     </Layout>
   );

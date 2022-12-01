@@ -1,7 +1,8 @@
 import {PageTitle,SubTitle,TabButton,} from '@components/atoms/AAP_styles';
 import styled from 'styled-components';
 import { Column, Row } from '@components/atoms/wrapper.style';
-import { getCookie } from '@utils/cookie';
+import { useNavigate } from 'react-router-dom';
+import { setCookie } from '@utils/cookie';
 
 
 const SeatsSelectBox = styled(Column)`
@@ -16,12 +17,11 @@ const SeatsInfoBox = styled(Column)`
   border: white 4px solid;
 `;
 
-const dataId = getCookie('dataId');
-console.log(dataId);
 
+export const AAP_1 = ({tab,setTab,dataId}) => {
+  const navigate = useNavigate();
+  console.log(dataId);
 
-
-export const AAP_1 = ({tab,setTab}) => {
     return(<>
       <PageTitle>티켓 결제</PageTitle>
       <SubTitle>| 좌석 선택 |</SubTitle>
@@ -34,7 +34,6 @@ export const AAP_1 = ({tab,setTab}) => {
           value="aap_0"
           onClick={(newTab) => {
             setTab(newTab.target.value);
-            console.log(tab);
           }}
         >
           뒤로가기
@@ -43,7 +42,9 @@ export const AAP_1 = ({tab,setTab}) => {
           value="aap_2"
           onClick={(newTab) => {
             setTab(newTab.target.value);
-            console.log(tab);
+            console.log("다음단계 눌렀더니 : ", dataId);
+            setCookie('dataId',dataId);
+            navigate('/payment');
           }}
         >
           다음단계

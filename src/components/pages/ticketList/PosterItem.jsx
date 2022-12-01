@@ -48,8 +48,8 @@ const PosterItem = ({ dataId, posterImgUrl, title, startDate, endDate }) => {
     <Container ref={hoverRef}>
       {isHover && (
         <HoverWrapper>
-          <LinkButton to="/detail" name="상세정보" dataId={dataId} />
-          <LinkButton to="/payment" name="예매하기" dataId={dataId} />
+          <LinkButton to={`/detail?id=${dataId}`} name="상세정보" />
+          <LinkButton to={`/getInfo?id=${dataId}`} name="예매하기" />
         </HoverWrapper>
       )}
       <TicketImg src={posterImgUrl} />

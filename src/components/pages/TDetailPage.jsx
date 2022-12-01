@@ -8,12 +8,12 @@ import DetailInfo from '@components/atoms/DetailInfo';
 import CategoryNav from '@components/articles/CategoryNav';
 import PosterItems from './ticketList/PosterItems';
 import { mainItems } from 'src/mock/items';
-import { useLocation } from 'react-router-dom';
+import { useLocation} from 'react-router-dom';
 import { TabButton } from '@components/atoms/AAP_styles';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import verticalLine from '@assets/img/verticalLine.png';
-import { getCookie, setCookie } from '@utils/cookie';
+import {parse} from 'query-string';
 
 
 const ButtonsWrapper = styled('div')`
@@ -108,24 +108,20 @@ const CalendarStyle = styled.div`
 
 const TDetailPage = ({ onNavClick }) => {
   const location = useLocation();
-  const locationDataId= location.state?.dataId;
   const [partState, setPartState] = useState(0);
   const [value, onChange] = useState(new Date());
-  console.log("location안에 state : " ,locationDataId);
 
-  setCookie('dataId', locationDataId);
-  
-  const data = mainItems.filter((item) => item.id === locationDataId)[0];
-  console.log('버튼 클릭하면 cookie에 id값 저장되나?', locationDataId);
+  const parsed = parse(location.search);
+
+  const dataId = parsed.id;
+  console.log("dataId", dataId);
+  let data = mainItems.filter((item)=>item.id === dataId)[0];
   console.log(data);
-
-
-  console.log("cookie : ", getCookie("dataId"));
 
   return (
     <Layout>
       <CategoryNav />
-      <DetailInfo dataId={locationDataId} />
+      <DetailInfo dataId={dataId} />
       <ContentsInfoBody>
         <SelectInfo>
           <CalendarStyle>
@@ -169,7 +165,11 @@ const TDetailPage = ({ onNavClick }) => {
               {data.dateInfo[partState].seatCount}석
             </span>
             <ButtonsWrapper>
-              <LinkButton to="/payment" dataId={locationDataId} name="결제" />
+              <LinkButton
+                // to={`/payment?id=${dataId}`}
+                to={`/getInfo?id=${dataId}`}
+                name="결제"
+              />
             </ButtonsWrapper>
           </SelectInfoBox>
         </SelectInfo>
