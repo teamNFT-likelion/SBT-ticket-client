@@ -4,22 +4,23 @@ export const mainItems = [
     id: '41342',
     topic: '공연',
     posterImgUrl:
-      'https://image.toast.com/aaaaab/ticketlink/TKL_6/펭미팅_대표이미지_405X500.jpg',
-    title: '2022 펭수 연말 펭미팅',
-    place: '경희대학교 평화의전당',
-    cashPrice: 59000,
-    tokenPrice: 0.04,
-    startDate: 1671807600000,
-    endDate: 1671894000000,
-    runningTime: 90,
-    cast: '펭수',
-    viewAgeName: '8세이상',
+      'https://ticketimage.interpark.com/Play/image/large/22/22010748_p.gif',
+    title: 'BLACKPINK WORLD TOUR',
+    place: '올림픽공원 KSPO DOME',
+    cashPrice: 189000,
+    tokenPrice: 0.4,
+    startDate: 1677250800000,
+    endDate: 1677337200000,
+    runningTime: 120,
+    cast: '블랙핑크',
+    viewAgeName: '15세이상',
     dateInfo: [
       { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
       { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
       { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
     ],
-    detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_2/MD_1128.jpg',
+    detailInfoImg:
+      'https://ticketimage.interpark.com/Play/image/etc/22/22010748-12.jpg',
   },
   {
     id: '39958',
@@ -134,4 +135,26 @@ export const mainItems = [
 ];
 
 //TODO:일반 포스터용 데이터 15개
-export const itemList = [];
+export const itemList = [
+  {
+    id: '41342',
+    topic: '공연',
+    posterImgUrl:
+      'https://image.toast.com/aaaaab/ticketlink/TKL_6/펭미팅_대표이미지_405X500.jpg',
+    title: '2022 펭수 연말 펭미팅',
+    place: '경희대학교 평화의전당',
+    cashPrice: 59000,
+    tokenPrice: 0.04,
+    startDate: 1671807600000,
+    endDate: 1671894000000,
+    runningTime: 90,
+    cast: '펭수',
+    viewAgeName: '8세이상',
+    dateInfo: [
+      { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
+      { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
+      { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
+    ],
+    detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_2/MD_1128.jpg',
+  },
+];
