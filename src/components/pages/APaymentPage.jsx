@@ -86,7 +86,7 @@ const APaymentPage = () => {
         {tab === 'aap_1' ? (
           <AAP_1 tab={tab} setTab={setTab} dataId={dataId} />
         ) : null}
-        {tab === 'app_2' ? navigate({pathname:'/payment', state:{dataId:dataId, setTab:setTab, tab:tab}}):null}
+        {tab === 'app_2' ? navigate('/payment'):null}
         {tab === 'aap_3' ? <AAP_3 dataId={dataId} /> : null}
       </Container>
     </Layout>
