@@ -6,6 +6,8 @@ import kaikasImageUrl from '@assets/icon/Kaikas.png';
 import metamaskImageUrl from '@assets/icon/MetaMask.png';
 import CustomModal from '@articles/CustomModal';
 import QRCode from 'qrcode.react';
+// import Web3 from 'web3';
+// import Caver from 'caver-js';
 
 // TODO : 5초마다 qr코드 갱신 / 캡쳐불가
 
@@ -182,11 +184,34 @@ const AccountPage = () => {
   // qr코드 발행을 위한 state
   const [qrvalue, setQrvalue] = useState('DEFAULT');
 
+  // 컨트랙트와 통신을 위한 객체 저장
+  // const [web3, setWeb3] = useState({});
+  // const [caver, setCaver] = useState({});
+
   // account와 walletType 불러오기
   useEffect(() => {
     setAccount(localStorage.getItem('_user'));
     setWalletType(localStorage.getItem('_wallet'));
   }, []);
+
+  // useEffect(() => {
+  //   if (typeof ethereum !== 'undefined') {
+  //     try {
+  //       const web3 = new Web3(window.ethereum);
+  //       setWeb3(web3);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  // if (typeof klaytn !== 'undefined') {
+  //   try {
+  //     const caver = new Caver(window.klaytn);
+  //     setCaver(caver);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+  // }, []);
 
   const Ticket = ({ id, image, title, date, active }) => {
     return (
@@ -387,5 +412,3 @@ const AccountPage = () => {
 };
 
 export default AccountPage;
-
-
