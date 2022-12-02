@@ -36,11 +36,11 @@ export const mainItems = [
     runningTime: 90,
     cast: '푸에르자부르타',
     viewAgeName: '8세이상',
-    dateInfo: {
-      '2022-09-01': { startTime: '9시 30분', seatCount: 12 },
-      '2022-09-02': { startTime: '10시 30분', seatCount: 5 },
-      '2022-09-03': { startTime: '23시 30분', seatCount: 8 },
-    },
+    dateInfo: [
+      { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
+      { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
+      { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
+    ],
     detailInfoImg:
       'http://image.toast.com/aaaaab/ticketlink/TKL_4/fu_web_1_220825.jpg',
   },
