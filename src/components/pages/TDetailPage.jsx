@@ -111,6 +111,7 @@ const TDetailPage = ({ onNavClick }) => {
   const data = mainItems.filter((item)=>item.id===dataId)[0];
   const [partState, setPartState] = useState(0);
   const [value, onChange] = useState(new Date());
+  console.log(data);
 
   return (
     <Layout>
@@ -162,7 +163,7 @@ const TDetailPage = ({ onNavClick }) => {
               {data.dateInfo[partState].seatCount}석
             </span>
             <ButtonsWrapper>
-              <LinkButton to="/payment" name="결제" />
+              <LinkButton to="/payment" dataId={dataId} name="결제" />
             </ButtonsWrapper>
           </SelectInfoBox>
         </SelectInfo>
