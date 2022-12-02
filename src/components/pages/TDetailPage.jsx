@@ -19,11 +19,16 @@ import RemainSeats from '@components/atoms/RemainSeats';
 const TDetailPage = ({ onNavClick }) => {
   const location = useLocation();
   const [partState, setPartState] = useState(0);
+<<<<<<< HEAD
 
   const parsed = parse(location.search);
 
   const dataId = parsed.id;
   let data = mainItems.filter((item)=>item.id === dataId)[0];
+=======
+  const [value, onChange] = useState(new Date());
+  console.log(data);
+>>>>>>> main
 
   return (
     <Layout>
@@ -35,7 +40,21 @@ const TDetailPage = ({ onNavClick }) => {
           <img src={verticalLine} alt="verticalLine" height="260px" />
           <PartInfoContainer data={data} setPartState={setPartState} />
           <img src={verticalLine} alt="verticalLine" height="260px" />
+<<<<<<< HEAD
           <RemainSeats partState={partState} dataId={dataId} data={data}/>
+=======
+          <SelectInfoBox>
+            잔여석
+            <span
+              style={{ padding: '10px', fontSize: '20px', color: colors.bgRed }}
+            >
+              {data.dateInfo[partState].seatCount}석
+            </span>
+            <ButtonsWrapper>
+              <LinkButton to="/payment" dataId={dataId} name="결제" />
+            </ButtonsWrapper>
+          </SelectInfoBox>
+>>>>>>> main
         </SelectInfo>
       </ContentsInfoBody>
       Relative
