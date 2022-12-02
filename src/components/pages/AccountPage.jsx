@@ -6,8 +6,11 @@ import kaikasImageUrl from '@assets/icon/Kaikas.png';
 import metamaskImageUrl from '@assets/icon/MetaMask.png';
 import CustomModal from '@articles/CustomModal';
 import QRCode from 'qrcode.react';
-// import Web3 from 'web3';
+import Web3 from 'web3';
 // import Caver from 'caver-js';
+import axios from 'axios';
+import { GOERLI_TTOT } from '@contracts/ContractAddress';
+import { TTOT_ABI } from '@contracts/ABI';
 
 // TODO : 5초마다 qr코드 갱신 / 캡쳐불가
 
@@ -164,6 +167,9 @@ const DummyData = [
   },
 ];
 
+// const klaytn = window.klaytn;
+const ethereum = window.ethereum;
+
 const AccountPage = () => {
   // 모달을 위한 state
   const [showUseQr, setShowUseQr] = useState(false);
@@ -177,7 +183,8 @@ const AccountPage = () => {
   // tap 키 저장 state
   const [tab, setTab] = useState('ALL');
 
-  // active와 inactive 티켓 filter 저장 state
+  // 내 sbt 저장과 active와 inactive 티켓 filter 저장 state
+  const [sbtList, setSbtList] = useState([]);
   const [activeData, setActiveData] = useState([]);
   const [inactiveData, setInactiveData] = useState([]);
 
@@ -185,8 +192,9 @@ const AccountPage = () => {
   const [qrvalue, setQrvalue] = useState('DEFAULT');
 
   // 컨트랙트와 통신을 위한 객체 저장
-  // const [web3, setWeb3] = useState({});
+  const [web3, setWeb3] = useState({});
   // const [caver, setCaver] = useState({});
+
 
   // account와 walletType 불러오기
   useEffect(() => {
@@ -194,24 +202,63 @@ const AccountPage = () => {
     setWalletType(localStorage.getItem('_wallet'));
   }, []);
 
-  // useEffect(() => {
-  //   if (typeof ethereum !== 'undefined') {
-  //     try {
-  //       const web3 = new Web3(window.ethereum);
-  //       setWeb3(web3);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  // if (typeof klaytn !== 'undefined') {
-  //   try {
-  //     const caver = new Caver(window.klaytn);
-  //     setCaver(caver);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
-  // }, []);
+  // 시작 시 메타마스크 또는 카이카스와 연결이 되어있는 지 확인하고 객체를 생성.
+  useEffect(() => {
+    if (typeof ethereum !== 'undefined') {
+      try {
+        const web3 = new Web3(ethereum);
+        setWeb3(web3);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    // if (typeof klaytn !== 'undefined') {
+    //   try {
+    //     const caver = new Caver(klaytn);
+    //     setCaver(caver);
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // }
+  }, []);
+
+  // 내 토큰들 불러오기
+  useEffect(() => {
+    async function saveMyToken() {
+      let tokenContract;
+      if (walletType === 'eth') {
+        tokenContract = await new web3.eth.Contract(TTOT_ABI, GOERLI_TTOT);
+      // } else if (walletType === 'klaytn') {
+      //   tokenContract = await new caver.klay.Contract(TTOT_ABI, GOERLI_TTOT);
+      } else return;
+
+      const MyTokens = await tokenContract.methods.getSbtTokens(account).call();
+      const items = await Promise.all(
+        MyTokens.map(async (i) => {
+          let metadata = await axios.get(i.sbtTokenURI);
+          let price;
+          if (walletType === 'eth') {
+            price = web3.utils.fromWei(i.price.toString(), 'ether');
+            // } else if (walletType === 'klaytn') {
+            //   price = caver.utils.convertFromPeb(i.price.toString(), 'KLAY');
+          } else return;
+          let item = {
+            tokenId: Number(i.nftTokenId),
+            tokenURI: i.nftTokenURI,
+            tokenDL: i.deadline,
+            tokenIsActive: i.isActive,
+            tokenPrice: price,
+            tokenImage: metadata.data.image,
+            tokenTitle: metadata.data.title,
+            tokenUserEmail: metadata.data.userEmail,
+          };
+          return item;
+        }),
+      );
+      setSbtList(items);
+    }
+    saveMyToken();
+  }, [account]);
 
   const Ticket = ({ id, image, title, date, active }) => {
     return (

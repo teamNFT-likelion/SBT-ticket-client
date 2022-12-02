@@ -41,6 +41,7 @@ contract ttot_sample is  ERC721Enumerable {
 
     // 티켓 구매와 발행
     // tokenURI는 ipfs 주소, deadline은 unix timestamp 형태, price는 wei단위, id는 공연의 id값, seat는 좌석정보, limit는 해당 공연의 티켓 제한 수
+    // TODO : 이더스캔 막는 방법
     function mintSbt( string memory _tokenURI, uint _deadline, uint _price, uint _id, string memory _seat, uint _limit) public payable {
         require(_price <= msg.value, "caller sent lower than price.");
         // payable(address(this)).transfer(msg.value); -> 없어도 알아서 컨트랙트에 보내짐
@@ -53,13 +54,11 @@ contract ttot_sample is  ERC721Enumerable {
         sbtIsActives[tokenId] = true;
         sbtPrices[tokenId] = _price;
 
+        pushSeat(_id, _deadline, _seat, _limit);
         _mint(msg.sender, tokenId);
 
         sbtTicketId[tokenId] = _id;
         sbtTicketSeat[tokenId] = _seat;
-
-
-        pushSeat(_id, _deadline, _seat, _limit);
     }
 
 

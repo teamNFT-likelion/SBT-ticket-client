@@ -10,6 +10,7 @@
       "@mock/*": ["./src/mock/*"],
       "@states/*": ["./src/states/*"],
       "@constants/*": ["./src/constants/*"],
+      "@contracts/*": ["./src/contracts/*"],
       "@pages/*": ["./src/components/pages/*"],
       "@atoms/*": ["./src/components/atoms/*"],
       "@articles/*": ["./src/components/articles/*"]
