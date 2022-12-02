@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import { mainItems } from 'src/mock/items';
 import { format } from 'date-fns';
-import { SubTitle } from '@components/atoms/AAP_styles';
+import { SubTitle } from '@styles/ApaymentStyles';
 
 const ContentsInfoBody = styled(Row)`
   // HEADER 높이 5rem + 여분 9rem

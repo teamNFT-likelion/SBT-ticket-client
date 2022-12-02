@@ -1,4 +1,4 @@
-import { PageTitle, SubTitle, TabButton } from '@components/atoms/AAP_styles';
+import { PageTitle, SubTitle, TabButton } from '@styles/ApaymentStyles';
 import styled from 'styled-components';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +16,7 @@ const SeatsInfoBox = styled(Column)`
   border: white 4px solid;
 `;
 
-export const AAP_1 = ({ tab, setTab, dataId }) => {
+export const App2SelectSeats = ({ setTab, dataId }) => {
   const navigate = useNavigate();
 
   return (
@@ -29,7 +29,7 @@ export const AAP_1 = ({ tab, setTab, dataId }) => {
       </Row>
       <Row>
         <TabButton
-          value="aap_0"
+          value="APP_Start"
           onClick={(newTab) => {
             setTab(newTab.target.value);
           }}
@@ -37,13 +37,13 @@ export const AAP_1 = ({ tab, setTab, dataId }) => {
           뒤로가기
         </TabButton>
         <TabButton
-          value="aap_2"
+          value="APP_GetInfo"
           onClick={(newTab) => {
             setTab(newTab.target.value);
             setCookie('dataId', dataId, {
               expires: new Date(Date.now() + 1000 * 60 * 10),
             });
-            navigate('/payment');
+            navigate('/getInfo');
           }}
         >
           다음단계

@@ -3,7 +3,7 @@ import LinkButton from '@atoms/LinkButton';
 import useHover from '@hooks/useHover';
 import { format } from 'date-fns';
 import styled from 'styled-components';
-import * as colors from '@styles/colors'
+import * as colors from '@styles/colors';
 
 const Container = styled('div')`
   display: flex;
@@ -39,8 +39,7 @@ const TitleWrapper = styled('div')`
 
 const DateWrapper = styled('div')`
   color: ${colors.textSecondary};
-`
-
+`;
 
 const PosterItem = ({ dataId, posterImgUrl, title, startDate, endDate }) => {
   const [hoverRef, isHover] = useHover();
@@ -49,7 +48,7 @@ const PosterItem = ({ dataId, posterImgUrl, title, startDate, endDate }) => {
       {isHover && (
         <HoverWrapper>
           <LinkButton to={`/detail?id=${dataId}`} name="상세정보" />
-          <LinkButton to={`/getInfo?id=${dataId}`} name="예매하기" />
+          <LinkButton to={`/payment?id=${dataId}`} name="예매하기" />
         </HoverWrapper>
       )}
       <TicketImg src={posterImgUrl} />

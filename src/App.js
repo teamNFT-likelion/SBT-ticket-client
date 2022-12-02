@@ -10,7 +10,7 @@ import AccountPage from '@pages/AccountPage';
 import '@fontsource/shrikhand'; // title TODO: refactoring 필요
 import '@fontsource/roboto-condensed'; // subtitle
 import '@fontsource/do-hyeon';
-import AAPP from '@components/pages/AAP_STEP/AAPP';
+import App3GetInfoPage from '@components/pages/payment/App3GetInfoPage';
 
 function App() {
   return (
@@ -20,10 +20,9 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/list" element={<TListPage />} />
         <Route path="/detail" element={<TDetailPage />} />
-        {/*<<중요>>   꼭 지우거나 바꿔줘야됨 (/getInfo <-> /detail)   <<중요>>*/}
-        <Route path="/payment" element={<AAPP />} />
+        <Route path="/getInfo" element={<App3GetInfoPage />} />
         <Route path="/search" element={<TSearchPage />} />
-        <Route path="/getInfo" element={<APaymentPage />} />
+        <Route path="/payment" element={<APaymentPage />} />
         <Route path="/account" element={<AccountPage />} />
       </Routes>
     </>

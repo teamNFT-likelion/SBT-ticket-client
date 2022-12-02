@@ -71,7 +71,7 @@ const BigPoster = ({ type, items }) => {
               <button
                 onClick={() =>
                   navigate({
-                    pathname: '/getInfo',
+                    pathname: '/payment',
                     search: `?id=${typeItems[0].id}`,
                   })
                 }
@@ -118,7 +118,7 @@ const BigPoster = ({ type, items }) => {
               <button
                 onClick={() =>
                   navigate({
-                    pathname: '/getInfo',
+                    pathname: '/payment',
                     search: `?id=${typeItems[1].id}`,
                   })
                 }

@@ -1,93 +1,40 @@
 import React, { useState } from 'react';
 import Layout from '@articles/Layout';
-import LinkButton from '@atoms/LinkButton';
-import DetailInfo from '@components/atoms/DetailInfo';
-import { Row } from '@components/atoms/wrapper.style';
-import { Ticket } from '@components/articles/AAP-inactive';
-import {Container,PageTitle,SubTitle,TabButton,TempBox,} from '@components/atoms/AAP_styles';
-import { AAP_1 } from './AAP_STEP/AAP_1';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { DummyData } from './tempData/DummyData';
-import { mainItems } from 'src/mock/items';
 import { parse } from 'query-string';
+import { App1Start } from './payment/App1Start';
+import { App2SelectSeats } from './payment/App2SelectSeats';
+import { App4Done } from './payment/App4Done';
+import { Container } from '@styles/ApaymentStyles';
 
-
-const AAP_0 = ({tab, setTab, dataId}) => {
-
-  const data = mainItems.filter((item) => item.id === dataId)[0];
-  console.log(data);
-
-
-  return(<>
-    <PageTitle>티켓 결제</PageTitle>
-    <SubTitle>| 선택한 공연 정보 |</SubTitle>
-    <DetailInfo dataId={dataId} />
-    <SubTitle>| YOUR INACTIVE TICKETS |</SubTitle>
-    <Row>
-      {DummyData.map((ticket) => (
-        <Ticket
-          id={ticket.id}
-          image={ticket.image}
-          title={ticket.title}
-          date={ticket.date}
-          active={ticket.active}
-          key={ticket.id}
-        />
-      ))}
-    </Row>
-
-    <TabButton
-      value="aap_1"
-      onClick={(newTab) => {
-        setTab(newTab.target.value);
-      }}
-    >
-      예매하기
-    </TabButton>
-  </>);
-};
-
-  const AAP_3 = (dataId) => {
-    return (
-      <>
-        <PageTitle>결제가 완료되었습니다.</PageTitle>
-        <SubTitle>| 결제 정보 |</SubTitle>
-        <TempBox>결제된 티켓의 정보</TempBox>
-        <LinkButton to="/account" name="티켓 확인하러가기" />
-      </>
-    );
-  };
 const APaymentPage = () => {
   // tap 키 저장 state
-  const [tab, setTab] = useState('aap_0');
+  const [tab, setTab] = useState('APP_Start');
   const navigate = useNavigate();
   let location = useLocation();
 
   const parsed = parse(location.search);
 
   const dataId = parsed.id;
+  console.log(tab);
   console.log(location);
 
-
-
   useEffect(() => {
-    if (location.state?.tab==='aap_3') {
-      setTab('aap_3');
+    if (location.state?.tab === 'APP_Done') {
+      setTab('APP_Done');
     }
   }, [location]);
-
-
 
   return (
     <Layout page="a-payment-page">
       <Container>
-        {tab === 'aap_0' ? <AAP_0 tab={tab} setTab={setTab} dataId={dataId} /> : null}
-        {tab === 'aap_1' ? (
-          <AAP_1 tab={tab} setTab={setTab} dataId={dataId} />
-        ) : null}
-        {tab === 'app_2' ? navigate('/payment'):null}
-        {tab === 'aap_3' ? <AAP_3 dataId={dataId} /> : null}
+        {tab === 'APP_Start' && <App1Start setTab={setTab} dataId={dataId} />}
+        {tab === 'APP_SelectSeats' && (
+          <App2SelectSeats setTab={setTab} dataId={dataId} />
+        )}
+        {tab === 'APP_GetInfo' && navigate('/payment')}
+        {tab === 'APP_Done' && <App4Done setTab={setTab} dataId={dataId} />}
       </Container>
     </Layout>
   );

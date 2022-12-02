@@ -1,9 +1,8 @@
-import React from 'react'
-import { TabButton } from '@components/atoms/AAP_styles';
+import React from 'react';
+import { TabButton } from '@styles/ApaymentStyles';
 import { PartButtonContainer, SelectInfoBox } from '@styles/ticketDetailStyle';
 
-
-export default function PartInfoContainer({data, setPartState}) {
+export default function PartInfoContainer({ data, setPartState }) {
   return (
     <SelectInfoBox>
       회차

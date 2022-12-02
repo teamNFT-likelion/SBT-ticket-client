@@ -6,7 +6,7 @@ import {
   PageTitle,
   SubTitle,
   TabButton,
-} from '@components/atoms/AAP_styles';
+} from '@styles/ApaymentStyles';
 import { useNavigate } from 'react-router-dom';
 import { kakaoOauthUrl, naverOauthUrl } from '@constants/urlConst';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -38,7 +38,13 @@ function onChange(value) {
   console.log('Captcah value:', value);
 }
 
-const AAPP = () => {
+function getUserEmail(userData) {
+  // const email = userData && (userData.email || userData.kakao_account.email);
+  const kakao = '카카오~';
+  return kakao;
+}
+
+const App3GetInfoPage = () => {
   // tap 키 저장 state
   const navigate = useNavigate();
   const dataId = getCookie('dataId');
@@ -85,13 +91,7 @@ const AAPP = () => {
               }}
             />
           </Column>
-          <UserInfoWrapper>
-            {userData
-              ? userData.email
-                ? userData.email
-                : userData.kakao_account.email
-              : null}
-          </UserInfoWrapper>
+          <UserInfoWrapper>{getUserEmail(userData)}</UserInfoWrapper>
         </Row>
         <ReCAPTCHA
           sitekey={'6Lf2GEUjAAAAAI0WtrRYHEacUJrsrssZN-qA_H35'}
@@ -126,9 +126,9 @@ const AAPP = () => {
 
         <Row>
           <TabButton
-            value="aap_1"
+            value="APP_Start"
             onClick={(newTab) => {
-              navigate(`/getInfo?id=${dataId}`, {
+              navigate(`/payment?id=${dataId}`, {
                 state: { tab: newTab.target.value },
               });
             }}
@@ -136,9 +136,9 @@ const AAPP = () => {
             뒤로가기
           </TabButton>
           <TabButton
-            value="aap_3"
+            value="APP_Done"
             onClick={(newTab) => {
-              navigate(`/getInfo?id=${dataId}`, {
+              navigate(`/payment?id=${dataId}`, {
                 state: { tab: newTab.target.value },
               });
             }}
@@ -151,4 +151,4 @@ const AAPP = () => {
   );
 };
 
-export default AAPP;
+export default App3GetInfoPage;

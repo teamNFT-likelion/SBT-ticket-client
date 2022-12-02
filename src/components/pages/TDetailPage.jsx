@@ -11,19 +11,18 @@ import verticalLine from '@assets/img/verticalLine.png';
 import { parse } from 'query-string';
 import { ContentsInfoBody, SelectInfo } from '@styles/ticketDetailStyle';
 import TDPCalendar from '@components/atoms/Calendar';
-import PartInfoContainer from '@components/atoms/PartInfoContainer';
+import PartInfoContainer from '@components/articles/PartInfoContainer';
 import RemainSeats from '@components/atoms/RemainSeats';
 
-const TDetailPage = ({ onNavClick }) => {
+const TDetailPage = () => {
   const location = useLocation();
-  // const navigate = useNavigate();
   const [partState, setPartState] = useState(0);
 
   const parsed = parse(location.search);
 
   const dataId = parsed.id;
 
-  let data = mainItems.filter((item) => item.id === dataId)[0];
+  const data = mainItems.filter((item) => item.id === dataId)[0];
 
   return (
     <Layout>
