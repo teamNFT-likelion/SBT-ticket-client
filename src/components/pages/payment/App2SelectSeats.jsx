@@ -40,9 +40,7 @@ export const App2SelectSeats = ({ setTab, dataId }) => {
           value="APP_GetInfo"
           onClick={(newTab) => {
             setTab(newTab.target.value);
-            setCookie('dataId', dataId, {
-              expires: new Date(Date.now() + 1000 * 60 * 10),
-            });
+            setCookie('dataId', dataId);
             navigate('/getInfo');
           }}
         >

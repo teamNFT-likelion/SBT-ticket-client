@@ -39,9 +39,8 @@ function onChange(value) {
 }
 
 function getUserEmail(userData) {
-  // const email = userData && (userData.email || userData.kakao_account.email);
-  const kakao = '카카오~';
-  return kakao;
+  const email = userData && (userData.email || userData.kakao_account.email);
+  return email;
 }
 
 const App3GetInfoPage = () => {
