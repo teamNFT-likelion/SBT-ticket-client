@@ -41,7 +41,7 @@ export const AAP_1 = ({ tab, setTab, dataId }) => {
           onClick={(newTab) => {
             setTab(newTab.target.value);
             setCookie('dataId', dataId, {
-              expires: new Date(Date.now() + 1000 * 60 * 5),
+              expires: new Date(Date.now() + 1000 * 60 * 10),
             });
             navigate('/payment');
           }}

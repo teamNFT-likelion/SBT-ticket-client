@@ -16,11 +16,13 @@ import RemainSeats from '@components/atoms/RemainSeats';
 
 const TDetailPage = ({ onNavClick }) => {
   const location = useLocation();
+  // const navigate = useNavigate();
   const [partState, setPartState] = useState(0);
 
   const parsed = parse(location.search);
 
   const dataId = parsed.id;
+
   let data = mainItems.filter((item) => item.id === dataId)[0];
 
   return (
