@@ -45,7 +45,7 @@ const AAPP = () => {
 
   // 모달을 위한 state
   const [showUseKginicis, setShowUseKginicis] = useState(false);
-  const userData = useOauth(dataId);
+  const userData = useOauth();
 
   return (
     <Layout page="a-payment-page">

@@ -4,14 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { setCookie, getCookie } from '@utils/cookie';
 import { useLocation } from 'react-router-dom';
 
-
 export default function useOauth() {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log("location : ",location);
+  console.log('location : ', location);
   const oauthData = getCookie('oauthData');
   const params = new URL(window.location).searchParams; //TODO: 이거 react-router-dom hook 있음 리팩토링필요
-  
+
   // console.log("useOauth :", dataId);
   const state = params.get('state');
   const code = params.get('code');

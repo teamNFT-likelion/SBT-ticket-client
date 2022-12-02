@@ -10,7 +10,6 @@ import {
   FOOTER_MT,
 } from '@constants/styleConst';
 
-
 const ContentWrapper = styled('div')`
   width: ${APP_MAX_W}px;
   padding: 0 20px;
@@ -18,7 +17,7 @@ const ContentWrapper = styled('div')`
   min-height: calc(100vh - ${APP_HEADER_H} - ${FOOTER_H}px - ${FOOTER_MT}px);
   padding-top: 16px;
 `;
-       const dfskjflksjf = () => {dlkfjslkfjsdf};
+
 const Layout = ({ children, page }) => {
   return (
     <Column alignItems="center">
