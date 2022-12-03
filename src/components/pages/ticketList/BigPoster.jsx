@@ -60,14 +60,20 @@ const BigPoster = ({ type, items }) => {
             <ButtonWrapper>
               <button
                 onClick={() =>
-                  navigate('/detail', { state: { dataId: typeItems[0].id } })
+                  navigate({
+                    pathname: '/detail',
+                    search: `?id=${typeItems[0].id}`,
+                  })
                 }
               >
                 상세정보
               </button>
               <button
                 onClick={() =>
-                  navigate('/payment', { state: { dataId: typeItems[0].id } })
+                  navigate({
+                    pathname: '/payment',
+                    search: `?id=${typeItems[0].id}`,
+                  })
                 }
               >
                 예매하기
@@ -101,14 +107,20 @@ const BigPoster = ({ type, items }) => {
             <ButtonWrapper>
               <button
                 onClick={() =>
-                  navigate('/detail', { state: { dataId: typeItems[1].id } })
+                  navigate({
+                    pathname: '/detail',
+                    search: `?id=${typeItems[1].id}`,
+                  })
                 }
               >
                 상세정보
               </button>
               <button
                 onClick={() =>
-                  navigate('/payment', { state: { dataId: typeItems[1].id } })
+                  navigate({
+                    pathname: '/payment',
+                    search: `?id=${typeItems[1].id}`,
+                  })
                 }
               >
                 예매하기

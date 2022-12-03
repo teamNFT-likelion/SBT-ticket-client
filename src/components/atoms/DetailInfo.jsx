@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import { mainItems } from 'src/mock/items';
 import { format } from 'date-fns';
-import { SubTitle } from '@components/atoms/AAP_styles';
-
+import { SubTitle } from '@styles/ApaymentStyles';
 
 const ContentsInfoBody = styled(Row)`
   // HEADER 높이 5rem + 여분 9rem
@@ -34,14 +33,20 @@ const ConcertInfoItem = styled('div')`
   font-family: sans-serif;
 `;
 
+function getData(dataId) {
+  const data = mainItems.filter((item) => item.id === dataId)[0];
+  return data;
+}
 
-const DetailInfo = ({dataId}) => {
-  const data = mainItems.filter((item)=>item.id === dataId)[0];
-  console.log(data);
+const DetailInfo = ({ dataId }) => {
+  const data = getData(dataId);
+
   return (
     <ContentsInfoBody>
       <ContentsInfo>
-        <SubTitle style={{marginBottom:"24px", fontSize:"25px"}}>{data.title}</SubTitle>
+        <SubTitle style={{ marginBottom: '24px', fontSize: '25px' }}>
+          {data.title}
+        </SubTitle>
         <ConcertInfo>
           <ConcertInfoItem>공연기간</ConcertInfoItem>
           <ConcertInfoItem>

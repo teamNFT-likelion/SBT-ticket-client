@@ -1,76 +1,35 @@
 import React, { useState } from 'react';
 import Layout from '@articles/Layout';
-import LinkButton from '@atoms/LinkButton';
-import DetailInfo from '@components/atoms/DetailInfo';
-import { Row } from '@components/atoms/wrapper.style';
-import { Ticket } from '@components/articles/AAP-inactive';
-import { DummyData } from './tempData/DummyData';
-import {Container,PageTitle,SubTitle,TabButton,TempBox,} from '@components/atoms/AAP_styles';
-import { AAP_1 } from './AAP_STEP/AAP_1';
-import { AAP_2 } from './AAP_STEP/AAP_2';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-
+import { parse } from 'query-string';
+import { App1Start } from './payment/App1Start';
+import { App2SelectSeats } from './payment/App2SelectSeats';
+import { App4Done } from './payment/App4Done';
+import { Container } from '@styles/ApaymentStyles';
 
 const APaymentPage = () => {
   // tap 키 저장 state
-  const [tab, setTab] = useState('aap_0');
+  const [tab, setTab] = useState('APP_Start');
   let location = useLocation();
-  const dataId = location.state.dataId;
+
+  const parsed = parse(location.search);
+
+  const dataId = parsed.id;
 
   useEffect(() => {
-    // console.log(location);
-    if (location.search) {
-      setTab("aap_2");
-    }
+    const locationTab = location.state?.tab || 'APP_Start';
+    setTab(locationTab);
   }, [location]);
-
-  const AAP_0 = (
-    <>
-      <PageTitle>티켓 결제</PageTitle>
-      <SubTitle>| 선택한 공연 정보 |</SubTitle>
-      <DetailInfo dataId={dataId} />
-      <SubTitle>| YOUR INACTIVE TICKETS |</SubTitle>
-      <Row>
-        {DummyData.map((ticket) => (
-          <Ticket
-            id={ticket.id}
-            image={ticket.image}
-            title={ticket.title}
-            date={ticket.date}
-            active={ticket.active}
-            key={ticket.id}
-          />
-        ))}
-      </Row>
-
-      <TabButton
-        value="aap_1"
-        onClick={(newTab) => {
-          setTab(newTab.target.value);
-        }}
-      >
-        예매하기
-      </TabButton>
-    </>
-  );
-
-  const AAP_3 = (
-    <>
-      <PageTitle>결제가 완료되었습니다.</PageTitle>
-      <SubTitle>| 결제 정보 |</SubTitle>
-      <TempBox>결제된 티켓의 정보</TempBox>
-      <LinkButton to="/account" name="티켓 확인하러가기" />
-    </>
-  );
 
   return (
     <Layout page="a-payment-page">
       <Container>
-        {tab === 'aap_0' ? AAP_0 : null}
-        {tab === 'aap_1' ? <AAP_1 tab={tab} setTab={setTab} /> : null}
-        {tab === 'aap_2' ? <AAP_2 tab={tab} setTab={setTab} /> : null}
-        {tab === 'aap_3' ? AAP_3 : null}
+        {tab === 'APP_Start' && <App1Start setTab={setTab} dataId={dataId} />}
+        {tab === 'APP_SelectSeats' && (
+          <App2SelectSeats setTab={setTab} dataId={dataId} />
+        )}
+        {tab === 'APP_Done' && <App4Done setTab={setTab} dataId={dataId} />}
       </Container>
     </Layout>
   );

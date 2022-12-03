@@ -64,6 +64,7 @@ const TSearchPage = () => {
             return (
               <PosterItem
                 key={data.id}
+                dataId={data.id}
                 posterImgUrl={data.posterImgUrl}
                 title={data.title}
                 startDate={data.startDate}
