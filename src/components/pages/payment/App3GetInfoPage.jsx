@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '@articles/Layout';
+import * as colors from '@styles/colors';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import {
   Container,
@@ -27,11 +28,13 @@ const LoginImageWrapper = styled('img')`
 `;
 
 const UserInfoWrapper = styled(Column)`
-  background-color: white;
-  color: black;
+  color: #ffffff;
   margin-top: 30px;
   width: 183px;
   height: 90px;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 function onChange(value) {
@@ -39,7 +42,9 @@ function onChange(value) {
 }
 
 function getUserEmail(userData) {
-  const email = userData && (userData.email || userData.kakao_account.email);
+  const email =
+    (userData && (userData.email || userData.kakao_account.email)) ||
+    'Log in, please.';
   return email;
 }
 
@@ -96,7 +101,12 @@ const App3GetInfoPage = () => {
               }}
             />
           </Column>
-          <UserInfoWrapper>{getUserEmail(userData)}</UserInfoWrapper>
+          <UserInfoWrapper>
+            당신의 e-mail{' '}
+            <p style={{ color: colors.natural95, fontSize: '20px' }}>
+              {getUserEmail(userData)}
+            </p>
+          </UserInfoWrapper>
         </Row>
         <ReCAPTCHA
           sitekey={'6Lf2GEUjAAAAAI0WtrRYHEacUJrsrssZN-qA_H35'}
