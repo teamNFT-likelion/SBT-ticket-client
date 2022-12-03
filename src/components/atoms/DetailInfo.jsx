@@ -11,7 +11,8 @@ const ContentsInfoBody = styled(Row)`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
 `;
 
 const ContentsInfo = styled(Column)`
@@ -19,6 +20,7 @@ const ContentsInfo = styled(Column)`
   height: 345px;
   /* justify-content: center; */
   align-items: center;
+  margin: 10px;
 `;
 
 const ConcertInfo = styled('div')`
