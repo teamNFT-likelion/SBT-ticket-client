@@ -52,6 +52,12 @@ const App3GetInfoPage = () => {
   const [showUseKginicis, setShowUseKginicis] = useState(false);
   const userData = useOauth();
 
+  function backToPaymemt(e) {
+    navigate(`/payment?id=${dataId}`, {
+      state: { tab: e.target.value },
+    });
+  }
+
   return (
     <Layout page="a-payment-page">
       <Container>
@@ -106,13 +112,6 @@ const App3GetInfoPage = () => {
           >
             일반결제
           </TabButton>
-          <CustomModal
-            show={showUseKginicis}
-            toggleModal={() => setShowUseKginicis(false)}
-          >
-            <img src={kginicisImg} alt="견본용" />
-          </CustomModal>
-
           <TabButton
             value="byCoin"
             onClick={(newTab) => {
@@ -121,25 +120,28 @@ const App3GetInfoPage = () => {
           >
             코인결제
           </TabButton>
+
+          <CustomModal
+            show={showUseKginicis}
+            toggleModal={() => setShowUseKginicis(false)}
+          >
+            <img src={kginicisImg} alt="견본용" />
+          </CustomModal>
         </Row>
 
         <Row>
           <TabButton
             value="APP_Start"
-            onClick={(newTab) => {
-              navigate(`/payment?id=${dataId}`, {
-                state: { tab: newTab.target.value },
-              });
+            onClick={(e) => {
+              backToPaymemt(e);
             }}
           >
             뒤로가기
           </TabButton>
           <TabButton
             value="APP_Done"
-            onClick={(newTab) => {
-              navigate(`/payment?id=${dataId}`, {
-                state: { tab: newTab.target.value },
-              });
+            onClick={(e) => {
+              backToPaymemt(e);
             }}
           >
             다음단계
