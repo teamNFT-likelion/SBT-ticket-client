@@ -131,7 +131,7 @@ const App3GetInfoPage = () => {
 
         <Row>
           <TabButton
-            value="APP_Start"
+            value="APP_SelectSeats"
             onClick={(e) => {
               backToPaymemt(e);
             }}
