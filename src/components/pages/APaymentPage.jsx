@@ -17,12 +17,8 @@ const APaymentPage = () => {
 
   const dataId = parsed.id;
 
-  // useEffect(() => {
-  //   const tab = location.state.tab || 'APP_Start';
-  //   setTab(tab);
-  // }, [location]);
   useEffect(() => {
-    const locationTab = location.state?.tab;
+    const locationTab = location.state?.tab || 'APP_Start';
     setTab(locationTab);
   }, [location]);
 
