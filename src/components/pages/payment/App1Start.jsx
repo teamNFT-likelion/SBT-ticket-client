@@ -2,7 +2,7 @@ import React from 'react';
 import { TabButton } from '@styles/ApaymentStyles';
 import DetailInfo from '@components/atoms/DetailInfo';
 import { Row } from '@components/atoms/wrapper.style';
-import { Ticket } from '@components/articles/APP-inactive';
+import { Ticket } from '@components/articles/APaymentInactive';
 import { DummyData } from '@components/pages/tempData/DummyData';
 import { PageTitle, SubTitle } from '@styles/ApaymentStyles';
 
