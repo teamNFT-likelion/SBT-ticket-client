@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '@articles/Layout';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { parse } from 'query-string';
 import { App1Start } from './payment/App1Start';
@@ -8,6 +8,7 @@ import { App2SelectSeats } from './payment/App2SelectSeats';
 import { App4Done } from './payment/App4Done';
 import { Container } from '@styles/ApaymentStyles';
 import { mainItems } from '@mock/items';
+import NullData from './NullData';
 
 const APaymentPage = () => {
   // tap 키 저장 state
@@ -15,7 +16,6 @@ const APaymentPage = () => {
   let location = useLocation();
 
   const parsed = parse(location.search);
-  const navigate = useNavigate();
 
   const dataId = parsed.id;
   const data = mainItems.filter((item) => item.id === dataId)[0] || false;
@@ -26,12 +26,6 @@ const APaymentPage = () => {
   }, [location]);
 
   let pageComponent;
-
-  useEffect(() => {
-    if (pageComponent === null) {
-      navigate('/nullData');
-    }
-  }, [navigate, pageComponent]);
 
   if (data) {
     pageComponent = (
@@ -46,7 +40,7 @@ const APaymentPage = () => {
       </Layout>
     );
   } else {
-    pageComponent = null;
+    pageComponent = <NullData />;
   }
 
   return pageComponent;
