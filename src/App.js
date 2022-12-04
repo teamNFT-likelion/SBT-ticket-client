@@ -11,7 +11,6 @@ import '@fontsource/shrikhand'; // title TODO: refactoring 필요
 import '@fontsource/roboto-condensed'; // subtitle
 import '@fontsource/do-hyeon';
 import App3GetInfoPage from '@components/pages/payment/App3GetInfoPage';
-import NullData from '@components/pages/NullData';
 
 function App() {
   return (
@@ -25,7 +24,6 @@ function App() {
         <Route path="/search" element={<TSearchPage />} />
         <Route path="/payment" element={<APaymentPage />} />
         <Route path="/account" element={<AccountPage />} />
-        <Route path="/nullData" element={<NullData />} />
       </Routes>
     </>
   );

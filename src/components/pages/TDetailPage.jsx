@@ -6,31 +6,24 @@ import DetailInfo from '@components/atoms/DetailInfo';
 import CategoryNav from '@components/articles/CategoryNav';
 import PosterItems from './ticketList/PosterItems';
 import { mainItems } from 'src/mock/items';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import verticalLine from '@assets/img/verticalLine.png';
 import { parse } from 'query-string';
 import { ContentsInfoBody, SelectInfo } from '@styles/ticketDetailStyle';
 import TDPCalendar from '@components/atoms/Calendar';
 import PartInfoContainer from '@components/articles/PartInfoContainer';
 import RemainSeats from '@components/atoms/RemainSeats';
-import { useEffect } from 'react';
+import NullData from './NullData';
 
 const TDetailPage = () => {
   const location = useLocation();
   const [partState, setPartState] = useState(0);
-  const navigate = useNavigate();
   const parsed = parse(location.search);
   const dataId = parsed.id;
 
   const data = mainItems.filter((item) => item.id === dataId)[0] || false;
 
   let pageComponent;
-
-  useEffect(() => {
-    if (pageComponent === null) {
-      navigate('/nullData');
-    }
-  }, [navigate, pageComponent]);
 
   if (data) {
     pageComponent = (
@@ -57,7 +50,7 @@ const TDetailPage = () => {
       </Layout>
     );
   } else {
-    pageComponent = null;
+    pageComponent = <NullData />;
   }
 
   return pageComponent;
