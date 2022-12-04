@@ -11,6 +11,7 @@ import '@fontsource/shrikhand'; // title TODO: refactoring 필요
 import '@fontsource/roboto-condensed'; // subtitle
 import '@fontsource/do-hyeon';
 import App3GetInfoPage from '@components/pages/payment/App3GetInfoPage';
+import Page404 from '@components/pages/Page404';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/search" element={<TSearchPage />} />
         <Route path="/payment" element={<APaymentPage />} />
         <Route path="/account" element={<AccountPage />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </>
   );
