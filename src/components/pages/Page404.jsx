@@ -3,6 +3,7 @@ import Layout from '@articles/Layout';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import { Link } from 'react-router-dom';
+import ErrorImage from '@assets/img/ErrorImage.svg';
 
 const Container = styled('div')`
   display: flex;
@@ -11,21 +12,6 @@ const Container = styled('div')`
   margin-bottom: 150px;
   align-items: center;
   flex-direction: column;
-`;
-
-const TitleContainer = styled('div')`
-  margin: 50px 0;
-`;
-
-const TitleWrapper = styled('div')`
-  margin-top: 40px;
-  font-size: 40px;
-`;
-
-const QueryEmphasize = styled('span')`
-  font-size: 30px;
-  font-weight: 400;
-  color: ${colors.bgRed};
 `;
 
 const ButtonWrapper = styled('button')`
@@ -38,15 +24,16 @@ const ButtonWrapper = styled('button')`
   margin: 3px;
 `;
 
+const ErrorIll = styled('img')`
+  width: 100%;
+  height: 100%;
+`;
+
 const Page404 = () => {
   return (
     <Layout>
       <Container>
-        <TitleContainer>
-          <TitleWrapper>
-            <QueryEmphasize> [ 404 ] The path does not exist.</QueryEmphasize>
-          </TitleWrapper>
-        </TitleContainer>
+        <ErrorIll src={ErrorImage} />
         <Link to="/list" name="return to list">
           <ButtonWrapper>return to list</ButtonWrapper>
         </Link>
