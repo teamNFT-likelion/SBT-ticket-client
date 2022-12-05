@@ -50,14 +50,14 @@ const SearchBar = () => {
         onKeyUp={() => {
           // 엔터키를 눌렀을 때
           if (window.event.keyCode === 13) {
-            navigate('/search', { state: { typing: query } });
+            navigate({ pathname: '/search', search: `?typing=${query}` });
           }
         }}
       />
       <SearchButton
         type="submit"
         onClick={() => {
-          navigate('/search', { state: { typing: query } });
+          navigate({ pathname: '/search', search: `?typing=${query}` });
         }}
         value={query}
       >
