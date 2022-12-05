@@ -7,7 +7,7 @@ import metamaskImageUrl from '@assets/icon/MetaMask.png';
 import CustomModal from '@articles/CustomModal';
 import QRCode from 'qrcode.react';
 import Web3 from 'web3';
-// import Caver from 'caver-js';
+import Caver from 'caver-js';
 import axios from 'axios';
 import { GOERLI_TTOT } from '@contracts/ContractAddress';
 import { TTOT_ABI } from '@contracts/ABI';
@@ -167,7 +167,7 @@ const DummyData = [
   },
 ];
 
-// const klaytn = window.klaytn;
+const klaytn = window.klaytn;
 const ethereum = window.ethereum;
 
 const AccountPage = () => {
@@ -193,7 +193,7 @@ const AccountPage = () => {
 
   // 컨트랙트와 통신을 위한 객체 저장
   const [web3, setWeb3] = useState({});
-  // const [caver, setCaver] = useState({});
+  const [caver, setCaver] = useState({});
 
 
   // account와 walletType 불러오기
@@ -212,14 +212,14 @@ const AccountPage = () => {
         console.log(err);
       }
     }
-    // if (typeof klaytn !== 'undefined') {
-    //   try {
-    //     const caver = new Caver(klaytn);
-    //     setCaver(caver);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // }
+    if (typeof klaytn !== 'undefined') {
+      try {
+        const caver = new Caver(klaytn);
+        setCaver(caver);
+      } catch (err) {
+        console.log(err);
+      }
+    }
   }, []);
 
   // 내 토큰들 불러오기
