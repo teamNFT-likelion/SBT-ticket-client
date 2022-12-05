@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '@articles/Layout';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import * as colors from '@styles/colors';
 import { mainItems as items } from '@mock/items.js';
 import PosterItem from './ticketList/PosterItem';
+import { parse } from 'query-string';
 
 const Container = styled('div')`
   width: 1350px;
@@ -39,28 +40,32 @@ const QueryEmphasize = styled('span')`
 
 const TSearchPage = () => {
   const location = useLocation();
-  const { typing } = location.state;
+  const parsed = parse(location.search);
+  const typing = parsed.typing;
+  const [typedItems, setTypedItems] = useState(items);
 
   // 원하는 검색어 찾기 기능
-  const filterTitle = items.filter((q) => {
-    return q.title
-      .replace(' ', '')
-      .toLocaleLowerCase()
-      .includes(typing.toLocaleLowerCase());
-  });
+  useEffect(() => {
+    const filterTitle = items.filter((q) => {
+      return q.title
+        .replace(' ', '')
+        .toLocaleLowerCase()
+        .includes(typing.toLocaleLowerCase());
+    });
+    setTypedItems(filterTitle);
+  }, [items, typing]);
 
   return (
     <Layout>
-      {console.log(filterTitle)}
       <Container>
         <TitleContainer>
           <TitleWrapper>
             ' <QueryEmphasize>{typing}</QueryEmphasize> ' 에 대한 검색 결과 (
-            {filterTitle.length})
+            {typedItems.length})
           </TitleWrapper>
         </TitleContainer>
         <PosterWrapper>
-          {filterTitle.map((data) => {
+          {typedItems.map((data) => {
             return (
               <PosterItem
                 key={data.id}
