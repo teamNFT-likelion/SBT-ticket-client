@@ -8,7 +8,7 @@ import { App2SelectSeats } from './payment/App2SelectSeats';
 import { App4Done } from './payment/App4Done';
 import { Container } from '@styles/ApaymentStyles';
 import { mainItems } from '@mock/items';
-import NullData from './NullData';
+import Page404 from './Page404';
 
 const APaymentPage = () => {
   // tap 키 저장 state
@@ -40,7 +40,7 @@ const APaymentPage = () => {
       </Layout>
     );
   } else {
-    pageComponent = <NullData />;
+    pageComponent = <Page404 />;
   }
 
   return pageComponent;

@@ -13,7 +13,7 @@ import { ContentsInfoBody, SelectInfo } from '@styles/ticketDetailStyle';
 import TDPCalendar from '@components/atoms/Calendar';
 import PartInfoContainer from '@components/articles/PartInfoContainer';
 import RemainSeats from '@components/atoms/RemainSeats';
-import NullData from './NullData';
+import Page404 from './Page404';
 
 const TDetailPage = () => {
   const location = useLocation();
@@ -50,7 +50,7 @@ const TDetailPage = () => {
       </Layout>
     );
   } else {
-    pageComponent = <NullData />;
+    pageComponent = <Page404 />;
   }
 
   return pageComponent;
