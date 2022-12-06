@@ -1,5 +1,8 @@
 import styled from 'styled-components';
+// eslint-disable-next-line no-unused-vars
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import * as colors from '@styles/colors';
+import { startDateState } from '@states/paymentState';
 
 const ModalContainer = styled('div')`
   display: ${(props) => (props.show ? 'block' : 'none')};
@@ -40,6 +43,17 @@ const ModalContent = styled('div')`
 `;
 
 const CustomModal = ({ show, toggleModal, styles, children }) => {
+  // useState 사용이랑 같은 패턴 [value, setValue]
+  // const [startDate, setStartDate] = useRecoilState(startDateState);
+
+  // value 만 받아오면 될때
+  const startDate = useRecoilValue(startDateState);
+
+  // setValue 부분만 받아오면 될때
+  // const setStartDate = useSetRecoilState(startDateState);
+
+  console.log(startDate);
+
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       toggleModal();

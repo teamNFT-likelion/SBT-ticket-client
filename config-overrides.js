@@ -8,6 +8,7 @@ module.exports = override(
     '@styles': path.resolve(__dirname, 'src', 'styles'),
     '@utils': path.resolve(__dirname, 'src', 'utils'),
     '@hooks': path.resolve(__dirname, 'src', 'hooks'),
+    '@states': path.resolve(__dirname, 'src', 'states'),
     '@constants': path.resolve(__dirname, 'src', 'constants'),
     '@mock': path.resolve(__dirname, 'src', 'mock'),
     '@pages': path.resolve(__dirname, 'src/components', 'pages'),
