@@ -18,6 +18,8 @@ const BigPoster = ({ type, items }) => {
   const [typeItems, setTypeItems] = useState(items);
   const navigate = useNavigate();
 
+  // const [connect, setConnect] = useState('none');
+
   const onClickCard = (side) => {
     if (activePosterId === 0 && side === 'right') {
       setActivePosterId(2);
@@ -59,12 +61,12 @@ const BigPoster = ({ type, items }) => {
             </InfoWrapper>
             <ButtonWrapper>
               <button
-                onClick={() =>
+                onClick={() => {
                   navigate({
                     pathname: '/detail',
                     search: `?id=${typeItems[0].id}`,
-                  })
-                }
+                  });
+                }}
               >
                 상세정보
               </button>
