@@ -14,7 +14,7 @@ export const PageTitle = styled('div')`
   color: white;
 `;
 export const SubTitle = styled(PageTitle)`
-  font-size: 22px;
+  font-size: 30px;
   margin-top: 30px;
   margin-bottom: 0px;
   color: ${colors.primary80};

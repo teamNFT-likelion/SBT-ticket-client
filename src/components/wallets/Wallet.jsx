@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import { toast } from 'react-toastify';
-import kaikasImageUrl from '@assets/icon/Kaikas.png';
 import metamaskImageUrl from '@assets/icon/MetaMask.png';
 import { BiWalletAlt } from 'react-icons/bi';
 import CustomModal from '@articles/CustomModal';
@@ -65,7 +64,6 @@ const ImageWrapper = styled('img')`
   object-fit: contain;
 `;
 
-const klaytn = window.klaytn;
 const ethereum = window.ethereum;
 
 export default function Wallet() {
@@ -88,6 +86,7 @@ export default function Wallet() {
       });
       return;
     }
+
     try {
       const accounts = await toast.promise(
         ethereum.request({
@@ -105,46 +104,13 @@ export default function Wallet() {
       window.location.reload();
       toast.success(`${formatAddress(accounts[0])}님 환영합니다.`);
     } catch {
-      toast.error('로그인 실패. 다시 시도해주세요.');
-    }
-  }
-
-  // 카이카스 로그인
-  async function loginWithKaikas() {
-    if (!klaytn) {
-      toast.error('Kaikas 설치 필요', {
-        position: toast.POSITION.TOP_CENTER,
-      });
-      return;
-    }
-    try {
-      const accounts = await toast.promise(
-        klaytn.enable(),
-        {
-          pending: 'Kaikas 지갑 연동 중',
-        },
-        { closeButton: true },
-      );
-      setAccount(accounts[0]);
-      setWalletType('klaytn');
-      localStorage.setItem('_user', accounts[0]);
-      localStorage.setItem('_wallet', 'klaytn');
-      window.location.reload();
-      toast.success(`${formatAddress(accounts[0])}님 환영합니다.`);
-    } catch {
-      toast.error('로그인 실패. 다시 시도해주세요.');
+      toast.error('로그인 실패. 브라우저를 끄고 다시 켜주세요.');
     }
   }
 
   // 메타마스크 로그인 핸들러
   function handleMetamaskLogin() {
     loginWithMetamask();
-    setShowWalletOptions(false);
-  }
-
-  // 카이카스 로그인 핸들러
-  function handleKaikasLogin() {
-    loginWithKaikas();
     setShowWalletOptions(false);
   }
 
@@ -170,24 +136,16 @@ export default function Wallet() {
           <ImageWrapper src={metamaskImageUrl} />
           {formatAddress(account)}
         </AddressContainer>
-      ) : (
-        <AddressContainer onClick={() => setShowDisconnectWallet(true)}>
-          <ImageWrapper src={kaikasImageUrl} />
-          {formatAddress(account)}
-        </AddressContainer>
-      )}
+      ) : null}
 
       <CustomModal
         show={showWalletOptions}
         toggleModal={() => setShowWalletOptions(false)}
       >
+        이더리움과 폴리곤 네트워크에서 사용이 가능합니다. 확인해주세요.
         <StyledButton onClick={handleMetamaskLogin}>
           <ImageWrapper src={metamaskImageUrl} />
           Metamask
-        </StyledButton>
-        <StyledButton onClick={handleKaikasLogin}>
-          <ImageWrapper src={kaikasImageUrl} />
-          Kaikas
         </StyledButton>
       </CustomModal>
 
