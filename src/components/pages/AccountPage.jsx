@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Layout from '@articles/Layout';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
-import kaikasImageUrl from '@assets/icon/Kaikas.png';
 import metamaskImageUrl from '@assets/icon/MetaMask.png';
 import CustomModal from '@articles/CustomModal';
 import QRCode from 'qrcode.react';
 import Web3 from 'web3';
-import Caver from 'caver-js';
 import axios from 'axios';
 import { GOERLI_TTOT } from '@contracts/ContractAddress';
 import { TTOT_ABI } from '@contracts/ABI';
@@ -64,6 +62,7 @@ const TicketWrapper = styled('div')`
 `;
 
 const TicketImage = styled('div')`
+  width: 300px;
   height: 80%;
   border-bottom: 3px solid ${colors.primary40};
 `;
@@ -129,45 +128,6 @@ const ModalButton = styled('div')`
   z-index: 10;
 `;
 
-const DummyData = [
-  {
-    id: 0,
-    image: 'A image',
-    title: 'A',
-    date: 'A date',
-    active: false,
-  },
-  {
-    id: 1,
-    image: 'B image',
-    title: 'B',
-    date: 'B date',
-    active: true,
-  },
-  {
-    id: 2,
-    image: 'C image',
-    title: 'C',
-    date: 'C date',
-    active: false,
-  },
-  {
-    id: 3,
-    image: 'D image',
-    title: 'D',
-    date: 'D date',
-    active: true,
-  },
-  {
-    id: 4,
-    image: 'E image',
-    title: 'E',
-    date: 'E date',
-    active: false,
-  },
-];
-
-const klaytn = window.klaytn;
 const ethereum = window.ethereum;
 
 const AccountPage = () => {
@@ -193,8 +153,6 @@ const AccountPage = () => {
 
   // 컨트랙트와 통신을 위한 객체 저장
   const [web3, setWeb3] = useState({});
-  const [caver, setCaver] = useState({});
-
 
   // account와 walletType 불러오기
   useEffect(() => {
@@ -202,7 +160,7 @@ const AccountPage = () => {
     setWalletType(localStorage.getItem('_wallet'));
   }, []);
 
-  // 시작 시 메타마스크 또는 카이카스와 연결이 되어있는 지 확인하고 객체를 생성.
+  // 시작 시 메타마스크와 연결이 되어있는 지 확인하고 객체를 생성.
   useEffect(() => {
     if (typeof ethereum !== 'undefined') {
       try {
@@ -211,15 +169,7 @@ const AccountPage = () => {
       } catch (err) {
         console.log(err);
       }
-    }
-    if (typeof klaytn !== 'undefined') {
-      try {
-        const caver = new Caver(klaytn);
-        setCaver(caver);
-      } catch (err) {
-        console.log(err);
-      }
-    }
+    } else return;
   }, []);
 
   // 내 토큰들 불러오기
@@ -228,8 +178,6 @@ const AccountPage = () => {
       let tokenContract;
       if (walletType === 'eth') {
         tokenContract = await new web3.eth.Contract(TTOT_ABI, GOERLI_TTOT);
-      // } else if (walletType === 'klaytn') {
-      //   tokenContract = await new caver.klay.Contract(TTOT_ABI, GOERLI_TTOT);
       } else return;
 
       const MyTokens = await tokenContract.methods.getSbtTokens(account).call();
@@ -239,8 +187,6 @@ const AccountPage = () => {
           let price;
           if (walletType === 'eth') {
             price = web3.utils.fromWei(i.price.toString(), 'ether');
-            // } else if (walletType === 'klaytn') {
-            //   price = caver.utils.convertFromPeb(i.price.toString(), 'KLAY');
           } else return;
           let item = {
             tokenId: Number(i.nftTokenId),
@@ -308,8 +254,6 @@ const AccountPage = () => {
       <AddressWrapper>
         {walletType === 'eth' ? (
           <ImageWrapper src={metamaskImageUrl} />
-        ) : walletType === 'klaytn' ? (
-          <ImageWrapper src={kaikasImageUrl} />
         ) : null}
         {account}
       </AddressWrapper>
@@ -328,7 +272,9 @@ const AccountPage = () => {
           value="ACTIVE"
           onClick={(newTab) => {
             setTab(newTab.target.value);
-            setActiveData(DummyData.filter((token) => token.active === true));
+            setActiveData(
+              sbtList.filter((token) => token.tokenIsActive === true),
+            );
           }}
         >
           ACTIVE
@@ -339,7 +285,7 @@ const AccountPage = () => {
           onClick={(newTab) => {
             setTab(newTab.target.value);
             setInactiveData(
-              DummyData.filter((token) => token.active === false),
+              sbtList.filter((token) => token.tokenIsActive === false),
             );
           }}
         >
@@ -349,13 +295,13 @@ const AccountPage = () => {
       <TicketContainer>
         {tab === 'ALL' ? (
           <>
-            {DummyData.map((ticket) => (
+            {sbtList.map((ticket) => (
               <Ticket
-                id={ticket.id}
-                image={ticket.image}
-                title={ticket.title}
-                date={ticket.date}
-                active={ticket.active}
+                id={ticket.tokenId}
+                image={ticket.tokenImage}
+                title={ticket.tokenTitle}
+                date={ticket.tokenDL}
+                active={ticket.tokenIsActive}
               />
             ))}
           </>
@@ -364,11 +310,11 @@ const AccountPage = () => {
           <>
             {activeData.map((ticket) => (
               <Ticket
-                id={ticket.id}
-                image={ticket.image}
-                title={ticket.title}
-                date={ticket.date}
-                active={ticket.active}
+                id={ticket.tokenId}
+                image={ticket.tokenImage}
+                title={ticket.tokenTitle}
+                date={ticket.tokenDL}
+                active={ticket.tokenIsActive}
               />
             ))}
           </>
@@ -377,11 +323,11 @@ const AccountPage = () => {
           <>
             {inactiveData.map((ticket) => (
               <Ticket
-                id={ticket.id}
-                image={ticket.image}
-                title={ticket.title}
-                date={ticket.date}
-                active={ticket.active}
+                id={ticket.tokenId}
+                image={ticket.tokenImage}
+                title={ticket.tokenTitle}
+                date={ticket.tokenDL}
+                active={ticket.tokenIsActive}
               />
             ))}
           </>
