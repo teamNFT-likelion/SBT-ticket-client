@@ -8,6 +8,7 @@
       "@utils/*": ["./src/utils/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@mock/*": ["./src/mock/*"],
+      "@states/*": ["./src/states/*"],
       "@constants/*": ["./src/constants/*"],
       "@pages/*": ["./src/components/pages/*"],
       "@atoms/*": ["./src/components/atoms/*"],
