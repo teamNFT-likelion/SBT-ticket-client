@@ -48,7 +48,7 @@ const SearchBar = () => {
           setQuery(e.target.value);
         }}
         onKeyUp={() => {
-          // 엔터키를 눌렀을 때
+          // 엔터키를 눌렀을 때에
           if (window.event.keyCode === 13) {
             navigate({ pathname: '/search', search: `?typing=${query}` });
           }
