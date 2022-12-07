@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LinkButton from '@atoms/LinkButton';
 import useHover from '@hooks/useHover';
 import { format } from 'date-fns';
@@ -43,12 +43,17 @@ const DateWrapper = styled('div')`
 
 const PosterItem = ({ dataId, posterImgUrl, title, startDate, endDate }) => {
   const [hoverRef, isHover] = useHover();
+
   return (
     <Container ref={hoverRef}>
       {isHover && (
         <HoverWrapper>
           <LinkButton to={`/detail?id=${dataId}`} name="상세정보" />
-          <LinkButton to={`/payment?id=${dataId}`} name="예매하기" />
+          <LinkButton
+            to={`/payment?id=${dataId}`}
+            name="예매하기"
+            connectCheck={true}
+          />
         </HoverWrapper>
       )}
       <TicketImg src={posterImgUrl} />

@@ -12,13 +12,25 @@ import {
   Info,
   ButtonWrapper,
 } from './BigPoster.style';
+import { walletConnectError } from '@components/wallets/WalletConnectError';
 
 const BigPoster = ({ type, items }) => {
   const [activePosterId, setActivePosterId] = useState(0);
   const [typeItems, setTypeItems] = useState(items);
   const navigate = useNavigate();
 
-  // const [connect, setConnect] = useState('none');
+  // setWalletAddress((prev) => {
+  //   const variable = { ...prev };
+
+  //   variable.email = localStorage.getItem('_user');
+
+  //   return { ...variable };
+  // });
+
+  //recoil 필요
+  const [walletAddress, setWalletAddress] = useState(
+    localStorage.getItem('_user'),
+  );
 
   const onClickCard = (side) => {
     if (activePosterId === 0 && side === 'right') {
@@ -71,12 +83,16 @@ const BigPoster = ({ type, items }) => {
                 상세정보
               </button>
               <button
-                onClick={() =>
-                  navigate({
-                    pathname: '/payment',
-                    search: `?id=${typeItems[0].id}`,
-                  })
-                }
+                onClick={() => {
+                  if (walletAddress) {
+                    navigate({
+                      pathname: '/payment',
+                      search: `?id=${typeItems[0].id}`,
+                    });
+                  } else {
+                    walletConnectError();
+                  }
+                }}
               >
                 예매하기
               </button>
@@ -118,12 +134,16 @@ const BigPoster = ({ type, items }) => {
                 상세정보
               </button>
               <button
-                onClick={() =>
-                  navigate({
-                    pathname: '/payment',
-                    search: `?id=${typeItems[1].id}`,
-                  })
-                }
+                onClick={() => {
+                  if (walletAddress) {
+                    navigate({
+                      pathname: '/payment',
+                      search: `?id=${typeItems[1].id}`,
+                    });
+                  } else {
+                    walletConnectError();
+                  }
+                }}
               >
                 예매하기
               </button>

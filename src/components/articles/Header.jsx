@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import logo_ttot from '@assets/img/logo_ttot.png';
@@ -7,6 +7,7 @@ import { APP_HEADER_H } from '@constants/styleConst';
 import { Link } from 'react-router-dom';
 import Wallet from '@components/wallets/Wallet';
 import SearchBar from './SearchBar';
+import { walletConnectError } from '@components/wallets/WalletConnectError';
 
 const Container = styled('div')`
   position: fixed;
@@ -42,6 +43,31 @@ const ButtonsWrapper = styled('div')`
 `;
 
 const Header = ({ page }) => {
+  //recoil 필요
+  const [walletAddress, setWalletAddress] = useState(
+    localStorage.getItem('_user'),
+  );
+
+  let accountBtn;
+
+  function handleClick(e) {
+    e.preventDefault();
+    walletConnectError();
+  }
+  if (walletAddress) {
+    accountBtn = (
+      <Link to={'/account'}>
+        <BiUser size="50" color={colors.primary40} />
+      </Link>
+    );
+  } else {
+    accountBtn = (
+      <Link to={'/list'} onClick={handleClick}>
+        <BiUser size="50" color={colors.primary40} />
+      </Link>
+    );
+  }
+
   return (
     <Container>
       <Link to={'/list'}>
@@ -52,9 +78,7 @@ const Header = ({ page }) => {
       </SearchBarWrapper>
       <ButtonsWrapper>
         <Wallet />
-        <Link to={'/account'}>
-          <BiUser size="50" color={colors.primary40} />
-        </Link>
+        {accountBtn}
       </ButtonsWrapper>
     </Container>
   );
