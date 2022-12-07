@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { walletConnectError } from '@components/wallets/WalletConnectError';
+import { useRecoilState } from 'recoil';
+import { userState } from '@states/userState';
 
 export const ButtonWrapper = styled('button')`
   background-color: #526600;
@@ -15,17 +17,14 @@ export const ButtonWrapper = styled('button')`
 `;
 
 const LinkButton = ({ to = '/', name = '홈으로', connectCheck = false }) => {
-  //recoil 필요
-  const [walletAddress, setWalletAddress] = useState(
-    localStorage.getItem('_user'),
-  );
+  const [walletAddress] = useRecoilState(userState);
 
   function handleClick(e) {
     e.preventDefault();
     walletConnectError();
   }
 
-  if (connectCheck && !walletAddress) {
+  if (connectCheck && !walletAddress.address) {
     return <ButtonWrapper onClick={handleClick}>{name}</ButtonWrapper>;
   }
   return (

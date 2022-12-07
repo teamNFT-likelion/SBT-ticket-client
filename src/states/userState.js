@@ -9,7 +9,7 @@ export const userState = atom({
   key: 'userState/user', // key : 파일명/~~(유니크해야함 id 역할)
   default: {
     email: '',
-    address: '',
+    address: localStorage.getItem('_user'),
     isConnectWallet: false,
   },
   //default : initialState 지정

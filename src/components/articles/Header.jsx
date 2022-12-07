@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import logo_ttot from '@assets/img/logo_ttot.png';
@@ -7,6 +7,8 @@ import { APP_HEADER_H } from '@constants/styleConst';
 import { Link } from 'react-router-dom';
 import Wallet from '@components/wallets/Wallet';
 import SearchBar from './SearchBar';
+import { useRecoilState } from 'recoil';
+import { userState } from '@states/userState';
 import { walletConnectError } from '@components/wallets/WalletConnectError';
 
 const Container = styled('div')`
@@ -44,9 +46,7 @@ const ButtonsWrapper = styled('div')`
 
 const Header = ({ page }) => {
   //recoil 필요
-  const [walletAddress, setWalletAddress] = useState(
-    localStorage.getItem('_user'),
-  );
+  const [walletAddress] = useRecoilState(userState);
 
   let accountBtn;
 
@@ -54,7 +54,7 @@ const Header = ({ page }) => {
     e.preventDefault();
     walletConnectError();
   }
-  if (walletAddress) {
+  if (walletAddress.address) {
     accountBtn = (
       <Link to={'/account'}>
         <BiUser size="50" color={colors.primary40} />
