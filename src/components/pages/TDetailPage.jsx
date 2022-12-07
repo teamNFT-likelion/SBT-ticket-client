@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 // import * as colors from '@styles/colors';
 // import styled from 'styled-components';
 import Layout from '@articles/Layout';
@@ -12,43 +12,20 @@ import { parse } from 'query-string';
 import { ContentsInfoBody, SelectInfo } from '@styles/ticketDetailStyle';
 import TDPCalendar from '@components/atoms/Calendar';
 import PartInfoContainer from '@components/articles/PartInfoContainer';
-import RemainSeats from '@components/atoms/RemainSeats';
-<<<<<<< HEAD
+import RemainSeatsAndPay from '@components/atoms/RemainSeatsAndPay';
 import Page404 from './Page404';
-=======
-import NullData from './NullData';
-import CheckWallet from '@components/wallets/components/CheckWallet';
->>>>>>> c1cc5df (지갑 연결되어있는지 확인)
 
 const TDetailPage = () => {
   const location = useLocation();
   const [partState, setPartState] = useState(0);
   const parsed = parse(location.search);
-
-  const [connect, setConnect] = useState('uninstalled');
-
   const dataId = parsed.id;
 
   const data = mainItems.filter((item) => item.id === dataId)[0] || false;
 
-  const checkwallet = CheckWallet();
-
   let pageComponent;
 
-  useEffect(() => {
-    if (
-      typeof window.ethereum === 'undefined' &&
-      typeof window.klaytn === 'undefined'
-    ) {
-      setConnect('none');
-    } else if (window.ethereum) {
-      console.log(window.ethereum._state._isUnlocked);
-    } else {
-      console.log(window.klaytn._state._isUnlocked);
-    }
-  }, [connect]);
-
-  if (data && (connect === 'klaytn' || connect === 'ethereum')) {
+  if (data) {
     pageComponent = (
       <Layout>
         <CategoryNav />
@@ -59,7 +36,11 @@ const TDetailPage = () => {
             <img src={verticalLine} alt="verticalLine" height="260px" />
             <PartInfoContainer data={data} setPartState={setPartState} />
             <img src={verticalLine} alt="verticalLine" height="260px" />
-            <RemainSeats partState={partState} dataId={dataId} data={data} />
+            <RemainSeatsAndPay
+              partState={partState}
+              dataId={dataId}
+              data={data}
+            />
           </SelectInfo>
         </ContentsInfoBody>
         Relative
@@ -70,12 +51,6 @@ const TDetailPage = () => {
         <ContentsInfoBody>
           <img src={data.detailInfoImg} alt="detailInfo" width={'800px'} />
         </ContentsInfoBody>
-      </Layout>
-    );
-  } else if (data) {
-    pageComponent = (
-      <Layout>
-        <CategoryNav />
       </Layout>
     );
   } else {
