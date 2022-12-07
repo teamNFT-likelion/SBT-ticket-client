@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import React, { useState, useEffect, useRef } from 'react';
 import Layout from '@articles/Layout';
 import * as colors from '@styles/colors';
