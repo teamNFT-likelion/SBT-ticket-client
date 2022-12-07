@@ -13,24 +13,15 @@ import {
   ButtonWrapper,
 } from './BigPoster.style';
 import { walletConnectError } from '@components/wallets/WalletConnectError';
+import { useRecoilState } from 'recoil';
+import { userState } from '@states/userState';
 
 const BigPoster = ({ type, items }) => {
   const [activePosterId, setActivePosterId] = useState(0);
   const [typeItems, setTypeItems] = useState(items);
   const navigate = useNavigate();
 
-  // setWalletAddress((prev) => {
-  //   const variable = { ...prev };
-
-  //   variable.email = localStorage.getItem('_user');
-
-  //   return { ...variable };
-  // });
-
-  //recoil 필요
-  const [walletAddress, setWalletAddress] = useState(
-    localStorage.getItem('_user'),
-  );
+  const [walletAddress] = useRecoilState(userState);
 
   const onClickCard = (side) => {
     if (activePosterId === 0 && side === 'right') {
@@ -84,7 +75,7 @@ const BigPoster = ({ type, items }) => {
               </button>
               <button
                 onClick={() => {
-                  if (walletAddress) {
+                  if (walletAddress.address) {
                     navigate({
                       pathname: '/payment',
                       search: `?id=${typeItems[0].id}`,
@@ -135,7 +126,7 @@ const BigPoster = ({ type, items }) => {
               </button>
               <button
                 onClick={() => {
-                  if (walletAddress) {
+                  if (walletAddress.address) {
                     navigate({
                       pathname: '/payment',
                       search: `?id=${typeItems[1].id}`,

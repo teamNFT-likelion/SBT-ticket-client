@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LinkButton from '@atoms/LinkButton';
 import useHover from '@hooks/useHover';
 import { format } from 'date-fns';
