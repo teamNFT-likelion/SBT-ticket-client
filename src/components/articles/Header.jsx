@@ -9,7 +9,7 @@ import Wallet from '@components/wallets/Wallet';
 import SearchBar from './SearchBar';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@states/userState';
-import { walletConnectError } from '@components/wallets/toastMessages';
+import { walletConnectError } from '@utils/toastMessages';
 
 const Container = styled('div')`
   position: fixed;

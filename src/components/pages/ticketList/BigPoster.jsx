@@ -12,7 +12,7 @@ import {
   Info,
   ButtonWrapper,
 } from './BigPoster.style';
-import { walletConnectError } from '@components/wallets/toastMessages';
+import { walletConnectError } from '@utils/toastMessages';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@states/userState';
 
