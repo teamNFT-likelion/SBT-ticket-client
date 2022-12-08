@@ -65,7 +65,7 @@ contract ttot_sample is  ERC721Enumerable {
     // 티켓 좌석 선택과 매수 제한 (공연id => 날짜 => 좌석)
     mapping (uint => mapping(uint => string[])) tickets;
     function pushSeat(uint _id, uint _deadline, string memory _seat, uint _limit) private {
-        require(tickets[_id][_deadline].length <= _limit, "All the seats are full");
+        require(tickets[_id][_deadline].length < _limit, "All the seats are full");
 
         tickets[_id][_deadline].push(_seat);
     }
