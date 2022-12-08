@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { walletConnectError } from '@components/wallets/toastMessages';
+import { walletConnectError } from '@utils/toastMessages';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@states/userState';
 
