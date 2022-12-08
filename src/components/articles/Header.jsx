@@ -7,9 +7,9 @@ import { APP_HEADER_H } from '@constants/styleConst';
 import { Link } from 'react-router-dom';
 import Wallet from '@components/wallets/Wallet';
 import SearchBar from './SearchBar';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { userState } from '@states/userState';
-import { walletConnectError } from '@components/wallets/WalletConnectError';
+import { walletConnectError } from '@components/wallets/toastMessages';
 
 const Container = styled('div')`
   position: fixed;
@@ -45,8 +45,7 @@ const ButtonsWrapper = styled('div')`
 `;
 
 const Header = ({ page }) => {
-  //recoil 필요
-  const [walletAddress] = useRecoilState(userState);
+  const { address } = useRecoilValue(userState);
 
   let accountBtn;
 
@@ -54,7 +53,7 @@ const Header = ({ page }) => {
     e.preventDefault();
     walletConnectError();
   }
-  if (walletAddress.address) {
+  if (address) {
     accountBtn = (
       <Link to={'/account'}>
         <BiUser size="50" color={colors.primary40} />

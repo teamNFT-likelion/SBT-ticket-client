@@ -2,17 +2,17 @@ import React from 'react';
 import LinkButton from '@atoms/LinkButton';
 import * as colors from '@styles/colors';
 import Wallet from '@components/wallets/Wallet';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { userState } from '@states/userState';
 
 import { ButtonsWrapper, SelectInfoBox } from '@styles/ticketDetailStyle';
 
 export default function RemainSeatsAndPay({ partState, dataId, data }) {
-  const [walletAddress] = useRecoilState(userState);
+  const { address } = useRecoilValue(userState);
 
   let ToPaymentPage;
 
-  if (walletAddress.address) {
+  if (address) {
     ToPaymentPage = () => {
       return (
         <ButtonsWrapper>
