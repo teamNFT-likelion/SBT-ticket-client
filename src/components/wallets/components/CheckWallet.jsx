@@ -26,7 +26,15 @@ export default function CheckWallet() {
 
     checkPermission()
       .then((a) => {
-        return;
+        if (a === false) {
+          setAccount('');
+          setWalletType('');
+          localStorage.removeItem('_user');
+          localStorage.removeItem('_wallet');
+          toast.warn('계정이 잠겼습니다.');
+        } else {
+          return;
+        }
       })
       .catch((b) => {
         setAccount('');
@@ -34,9 +42,8 @@ export default function CheckWallet() {
         localStorage.removeItem('_user');
         localStorage.removeItem('_wallet');
         toast.warn('계정이 잠겼습니다.');
-        window.location.reload();
       });
-  }, [account]);
+  }, []);
 
   // Metamask 계정 변경
   useEffect(() => {
