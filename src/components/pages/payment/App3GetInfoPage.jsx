@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 import React, { useState, useEffect, useRef } from 'react';
 import Layout from '@articles/Layout';
 import * as colors from '@styles/colors';
@@ -10,7 +8,6 @@ import {
   SubTitle,
   TabButton,
 } from '@styles/ApaymentStyles';
-// import LoadingSpinner from '@atoms/LoadingSpinner';
 import { useNavigate } from 'react-router-dom';
 import { kakaoOauthUrl, naverOauthUrl } from '@constants/urlConst';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -29,54 +26,8 @@ import { GOERLI_TTOT, NFTStorageAPI } from '@contracts/ContractAddress';
 import { TTOT_ABI } from '@contracts/ABI';
 import { NFTStorage, Blob } from 'nft.storage';
 import LoadingSpinner from '@atoms/LoadingSpinner';
-
-const LoginImageWrapper = styled('img')`
-  cursor: pointer;
-  object-fit: contain;
-  width: 183px;
-  height: 50px;
-`;
-
-const UserInfoWrapper = styled(Column)`
-  color: #ffffff;
-  margin-top: 30px;
-  width: 183px;
-  height: 95px;
-  text-align: center;
-  justify-content: space-around;
-  align-items: center;
-  border: 3px solid;
-  border-radius: 10px;
-`;
-
-const ReCAPTCHAWrapper = styled('div')`
-  margin: 25px 0;
-`;
-
-const MyBalanceWrapper = styled('div')`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 25px;
-  margin: 20px 0;
-`;
-
-const ImageWrapper = styled('img')`
-  width: 28px;
-  height: 28px;
-  border-radius: 15px;
-  object-fit: contain;
-  margin: 0 10px;
-`;
-
-const CompletedContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 25px 0;
-  font-weight: 600;
-  font-size: 34px;
-`;
+import { useRecoilValue } from 'recoil';
+import { tInfoState, sbtInfoState } from '@states/paymentState';
 
 const ethereum = window.ethereum;
 
@@ -100,18 +51,11 @@ const App3GetInfoPage = () => {
   const [balance, setBalance] = useState(0);
   const [network, setNetwork] = useState('');
 
-  // mintSBT에 필요한 state
-  const [tokenUri, setTokenUri] = useState(''); // token에 URI 저장
-  const [tokenDeadline, setTokenDeadline] = useState(0); // token에 deadline 저장
-  const [tokenPrice, setTokenPrice] = useState(0); // token에 price 저장
-  const [tokenPerformId, setTokenPerfromId] = useState(0); // token에 공연id 저장
-  const [tokenSeat, setTokenSeat] = useState(''); // token에 좌석정보 저장
-  const [tokenSeatLimit, setTokenSeatLimit] = useState(0); //token에 해당 공연의 총좌석수 저장
+  const { tDeadline, tPerformId, tPrice, tSeat, tSeatLimit } =
+    useRecoilValue(tInfoState); // mintSBT에 필요한 state
+  const { sbtImage, sbtName, sbtDesc } = useRecoilValue(sbtInfoState); // tokenUri => ipfs 메타데이터를 위한 state
 
-  // tokenUri => ipfs 메타데이터를 위한 state
-  const [sbtImage, setSbtImage] = useState(null); // metadata 이미지 경로 저장
-  const [sbtName, setSbtName] = useState(''); // metadata 이름 저장
-  const [sbtDesc, setSbtDesc] = useState(''); // metadata 본문 저장
+  const [tokenUri, setTokenUri] = useState(''); // token에 URI 저장
   const [userEmail, setUserEmail] = useState(''); // metadata 이메일 저장
 
   // 로딩중 확인
@@ -174,7 +118,9 @@ const App3GetInfoPage = () => {
         from: account,
       });
       tokenContract.options.address = GOERLI_TTOT;
-      await tokenContract.methods.mintSbt(tokenUri, tokenDeadline, tokenPrice, tokenPerformId, tokenSeat, tokenSeatLimit).send({ from: account });
+      await tokenContract.methods
+        .mintSbt(tokenUri, tDeadline, tPrice, tPerformId, tSeat, tSeatLimit)
+        .send({ from: account });
     } else {
       return;
     }
@@ -287,13 +233,7 @@ const App3GetInfoPage = () => {
           >
             일반결제
           </TabButton>
-          <TabButton
-            value="byCoin"
-            onClick={(newTab) => {
-              // setTab(newTab.target.value);
-              createURI();
-            }}
-          >
+          <TabButton value="byCoin" onClick={() => createURI()}>
             코인결제
           </TabButton>
 
@@ -317,20 +257,10 @@ const App3GetInfoPage = () => {
           )}
         </Row>
         <Row marginTop={'25px'}>
-          <TabButton
-            value="APP_SelectSeats"
-            onClick={(e) => {
-              backToPaymemt(e);
-            }}
-          >
+          <TabButton value="APP_SelectSeats" onClick={backToPaymemt}>
             뒤로가기
           </TabButton>
-          <TabButton
-            value="APP_Done"
-            onClick={(e) => {
-              backToPaymemt(e);
-            }}
-          >
+          <TabButton value="APP_Done" onClick={backToPaymemt}>
             다음단계
           </TabButton>
         </Row>
@@ -338,5 +268,53 @@ const App3GetInfoPage = () => {
     </Layout>
   );
 };
+
+const LoginImageWrapper = styled('img')`
+  cursor: pointer;
+  object-fit: contain;
+  width: 183px;
+  height: 50px;
+`;
+
+const UserInfoWrapper = styled(Column)`
+  color: #ffffff;
+  margin-top: 30px;
+  width: 183px;
+  height: 95px;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+  border: 3px solid;
+  border-radius: 10px;
+`;
+
+const ReCAPTCHAWrapper = styled('div')`
+  margin: 25px 0;
+`;
+
+const MyBalanceWrapper = styled('div')`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  margin: 20px 0;
+`;
+
+const ImageWrapper = styled('img')`
+  width: 28px;
+  height: 28px;
+  border-radius: 15px;
+  object-fit: contain;
+  margin: 0 10px;
+`;
+
+const CompletedContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 25px 0;
+  font-weight: 600;
+  font-size: 34px;
+`;
 
 export default App3GetInfoPage;
