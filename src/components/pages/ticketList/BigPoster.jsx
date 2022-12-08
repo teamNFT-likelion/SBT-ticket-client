@@ -12,8 +12,8 @@ import {
   Info,
   ButtonWrapper,
 } from './BigPoster.style';
-import { walletConnectError } from '@components/wallets/WalletConnectError';
-import { useRecoilState } from 'recoil';
+import { walletConnectError } from '@components/wallets/toastMessages';
+import { useRecoilValue } from 'recoil';
 import { userState } from '@states/userState';
 
 const BigPoster = ({ type, items }) => {
@@ -21,7 +21,7 @@ const BigPoster = ({ type, items }) => {
   const [typeItems, setTypeItems] = useState(items);
   const navigate = useNavigate();
 
-  const [walletAddress] = useRecoilState(userState);
+  const { address } = useRecoilValue(userState);
 
   const onClickCard = (side) => {
     if (activePosterId === 0 && side === 'right') {
@@ -75,7 +75,7 @@ const BigPoster = ({ type, items }) => {
               </button>
               <button
                 onClick={() => {
-                  if (walletAddress.address) {
+                  if (address) {
                     navigate({
                       pathname: '/payment',
                       search: `?id=${typeItems[0].id}`,
@@ -126,7 +126,7 @@ const BigPoster = ({ type, items }) => {
               </button>
               <button
                 onClick={() => {
-                  if (walletAddress.address) {
+                  if (address) {
                     navigate({
                       pathname: '/payment',
                       search: `?id=${typeItems[1].id}`,
