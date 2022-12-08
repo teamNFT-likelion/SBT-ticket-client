@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
+import styled from 'styled-components';
 import Layout from '@articles/Layout';
 import * as colors from '@styles/colors';
 import { Column, Row } from '@components/atoms/wrapper.style';
@@ -8,11 +13,8 @@ import {
   SubTitle,
   TabButton,
 } from '@styles/ApaymentStyles';
-import { useNavigate } from 'react-router-dom';
 import { kakaoOauthUrl, naverOauthUrl } from '@constants/urlConst';
-import ReCAPTCHA from 'react-google-recaptcha';
 import useOauth from '@hooks/useOauth';
-import styled from 'styled-components';
 import kakaoLoginApiImg from '@assets/icon/kakaoLoginApiImg.png';
 import naverLoginApiImg from '@assets/icon/naverLoginApiImg.png';
 import kginicisImg from '@assets/img/kginicis.jpg';
@@ -21,128 +23,43 @@ import polygonImage from '@assets/icon/polygon.svg';
 import RowIcon from '@assets/icon/rowIcon(Right).png';
 import CustomModal from '@components/articles/CustomModal';
 import { getCookie } from '@utils/cookie';
-import Web3 from 'web3';
-import { GOERLI_TTOT, NFTStorageAPI } from '@contracts/ContractAddress';
-import { TTOT_ABI } from '@contracts/ABI';
-import { NFTStorage, Blob } from 'nft.storage';
 import LoadingSpinner from '@atoms/LoadingSpinner';
-import { useRecoilValue } from 'recoil';
 import { tInfoState, sbtInfoState } from '@states/paymentState';
-
-const ethereum = window.ethereum;
+import useWeb3 from '@hooks/useWeb3';
 
 const App3GetInfoPage = () => {
-  // tap 키 저장 state
   const navigate = useNavigate();
   const dataId = getCookie('dataId');
+  const { email: userEmail } = useOauth();
+  const { createTokenUri, createSBT, network, balance } = useWeb3();
 
   // 모달을 위한 state
   const [showUseKginicis, setShowUseKginicis] = useState(false);
-  const { email: userEmail } = useOauth();
 
-  // 컨트랙트와 통신을 위한 객체 저장
-  const [web3, setWeb3] = useState({});
-
-  // 지금 로그인한 지갑 정보 저장 state
-  const [account, setAccount] = useState('');
-  const [walletType, setWalletType] = useState('');
-
-  // 내 잔고 확인을 위한 state
-  const [balance, setBalance] = useState(0);
-  const [network, setNetwork] = useState('');
-
-  const { tDeadline, tPerformId, tPrice, tSeat, tSeatLimit } =
-    useRecoilValue(tInfoState); // mintSBT에 필요한 state
-  const { sbtImage, sbtName, sbtDesc } = useRecoilValue(sbtInfoState); // tokenUri => ipfs 메타데이터를 위한 state
-
-  const [tokenUri, setTokenUri] = useState(''); // token에 URI 저장
+  const ticketInfo = useRecoilValue(tInfoState);
+  const sbtInfo = useRecoilValue(sbtInfoState);
 
   // 로딩중 확인
   const [isMint, setIsMint] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  // NFTStorage 사용을 위해 객체 생성
-  const client = new NFTStorage({ token: NFTStorageAPI });
-
-  // account와 walletType 불러오기
-  useEffect(() => {
-    setAccount(localStorage.getItem('_user'));
-    setWalletType(localStorage.getItem('_wallet'));
-  }, []);
-
-  // 시작 시 메타마스크와 연결이 되어있는 지 확인하고 객체를 생성.
-  useEffect(() => {
-    if (typeof ethereum !== 'undefined') {
-      try {
-        const web3 = new Web3(ethereum);
-        setWeb3(web3);
-      } catch (err) {
-        console.log(err);
-      }
-    } else return;
-  }, []);
-
-  // Uri 변화 시 실행
-  const didMount = useRef(false);
-  useEffect(() => {
-    if (didMount.current) createNewSBT();
-    else didMount.current = true;
-  }, [tokenUri]);
-
-  // ipfs URI 생성
-  const createURI = async () => {
+  const mint = async (_sbtInfo, _ticketInfo, _email) => {
     setIsLoading(true);
     try {
-      const fileCid = await client.storeBlob(new Blob([sbtImage]));
-      const obj = {
-        name: sbtName,
-        description: sbtDesc,
-        image: 'https://ipfs.io/ipfs/' + fileCid,
-        email: userEmail,
-      };
-      const metadataCid = await client.storeBlob(
-        new Blob([JSON.stringify(obj)]),
-      );
-      setTokenUri('https://ipfs.io/ipfs/' + metadataCid);
+      const tokenUri = await createTokenUri(_sbtInfo, _email);
+      await createSBT(tokenUri, _ticketInfo);
+      setIsMint(true);
     } catch (error) {
       console.log('Error uploading file: ', error);
+      toast.error('민팅 실패');
+      setIsMint(false);
+    } finally {
+      setIsLoading(false);
     }
   };
-
-  // 새로운 SBT 생성
-  const createNewSBT = async () => {
-    let tokenContract;
-    if (walletType === 'eth') {
-      tokenContract = await new web3.eth.Contract(TTOT_ABI, GOERLI_TTOT, {
-        from: account,
-      });
-      tokenContract.options.address = GOERLI_TTOT;
-      await tokenContract.methods
-        .mintSbt(tokenUri, tDeadline, tPrice, tPerformId, tSeat, tSeatLimit)
-        .send({ from: account });
-    } else {
-      return;
-    }
-    setIsLoading(false);
-    setIsMint(true);
-  };
-
-  // 내 잔고 가져오기
-  useEffect(() => {
-    async function myBalance() {
-      const _network = await web3.eth.net.getNetworkType();
-      setNetwork(_network);
-      web3.eth.getBalance(account).then((bal) => {
-        // 잔액을 일반적인 통화 단위로 변환하고 상태 변수에 저장|
-        const convertedBal = web3.utils.fromWei(bal);
-        setBalance(convertedBal);
-      });
-    }
-    myBalance();
-  }, [account]);
 
   function onChange(value) {
-    console.log('Captcah value:', value);
+    // console.log('Captcah value:', value);
   }
 
   function backToPaymemt(e) {
@@ -216,33 +133,26 @@ const App3GetInfoPage = () => {
         <Row marginTop={'25px'}>
           <TabButton
             value="byKginicis"
-            onClick={(newTab) => {
-              setShowUseKginicis(true);
-            }}
+            onClick={() => setShowUseKginicis(true)}
           >
             일반결제
           </TabButton>
-          <TabButton value="byCoin" onClick={() => createURI()}>
+          <TabButton
+            value="byCoin"
+            onClick={() => mint(sbtInfo, ticketInfo, userEmail)}
+          >
             코인결제
           </TabButton>
-
-          <CustomModal
-            show={showUseKginicis}
-            toggleModal={() => setShowUseKginicis(false)}
-          >
-            <img src={kginicisImg} alt="견본용" />
-          </CustomModal>
         </Row>
 
         <Row>
-          {isMint ? (
+          {isMint && (
             <CompletedContainer>Completed Create!!</CompletedContainer>
-          ) : isLoading ? (
+          )}
+          {isLoading && (
             <CompletedContainer>
               <LoadingSpinner />
             </CompletedContainer>
-          ) : (
-            ''
           )}
         </Row>
         <Row marginTop={'25px'}>
@@ -254,6 +164,13 @@ const App3GetInfoPage = () => {
           </TabButton>
         </Row>
       </Container>
+
+      <CustomModal
+        show={showUseKginicis}
+        toggleModal={() => setShowUseKginicis(false)}
+      >
+        <img src={kginicisImg} alt="견본용" />
+      </CustomModal>
     </Layout>
   );
 };

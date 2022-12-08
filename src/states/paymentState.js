@@ -19,7 +19,7 @@ export const tSeatState = atom({
 });
 export const tSeatLimitState = atom({
   key: 'paymentState/tSeatLimit', //token에 해당 공연의 총좌석수 저장
-  default: 0,
+  default: 100,
 });
 export const tInfoState = selector({
   key: 'paymentState/tInfo', //token에 해당 전체 정보 형태로 변환
@@ -47,7 +47,7 @@ export const sbtDescState = atom({
   key: 'paymentState/sbtDesc', // metadata 본문 저장
   default: '',
 });
-export const sbtInfoState = atom({
+export const sbtInfoState = selector({
   key: 'paymentState/sbtInfo',
   get: ({ get }) => {
     const sbtImage = get(sbtImageState);
