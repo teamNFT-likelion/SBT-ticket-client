@@ -53,7 +53,7 @@ const TSearchPage = () => {
         .includes(typing.toLocaleLowerCase());
     });
     setTypedItems(filterTitle);
-  }, [items, typing]);
+  }, [typing]);
 
   return (
     <Layout>
