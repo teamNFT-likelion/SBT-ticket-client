@@ -1,16 +1,20 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { setCookie, getCookie } from '@utils/cookie';
 
 export default function useOauth() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
   const oauthData = getCookie('oauthData');
-  const params = new URL(window.location).searchParams; //TODO: 이거 react-router-dom hook 있음 리팩토링필요
+  const [params] = useSearchParams();
 
-  // console.log("useOauth :", dataId);
   const state = params.get('state');
   const code = params.get('code');
+
+  function getUserEmail(userData) {
+    return (userData && (userData.email || userData.kakao_account.email)) || '';
+  }
 
   useEffect(() => {
     // 인가코드 서버에 전달 및 프로필데이터 응답처리
@@ -39,12 +43,9 @@ export default function useOauth() {
     }
   }, [code, state, navigate]);
 
-  // 임시 데이터 확인용 effect
-  //   useEffect(() => {
-  //     if (oauthData) {
-  //       console.log(oauthData);
-  //     }
-  //   }, [oauthData]);
+  useEffect(() => {
+    setEmail(getUserEmail(oauthData));
+  }, [oauthData]);
 
-  return oauthData;
+  return { oauthData, email };
 }
