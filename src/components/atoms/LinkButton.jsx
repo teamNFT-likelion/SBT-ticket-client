@@ -17,14 +17,14 @@ export const ButtonWrapper = styled('button')`
 `;
 
 const LinkButton = ({ to = '/', name = '홈으로', connectCheck = false }) => {
-  const [walletAddress] = useRecoilValue(userState);
+  const { address } = useRecoilValue(userState);
 
   function handleClick(e) {
     e.preventDefault();
     walletConnectError();
   }
 
-  if (connectCheck && !walletAddress.address) {
+  if (connectCheck && !address) {
     return <ButtonWrapper onClick={handleClick}>{name}</ButtonWrapper>;
   }
   return (
