@@ -38,7 +38,7 @@ const App3GetInfoPage = () => {
 
   // 모달을 위한 state
   const [showUseKginicis, setShowUseKginicis] = useState(false);
-  const userData = useOauth();
+  const { email: userEmail } = useOauth();
 
   // 컨트랙트와 통신을 위한 객체 저장
   const [web3, setWeb3] = useState({});
@@ -56,7 +56,6 @@ const App3GetInfoPage = () => {
   const { sbtImage, sbtName, sbtDesc } = useRecoilValue(sbtInfoState); // tokenUri => ipfs 메타데이터를 위한 state
 
   const [tokenUri, setTokenUri] = useState(''); // token에 URI 저장
-  const [userEmail, setUserEmail] = useState(''); // metadata 이메일 저장
 
   // 로딩중 확인
   const [isMint, setIsMint] = useState(false);
@@ -146,13 +145,6 @@ const App3GetInfoPage = () => {
     console.log('Captcah value:', value);
   }
 
-  function getUserEmail(userData) {
-    const email =
-      (userData && (userData.email || userData.kakao_account.email)) ||
-      'Log in, please.';
-    return email;
-  }
-
   function backToPaymemt(e) {
     navigate(`/payment?id=${dataId}`, {
       state: { tab: e.target.value },
@@ -198,10 +190,7 @@ const App3GetInfoPage = () => {
             />
           </Column>
           <UserInfoWrapper>
-            당신의 e-mail{' '}
-            <p style={{ color: colors.natural95, fontSize: '20px' }}>
-              {getUserEmail(userData)}
-            </p>
+            당신의 e-mail <p>{userEmail || 'Log in, please.'}</p>
           </UserInfoWrapper>
         </Row>
         <SubTitle>| 결제 수단 선택 |</SubTitle>
@@ -286,6 +275,11 @@ const UserInfoWrapper = styled(Column)`
   align-items: center;
   border: 3px solid;
   border-radius: 10px;
+
+  & > p {
+    color: ${colors.natural95};
+    font-size: 20px;
+  }
 `;
 
 const ReCAPTCHAWrapper = styled('div')`
