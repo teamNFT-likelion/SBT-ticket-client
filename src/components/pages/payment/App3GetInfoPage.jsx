@@ -26,6 +26,7 @@ import { getCookie } from '@utils/cookie';
 import LoadingSpinner from '@atoms/LoadingSpinner';
 import { tInfoState, sbtInfoState } from '@states/paymentState';
 import useWeb3 from '@hooks/useWeb3';
+import { missingEmailError } from '@utils/toastMessages';
 
 const App3GetInfoPage = () => {
   const navigate = useNavigate();
@@ -67,6 +68,13 @@ const App3GetInfoPage = () => {
       state: { tab: e.target.value },
     });
   }
+
+  // 결제완료 후 자동 탭 이동 (개발단계라서 편의상 주석처리 해놓을게요)
+  // function afterMinting() {
+  //   navigate(`/payment?id=${dataId}`, {
+  //     state: { tab: 'APP_Done', ticketInfo: ticketInfo },
+  //   });
+  // }
 
   return (
     <Layout page="a-payment-page">
@@ -139,7 +147,13 @@ const App3GetInfoPage = () => {
           </TabButton>
           <TabButton
             value="byCoin"
-            onClick={() => mint(sbtInfo, ticketInfo, userEmail)}
+            onClick={() => {
+              if (userEmail) {
+                mint(sbtInfo, ticketInfo, userEmail);
+              } else {
+                missingEmailError();
+              }
+            }}
           >
             코인결제
           </TabButton>
@@ -149,6 +163,10 @@ const App3GetInfoPage = () => {
           {isMint && (
             <CompletedContainer>Completed Create!!</CompletedContainer>
           )}
+          {/* {isMint &&
+            setTimeout(() => {
+              afterMinting();
+            }, 5000)} */}
           {isLoading && (
             <CompletedContainer>
               <LoadingSpinner />
