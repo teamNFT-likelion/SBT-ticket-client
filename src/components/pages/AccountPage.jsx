@@ -79,7 +79,7 @@ const AccountPage = () => {
 
   // url조작으로 들어오려는 경우 block
   useEffect(() => {
-    if (!account) {
+    if (!localStorage.getItem('_user')) {
       walletConnectError();
       navigate('/list');
     }
