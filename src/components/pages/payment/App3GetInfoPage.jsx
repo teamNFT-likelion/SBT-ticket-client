@@ -195,7 +195,7 @@ const UserInfoWrapper = styled(Column)`
 
   & > p {
     color: ${colors.natural95};
-    font-size: 20px;
+    font-size: 15px;
   }
 `;
 
