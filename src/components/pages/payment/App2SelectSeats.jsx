@@ -1,18 +1,20 @@
+import React, { useState } from 'react';
 import { PageTitle, SubTitle, TabButton } from '@styles/ApaymentStyles';
 import styled from 'styled-components';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import { useNavigate } from 'react-router-dom';
 import { setCookie } from '@utils/cookie';
+import MainStage from '../paymentSeat/MainStage';
 
 const SeatsSelectBox = styled(Column)`
-  height: 570px;
-  width: 600px;
+  height: auto;
+  width: 700px;
   border: white 4px solid;
 `;
 
 const SeatsInfoBox = styled(Column)`
-  height: 570px;
-  width: 200px;
+  height: 50px;
+  width: 700px;
   border: white 4px solid;
 `;
 
@@ -23,10 +25,16 @@ export const App2SelectSeats = ({ setTab, dataId }) => {
     <>
       <PageTitle>티켓 결제</PageTitle>
       <SubTitle>| 좌석 선택 |</SubTitle>
-      <Row marginTop="24px" marginBottom="24px">
-        <SeatsSelectBox>좌석선택</SeatsSelectBox>
+      <Column marginTop="24px" marginBottom="24px" height="auto">
         <SeatsInfoBox>좌석정보</SeatsInfoBox>
-      </Row>
+        <SeatsSelectBox>
+          <MainStage
+            onSelectSeat={(seatId) => {
+              console.log('selected - ' + seatId);
+            }}
+          />
+        </SeatsSelectBox>
+      </Column>
       <Row>
         <TabButton
           value="APP_Start"
