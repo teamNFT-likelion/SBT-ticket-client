@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '@articles/Layout';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { parse } from 'query-string';
 import { App1Start } from './payment/App1Start';
@@ -9,21 +9,31 @@ import { App4Done } from './payment/App4Done';
 import { Container } from '@styles/ApaymentStyles';
 import { mainItems } from '@mock/items';
 import Page404 from './Page404';
+import { useRecoilValue } from 'recoil';
+import { userState } from '@states/userState';
+import { walletConnectError } from '@utils/toastMessages';
 
 const APaymentPage = () => {
   // tap 키 저장 state
   const [tab, setTab] = useState('APP_Start');
   let location = useLocation();
+  const navigate = useNavigate();
 
   const parsed = parse(location.search);
 
   const dataId = parsed.id;
   const data = mainItems.filter((item) => item.id === dataId)[0] || false;
+  const { address } = useRecoilValue(userState);
 
   useEffect(() => {
     const locationTab = location.state?.tab || 'APP_Start';
     setTab(locationTab);
-  }, [location]);
+
+    if (!address) {
+      walletConnectError();
+      navigate('/list');
+    }
+  }, [location, navigate, address]);
 
   let pageComponent;
 
