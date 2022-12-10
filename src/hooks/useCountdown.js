@@ -8,9 +8,11 @@ export const useCountdown = (targetDate) => {
   );
 
   useEffect(() => {
-    setInterval(() => {
+    const id = setInterval(() => {
       setCountDown(countDownDate - new Date().getTime());
     }, 1000);
+
+    return () => clearInterval(id);
   }, [countDownDate]);
 
   return getReturnValues(countDown);
