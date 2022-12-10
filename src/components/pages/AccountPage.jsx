@@ -8,6 +8,8 @@ import axios from 'axios';
 import { GOERLI_TTOT } from '@contracts/ContractAddress';
 import { TTOT_ABI } from '@contracts/ABI';
 import MyTickets from './account/MyTickets';
+import { useNavigate } from 'react-router-dom';
+import { walletConnectError } from '@utils/toastMessages';
 
 const AddressWrapper = styled('div')`
   display: flex;
@@ -54,6 +56,7 @@ const TicketContainer = styled('div')`
 const ethereum = window.ethereum;
 
 const AccountPage = () => {
+  const navigate = useNavigate();
 
   // 지금 로그인한 지갑 정보 저장 state
   const [account, setAccount] = useState('');
@@ -73,6 +76,14 @@ const AccountPage = () => {
     setAccount(localStorage.getItem('_user'));
     setWalletType(localStorage.getItem('_wallet'));
   }, []);
+
+  // url조작으로 들어오려는 경우 block
+  useEffect(() => {
+    if (!localStorage.getItem('_user')) {
+      walletConnectError();
+      navigate('/list');
+    }
+  }, [account, navigate]);
 
   // 시작 시 메타마스크와 연결이 되어있는 지 확인하고 객체를 생성.
   useEffect(() => {
@@ -123,9 +134,7 @@ const AccountPage = () => {
   return (
     <Layout>
       <AddressWrapper>
-        {walletType === 'eth' ? (
-          <ImageWrapper src={metamaskImageUrl} />
-        ) : null}
+        {walletType === 'eth' ? <ImageWrapper src={metamaskImageUrl} /> : null}
         {account}
       </AddressWrapper>
       <TabNavigation>
@@ -159,11 +168,11 @@ const AccountPage = () => {
       </TabNavigation>
       <TicketContainer>
         {tab === 'ALL' ? (
-          <MyTickets tickets={sbtList} type="all"/>
+          <MyTickets tickets={sbtList} type="all" />
         ) : tab === 'ACTIVE' ? (
-          <MyTickets tickets={sbtList} type="active"/>
+          <MyTickets tickets={sbtList} type="active" />
         ) : tab === 'INACTIVE' ? (
-          <MyTickets tickets={sbtList} type="inactive"/>
+          <MyTickets tickets={sbtList} type="inactive" />
         ) : null}
       </TicketContainer>
     </Layout>

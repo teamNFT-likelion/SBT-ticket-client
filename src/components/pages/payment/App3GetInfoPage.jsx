@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -25,13 +25,16 @@ import CustomModal from '@components/articles/CustomModal';
 import { getCookie } from '@utils/cookie';
 import LoadingSpinner from '@atoms/LoadingSpinner';
 import { tInfoState, sbtInfoState } from '@states/paymentState';
+import { userState } from '@states/userState';
 import useWeb3 from '@hooks/useWeb3';
+import { walletConnectError, missingEmailError } from '@utils/toastMessages';
 
 const App3GetInfoPage = () => {
   const navigate = useNavigate();
   const dataId = getCookie('dataId');
   const { email: userEmail } = useOauth();
   const { createTokenUri, createSBT, network, balance } = useWeb3();
+  const { address } = useRecoilValue(userState);
 
   // 모달을 위한 state
   const [showUseKginicis, setShowUseKginicis] = useState(false);
@@ -42,6 +45,13 @@ const App3GetInfoPage = () => {
   // 로딩중 확인
   const [isMint, setIsMint] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (!address) {
+      walletConnectError();
+      navigate('/list');
+    }
+  }, [navigate, address]);
 
   const mint = async (_sbtInfo, _ticketInfo, _email) => {
     setIsLoading(true);
@@ -67,6 +77,13 @@ const App3GetInfoPage = () => {
       state: { tab: e.target.value },
     });
   }
+
+  // 결제완료 후 자동 탭 이동 (개발단계라서 편의상 주석처리 해놓을게요)
+  // function afterMinting() {
+  //   navigate(`/payment?id=${dataId}`, {
+  //     state: { tab: 'APP_Done', ticketInfo: ticketInfo },
+  //   });
+  // }
 
   return (
     <Layout page="a-payment-page">
@@ -139,7 +156,13 @@ const App3GetInfoPage = () => {
           </TabButton>
           <TabButton
             value="byCoin"
-            onClick={() => mint(sbtInfo, ticketInfo, userEmail)}
+            onClick={() => {
+              if (userEmail) {
+                mint(sbtInfo, ticketInfo, userEmail);
+              } else {
+                missingEmailError();
+              }
+            }}
           >
             코인결제
           </TabButton>
@@ -149,6 +172,10 @@ const App3GetInfoPage = () => {
           {isMint && (
             <CompletedContainer>Completed Create!!</CompletedContainer>
           )}
+          {/* {isMint &&
+            setTimeout(() => {
+              afterMinting();
+            }, 5000)} */}
           {isLoading && (
             <CompletedContainer>
               <LoadingSpinner />
@@ -195,7 +222,7 @@ const UserInfoWrapper = styled(Column)`
 
   & > p {
     color: ${colors.natural95};
-    font-size: 20px;
+    font-size: 15px;
   }
 `;
 

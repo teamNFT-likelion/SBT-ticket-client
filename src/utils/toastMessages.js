@@ -5,3 +5,9 @@ export const walletConnectError = () => {
     position: toast.POSITION.TOP_CENTER,
   });
 };
+
+export const missingEmailError = () => {
+  toast.error('로그인 필요', {
+    position: toast.POSITION.TOP_CENTER,
+  });
+};

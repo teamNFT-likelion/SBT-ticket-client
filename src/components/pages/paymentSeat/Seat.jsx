@@ -1,5 +1,5 @@
 import React from 'react';
-import * as colors from '@styles/colors'
+// import * as colors from '@styles/colors'
 import { Circle } from 'react-konva';
 import { SEAT_SIZE } from './layout';
 

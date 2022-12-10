@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { setCookie, getCookie } from '@utils/cookie';
+import { useRecoilState } from 'recoil';
+import { userEmail } from '@states/userState';
 
 export default function useOauth() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useRecoilState(userEmail);
   const oauthData = getCookie('oauthData');
   const [params] = useSearchParams();
 
@@ -45,7 +47,7 @@ export default function useOauth() {
 
   useEffect(() => {
     setEmail(getUserEmail(oauthData));
-  }, [oauthData]);
+  }, [oauthData, setEmail]);
 
   return { oauthData, email };
 }

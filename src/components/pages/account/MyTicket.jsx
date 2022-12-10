@@ -4,8 +4,7 @@ import * as colors from '@styles/colors';
 import CustomModal from '@articles/CustomModal';
 import { format } from 'date-fns';
 import QRCode from 'qrcode.react';
-
-// TODO : 5초마다 qr코드 갱신 / 캡쳐불가
+import RaffleModal from '@components/articles/RaffleModal';
 
 const TicketWrapper = styled('div')`
   width: auto;
@@ -52,7 +51,7 @@ const TicketButton = styled('button')`
   font-size: 16px;
   cursor: pointer;
   border-radius: 3px;
-  margin: 2px;
+  margin-top: 30px;
 `;
 
 const ModalButtonWrapper = styled('div')`
@@ -90,6 +89,7 @@ const MyTicket = ({ id, image, title, date, active }) => {
   const [showUseQr, setShowUseQr] = useState(false);
   const [showRefund, setShowRefund] = useState(false);
   const [showFan, setShowFan] = useState(false);
+  const [raffleModal, setRaffleModal] = useState(false);
 
   // qr코드 발행을 위한 state
   const [qrvalue, setQrvalue] = useState('DEFAULT');
@@ -186,7 +186,10 @@ const MyTicket = ({ id, image, title, date, active }) => {
           <ModalButton buttonColor={`#af00a7`} onClick={() => {}}>
             사전 예매
           </ModalButton>
-          <ModalButton buttonColor={`#af00a7`} onClick={() => {}}>
+          <ModalButton
+            buttonColor={`#af00a7`}
+            onClick={() => setRaffleModal(true)}
+          >
             래플 이벤트
           </ModalButton>
         </ModalButtonWrapper>
@@ -203,6 +206,9 @@ const MyTicket = ({ id, image, title, date, active }) => {
             취소
           </ModalButton>
         </ModalButtonWrapper>
+      </CustomModal>
+      <CustomModal show={raffleModal} toggleModal={() => setRaffleModal(false)}>
+        <RaffleModal />
       </CustomModal>
     </div>
   );
