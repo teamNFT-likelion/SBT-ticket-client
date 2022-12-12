@@ -6,10 +6,11 @@ const Container = styled('div')`
   top: ${(props) => `${props.position.y + 20}px`};
   left: ${(props) => `${props.position.x + 20}px`};
   padding: 10px;
-  border-radius: 3px;
+  border-radius: 5px;
   box-shadow: 0 0 5px grey;
   z-index: 10;
   background-color: white;
+  color: black;
 `;
 
 const isClickedInside = (e, element) => {
@@ -40,7 +41,7 @@ const Popup = ({ position, seatId, onClose }) => {
   
   return (
     <Container ref={containerRef} position={position}>
-      <div>Seat {seatId}</div>
+      <div>Seat: {seatId}</div>
       <div>Click on the seat to select</div>
     </Container>
   );

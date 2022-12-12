@@ -21,11 +21,13 @@ export const SubTitle = styled(PageTitle)`
 `;
 
 export const TabButton = styled('button')`
-  background-color: ${colors.primary40};
+  background-color: ${(props) =>
+    props.disabled ? colors.bgSecondary : colors.primary40};
+  color: ${(props) => (props.disabled ? colors.textSecondary : colors.textWhite)};
   width: 100px;
   height: 64px;
   font-size: 20px;
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? null : 'pointer')};
   border-radius: 5px;
   margin: 3px;
 `;

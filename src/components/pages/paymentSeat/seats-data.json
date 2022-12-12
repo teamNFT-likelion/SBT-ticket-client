@@ -4,7 +4,7 @@
       {
         "event_id": 2,
         "name": "Bronze",
-        "color": null,
+        "price": 30000,
         "subsections": [
           {
             "id": 18,
@@ -967,7 +967,7 @@
       {
         "event_id": 2,
         "name": "Silver",
-        "color": null,
+        "price": 50000,
         "subsections": [
           {
             "id": 22,
@@ -1930,7 +1930,7 @@
       {
         "event_id": 2,
         "name": "Gold",
-        "color": null,
+        "price": 70000,
         "subsections": [
           {
             "id": 26,

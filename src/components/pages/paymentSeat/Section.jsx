@@ -1,4 +1,4 @@
-import React, {memo, useRef, useEffect} from 'react';
+import React, { memo, useRef, useEffect } from 'react';
 import { Rect, Group, Text } from 'react-konva';
 import SubSection from './SubSection';
 import {
@@ -25,9 +25,10 @@ export default memo(
     useEffect(() => {
       containerRef.current.cache();
     }, [section, selectedSeatsIds]);
+    
     const width = getSectionWidth(section);
     let lastSubsectionX = 0;
-    
+
     return (
       <Group y={y} x={x} ref={containerRef}>
         <Rect

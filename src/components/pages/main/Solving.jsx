@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import { Column } from '@components/atoms/wrapper.style';
-import { sm } from '../../../styles/GlobalStyle';
+import { sm } from '@styles/GlobalStyle';
 
 const SubTitle = styled('div')`
   font-weight: 400;

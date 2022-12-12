@@ -63,4 +63,4 @@ const SubSection = ({
   );
 };
 
-export default SubSection
+export default SubSection;
