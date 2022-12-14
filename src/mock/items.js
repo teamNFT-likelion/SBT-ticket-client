@@ -15,9 +15,9 @@ export const mainItems = [
     cast: '블랙핑크',
     viewAgeName: '15세이상',
     dateInfo: [
-      { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
-      { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
-      { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
+      { date: new Date().getTime(), startTime: '9시 30분', seatCount: 12 },
+      { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
+      { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
     ],
     detailInfoImg:
       'https://ticketimage.interpark.com/Play/image/etc/22/22010748-12.jpg',
@@ -37,9 +37,9 @@ export const mainItems = [
     cast: '푸에르자부르타',
     viewAgeName: '8세이상',
     dateInfo: [
-      { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
-      { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
-      { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
+      { date: new Date().getTime(), startTime: '9시 30분', seatCount: 12 },
+      { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
+      { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
     ],
     detailInfoImg:
       'http://image.toast.com/aaaaab/ticketlink/TKL_4/fu_web_1_220825.jpg',
@@ -59,9 +59,9 @@ export const mainItems = [
     cast: '알버트 왓슨',
     viewAgeName: '19세이상',
     dateInfo: [
-      { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
-      { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
-      { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
+      { date: new Date().getTime(), startTime: '9시 30분', seatCount: 12 },
+      { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
+      { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
     ],
     detailInfoImg:
       'http://image.toast.com/aaaaab/ticketlink/TKL_3/221116_AW_700.jpg',
@@ -81,9 +81,9 @@ export const mainItems = [
     cast: 'museum',
     viewAgeName: '전체관람가',
     dateInfo: [
-      { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
-      { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
-      { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
+      { date: new Date().getTime(), startTime: '9시 30분', seatCount: 12 },
+      { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
+      { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
     ],
     detailInfoImg:
       'http://image.toast.com/aaaaab/ticketlink/TKL_6/tech_info0308-01.jpg',
@@ -103,9 +103,9 @@ export const mainItems = [
     cast: '파퀴아오, DK YOO',
     viewAgeName: '15세이상',
     dateInfo: [
-      { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
-      { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
-      { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
+      { date: new Date().getTime(), startTime: '9시 30분', seatCount: 12 },
+      { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
+      { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
     ],
     detailInfoImg:
       'https://ticketimage.interpark.com/Play/image/etc/22/22015838-01.jpg',
@@ -125,9 +125,9 @@ export const mainItems = [
     cast: '토트넘',
     viewAgeName: '11세이상',
     dateInfo: [
-      { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
-      { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
-      { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
+      { date: new Date().getTime(), startTime: '9시 30분', seatCount: 12 },
+      { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
+      { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
     ],
     detailInfoImg:
       'https://www.jejutwn.com/data/photos/20220624/art_16554512927773_d72133.jpg',
@@ -151,9 +151,9 @@ export const itemList = [
     cast: '펭수',
     viewAgeName: '8세이상',
     dateInfo: [
-      { date: '2022-09-01', startTime: '9시 30분', seatCount: 12 },
-      { date: '2022-09-02', startTime: '10시 30분', seatCount: 5 },
-      { date: '2022-09-03', startTime: '23시 30분', seatCount: 8 },
+      { date: new Date().getTime(), startTime: '9시 30분', seatCount: 12 },
+      { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
+      { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
     ],
     detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_2/MD_1128.jpg',
   },

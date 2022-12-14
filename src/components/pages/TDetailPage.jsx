@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-// import * as colors from '@styles/colors';
-// import styled from 'styled-components';
 import Layout from '@articles/Layout';
 import DetailInfo from '@components/atoms/DetailInfo';
 import CategoryNav from '@components/articles/CategoryNav';
@@ -14,14 +12,31 @@ import TDPCalendar from '@components/atoms/Calendar';
 import PartInfoContainer from '@components/articles/PartInfoContainer';
 import RemainSeatsAndPay from '@components/atoms/RemainSeatsAndPay';
 import Page404 from './Page404';
+import { useSetRecoilState } from 'recoil';
+import { tDateState, tPartState } from '@states/ticketState';
 
 const TDetailPage = () => {
   const location = useLocation();
-  const [partState, setPartState] = useState(0);
-  const parsed = parse(location.search);
-  const dataId = parsed.id;
+  const { id: dataId } = parse(location.search);
+  const data = mainItems.filter((item) => item.id === dataId)[0] || null;
 
-  const data = mainItems.filter((item) => item.id === dataId)[0] || false;
+  const [date, setDate] = useState(new Date());
+  const [part, setPart] = useState(0);
+  const setTicketDate = useSetRecoilState(tDateState);
+  const setTicketPart = useSetRecoilState(tPartState);
+
+  const handleDateChange = (_date) => {
+    setDate(_date);
+  };
+
+  const handlePartClick = (e) => {
+    setPart(Number(e.target.value));
+  };
+
+  const handlePaymentClick = () => {
+    setTicketDate(date);
+    setTicketPart(part);
+  };
 
   let pageComponent;
 
@@ -32,14 +47,24 @@ const TDetailPage = () => {
         <DetailInfo dataId={dataId} />
         <ContentsInfoBody>
           <SelectInfo>
-            <TDPCalendar />
+            <TDPCalendar
+              dateInfo={data.dateInfo}
+              onDateChange={handleDateChange}
+              value={date}
+            />
             <img src={verticalLine} alt="verticalLine" height="260px" />
-            <PartInfoContainer data={data} setPartState={setPartState} />
+            <PartInfoContainer
+              dateInfo={data.dateInfo}
+              onPartClick={handlePartClick}
+              cast={data.cast}
+              partState={part}
+            />
             <img src={verticalLine} alt="verticalLine" height="260px" />
             <RemainSeatsAndPay
-              partState={partState}
+              partState={part}
               dataId={dataId}
               data={data}
+              onPaymentClick={handlePaymentClick}
             />
           </SelectInfo>
         </ContentsInfoBody>
