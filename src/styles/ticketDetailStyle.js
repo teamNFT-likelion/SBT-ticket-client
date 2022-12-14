@@ -85,10 +85,18 @@ export const CalendarStyle = styled.div`
   }
 
   .react-calendar__tile:disabled {
-    background-color: #f0f0f0;
+    // background-color: #f0f0f0;
+  }
+  .react-calendar__tile:enabled {
+    background-color: ${colors.primary40};
+    border-radius: 0;
   }
   .react-calendar__tile:enabled:hover,
   .react-calendar__tile:enabled:focus {
-    background-color: ${colors.primary40};
+    background-color: orange;
+  }
+
+  .react-calendar__tile:enabled.react-calendar__tile--active {
+    background-color: orange;
   }
 `;

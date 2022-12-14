@@ -1,27 +1,37 @@
 import React from 'react';
+import * as colors from '@styles/colors';
 import { TabButton } from '@styles/ApaymentStyles';
 import { PartButtonContainer, SelectInfoBox } from '@styles/ticketDetailStyle';
 
-export default function PartInfoContainer({ data, setPartState }) {
+export default function PartInfoContainer({
+  dateInfo,
+  onPartClick,
+  cast,
+  partState,
+}) {
   return (
     <SelectInfoBox>
       회차
       <PartButtonContainer>
-        {data.dateInfo.map((_, index) => (
+        {dateInfo.map((info, index) => (
           <TabButton
             value={index}
-            onClick={(newTab) => {
-              setPartState(newTab.target.value);
+            onClick={onPartClick}
+            style={{
+              width: '70px',
+              height: '30px',
+              fontSize: '15px',
+              backgroundColor:
+                partState === index ? 'orange' : colors.primary40,
             }}
-            style={{ width: '70px', height: '30px', fontSize: '15px' }}
-            key={index}
+            key={info.date}
           >
             {index + 1}회차
           </TabButton>
         ))}
       </PartButtonContainer>
       CAST
-      <span style={{ paddingTop: '10px' }}>{data.cast}</span>
+      <span style={{ paddingTop: '10px' }}>{cast}</span>
     </SelectInfoBox>
   );
 }

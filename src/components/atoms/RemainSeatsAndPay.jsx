@@ -7,7 +7,12 @@ import { userState } from '@states/userState';
 
 import { ButtonsWrapper, SelectInfoBox } from '@styles/ticketDetailStyle';
 
-export default function RemainSeatsAndPay({ partState, dataId, data }) {
+export default function RemainSeatsAndPay({
+  partState,
+  dataId,
+  data,
+  onPaymentClick,
+}) {
   const { address } = useRecoilValue(userState);
 
   let ToPaymentPage;
@@ -15,7 +20,9 @@ export default function RemainSeatsAndPay({ partState, dataId, data }) {
   if (address) {
     ToPaymentPage = () => {
       return (
-        <ButtonsWrapper>
+        // TODO: LinkButton 리팩토링 필요
+        // TODO: payment 페이지에서 id 로 받아오는거 좀 이상함 고민필요
+        <ButtonsWrapper onClick={onPaymentClick}>
           <LinkButton to={`/payment?id=${dataId}`} name="결제" />
         </ButtonsWrapper>
       );
