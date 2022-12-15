@@ -50,4 +50,5 @@ export const Row = styled('div').attrs((props) => ({
   margin-bottom: ${(props) => props.marginBottom};
   margin-top: ${(props) => props.marginTop};
   gap: ${(props) => props.gap};
+  width: 100%;
 `;

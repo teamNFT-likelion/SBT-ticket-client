@@ -12,6 +12,7 @@ import Page404 from './Page404';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@states/userState';
 import { walletConnectError } from '@utils/toastMessages';
+import AppStepHeader from './payment/AppStepHeader';
 
 const APaymentPage = () => {
   // tap 키 저장 state
@@ -40,6 +41,7 @@ const APaymentPage = () => {
   if (data) {
     pageComponent = (
       <Layout page="a-payment-page">
+        <AppStepHeader />
         <Container>
           {tab === 'APP_Start' && <App1Start setTab={setTab} dataId={dataId} />}
           {tab === 'APP_SelectSeats' && (

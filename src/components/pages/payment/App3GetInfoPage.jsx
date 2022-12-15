@@ -12,14 +12,14 @@ import {
   PageTitle,
   SubTitle,
   TabButton,
+  SmTabButton,
 } from '@styles/ApaymentStyles';
 import { kakaoOauthUrl, naverOauthUrl } from '@constants/urlConst';
 import useOauth from '@hooks/useOauth';
-import kakaoLoginApiImg from '@assets/icon/kakaoLoginApiImg.png';
-import naverLoginApiImg from '@assets/icon/naverLoginApiImg.png';
+import kakaoIcon from '@assets/icon/kakaoIcon.png';
+import naverIcon from '@assets/icon/naverIcon.png';
 import kginicisImg from '@assets/img/kginicis.jpg';
-import ethereumImage from '@assets/icon/ethereum.svg';
-import polygonImage from '@assets/icon/polygon.svg';
+
 import RowIcon from '@assets/icon/rowIcon(Right).png';
 import CustomModal from '@components/articles/CustomModal';
 import { getCookie } from '@utils/cookie';
@@ -28,6 +28,8 @@ import { tInfoState, sbtInfoState } from '@states/paymentState';
 import { userState } from '@states/userState';
 import useWeb3 from '@hooks/useWeb3';
 import { walletConnectError, missingEmailError } from '@utils/toastMessages';
+import AppStepHeader from './AppStepHeader';
+import MyBalance from '@articles/MyBalance';
 
 const App3GetInfoPage = () => {
   const navigate = useNavigate();
@@ -38,6 +40,8 @@ const App3GetInfoPage = () => {
 
   // 모달을 위한 state
   const [showUseKginicis, setShowUseKginicis] = useState(false);
+  const [payType, setPayType] = useState('');
+  const [cashPayType, setCashPayType] = useState('');
 
   const ticketInfo = useRecoilValue(tInfoState);
   const sbtInfo = useRecoilValue(sbtInfoState);
@@ -45,13 +49,6 @@ const App3GetInfoPage = () => {
   // 로딩중 확인
   const [isMint, setIsMint] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    if (!address) {
-      walletConnectError();
-      navigate('/list');
-    }
-  }, [navigate, address]);
 
   const mint = async (_sbtInfo, _ticketInfo, _email) => {
     setIsLoading(true);
@@ -78,6 +75,16 @@ const App3GetInfoPage = () => {
     });
   }
 
+  const handlePayType = (e) => setPayType(e.target.value);
+  const handleCashPayType = (e) => setCashPayType(e.target.value);
+
+  useEffect(() => {
+    if (!address) {
+      walletConnectError();
+      navigate('/list');
+    }
+  }, [navigate, address]);
+
   // 결제완료 후 자동 탭 이동 (개발단계라서 편의상 주석처리 해놓을게요)
   // function afterMinting() {
   //   navigate(`/payment?id=${dataId}`, {
@@ -87,87 +94,107 @@ const App3GetInfoPage = () => {
 
   return (
     <Layout page="a-payment-page">
+      <AppStepHeader />
       <Container>
-        <PageTitle>티켓 결제</PageTitle>
-        <SubTitle>| 정보 입력 |</SubTitle>
-        <Row marginBottom="100px">
-          <Column marginTop="24px">
-            <LoginImageWrapper
-              src={kakaoLoginApiImg}
-              onClick={() => {
-                window.location.href = kakaoOauthUrl;
-              }}
-            />
-            <LoginImageWrapper
-              src={naverLoginApiImg}
-              onClick={() => {
-                window.location.href = naverOauthUrl;
-              }}
-            />
-          </Column>
-          <Column
-            alignItems={'center'}
-            justifyContent={'center'}
-            width={'183px'}
-            height={'100px'}
-            marginTop={'24px'}
-          >
-            <img
-              src={RowIcon}
-              alt="화살표"
-              style={{
-                height: '80px',
-                width: '80px',
-                objectFit: 'contain',
-                margin: '10px',
-              }}
-            />
-          </Column>
-          <UserInfoWrapper>
-            당신의 e-mail <p>{userEmail || 'Log in, please.'}</p>
-          </UserInfoWrapper>
-        </Row>
-        <SubTitle>| 결제 수단 선택 |</SubTitle>
-        {network === 'main' || network === 'goerli' ? (
-          <MyBalanceWrapper>
-            <p>My Balance: </p>
-            <ImageWrapper src={ethereumImage} />
-            <p>{`${balance} ETHER`}</p>
-          </MyBalanceWrapper>
-        ) : (
-          <MyBalanceWrapper>
-            <p>My Balance: </p>
-            <ImageWrapper src={polygonImage} />
-            <p>{`${balance} MATIC`}</p>
-          </MyBalanceWrapper>
-        )}
-        <ReCAPTCHAWrapper>
-          <ReCAPTCHA
-            sitekey={'6Lf2GEUjAAAAAI0WtrRYHEacUJrsrssZN-qA_H35'}
-            onChange={onChange}
-          />
-        </ReCAPTCHAWrapper>
-        <Row marginTop={'25px'}>
-          <TabButton
-            value="byKginicis"
-            onClick={() => setShowUseKginicis(true)}
-          >
-            일반결제
-          </TabButton>
-          <TabButton
-            value="byCoin"
-            onClick={() => {
-              if (userEmail) {
-                mint(sbtInfo, ticketInfo, userEmail);
-              } else {
-                missingEmailError();
-              }
-            }}
-          >
-            코인결제
-          </TabButton>
-        </Row>
-
+        <div
+          style={{ border: '2px solid orange', display: 'flex', width: '100%' }}
+        >
+          <div style={{ border: '2px solid orange', flex: 2.5 }}>
+            <Column gap="12px">
+              <SubTitle>| 주문자 정보 |</SubTitle>
+              <Row alignItems="center">
+                <Label htmlFor="address">지갑주소</Label>
+                <Input
+                  id="address"
+                  type="text"
+                  value={address}
+                  placeholder="지갑주소를 불러오세요"
+                  autoComplete="off"
+                />
+              </Row>
+              <Row alignItems="center">
+                <Label htmlFor="email">이메일</Label>
+                <Input
+                  id="email"
+                  type="text"
+                  value={userEmail}
+                  autoComplete="off"
+                  placeholder="이메일 정보를 불러오세요"
+                />
+                <IconWrapper
+                  src={kakaoIcon}
+                  onClick={() => {
+                    window.location.href = kakaoOauthUrl;
+                  }}
+                />
+                <IconWrapper
+                  src={naverIcon}
+                  onClick={() => {
+                    window.location.href = naverOauthUrl;
+                  }}
+                />
+              </Row>
+              {/* <UserInfoWrapper>
+                당신의 e-mail <p>{userEmail || 'Log in, please.'}</p>
+              </UserInfoWrapper> */}
+            </Column>
+            <Column>
+              <SubTitle>| 결제수단 선택 |</SubTitle>
+              <Row>
+                <SmTabButton
+                  value="coin"
+                  onClick={handlePayType}
+                  isActive={payType === 'coin'}
+                  // onClick={() => {
+                  //   if (userEmail) {
+                  //     mint(sbtInfo, ticketInfo, userEmail);
+                  //   } else {
+                  //     missingEmailError();
+                  //   }
+                  // }}
+                >
+                  코인결제
+                </SmTabButton>
+                <SmTabButton
+                  value="cash"
+                  onClick={handlePayType}
+                  isActive={payType === 'cash'}
+                  // onClick={() => setShowUseKginicis(true)}
+                >
+                  일반결제
+                </SmTabButton>
+              </Row>
+              <Column>
+                {payType === 'coin' && <MyBalance />}
+                {payType === 'cash' && (
+                  <Row>
+                    <SmTabButton
+                      value="transfer"
+                      onClick={handleCashPayType}
+                      isActive={cashPayType === 'transfer'}
+                    >
+                      계좌이체
+                    </SmTabButton>
+                    <SmTabButton
+                      value="easyPay"
+                      onClick={handleCashPayType}
+                      isActive={cashPayType === 'easyPay'}
+                    >
+                      간편결제
+                    </SmTabButton>
+                  </Row>
+                )}
+                {/* <ReCAPTCHAWrapper>
+                  <ReCAPTCHA
+                    sitekey={'6Lf2GEUjAAAAAI0WtrRYHEacUJrsrssZN-qA_H35'}
+                    onChange={onChange}
+                  />
+                </ReCAPTCHAWrapper> */}
+              </Column>
+            </Column>
+          </div>
+          <Column style={{ border: '2px solid orange', flex: 1 }}>asdf</Column>
+        </div>
         <Row>
           {isMint && (
             <CompletedContainer>Completed Create!!</CompletedContainer>
@@ -187,7 +214,7 @@ const App3GetInfoPage = () => {
             뒤로가기
           </TabButton>
           <TabButton value="APP_Done" onClick={backToPaymemt}>
-            다음단계
+            결제
           </TabButton>
         </Row>
       </Container>
@@ -202,11 +229,12 @@ const App3GetInfoPage = () => {
   );
 };
 
-const LoginImageWrapper = styled('img')`
+const IconWrapper = styled('img')`
   cursor: pointer;
   object-fit: contain;
-  width: 183px;
-  height: 50px;
+  width: auto;
+  height: 40px;
+  margin-right: 8px;
 `;
 
 const UserInfoWrapper = styled(Column)`
@@ -227,23 +255,21 @@ const UserInfoWrapper = styled(Column)`
 `;
 
 const ReCAPTCHAWrapper = styled('div')`
-  margin: 25px 0;
+  // margin: 25px 0;
 `;
 
-const MyBalanceWrapper = styled('div')`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 25px;
-  margin: 20px 0;
+const Label = styled('label')`
+  min-width: 100px;
+  font-size: 20px;
 `;
-
-const ImageWrapper = styled('img')`
-  width: 28px;
-  height: 28px;
-  border-radius: 15px;
-  object-fit: contain;
-  margin: 0 10px;
+const Input = styled('input')`
+  height: 40px;
+  width: 400px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding-left: 12px;
+  margin-right: 20px;
 `;
 
 const CompletedContainer = styled.div`
