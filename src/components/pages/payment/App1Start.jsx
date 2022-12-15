@@ -1,15 +1,14 @@
 import React from 'react';
-import * as colors from '@styles/colors';
+import { useRecoilState } from 'recoil';
+import styled from 'styled-components';
 import { TabButton } from '@styles/ApaymentStyles';
 import { Row } from '@components/atoms/wrapper.style';
 import TDPCalendar from '@components/atoms/Calendar';
 import PartInfoContainer from '@components/articles/PartInfoContainer';
 import RemainSeatsAndPay from '@components/atoms/RemainSeatsAndPay';
 import verticalLine from '@assets/img/verticalLine.png';
-import { tDateState, tPartState } from '@states/ticketState';
-import { useRecoilState } from 'recoil';
-import { format } from 'date-fns';
-import styled from 'styled-components';
+import { tDateState, tPartState } from '@states/paymentState';
+import TicketInfo from './TicketInfo';
 
 export const App1Start = ({ setTab, data }) => {
   const [date, setDate] = useRecoilState(tDateState);
@@ -18,23 +17,8 @@ export const App1Start = ({ setTab, data }) => {
   const onPartClick = (e) => setPart(Number(e.target.value));
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flex: 1,
-        width: '100%',
-        border: '0.75px solid #eaecd9',
-      }}
-    >
-      <div
-        style={{
-          flex: 2.5,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          padding: '30px',
-        }}
-      >
+    <StepBox>
+      <LeftBox>
         <SelectInfo>
           <TDPCalendar
             dateInfo={data.dateInfo}
@@ -50,60 +34,10 @@ export const App1Start = ({ setTab, data }) => {
           <img src={verticalLine} alt="verticalLine" height="260px" />
           <RemainSeatsAndPay data={data} partState={part} />
         </SelectInfo>
-      </div>
-      <div
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-          borderLeft: '1px solid white',
-          padding: '30px',
-          fontSize: '20px',
-        }}
-      >
-        <img
-          src={data.posterImgUrl}
-          alt="img"
-          style={{ width: '50px', marginBottom: '6px' }}
-        />
-
-        <div>{data.title}</div>
-        <div
-          style={{
-            marginTop: '50px',
-            marginBottom: '8px',
-            color: colors.primary40,
-          }}
-        >
-          예매정보
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            borderTop: '1px solid white',
-            borderBottom: '1px solid white',
-            padding: '8px 0',
-          }}
-        >
-          <div>일시</div>
-          <div>
-            {format(new Date(date), 'yyyy.MM.dd')}{' '}
-            {data.dateInfo[part].startTime}
-          </div>
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            borderTop: '1px solid white',
-            borderBottom: '1px solid white',
-            padding: '8px 0',
-          }}
-        >
-          <div>회차</div>
-          <div>{part + 1}회차</div>
-        </div>
-        <Row marginTop="160px" justifyContent="center">
+      </LeftBox>
+      <RightBox>
+        <TicketInfo data={data} />
+        <Row justifyContent="center" marginTop="100px">
           <TabButton
             value="APP_SelectSeats"
             onClick={(e) => setTab(e.target.value)}
@@ -111,10 +45,35 @@ export const App1Start = ({ setTab, data }) => {
             다음단계
           </TabButton>
         </Row>
-      </div>
-    </div>
+      </RightBox>
+    </StepBox>
   );
 };
+
+export const StepBox = styled('div')`
+  display: flex;
+  width: 100%;
+  border: 0.75px solid #eaecd9;
+`;
+
+export const LeftBox = styled('div')`
+  flex: 2.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+`;
+
+export const RightBox = styled('div')`
+  flex: 1;
+  flex-direction: column;
+  border-left: 1px solid white;
+  padding: 30px;
+  font-size: 20px;
+  min-height: 400px;
+  display: flex;
+  justify-content: space-between;
+`;
 
 const SelectInfo = styled('div')`
   width: 900px;

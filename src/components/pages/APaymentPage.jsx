@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import Layout from '@articles/Layout';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useLayoutEffect } from 'react';
@@ -9,23 +10,19 @@ import { App4Done } from './payment/App4Done';
 import { Container } from '@styles/ApaymentStyles';
 import { mainItems } from '@mock/items';
 import Page404 from './Page404';
-import { useRecoilValue, useSetRecoilState, useResetRecoilState } from 'recoil';
 import { userState } from '@states/userState';
 import { walletConnectError } from '@utils/toastMessages';
 import AppStepHeader from './payment/AppStepHeader';
-import { tDateState, tPartState } from '@states/ticketState';
 
 const APaymentPage = () => {
-  // tap 키 저장 state
-  const [tab, setTab] = useState('APP_Start');
   const location = useLocation();
   const navigate = useNavigate();
-
-  const parsed = parse(location.search);
-
-  const dataId = parsed.id;
-  const data = mainItems.filter((item) => item.id === dataId)[0] || false;
   const { address } = useRecoilValue(userState);
+
+  const { id: dataId } = parse(location.search);
+  const data = mainItems.filter((item) => item.id === dataId)[0] || false;
+
+  const [tab, setTab] = useState('APP_Start');
 
   useLayoutEffect(() => {
     const locationTab = location.state?.tab || 'APP_Start';
@@ -48,7 +45,7 @@ const APaymentPage = () => {
         <Container>
           {tab === 'APP_Start' && <App1Start setTab={setTab} data={data} />}
           {tab === 'APP_SelectSeats' && (
-            <App2SelectSeats setTab={setTab} dataId={dataId} />
+            <App2SelectSeats setTab={setTab} data={data} />
           )}
           {tab === 'APP_Done' && <App4Done setTab={setTab} dataId={dataId} />}
         </Container>
