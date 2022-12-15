@@ -6,7 +6,7 @@ import TDPCalendar from '@atoms/Calendar';
 import PartInfoContainer from '@articles/PartInfoContainer';
 import RemainSeatsAndPay from '@atoms/RemainSeatsAndPay';
 import { ButtonsWrapper, ContentsInfoBody } from '@styles/ticketDetailStyle';
-import { tDateState, tPartState } from '@states/ticketState';
+import { tDateState, tPartState } from '@states/paymentState';
 import { useNavigate } from 'react-router-dom';
 
 const DateSelection = ({ data }) => {

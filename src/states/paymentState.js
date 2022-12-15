@@ -1,5 +1,14 @@
 import { atom, selector } from 'recoil';
 
+export const tDateState = atom({
+  key: 'paymentState/tDate',
+  default: new Date(),
+});
+export const tPartState = atom({
+  key: 'paymentState/tPart',
+  default: 0,
+});
+
 // mintSBT에 필요한 state
 export const tDeadlineState = atom({
   key: 'paymentState/tDeadline', // token에 deadline 저장
@@ -15,7 +24,7 @@ export const tPerformIdState = atom({
 });
 export const tSeatState = atom({
   key: 'paymentState/tSeat', // token에 좌석정보 저장
-  default: '',
+  default: [],
 });
 export const tSeatLimitState = atom({
   key: 'paymentState/tSeatLimit', //token에 해당 공연의 총좌석수 저장

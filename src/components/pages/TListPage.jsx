@@ -7,7 +7,12 @@ import PosterItems from './ticketList/PosterItems';
 import BigPoster from './ticketList/BigPoster';
 import { mainItems } from '@mock/items.js';
 import { useResetRecoilState } from 'recoil';
-import { tDateState, tPartState } from '@states/ticketState';
+import {
+  tDateState,
+  tPartState,
+  tPriceState,
+  tSeatState,
+} from '@states/paymentState';
 
 const PageTypeWrapper = styled('div')`
   display: flex;
@@ -36,6 +41,8 @@ const TListPage = () => {
 
   const resetTicketDate = useResetRecoilState(tDateState);
   const resetTicketPart = useResetRecoilState(tPartState);
+  const resetTicketPrice = useResetRecoilState(tPriceState);
+  const resetTicketSeat = useResetRecoilState(tSeatState);
 
   useEffect(() => {
     //TODO: 페이지타입별로 데이터 바꿔 줘야됨 setData 바꿔줘야댐
@@ -49,10 +56,12 @@ const TListPage = () => {
   }, [paramType, navigate]);
 
   useEffect(() => {
-    // 선택하다가 팅겨나오면 리셋해줘야댐
+    // 예매하다가 팅겨나오면 리셋해줘야댐
     resetTicketDate();
     resetTicketPart();
-  }, [resetTicketDate, resetTicketPart]);
+    resetTicketPrice();
+    resetTicketSeat();
+  }, [resetTicketDate, resetTicketPart, resetTicketPrice, resetTicketSeat]);
 
   return (
     <Layout page="list-page">

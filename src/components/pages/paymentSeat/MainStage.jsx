@@ -8,38 +8,36 @@ import Section from './Section';
 import SeatPopup from './SeatPopup';
 import SeatsData from './seats-data.json';
 import * as layout from './layout';
-
-const SeatsInfoBox = styled(Column)`
-  height: 100px;
-  width: 700px;
-  border: white 4px solid;
-  border-bottom: none;
-  padding: 10px;
-  justify-content: center;
-`;
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { tSeatState, tPriceState } from '@states/paymentState';
 
 const SeatsInfo = styled('span')`
   font-size: 20px;
   font-weight: 400;
   color: ${colors.primary80};
+  margin-bottom: 16px;
 `;
 
+//TODO: 색변경
 const SeatsSelectBox = styled(Column)`
   height: auto;
-  width: 700px;
-  border: white 4px solid;
+  width: 900px;
+  display: flex;
+  justify-content: center;
+  background-color: gray;
+  border-radius: 24px;
 `;
 
 const Container = styled('div')`
   position: relative;
-  width: 693px;
+  width: 750px;
   height: 400px;
+  margin: auto;
 `;
 
-const MainStage = ({ setSelectedSeats, setSelectedPrices }) => {
+const MainStage = () => {
   const containerRef = useRef(null);
   const stageRef = useRef(null);
-
   const [scale, setScale] = useState(1);
   const [scaleToFit, setScaleToFit] = useState(1);
   const [size, setSize] = useState({
@@ -48,15 +46,10 @@ const MainStage = ({ setSelectedSeats, setSelectedPrices }) => {
     virtualWidth: 1000,
   });
   const [virtualWidth, setVirtualWidth] = useState(1000);
-  const [selectedSeatsIds, setSelectedSeatsIds] = useState([]);
-  const [selectedSeatsPrice, setSelectedSeatsPrice] = useState(0);
+  const [seatIds, setSeatsIds] = useRecoilState(tSeatState);
+  const setSeatsPrice = useSetRecoilState(tPriceState);
   const seatsLimit = 2;
   const [popup, setPopup] = useState({ seat: null });
-
-  useEffect(() => {
-    setSelectedSeats(selectedSeatsIds);
-    setSelectedPrices(selectedSeatsPrice);
-  }, [selectedSeatsIds, selectedSeatsPrice]);
 
   // calculate available space for drawing
   useEffect(() => {
@@ -81,9 +74,9 @@ const MainStage = ({ setSelectedSeats, setSelectedPrices }) => {
     setScale(scaleToFit);
     setScaleToFit(scaleToFit);
     setVirtualWidth(clientRect.width);
-  }, [SeatsData, size]);
+  }, [size]);
 
-  // togle scale on double clicks or taps
+  // toggle scale on double clicks or taps
   const toggleScale = useCallback(() => {
     if (scale === 1) {
       setScale(scaleToFit);
@@ -101,52 +94,40 @@ const MainStage = ({ setSelectedSeats, setSelectedPrices }) => {
 
   const handleSelect = useCallback(
     (seatId) => {
-      if (selectedSeatsIds.length < seatsLimit) {
-        const newIds = selectedSeatsIds.concat([seatId]);
-        setSelectedSeatsIds(newIds);
+      if (seatIds.length < seatsLimit) {
+        const newIds = seatIds.concat([seatId]);
+        setSeatsIds(newIds);
         if (seatId.includes(SeatsData.seats.sections[0].name)) {
-          setSelectedSeatsPrice(
-            (price) => price + SeatsData.seats.sections[0].price,
-          );
+          setSeatsPrice((price) => price + SeatsData.seats.sections[0].price);
         } else if (seatId.includes(SeatsData.seats.sections[1].name)) {
-          setSelectedSeatsPrice(
-            (price) => price + SeatsData.seats.sections[1].price,
-          );
+          setSeatsPrice((price) => price + SeatsData.seats.sections[1].price);
         } else {
-          setSelectedSeatsPrice(
-            (price) => price + SeatsData.seats.sections[2].price,
-          );
+          setSeatsPrice((price) => price + SeatsData.seats.sections[2].price);
         }
       }
     },
-    [selectedSeatsIds],
+    [seatIds, setSeatsIds, setSeatsPrice],
   );
 
   const handleDeselect = useCallback(
     (seatId) => {
-      const ids = selectedSeatsIds.slice();
+      const ids = seatIds.slice();
       ids.splice(ids.indexOf(seatId), 1);
-      setSelectedSeatsIds(ids);
+      setSeatsIds(ids);
       if (seatId.includes(SeatsData.seats.sections[0].name)) {
-        setSelectedSeatsPrice(
-          (price) => price - SeatsData.seats.sections[0].price,
-        );
+        setSeatsPrice((price) => price - SeatsData.seats.sections[0].price);
       } else if (seatId.includes(SeatsData.seats.sections[1].name)) {
-        setSelectedSeatsPrice(
-          (price) => price - SeatsData.seats.sections[1].price,
-        );
+        setSeatsPrice((price) => price - SeatsData.seats.sections[1].price);
       } else {
-        setSelectedSeatsPrice(
-          (price) => price - SeatsData.seats.sections[2].price,
-        );
+        setSeatsPrice((price) => price - SeatsData.seats.sections[2].price);
       }
     },
-    [selectedSeatsIds],
+    [seatIds, setSeatsIds, setSeatsPrice],
   );
 
-  const maxSectionWidth = layout.getMaximumSectionWidth(
-    SeatsData.seats.sections,
-  );
+  // const maxSectionWidth = layout.getMaximumSectionWidth(
+  //   SeatsData.seats.sections,
+  // );
 
   if (SeatsData === null) {
     return (
@@ -159,18 +140,12 @@ const MainStage = ({ setSelectedSeats, setSelectedPrices }) => {
   let lastSectionPosition = 0;
 
   return (
-    <Column marginTop="24px" marginBottom="24px" height="auto">
-      <SeatsInfoBox>
-        <SeatsInfo>
-          ⭐ 선택한 좌석: {selectedSeatsIds.map((seat) => `${seat}, `)}
-        </SeatsInfo>
-        <SeatsInfo>
-          ⭐ 선택한 매수(개인당 최대{' '}
-          <span style={{ color: 'red' }}>{seatsLimit}</span>매):{' '}
-          {selectedSeatsIds.length}매
-        </SeatsInfo>
-        <SeatsInfo>⭐ 총 금액: {selectedSeatsPrice}원</SeatsInfo>
-      </SeatsInfoBox>
+    <Column>
+      <SeatsInfo>
+        ⭐ 선택한 매수(개인당 최대{' '}
+        <span style={{ color: 'red' }}>{seatsLimit}</span>매): {seatIds.length}
+        매
+      </SeatsInfo>
       <SeatsSelectBox>
         <Container ref={containerRef}>
           <Stage
@@ -199,8 +174,9 @@ const MainStage = ({ setSelectedSeats, setSelectedPrices }) => {
                 const height = layout.getSectionHeight(section);
                 const position = lastSectionPosition + layout.SECTIONS_MARGIN;
                 lastSectionPosition = position + height;
-                const width = layout.getSectionWidth(section);
-                const offset = (maxSectionWidth - width) / 2;
+                // const width = layout.getSectionWidth(section);
+                // const offset = (maxSectionWidth - width) / 2;
+                const offset = 10;
 
                 return (
                   <Section
@@ -209,7 +185,7 @@ const MainStage = ({ setSelectedSeats, setSelectedPrices }) => {
                     height={height}
                     key={index}
                     section={section}
-                    selectedSeatsIds={selectedSeatsIds}
+                    selectedSeatsIds={seatIds}
                     onHoverSeat={handleHover}
                     onSelectSeat={handleSelect}
                     onDeselectSeat={handleDeselect}

@@ -1,7 +1,8 @@
 export const SEAT_SIZE = 10;
 export const SEATS_DISTANCE = 15;
 export const SUBSECTION_PADDING = 30;
-export const SECTIONS_MARGIN = 10;
+// export const SECTIONS_MARGIN = 10;
+export const SECTIONS_MARGIN = 25;
 export const SECTION_TOP_PADDING = 40;
 
 export const getSubsectionWidth = (subsection) => {
