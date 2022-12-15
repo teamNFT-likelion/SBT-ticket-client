@@ -3,48 +3,30 @@ import { Column, Row } from '@components/atoms/wrapper.style';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 
-export const ButtonsWrapper = styled('div')`
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
-  height: 100%;
-  font-size: 32px;
-  flex: 7;
-  gap: 4px;
-`;
-export const ContentsInfoBody = styled(Row)`
-  // HEADER 높이 5rem + 여분 9rem
-  color: white;
-  display: flex;
-  justify-content: center;
-  margin: 5rem;
+export const ContentsInfoBody = styled('div')`
+  width: 900px;
 `;
 
-export const SelectInfo = styled('div')`
+export const ButtonsWrapper = styled('div')`
+  font-size: 32px;
   display: flex;
-  background-color: #d9d9d915;
-  border: 0.75px #eaecd9 solid;
-  border-radius: 30px;
-  justify-content: center;
-  align-items: center;
-  width: 800px;
-  font-size: 17px;
+  flex-direction: row-reverse;
 `;
 
 export const PartButtonContainer = styled(Row)`
   margin: 24px 5px 50px 5px;
 `;
+
 export const SelectInfoBox = styled(Column)`
   display: flex;
-  width: 300px;
+  flex: 1;
   height: 300px;
   margin: 0px 15px;
   padding: 20px 0px;
 `;
 
 export const CalendarStyle = styled.div`
-  width: 250px;
+  width: 300px;
   margin: 0px 15px;
 
   .react-calendar {

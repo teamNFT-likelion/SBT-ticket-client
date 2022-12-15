@@ -16,6 +16,9 @@ const ContentWrapper = styled('div')`
   margin-top: ${APP_HEADER_H};
   min-height: calc(100vh - ${APP_HEADER_H} - ${FOOTER_H}px - ${FOOTER_MT}px);
   padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Layout = ({ children, page }) => {

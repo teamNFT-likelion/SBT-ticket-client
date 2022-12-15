@@ -94,7 +94,7 @@ const App3GetInfoPage = () => {
 
   return (
     <Layout page="a-payment-page">
-      <AppStepHeader />
+      <AppStepHeader step="APP_Pay" />
       <Container>
         <div
           style={{ border: '2px solid orange', display: 'flex', width: '100%' }}

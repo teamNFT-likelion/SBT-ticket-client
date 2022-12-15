@@ -40,9 +40,7 @@ function getData(dataId) {
   return data;
 }
 
-const DetailInfo = ({ dataId }) => {
-  const data = getData(dataId);
-
+const DetailInfo = ({ data }) => {
   return (
     <ContentsInfoBody>
       <ContentsInfo>

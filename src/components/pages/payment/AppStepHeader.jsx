@@ -1,71 +1,37 @@
 import React from 'react';
 import * as colors from '@styles/colors';
+import styled from 'styled-components';
 
-const AppStepHeader = () => {
+const AppStepHeader = ({ step }) => {
   return (
-    <div
-      style={{
-        color: 'white',
-        display: 'flex',
-        width: '100%',
-        height: '70px',
-        alignItems: 'center',
-        marginBottom: '40px',
-        gap: '10px',
-        fontSize: '20px',
-      }}
-    >
-      <div
-        style={{
-          flex: 1,
-          backgroundColor: 'orange',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        날짜 / 회차 선택
-      </div>
-      <div
-        style={{
-          flex: 1,
-          backgroundColor: colors.primary40,
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        등급 / 좌석 선택
-      </div>
-      <div
-        style={{
-          flex: 1,
-          backgroundColor: colors.primary40,
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        주문자 정보 / 결제
-      </div>
-
-      <div
-        style={{
-          flex: 1,
-          backgroundColor: colors.primary40,
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        결제완료
-      </div>
-    </div>
+    <StepWrapper>
+      <Step isActive={step === 'APP_Start'}>날짜 / 회차 선택</Step>
+      <Step isActive={step === 'APP_SelectSeats'}>등급 / 좌석 선택</Step>
+      <Step isActive={step === 'APP_Pay'}>주문자 정보 / 결제</Step>
+      <Step isActive={step === 'APP_Done'}>결제완료</Step>
+    </StepWrapper>
   );
 };
+
+const StepWrapper = styled('div')`
+  color: white;
+  display: flex;
+  width: 100%;
+  height: 70px;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 10px;
+  font-size: 20px;
+`;
+
+const Step = styled('div')`
+  flex: 1;
+  background-color: ${({ isActive }) =>
+    isActive ? 'orange' : colors.primary40};
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export default AppStepHeader;

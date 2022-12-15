@@ -3,17 +3,12 @@ import * as colors from '@styles/colors';
 import { TabButton } from '@styles/ApaymentStyles';
 import { PartButtonContainer, SelectInfoBox } from '@styles/ticketDetailStyle';
 
-export default function PartInfoContainer({
-  dateInfo,
-  onPartClick,
-  cast,
-  partState,
-}) {
+export default function PartInfoContainer({ onPartClick, data, partState }) {
   return (
     <SelectInfoBox>
       회차
       <PartButtonContainer>
-        {dateInfo.map((info, index) => (
+        {data.dateInfo.map((info, index) => (
           <TabButton
             value={index}
             onClick={onPartClick}
@@ -31,7 +26,7 @@ export default function PartInfoContainer({
         ))}
       </PartButtonContainer>
       CAST
-      <span style={{ paddingTop: '10px' }}>{cast}</span>
+      <span style={{ paddingTop: '10px' }}>{data.cast}</span>
     </SelectInfoBox>
   );
 }

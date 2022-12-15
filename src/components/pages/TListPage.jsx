@@ -6,6 +6,8 @@ import Layout from '@articles/Layout';
 import PosterItems from './ticketList/PosterItems';
 import BigPoster from './ticketList/BigPoster';
 import { mainItems } from '@mock/items.js';
+import { useResetRecoilState } from 'recoil';
+import { tDateState, tPartState } from '@states/ticketState';
 
 const PageTypeWrapper = styled('div')`
   display: flex;
@@ -32,6 +34,9 @@ const TListPage = () => {
   const paramType = searchParams.get('type');
   const [type, setType] = useState('concert');
 
+  const resetTicketDate = useResetRecoilState(tDateState);
+  const resetTicketPart = useResetRecoilState(tPartState);
+
   useEffect(() => {
     //TODO: 페이지타입별로 데이터 바꿔 줘야됨 setData 바꿔줘야댐
     if (paramType === null) {
@@ -42,6 +47,12 @@ const TListPage = () => {
       navigate('/list');
     }
   }, [paramType, navigate]);
+
+  useEffect(() => {
+    // 선택하다가 팅겨나오면 리셋해줘야댐
+    resetTicketDate();
+    resetTicketPart();
+  }, [resetTicketDate, resetTicketPart]);
 
   return (
     <Layout page="list-page">
