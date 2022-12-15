@@ -5,7 +5,8 @@ import { Column } from '@components/atoms/wrapper.style';
 export const Container = styled(Column)`
   display: flex;
   align-items: center;
-  justify-content: center;
+  width: 100%;
+  flex: 1;
 `;
 
 export const PageTitle = styled('div')`
