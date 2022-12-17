@@ -129,7 +129,7 @@ const AccountPage = () => {
       setSbtList(items);
     }
     saveMyToken();
-  }, [account]);
+  }, [account, walletType, web3.eth.Contract, web3.utils]);
 
   return (
     <Layout>

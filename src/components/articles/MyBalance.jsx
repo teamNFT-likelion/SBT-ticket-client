@@ -23,19 +23,20 @@ const MyBalance = () => {
   );
 };
 
+const MyBalanceWrapper = styled('div')`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-top: 24px;
+`;
+
 const ImageWrapper = styled('img')`
   width: 28px;
   height: 28px;
   border-radius: 15px;
   object-fit: contain;
   margin: 0 10px;
-`;
-
-const MyBalanceWrapper = styled('div')`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
 `;
 
 export default MyBalance;

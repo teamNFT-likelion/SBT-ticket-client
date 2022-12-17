@@ -37,8 +37,8 @@ const Popup = ({ position, seatId, onClose }) => {
     return () => {
       window.removeEventListener('click', onClick);
     };
-  }, []);
-  
+  }, [onClose]);
+
   return (
     <Container ref={containerRef} position={position}>
       <div>Seat: {seatId}</div>

@@ -39,8 +39,9 @@ export default function useWeb3() {
         from: account,
       });
       tokenContract.options.address = GOERLI_TTOT;
+      console.log(tDeadline, tPrice, tPerformId, tSeat, tSeatLimit);
       await tokenContract.methods
-        .mintSbt(_tokenUri, tDeadline, tPrice, tPerformId, tSeat, tSeatLimit)
+        .mintSbt(_tokenUri, tDeadline, 0, tPerformId, tSeat.join(), tSeatLimit) // TODO: tPrice 값있으면 안됨, tsea배열일때 각각? 한번에?
         .send({ from: account });
     }
   }

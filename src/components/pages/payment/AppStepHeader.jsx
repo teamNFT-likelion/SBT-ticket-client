@@ -7,7 +7,7 @@ const AppStepHeader = ({ step }) => {
     <StepWrapper>
       <Step isActive={step === 'APP_Start'}>날짜 / 회차 선택</Step>
       <Step isActive={step === 'APP_SelectSeats'}>등급 / 좌석 선택</Step>
-      <Step isActive={step === 'APP_Pay'}>주문자 정보 / 결제</Step>
+      <Step isActive={step === 'APP_GetInfo'}>주문자 정보 / 결제</Step>
       <Step isActive={step === 'APP_Done'}>결제완료</Step>
     </StepWrapper>
   );

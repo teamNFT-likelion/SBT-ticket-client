@@ -13,16 +13,17 @@ import Page404 from './Page404';
 import { userState } from '@states/userState';
 import { walletConnectError } from '@utils/toastMessages';
 import AppStepHeader from './payment/AppStepHeader';
+import App3GetInfoPage from './payment/App3GetInfoPage';
 
 const APaymentPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { address } = useRecoilValue(userState);
 
   const { id: dataId } = parse(location.search);
   const data = mainItems.filter((item) => item.id === dataId)[0] || false;
 
   const [tab, setTab] = useState('APP_Start');
+  const { address } = useRecoilValue(userState);
 
   useLayoutEffect(() => {
     const locationTab = location.state?.tab || 'APP_Start';
@@ -36,26 +37,25 @@ const APaymentPage = () => {
     }
   }, [address, navigate]);
 
-  let pageComponent;
-
-  if (data) {
-    pageComponent = (
-      <Layout page="a-payment-page">
-        <AppStepHeader step={tab} />
-        <Container>
-          {tab === 'APP_Start' && <App1Start setTab={setTab} data={data} />}
-          {tab === 'APP_SelectSeats' && (
-            <App2SelectSeats setTab={setTab} data={data} />
-          )}
-          {tab === 'APP_Done' && <App4Done setTab={setTab} dataId={dataId} />}
-        </Container>
-      </Layout>
-    );
-  } else {
-    pageComponent = <Page404 />;
+  if (!data) {
+    return <Page404 />;
   }
 
-  return pageComponent;
+  return (
+    <Layout page="a-payment-page">
+      <AppStepHeader step={tab} />
+      <Container>
+        {tab === 'APP_Start' && <App1Start setTab={setTab} data={data} />}
+        {tab === 'APP_SelectSeats' && (
+          <App2SelectSeats setTab={setTab} data={data} />
+        )}
+        {tab === 'APP_GetInfo' && (
+          <App3GetInfoPage setTab={setTab} data={data} />
+        )}
+        {tab === 'APP_Done' && <App4Done dataId={data} />}
+      </Container>
+    </Layout>
+  );
 };
 
 export default APaymentPage;

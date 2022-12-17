@@ -10,8 +10,8 @@ import AccountPage from '@pages/AccountPage';
 import '@fontsource/shrikhand'; // title TODO: refactoring 필요
 import '@fontsource/roboto-condensed'; // subtitle
 import '@fontsource/do-hyeon';
-import App3GetInfoPage from '@components/pages/payment/App3GetInfoPage';
 import Page404 from '@components/pages/Page404';
+import GetInfoPage from '@pages/GetInfoPage';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/list" element={<TListPage />} />
         <Route path="/detail" element={<TDetailPage />} />
-        <Route path="/getInfo" element={<App3GetInfoPage />} />
+        <Route path="/getInfo" element={<GetInfoPage />} />
         <Route path="/search" element={<TSearchPage />} />
         <Route path="/payment" element={<APaymentPage />} />
         <Route path="/account" element={<AccountPage />} />

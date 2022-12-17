@@ -73,6 +73,8 @@ export const RightBox = styled('div')`
   min-height: 400px;
   display: flex;
   justify-content: space-between;
+  width: 390px;
+  position: relative; // loading 위치
 `;
 
 const SelectInfo = styled('div')`

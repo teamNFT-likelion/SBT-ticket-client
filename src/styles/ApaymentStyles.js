@@ -15,8 +15,8 @@ export const PageTitle = styled('div')`
   color: white;
 `;
 export const SubTitle = styled(PageTitle)`
-  font-size: 30px;
-  margin-bottom: 0px;
+  font-size: 28px;
+  margin-bottom: 16px;
   color: ${colors.primary80};
 `;
 
@@ -43,4 +43,17 @@ export const TempBox = styled(Column)`
   height: 500px;
   width: 700px;
   border: white 4px solid;
+`;
+
+export const CompletedContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 34px;
+  flex: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
 `;
