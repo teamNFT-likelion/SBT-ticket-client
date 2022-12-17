@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { setCookie, getCookie } from '@utils/cookie';
@@ -18,6 +18,8 @@ export default function useOauth() {
     return (userData && (userData.email || userData.kakao_account.email)) || '';
   }
 
+  const [popup, setPopup] = useState(null);
+
   useEffect(() => {
     // 인가코드 서버에 전달 및 프로필데이터 응답처리
     const getOauthData = (_state, _code) => {
@@ -30,12 +32,16 @@ export default function useOauth() {
         .then(({ data }) => {
           setCookie('oauthData', data.data, {
             expires: new Date(Date.now() + 1000 * 60 * 5),
-          });
-          navigate('/getInfo');
+          }); // 부모로 데이터 전송해주고 팝업 닫자 여기서
+          // console.log('닫껴라');
+          // console.log(window.opener);
+          console.log('postmessage');
+          window.opener.postMessage({ oauthData: data.data }, '*');
+          // navigate('/getInfo');
         })
         .catch((err) => {
           console.error(err);
-          navigate('/getInfo');
+          // navigate('/getInfo');
         });
     };
 
@@ -43,11 +49,11 @@ export default function useOauth() {
     if (state && code) {
       getOauthData(state, code);
     }
-  }, [code, state, navigate]);
+  }, [code, state, navigate, popup]);
 
   useEffect(() => {
     setEmail(getUserEmail(oauthData));
   }, [oauthData, setEmail]);
 
-  return { oauthData, email };
+  return { oauthData, email, popup, setPopup };
 }

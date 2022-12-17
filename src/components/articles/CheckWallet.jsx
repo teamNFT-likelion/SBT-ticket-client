@@ -5,6 +5,8 @@ const ethereum = window.ethereum;
 
 export default function CheckWallet() {
   const [account, setAccount] = useState('');
+  // TODO
+  // eslint-disable-next-line no-unused-vars
   const [walletType, setWalletType] = useState('');
 
   // 유저 정보와 지갑 정보 받아오기

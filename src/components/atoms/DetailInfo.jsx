@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Column, Row } from '@components/atoms/wrapper.style';
-import { mainItems } from 'src/mock/items';
 import { format } from 'date-fns';
 import { SubTitle } from '@styles/ApaymentStyles';
 
@@ -34,11 +33,6 @@ const ConcertInfoItem = styled('div')`
   font-size: 13px;
   font-family: sans-serif;
 `;
-
-function getData(dataId) {
-  const data = mainItems.filter((item) => item.id === dataId)[0];
-  return data;
-}
 
 const DetailInfo = ({ data }) => {
   return (
