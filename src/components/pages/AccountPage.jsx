@@ -32,6 +32,7 @@ const TabNavigation = styled('div')`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  width: 100%;
   margin: 50px 0;
 `;
 
@@ -129,7 +130,8 @@ const AccountPage = () => {
       setSbtList(items);
     }
     saveMyToken();
-  }, [account, walletType, web3.eth.Contract, web3.utils]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [account]); //TODO: 린트 체크필요
 
   return (
     <Layout>
