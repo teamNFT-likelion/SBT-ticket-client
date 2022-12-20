@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import { toast } from 'react-toastify';
@@ -6,6 +6,9 @@ import metamaskImageUrl from '@assets/icon/MetaMask.png';
 import { BiWalletAlt } from 'react-icons/bi';
 import CustomModal from '@articles/CustomModal';
 import { formatAddress } from '@utils/parser';
+import { useRecoilState } from 'recoil';
+import { userAccount, userNetworkId, userWalletType } from '@states/userState';
+import { networks } from '@components/pages/tempData/NetworkInfo';
 
 const AddressContainer = styled('button')`
   display: flex;
@@ -69,14 +72,9 @@ const ethereum = window.ethereum;
 export default function Wallet() {
   const [showWalletOptions, setShowWalletOptions] = useState(false);
   const [showDisconnectWallet, setShowDisconnectWallet] = useState(false);
-  const [account, setAccount] = useState('');
-  const [walletType, setWalletType] = useState('');
-
-  // 유저 정보와 지갑 정보 받아오기
-  useEffect(() => {
-    setAccount(localStorage.getItem('_user'));
-    setWalletType(localStorage.getItem('_wallet'));
-  }, []);
+  const [account, setAccount] = useRecoilState(userAccount);
+  const [walletType, setWalletType] = useRecoilState(userWalletType);
+  const [networkId, setNetworkId] = useRecoilState(userNetworkId);
 
   // 메타마스크 로그인
   async function loginWithMetamask() {
@@ -101,10 +99,18 @@ export default function Wallet() {
       setWalletType('eth');
       localStorage.setItem('_user', accounts[0]);
       localStorage.setItem('_wallet', 'eth');
-      window.location.reload();
-      toast.success(`${formatAddress(accounts[0])}님 환영합니다.`);
+
+      if (networkId !== networks['goerli'].chainId) {
+        setTimeout(() => window.location.reload(), 1500);
+      } else {
+        toast.success(`${formatAddress(accounts[0])}님 환영합니다.`, {
+          autoClose: 1500,
+        });
+      }
     } catch {
-      toast.error('로그인 실패. 브라우저를 끄고 다시 켜주세요.');
+      toast.error('로그인 실패. 브라우저를 끄고 다시 켜주세요.', {
+        autoClose: 1500,
+      });
     }
   }
 
@@ -116,13 +122,16 @@ export default function Wallet() {
 
   // 지갑 로그아웃 핸들러
   function handleDisconnect() {
-    toast.warn('로그아웃 되었습니다.');
+    toast.warn('로그아웃 되었습니다.', {
+      autoClose: 1500,
+    });
     setAccount('');
     setWalletType('');
+    setNetworkId('');
     localStorage.removeItem('_user');
     localStorage.removeItem('_wallet');
     setShowDisconnectWallet(false);
-    window.location.reload();
+    setTimeout(() => window.location.reload(), 1500);
   }
 
   return (

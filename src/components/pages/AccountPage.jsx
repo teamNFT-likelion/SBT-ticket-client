@@ -3,13 +3,13 @@ import Layout from '@articles/Layout';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import metamaskImageUrl from '@assets/icon/MetaMask.png';
-import Web3 from 'web3';
 import axios from 'axios';
 import { GOERLI_TTOT } from '@contracts/ContractAddress';
 import { TTOT_ABI } from '@contracts/ABI';
 import MyTickets from './account/MyTickets';
 import { useNavigate } from 'react-router-dom';
 import { walletConnectError } from '@utils/toastMessages';
+import useWeb3 from '@hooks/useWeb3';
 
 const AddressWrapper = styled('div')`
   display: flex;
@@ -54,8 +54,6 @@ const TicketContainer = styled('div')`
   gap: 20px;
 `;
 
-const ethereum = window.ethereum;
-
 const AccountPage = () => {
   const navigate = useNavigate();
 
@@ -63,14 +61,14 @@ const AccountPage = () => {
   const [account, setAccount] = useState('');
   const [walletType, setWalletType] = useState('');
 
+  // 컨트랙트와 통신을 위한 객체 저장
+  const { web3 } = useWeb3();
+
   // tap 키 저장 state
   const [tab, setTab] = useState('ALL');
 
   // 내 sbt 저장
   const [sbtList, setSbtList] = useState([]);
-
-  // 컨트랙트와 통신을 위한 객체 저장
-  const [web3, setWeb3] = useState({});
 
   // account와 walletType 불러오기
   useEffect(() => {
@@ -82,21 +80,9 @@ const AccountPage = () => {
   useEffect(() => {
     if (!localStorage.getItem('_user')) {
       walletConnectError();
-      navigate('/list');
+      navigate(-1);
     }
   }, [account, navigate]);
-
-  // 시작 시 메타마스크와 연결이 되어있는 지 확인하고 객체를 생성.
-  useEffect(() => {
-    if (typeof ethereum !== 'undefined') {
-      try {
-        const web3 = new Web3(ethereum);
-        setWeb3(web3);
-      } catch (err) {
-        console.log(err);
-      }
-    } else return;
-  }, []);
 
   // 내 토큰들 불러오기
   useEffect(() => {

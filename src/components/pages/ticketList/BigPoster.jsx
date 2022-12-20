@@ -21,7 +21,7 @@ const BigPoster = ({ type, items }) => {
   const [typeItems, setTypeItems] = useState(items);
   const navigate = useNavigate();
 
-  const { address } = useRecoilValue(userState);
+  const { account } = useRecoilValue(userState);
 
   const onClickCard = (side) => {
     if (activePosterId === 0 && side === 'right') {
@@ -75,7 +75,7 @@ const BigPoster = ({ type, items }) => {
               </button>
               <button
                 onClick={() => {
-                  if (address) {
+                  if (account) {
                     navigate({
                       pathname: '/payment',
                       search: `?id=${typeItems[0].id}`,
@@ -126,7 +126,7 @@ const BigPoster = ({ type, items }) => {
               </button>
               <button
                 onClick={() => {
-                  if (address) {
+                  if (account) {
                     navigate({
                       pathname: '/payment',
                       search: `?id=${typeItems[1].id}`,

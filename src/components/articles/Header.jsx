@@ -45,7 +45,7 @@ const ButtonsWrapper = styled('div')`
 `;
 
 const Header = ({ page }) => {
-  const { address } = useRecoilValue(userState);
+  const { account } = useRecoilValue(userState);
 
   let accountBtn;
 
@@ -53,7 +53,7 @@ const Header = ({ page }) => {
     e.preventDefault();
     walletConnectError();
   }
-  if (address) {
+  if (account) {
     accountBtn = (
       <Link to={'/account'}>
         <BiUser size="50" color={colors.primary40} />
