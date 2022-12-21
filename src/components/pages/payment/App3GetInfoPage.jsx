@@ -13,6 +13,9 @@ import TicketInfo from './TicketInfo';
 import OrdererInfo from './OrdererInfo';
 import SelectPayment from './SelectPayment';
 import useMint from '@hooks/useMint';
+import { loadTossPayments } from '@tosspayments/payment-sdk';
+
+const clientKey = 'test_ck_5GePWvyJnrKjMRP6vn1VgLzN97Eo';
 
 const App3GetInfoPage = ({ setTab, data }) => {
   const { email: userEmail, setPopup, popup } = useOauth();
@@ -48,7 +51,28 @@ const App3GetInfoPage = ({ setTab, data }) => {
 
   const onClickPay = (e) => {
     if (payType === 'cash') {
-      setShowUseKginicis(true);
+      localStorage.setItem(
+        'pay_data',
+        JSON.stringify({ data, ticketInfo, sbtInfo }),
+      );
+      loadTossPayments(clientKey).then((tossPayments) => {
+        tossPayments
+          .requestPayment('카드', {
+            amount: ticketInfo.tPrice,
+            orderId: crypto.randomUUID(),
+            orderName: data.title,
+            customerName: account,
+            successUrl: `${window.origin}/pay_success`,
+            failUrl: `${window.origin}/pay_fail`,
+          })
+          .catch(function (error) {
+            if (error.code === 'USER_CANCEL') {
+              // 결제 고객이 결제창을 닫았을 때 에러 처리
+            } else if (error.code === 'INVALID_CARD_COMPANY') {
+              // 유효하지 않은 카드 코드에 대한 에러 처리
+            }
+          });
+      });
     } else if (payType === 'coin') {
       mint(e, sbtInfo, ticketInfo, userEmail);
     }
