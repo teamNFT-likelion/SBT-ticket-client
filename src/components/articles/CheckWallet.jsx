@@ -125,12 +125,13 @@ export default function CheckWallet() {
       if (account) {
         await window.ethereum.enable();
       }
+      // switch 네트워크
       await ethereum.request({
         method: 'wallet_switchEthereumChain',
         params: [{ chainId: goerliNetwork }],
       });
     } catch (switchError) {
-      // This error code indicates that the chain has not been added to MetaMask.
+      // 네트워크가 존재하지 않으면 새로 추가
       if (switchError.code === 4902) {
         try {
           await ethereum.request({

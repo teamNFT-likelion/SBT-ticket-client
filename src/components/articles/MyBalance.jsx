@@ -2,10 +2,10 @@ import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import ethereumImage from '@assets/icon/ethereum.svg';
 import polygonImage from '@assets/icon/polygon.svg';
-import useMint from '@hooks/useMint';
+import useWeb3 from '@hooks/useWeb3';
 
 const MyBalance = () => {
-  const { network, balance } = useMint();
+  const { network, balance } = useWeb3();
 
   const { iconSrc, symbol } = useMemo(() => {
     //TODO : private network 구분

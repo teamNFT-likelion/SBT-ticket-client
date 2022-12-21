@@ -3,14 +3,11 @@ import { GOERLI_TTOT, NFTStorageAPI } from '@contracts/ContractAddress';
 import { TTOT_ABI } from '@contracts/ABI';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@states/userState';
-import { useState, useEffect } from 'react';
 import useWeb3 from '@hooks/useWeb3';
 
 export default function useMint() {
   const { web3 } = useWeb3(); // 컨트랙트와 통신을 위한 객체 저장
   const { account, walletType } = useRecoilValue(userState);
-  const [network, setNetwork] = useState('');
-  const [balance, setBalance] = useState(0); // 내 잔고 확인을 위한 state
 
   const client = new NFTStorage({ token: NFTStorageAPI }); // NFTStorage 사용을 위해 객체 생성
 
@@ -45,19 +42,5 @@ export default function useMint() {
     }
   }
 
-  // 내 잔고 가져오기
-  useEffect(() => {
-    async function myBalance() {
-      const _network = await web3.eth.net.getNetworkType();
-      setNetwork(_network);
-      web3.eth.getBalance(account).then((bal) => {
-        // 잔액을 일반적인 통화 단위로 변환하고 상태 변수에 저장|
-        const convertedBal = web3.utils.fromWei(bal);
-        setBalance(convertedBal);
-      });
-    }
-    myBalance();
-  }, [account, web3.eth, web3.utils]);
-
-  return { createSBT, createTokenUri, network, balance };
+  return { createSBT, createTokenUri };
 }

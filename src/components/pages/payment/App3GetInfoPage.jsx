@@ -114,11 +114,4 @@ const App3GetInfoPage = ({ setTab, data }) => {
   );
 };
 
-// 결제완료 후 자동 탭 이동 (개발단계라서 편의상 주석처리 해놓을게요)
-// function afterMinting() {
-//   navigate(`/payment?id=${dataId}`, {
-//     state: { tab: 'APP_Done', ticketInfo: ticketInfo },
-//   });
-// }
-
 export default App3GetInfoPage;
