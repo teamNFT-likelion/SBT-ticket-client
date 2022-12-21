@@ -1,8 +1,12 @@
+import { useLocation } from 'react-router-dom';
 import LinkButton from '@atoms/LinkButton';
 import { PageTitle, SubTitle } from '@styles/ApaymentStyles';
 import { StepBox, LeftBox, RightBox } from './App1Start';
 
 export const App4Done = ({ data }) => {
+  const location = useLocation();
+  const payedData = location.state?.payedData;
+  console.log('payedData', payedData);
   //TODO: 공연data + 선택값들 recoil selector로 받아와서 보여주는 화면 기획필요
   return (
     <StepBox>

@@ -12,6 +12,7 @@ import '@fontsource/roboto-condensed'; // subtitle
 import '@fontsource/do-hyeon';
 import Page404 from '@components/pages/Page404';
 import GetInfoPage from '@pages/GetInfoPage';
+import PaySuccess from '@pages/PaySuccess';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/search" element={<TSearchPage />} />
         <Route path="/payment" element={<APaymentPage />} />
         <Route path="/account" element={<AccountPage />} />
+        <Route path="/pay_success" element={<PaySuccess />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
     </>
