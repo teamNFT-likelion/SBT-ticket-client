@@ -8,7 +8,7 @@ import CustomModal from '@articles/CustomModal';
 import { formatAddress } from '@utils/parser';
 import { useRecoilState } from 'recoil';
 import { userAccount, userNetworkId, userWalletType } from '@states/userState';
-import { networks } from '@components/pages/tempData/NetworkInfo';
+import { networks } from '@constants/NetworkInfo';
 
 const AddressContainer = styled('button')`
   display: flex;

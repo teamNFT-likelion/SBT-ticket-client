@@ -1,4 +1,4 @@
-import { networks } from '@components/pages/tempData/NetworkInfo';
+import { networks } from '@constants/NetworkInfo';
 import { userAccount, userNetworkId, userWalletType } from '@states/userState';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
