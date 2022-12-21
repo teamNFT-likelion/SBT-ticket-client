@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 import { Row } from '@components/atoms/wrapper.style';
 import { TabButton } from '@styles/ApaymentStyles';
 import useOauth from '@hooks/useOauth';
@@ -9,24 +8,22 @@ import kginicisImg from '@assets/img/kginicis.jpg';
 import CustomModal from '@components/articles/CustomModal';
 import { tInfoState, sbtInfoState } from '@states/paymentState';
 import { userState } from '@states/userState';
-import useWeb3 from '@hooks/useWeb3';
-import { walletConnectError } from '@utils/toastMessages';
 import { StepBox, LeftBox, RightBox } from './App1Start';
 import TicketInfo from './TicketInfo';
 import OrdererInfo from './OrdererInfo';
 import SelectPayment from './SelectPayment';
+import useMint from '@hooks/useMint';
 
 const App3GetInfoPage = ({ setTab, data }) => {
-  const navigate = useNavigate();
   const { email: userEmail, setPopup, popup } = useOauth();
-  const { createTokenUri, createSBT } = useWeb3();
+  const { createTokenUri, createSBT } = useMint();
 
   const [payType, setPayType] = useState('');
   const [cashPayType, setCashPayType] = useState('');
   const [showUseKginicis, setShowUseKginicis] = useState(false); // 모달을 위한 state
   const [isLoading, setIsLoading] = useState(false); // 로딩중 확인
 
-  const { address } = useRecoilValue(userState);
+  const { account } = useRecoilValue(userState);
   const ticketInfo = useRecoilValue(tInfoState);
   const sbtInfo = useRecoilValue(sbtInfoState);
 
@@ -58,13 +55,6 @@ const App3GetInfoPage = ({ setTab, data }) => {
   };
 
   useEffect(() => {
-    if (!address) {
-      walletConnectError();
-      navigate('/list');
-    }
-  }, [navigate, address]);
-
-  useEffect(() => {
     const receiveMessage = async (e) => {
       //TODO: oauth 데이터 저장 리팩토링고려, 에러시 처리 안된거 리팩토링, getInfo용 페이지 생성고려
       // console.log(e.data.oauthData);
@@ -82,7 +72,7 @@ const App3GetInfoPage = ({ setTab, data }) => {
     <>
       <StepBox>
         <LeftBox>
-          <OrdererInfo address={address} setPopup={setPopup} />
+          <OrdererInfo address={account} setPopup={setPopup} />
           <SelectPayment
             onClickPayType={handlePayType}
             onClickCashPayType={handleCashPayType}
@@ -123,12 +113,5 @@ const App3GetInfoPage = ({ setTab, data }) => {
     </>
   );
 };
-
-// 결제완료 후 자동 탭 이동 (개발단계라서 편의상 주석처리 해놓을게요)
-// function afterMinting() {
-//   navigate(`/payment?id=${dataId}`, {
-//     state: { tab: 'APP_Done', ticketInfo: ticketInfo },
-//   });
-// }
 
 export default App3GetInfoPage;

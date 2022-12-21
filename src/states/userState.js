@@ -9,22 +9,33 @@ export const userEmail = atom({
   key: 'userState/userEmail',
   default: '',
 });
-export const userAddress = atom({
-  key: 'userState/userAddress',
+export const userAccount = atom({
+  key: 'userState/userAccount',
   default: localStorage.getItem('_user'),
 });
 export const userIsConnectWallet = atom({
   key: 'userState/userIsConnectWallet',
   default: false,
 });
+export const userNetworkId = atom({
+  key: 'userState/userNetworkId',
+  default: '',
+});
+export const userWalletType = atom({
+  key: 'userState/userWalletType',
+  default: localStorage.getItem('_wallet'),
+});
+
 export const userState = selector({
   key: 'userState/user', // key : 파일명/~~(유니크해야함 id 역할)
   get: ({ get }) => {
     const email = get(userEmail);
-    const address = get(userAddress);
+    const account = get(userAccount);
     const isConnectWallet = get(userIsConnectWallet);
+    const walletType = get(userWalletType);
+    const networkId = get(userNetworkId);
 
-    return { email, address, isConnectWallet };
+    return { email, account, isConnectWallet, walletType, networkId };
   },
   //default : initialState 지정
 });

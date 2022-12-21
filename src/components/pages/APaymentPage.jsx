@@ -23,19 +23,19 @@ const APaymentPage = () => {
   const data = mainItems.filter((item) => item.id === dataId)[0] || false;
 
   const [tab, setTab] = useState('APP_Start');
-  const { address } = useRecoilValue(userState);
+  const { account } = useRecoilValue(userState);
 
   useLayoutEffect(() => {
     const locationTab = location.state?.tab || 'APP_Start';
     setTab(locationTab);
-  }, [location, navigate, address]);
+  }, [location, navigate, account]);
 
   useEffect(() => {
-    if (!address) {
+    if (!account) {
       walletConnectError();
       navigate(-1);
     }
-  }, [address, navigate]);
+  }, [account, navigate]);
 
   if (!data) {
     return <Page404 />;
