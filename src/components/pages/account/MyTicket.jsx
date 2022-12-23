@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import CustomModal from '@articles/CustomModal';
 import { format } from 'date-fns';
 import QRCode from 'qrcode.react';
 import RaffleModal from '@components/articles/RaffleModal';
+import useOauth from '@hooks/useOauth';
+import { toast } from 'react-toastify';
+import useGetUri from '@hooks/useGetUri';
+import QRCertificate from '@components/pages/account/QRCertificate';
 
 const TicketWrapper = styled('div')`
   width: auto;
@@ -91,8 +95,50 @@ const MyTicket = ({ id, image, title, date, active }) => {
   const [showFan, setShowFan] = useState(false);
   const [raffleModal, setRaffleModal] = useState(false);
 
+  // 본인인증을 위한 state
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const { email: userEmail, setPopup, popup } = useOauth();
+  const { getTokenUri, tokenEmail } = useGetUri();
+
   // qr코드 발행을 위한 state
   const [qrvalue, setQrvalue] = useState('DEFAULT');
+
+  useEffect(() => {
+    const receiveMessage = async (e) => {
+      //TODO: oauth 데이터 저장 리팩토링고려, 에러시 처리 안된거 리팩토링, getInfo용 페이지 생성고려
+      // console.log(e.data.oauthData);
+      if (e.data.hasOwnProperty('oauthData')) {
+        popup.close();
+        setPopup(null);
+      }
+    };
+
+    window.addEventListener('message', receiveMessage, false);
+    return () => window.removeEventListener('message', receiveMessage);
+  }, [popup, setPopup]);
+
+  function handleUseQR() {
+    console.log('userEmail : ', userEmail);
+    console.log('tokenEmail : ', tokenEmail);
+
+    if (!userEmail) {
+      setIsAuthorized(false);
+      toast.error('이메일을 찾을 수 없습니다.', { autoClose: 2000 });
+    } else if (!getTokenUri) {
+      setIsAuthorized(false);
+      toast.error('티켓 소유자의 이메일을 찾을 수 없습니다.', {
+        autoClose: 2000,
+      });
+    } else if (userEmail === tokenEmail) {
+      setIsAuthorized(true);
+      setQrvalue('SUCCESS!');
+      toast.success('이메일과 sbt정보가 일치합니다.', { autoClose: 2000 });
+    } else {
+      toast.error('티켓 소유자의 이메일과 일치하지 않습니다.', {
+        autoClose: 2000,
+      });
+    }
+  }
 
   return (
     <div>
@@ -103,12 +149,13 @@ const MyTicket = ({ id, image, title, date, active }) => {
           <DateWrapper>
             ~{format(new Date(Number(date) * 1000), 'yyyy.MM.dd')}
           </DateWrapper>
-          {active ? (
+          {!active ? (
             <TicketButtonWrapper>
               <TicketButton
                 buttonColor={`${colors.primary40}`}
                 onClick={() => {
                   setShowUseQr(true);
+                  getTokenUri();
                 }}
               >
                 사용
@@ -141,14 +188,15 @@ const MyTicket = ({ id, image, title, date, active }) => {
         {qrvalue !== 'DEFAULT' ? (
           <QRCode value={qrvalue} size={256} />
         ) : (
-          'QR을 발행하기 위해서는 먼저 본인 인증을 진행해주세요.'
+          <>
+            <p>QR을 발행을 위해 본인 인증을 진행해주세요.</p>
+            <QRCertificate setPopup={setPopup} />
+          </>
         )}
         <ModalButtonWrapper>
           <ModalButton
             buttonColor={`${colors.primary40}`}
-            onClick={() => {
-              setQrvalue('SUCCESS!');
-            }}
+            onClick={handleUseQR}
           >
             QR 발행하기
           </ModalButton>

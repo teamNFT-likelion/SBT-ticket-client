@@ -19,9 +19,11 @@ const MyTickets = ({ tickets, type }) => {
 
   return (
     <>
-      {typeTickets.map((token) => (
+      {typeTickets.map((token, index) => (
         <MyTicket
-          id={token.tokenId}
+          key={index}
+          id={token.id}
+          uri={token.tokenURI}
           image={token.tokenImage}
           title={token.tokenTitle}
           date={token.tokenDL}
