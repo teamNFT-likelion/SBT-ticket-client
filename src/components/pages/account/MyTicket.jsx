@@ -89,6 +89,9 @@ const ModalButton = styled('div')`
 `;
 
 const MyTicket = ({ id, image, title, date, active }) => {
+  const showName = 'blackpink2022seoul'; //아마 title
+  const showDay = '1671800000'; // 아마 date
+  const sbtId = '35'; // 아마 id
   // 모달을 위한 state
   const [showUseQr, setShowUseQr] = useState(false);
   const [showRefund, setShowRefund] = useState(false);
@@ -99,34 +102,26 @@ const MyTicket = ({ id, image, title, date, active }) => {
   const { email: userEmail, setPopup, popup } = useOauth();
   const { getTokenUri, tokenEmail } = useGetUri();
 
-  // qr코드 발행을 위한 state
-  // const [qrvalue, setQrvalue] = useState('DEFAULT');
-
-  // qr value = `${공연정보(공연id나 제목) + ${날짜} + ${sbtId} + ${qr생성하는 현재시간}`
-  const [qrvalue, setQrvalue] = useState('default');
-  const [qrGenerateTime, setQrGenerateTime] = useState(null);
+  // 본인인증 여부
   const [isAuthorized, setIsAuthorized] = useState(false);
 
-  const showName = 'blackpink2022seoul';
-  const showDay = '1671800000';
-  const sbtId = '17';
+  // qr코드 발행을 위한 state
 
-  const getTime = () => {
-    setQrGenerateTime(Date.now());
-    setQrvalue(showName + showDay + sbtId + qrGenerateTime);
+  // qr value = `${공연정보(공연id나 제목) + ${날짜} + ${sbtId} + ${qr생성하는 현재시간}`
+  const [qrvalue, setQrvalue] = useState(
+    `${showName}${showDay}${sbtId}${Date.now()}`,
+  );
 
-    console.log('time : ', qrGenerateTime);
-  };
+  // 본인인증 후 첫 생성/새로고침 여부
+  const [isReGenerated, setIsReGenerated] = useState(false);
 
   useEffect(() => {
     const receiveMessage = async (e) => {
       //TODO: oauth 데이터 저장 리팩토링고려, 에러시 처리 안된거 리팩토링, getInfo용 페이지 생성고려
       // console.log(e.data.oauthData);
       if (e.data.hasOwnProperty('oauthData')) {
-        popup.close();
+        popup?.close();
         setPopup(null);
-      } else {
-        console.log('oauth 프로퍼티가 없나본데');
       }
     };
 
@@ -139,16 +134,21 @@ const MyTicket = ({ id, image, title, date, active }) => {
     console.log('tokenEmail : ', tokenEmail);
 
     if (!userEmail) {
+      setIsAuthorized(false);
       toast.error('본인인증이 필요합니다.', { autoClose: 2000 });
     } else if (!getTokenUri) {
+      setIsAuthorized(false);
       toast.error('티켓 소유자의 이메일을 찾을 수 없습니다.', {
         autoClose: 2000,
       });
     } else if (userEmail === tokenEmail) {
       setIsAuthorized(true);
-      setQrvalue(qrvalue);
-      toast.success('이메일과 sbt정보가 일치합니다.', { autoClose: 2000 });
+      setQrvalue(showName + showDay + sbtId + Date.now());
+      if (!isReGenerated) {
+        toast.success('이메일과 sbt정보가 일치합니다.', { autoClose: 2000 });
+      }
     } else {
+      setIsAuthorized(false);
       toast.error('티켓 소유자의 이메일과 일치하지 않습니다.', {
         autoClose: 2000,
       });
@@ -200,35 +200,55 @@ const MyTicket = ({ id, image, title, date, active }) => {
       </TicketWrapper>
 
       <CustomModal show={showUseQr} toggleModal={() => setShowUseQr(false)}>
-        {isAuthorized ? (
-          <QRCode value={qrvalue} size={256} />
-        ) : (
+        {!isAuthorized ? (
           <>
             <p>QR을 발행을 위해 본인 인증을 진행해주세요.</p>
             <QRCertificate setPopup={setPopup} />
+            <ModalButtonWrapper>
+              <ModalButton
+                buttonColor={`${colors.primary40}`}
+                onClick={() => {
+                  handleUseQR();
+                }}
+              >
+                QR 발행하기
+              </ModalButton>
+              {/* 취소 부분이 아닌 다른 곳을 누른 뒤 꺼지면 qr이 남아있음 */}
+              <ModalButton
+                buttonColor={`${colors.bgBlack}`}
+                onClick={() => {
+                  setShowUseQr(false);
+                }}
+              >
+                취소
+              </ModalButton>
+            </ModalButtonWrapper>
+          </>
+        ) : (
+          <>
+            <QRCode value={qrvalue} size={256} />
+            <ModalButtonWrapper>
+              <ModalButton
+                buttonColor={`${colors.primary40}`}
+                onClick={() => {
+                  setIsReGenerated(true);
+                  handleUseQR();
+                }}
+              >
+                QR 새로고침
+              </ModalButton>
+              {/* 취소 부분이 아닌 다른 곳을 누른 뒤 꺼지면 qr이 남아있음 */}
+              <ModalButton
+                buttonColor={`${colors.bgBlack}`}
+                onClick={() => {
+                  setShowUseQr(false);
+                }}
+              >
+                취소
+              </ModalButton>
+            </ModalButtonWrapper>
           </>
         )}
-        <ModalButtonWrapper>
-          <ModalButton
-            buttonColor={`${colors.primary40}`}
-            onClick={() => {
-              getTime();
-              handleUseQR();
-            }}
-          >
-            QR 발행하기
-          </ModalButton>
-          {/* 취소 부분이 아닌 다른 곳을 누른 뒤 꺼지면 qr이 남아있음 */}
-          <ModalButton
-            buttonColor={`${colors.bgBlack}`}
-            onClick={() => {
-              setShowUseQr(false);
-              setQrvalue('DEFAULT');
-            }}
-          >
-            취소
-          </ModalButton>
-        </ModalButtonWrapper>
       </CustomModal>
       <CustomModal show={showRefund} toggleModal={() => setShowRefund(false)}>
         정말 환불하시겠습니까?

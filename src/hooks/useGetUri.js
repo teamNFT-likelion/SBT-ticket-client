@@ -20,7 +20,7 @@ export default function useGetUri() {
       } else return;
 
       const uri = await tokenContract.methods
-        .tokenURI(17) //id(tokenId)값을 넣어줘야됨
+        .tokenURI(35) //id(tokenId)값을 넣어줘야됨
         .call();
 
       const email = await axios

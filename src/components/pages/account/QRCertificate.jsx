@@ -44,9 +44,8 @@ const QRCertificate = ({ setPopup }) => {
         <Input
           id="email"
           type="text"
-          defaultValue={userEmail}
+          value={userEmail ? userEmail : '이메일 정보를 불러오세요.'}
           autoComplete="off"
-          placeholder="이메일 정보를 불러오세요"
           readOnly
         />
       </Row>
