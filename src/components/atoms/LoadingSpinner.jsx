@@ -1,17 +1,17 @@
-function LoadingSpinner() {
+function LoadingSpinner({ width = '75px', height = '75px' }) {
   return (
     <>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         style={{
-          margin: 'auto',
+          // margin: 'auto',
           background: 'transparent',
           display: 'block',
           shapeRendering: 'auto',
         }}
-        width="75px"
-        height="75px"
+        width={width}
+        height={height}
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid"
       >

@@ -14,6 +14,7 @@ import { userState } from '@states/userState';
 import { walletConnectError } from '@utils/toastMessages';
 import AppStepHeader from './payment/AppStepHeader';
 import App3GetInfoPage from './payment/App3GetInfoPage';
+import { Outlet } from 'react-router-dom';
 
 const APaymentPage = () => {
   const location = useLocation();
@@ -37,6 +38,13 @@ const APaymentPage = () => {
     }
   }, [account, navigate]);
 
+  useEffect(() => {
+    // TODO: 리코일로 리팩토링해서 paySuccess 에서 처리 하는 방법 고려
+    if ((location.pathname = '/payment/success')) {
+      setTab('APP_Pay');
+    }
+  }, [location]);
+
   if (!data) {
     return <Page404 />;
   }
@@ -46,13 +54,10 @@ const APaymentPage = () => {
       <AppStepHeader step={tab} />
       <Container>
         {tab === 'APP_Start' && <App1Start setTab={setTab} data={data} />}
-        {tab === 'APP_SelectSeats' && (
-          <App2SelectSeats setTab={setTab} data={data} />
-        )}
-        {tab === 'APP_GetInfo' && (
-          <App3GetInfoPage setTab={setTab} data={data} />
-        )}
+        {tab === 'APP_SelectSeats' && <App2SelectSeats setTab={setTab} data={data} />}
+        {tab === 'APP_GetInfo' && <App3GetInfoPage setTab={setTab} data={data} />}
         {tab === 'APP_Done' && <App4Done dataId={data} />}
+        <Outlet context={{ data }} />
       </Container>
     </Layout>
   );

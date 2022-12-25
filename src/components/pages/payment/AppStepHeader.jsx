@@ -7,7 +7,7 @@ const AppStepHeader = ({ step }) => {
     <StepWrapper>
       <Step isActive={step === 'APP_Start'}>날짜 / 회차 선택</Step>
       <Step isActive={step === 'APP_SelectSeats'}>등급 / 좌석 선택</Step>
-      <Step isActive={step === 'APP_GetInfo'}>주문자 정보 / 결제</Step>
+      <Step isActive={step === 'APP_GetInfo' || step === 'APP_Pay'}>주문자 정보 / 결제</Step>
       <Step isActive={step === 'APP_Done'}>결제완료</Step>
     </StepWrapper>
   );
@@ -26,8 +26,7 @@ const StepWrapper = styled('div')`
 
 const Step = styled('div')`
   flex: 1;
-  background-color: ${({ isActive }) =>
-    isActive ? 'orange' : colors.primary40};
+  background-color: ${({ isActive }) => (isActive ? 'orange' : colors.primary40)};
   height: 100%;
   display: flex;
   align-items: center;
