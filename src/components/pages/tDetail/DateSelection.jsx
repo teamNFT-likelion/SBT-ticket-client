@@ -30,17 +30,9 @@ const DateSelection = ({ data }) => {
   return (
     <ContentsInfoBody>
       <SelectInfo>
-        <TDPCalendar
-          dateInfo={data.dateInfo}
-          onDateChange={handleDateChange}
-          value={date}
-        />
+        <TDPCalendar dateInfo={data.dateInfo} onDateChange={handleDateChange} value={date} />
         <img src={verticalLine} alt="verticalLine" height="260px" />
-        <PartInfoContainer
-          data={data}
-          onPartClick={handlePartClick}
-          partState={part}
-        />
+        <PartInfoContainer data={data} onPartClick={handlePartClick} partState={part} />
         <img src={verticalLine} alt="verticalLine" height="260px" />
         <RemainSeatsAndPay data={data} partState={part} />
       </SelectInfo>

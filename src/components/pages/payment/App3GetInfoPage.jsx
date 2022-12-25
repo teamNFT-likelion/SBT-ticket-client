@@ -13,16 +13,14 @@ import TicketInfo from './TicketInfo';
 import OrdererInfo from './OrdererInfo';
 import SelectPayment from './SelectPayment';
 import useMint from '@hooks/useMint';
-import { loadTossPayments } from '@tosspayments/payment-sdk';
-
-const clientKey = 'test_ck_5GePWvyJnrKjMRP6vn1VgLzN97Eo';
+import { payCardByTossPayment, payTransferByTossPayment } from '@utils/toss';
 
 const App3GetInfoPage = ({ setTab, data }) => {
   const { email: userEmail, setPopup, popup } = useOauth();
   const { createTokenUri, createSBT } = useMint();
 
   const [payType, setPayType] = useState('');
-  const [cashPayType, setCashPayType] = useState('');
+  const [cashPayType, setCashPayType] = useState('easyPay');
   const [showUseKginicis, setShowUseKginicis] = useState(false); // 모달을 위한 state
   const [isLoading, setIsLoading] = useState(false); // 로딩중 확인
 
@@ -33,46 +31,29 @@ const App3GetInfoPage = ({ setTab, data }) => {
   const handlePayType = (e) => setPayType(e.target.value);
   const handleCashPayType = (e) => setCashPayType(e.target.value);
 
+  //TODO: 다시 이페이지로 못들어오게 블라킹 해줘야 할거 같은데
+  //TODO: 실패시 추가 처리 여부 고민
   const mint = async (e, _sbtInfo, _ticketInfo, _email) => {
     setIsLoading(true);
     try {
       const tokenUri = await createTokenUri(_sbtInfo, _email);
       await createSBT(tokenUri, _ticketInfo);
       setTab(e.target.value);
-      //TODO: 다시 이페이지로 못들어오게 블라킹 해줘야 할거 같은데
     } catch (error) {
       console.log('Error uploading file: ', error);
       toast.error('민팅 실패');
-      //TODO: 실패시 추가 처리 여부 고민
     } finally {
       setIsLoading(false);
     }
   };
 
   const onClickPay = (e) => {
-    if (payType === 'cash') {
-      localStorage.setItem(
-        'pay_data',
-        JSON.stringify({ data, ticketInfo, sbtInfo }),
-      );
-      loadTossPayments(clientKey).then((tossPayments) => {
-        tossPayments
-          .requestPayment('카드', {
-            amount: ticketInfo.tPrice,
-            orderId: crypto.randomUUID(),
-            orderName: data.title,
-            customerName: account,
-            successUrl: `${window.origin}/pay_success`,
-            failUrl: `${window.origin}/pay_fail`,
-          })
-          .catch(function (error) {
-            if (error.code === 'USER_CANCEL') {
-              // 결제 고객이 결제창을 닫았을 때 에러 처리
-            } else if (error.code === 'INVALID_CARD_COMPANY') {
-              // 유효하지 않은 카드 코드에 대한 에러 처리
-            }
-          });
-      });
+    if (payType === 'cash' && cashPayType === 'easyPay') {
+      localStorage.setItem('pay_data', JSON.stringify({ ticketInfo, sbtInfo }));
+      payCardByTossPayment(ticketInfo.tPrice, data.title, account, data.id);
+    } else if (payType === 'cash' && cashPayType === 'transfer') {
+      localStorage.setItem('pay_data', JSON.stringify({ ticketInfo, sbtInfo }));
+      payTransferByTossPayment(ticketInfo.tPrice, data.title, account, data.id);
     } else if (payType === 'coin') {
       mint(e, sbtInfo, ticketInfo, userEmail);
     }
@@ -107,17 +88,10 @@ const App3GetInfoPage = ({ setTab, data }) => {
         <RightBox>
           <TicketInfo data={data} isLoading={isLoading} />
           <Row marginTop="100px" justifyContent="center">
-            <TabButton
-              value="APP_SelectSeats"
-              onClick={(e) => setTab(e.target.value)}
-            >
+            <TabButton value="APP_SelectSeats" onClick={(e) => setTab(e.target.value)}>
               뒤로가기
             </TabButton>
-            <TabButton
-              value="APP_Done"
-              onClick={onClickPay}
-              disabled={!userEmail || !payType}
-            >
+            <TabButton value="APP_Done" onClick={onClickPay} disabled={!userEmail || !payType}>
               결제
             </TabButton>
           </Row>
@@ -128,10 +102,7 @@ const App3GetInfoPage = ({ setTab, data }) => {
         임시다음
       </TabButton>
 
-      <CustomModal
-        show={showUseKginicis}
-        toggleModal={() => setShowUseKginicis(false)}
-      >
+      <CustomModal show={showUseKginicis} toggleModal={() => setShowUseKginicis(false)}>
         <img src={kginicisImg} alt="견본용" />
       </CustomModal>
     </>

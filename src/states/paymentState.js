@@ -33,13 +33,15 @@ export const tSeatLimitState = atom({
 export const tInfoState = selector({
   key: 'paymentState/tInfo', //token에 해당 전체 정보 형태로 변환
   get: ({ get }) => {
+    const tPart = get(tPartState);
+    const tDate = get(tDateState);
     const tDeadline = get(tDeadlineState);
     const tPrice = get(tPriceState);
     const tPerformId = get(tPerformIdState);
     const tSeat = get(tSeatState);
     const tSeatLimit = get(tSeatLimitState);
 
-    return { tDeadline, tPrice, tPerformId, tSeat, tSeatLimit };
+    return { tDate, tPart, tDeadline, tPrice, tPerformId, tSeat, tSeatLimit };
   },
 });
 
