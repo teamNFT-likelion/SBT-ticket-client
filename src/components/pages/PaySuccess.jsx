@@ -1,58 +1,78 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams, useNavigate, useOutletContext } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useSetRecoilState } from 'recoil';
 import axios from 'axios';
 import useOauth from '@hooks/useOauth';
 import useMint from '@hooks/useMint';
-import Layout from '@articles/Layout';
-import { useRecoilValue } from 'recoil';
-import { web3State } from '@states/userState';
+import useWeb3 from '@hooks/useWeb3';
+import { StepBox, LeftBox, RightBox } from '@pages/payment/App1Start';
+import TicketInfo from '@pages/payment/TicketInfo';
+import { Row } from '@atoms/wrapper.style';
+import { TabButton } from '@styles/ApaymentStyles';
+import { tDateState, tPartState, tSeatState, tPriceState } from '@states/paymentState';
+import PayProgress from './payment/PayProgress';
 
 const PaySuccess = () => {
+  const { web3 } = useWeb3();
+  const { data } = useOutletContext();
   const { email: userEmail } = useOauth();
-  // const web3 = useRecoilValue(web3State);
-  // const { createTokenUri, createSBT } = useMint(web3);
-  const [params] = useSearchParams();
+  const { createTokenUri, createSBT } = useMint();
   const navigate = useNavigate();
-  const [status, setStatus] = useState('PAYING');
-  const { data, ticketInfo, sbtInfo } = JSON.parse(
-    localStorage.getItem('pay_data'),
-  );
-
+  const [params] = useSearchParams();
   const paymentKey = params.get('paymentKey');
   const orderId = params.get('orderId');
   const amount = params.get('amount');
 
-  const mint = async () => {
-    try {
-      setStatus('MINTING');
-      // const tokenUri = await createTokenUri(sbtInfo, userEmail);
-      // await createSBT(tokenUri, ticketInfo);
-      navigate(`/payment?id=${data.id}`, {
-        state: {
-          tab: 'APP_Done',
-          payedData: { ticketInfo, sbtInfo },
-        },
-      });
-    } catch (error) {
-      console.log('Error uploading file: ', error);
-      toast.error('민팅 실패');
-      // TODO: 결제 취소 해줘야됨
-      navigate(`/payment?id=${data.id}`, {
-        state: {
-          tab: 'APP_GetInfo',
-        },
-      });
-    } finally {
-      setStatus('');
-    }
-  };
+  const [status, setStatus] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [cancelInfo, setCancelInfo] = useState('');
+
+  const setDate = useSetRecoilState(tDateState);
+  const setPart = useSetRecoilState(tPartState);
+  const setSeat = useSetRecoilState(tSeatState);
+  const setPrice = useSetRecoilState(tPriceState);
+
+  const { ticketInfo, sbtInfo } = JSON.parse(localStorage.getItem('pay_data'));
+  const isMintAvailable = paymentKey && orderId && amount && Object.keys(web3).length > 0;
 
   useEffect(() => {
-    if (paymentKey && orderId && amount) {
-      console.log(1);
+    const mint = async () => {
+      try {
+        const tokenUri = await createTokenUri(sbtInfo, userEmail);
+        await createSBT(tokenUri, ticketInfo);
+        navigate(`/payment?id=${data.id}`, {
+          state: {
+            tab: 'APP_Done',
+            payedData: { ticketInfo, sbtInfo },
+          },
+        });
+        localStorage.removeItem('pay_data');
+      } catch (error) {
+        console.error(error);
+        toast.error('민팅 실패');
+        setStatus(4);
+        axios
+          .get('https://ttot.tk/payment/cancel', {
+            params: {
+              paymentKey,
+              cancelReason: '민트 실패에 의한 결제취소',
+            },
+          })
+          .then((res) => {
+            setStatus(5);
+            setCancelInfo(res.data.data.cancels[0]);
+          })
+          .catch((err) => console.log(err));
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (isMintAvailable) {
+      setStatus(1);
       axios
-        .get('http://localhost:5000/payment/success', {
+        .get('https://ttot.tk/payment/success', {
           params: {
             paymentKey,
             orderId,
@@ -60,19 +80,43 @@ const PaySuccess = () => {
           },
         })
         .then((res) => {
-          setStatus('PAYED');
+          setStatus(2);
           mint();
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          toast.error('결제 승인 취소');
+          navigate('/list');
+        });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMintAvailable]);
+
+  useEffect(() => {
+    console.log(sbtInfo);
+    setDate(new Date(ticketInfo.tDate));
+    setPart(ticketInfo.tPart);
+    setSeat(ticketInfo.tSeat);
+    setPrice(ticketInfo.tPrice);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <Layout>
-      {status === 'PAYING' && <div>결제승인 대기중...</div>}
-      {status === 'PAYED' && <div>결제승인 완료...</div>}
-      {status === 'MINTING' && <div>민팅중 ...</div>}
-    </Layout>
+    <StepBox>
+      <LeftBox>
+        <PayProgress status={status} cancelInfo={cancelInfo} />
+      </LeftBox>
+      <RightBox>
+        <TicketInfo data={data} isLoading={isLoading} />
+        <Row marginTop="100px" justifyContent="center">
+          {!isLoading && (
+            <TabButton value="APP_SelectSeats" onClick={() => navigate('/list')}>
+              취소
+            </TabButton>
+          )}
+        </Row>
+      </RightBox>
+    </StepBox>
   );
 };
 

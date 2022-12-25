@@ -24,9 +24,11 @@ function App() {
         <Route path="/detail" element={<TDetailPage />} />
         <Route path="/getInfo" element={<GetInfoPage />} />
         <Route path="/search" element={<TSearchPage />} />
-        <Route path="/payment" element={<APaymentPage />} />
         <Route path="/account" element={<AccountPage />} />
-        <Route path="/pay_success" element={<PaySuccess />} />
+        <Route path="/payment" element={<APaymentPage />}>
+          <Route path="success" element={<PaySuccess />} />
+        </Route>
+        {/* <Route path="/pay_success" element={<PaySuccess />} /> */}
         <Route path="*" element={<Page404 />} />
       </Routes>
     </>
