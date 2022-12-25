@@ -22,7 +22,7 @@ const MyTickets = ({ tickets, type }) => {
       {typeTickets.map((token, index) => (
         <MyTicket
           key={index}
-          id={token.id}
+          id={token.tokenId}
           uri={token.tokenURI}
           image={token.tokenImage}
           title={token.tokenTitle}

@@ -96,12 +96,27 @@ const MyTicket = ({ id, image, title, date, active }) => {
   const [raffleModal, setRaffleModal] = useState(false);
 
   // 본인인증을 위한 state
-  const [isAuthorized, setIsAuthorized] = useState(false);
   const { email: userEmail, setPopup, popup } = useOauth();
   const { getTokenUri, tokenEmail } = useGetUri();
 
   // qr코드 발행을 위한 state
-  const [qrvalue, setQrvalue] = useState('DEFAULT');
+  // const [qrvalue, setQrvalue] = useState('DEFAULT');
+
+  // qr value = `${공연정보(공연id나 제목) + ${날짜} + ${sbtId} + ${qr생성하는 현재시간}`
+  const [qrvalue, setQrvalue] = useState('default');
+  const [qrGenerateTime, setQrGenerateTime] = useState(null);
+  const [isAuthorized, setIsAuthorized] = useState(false);
+
+  const showName = 'blackpink2022seoul';
+  const showDay = '1671800000';
+  const sbtId = '17';
+
+  const getTime = () => {
+    setQrGenerateTime(Date.now());
+    setQrvalue(showName + showDay + sbtId + qrGenerateTime);
+
+    console.log('time : ', qrGenerateTime);
+  };
 
   useEffect(() => {
     const receiveMessage = async (e) => {
@@ -110,6 +125,8 @@ const MyTicket = ({ id, image, title, date, active }) => {
       if (e.data.hasOwnProperty('oauthData')) {
         popup.close();
         setPopup(null);
+      } else {
+        console.log('oauth 프로퍼티가 없나본데');
       }
     };
 
@@ -122,16 +139,14 @@ const MyTicket = ({ id, image, title, date, active }) => {
     console.log('tokenEmail : ', tokenEmail);
 
     if (!userEmail) {
-      setIsAuthorized(false);
-      toast.error('이메일을 찾을 수 없습니다.', { autoClose: 2000 });
+      toast.error('본인인증이 필요합니다.', { autoClose: 2000 });
     } else if (!getTokenUri) {
-      setIsAuthorized(false);
       toast.error('티켓 소유자의 이메일을 찾을 수 없습니다.', {
         autoClose: 2000,
       });
     } else if (userEmail === tokenEmail) {
       setIsAuthorized(true);
-      setQrvalue('SUCCESS!');
+      setQrvalue(qrvalue);
       toast.success('이메일과 sbt정보가 일치합니다.', { autoClose: 2000 });
     } else {
       toast.error('티켓 소유자의 이메일과 일치하지 않습니다.', {
@@ -185,7 +200,7 @@ const MyTicket = ({ id, image, title, date, active }) => {
       </TicketWrapper>
 
       <CustomModal show={showUseQr} toggleModal={() => setShowUseQr(false)}>
-        {qrvalue !== 'DEFAULT' ? (
+        {isAuthorized ? (
           <QRCode value={qrvalue} size={256} />
         ) : (
           <>
@@ -196,7 +211,10 @@ const MyTicket = ({ id, image, title, date, active }) => {
         <ModalButtonWrapper>
           <ModalButton
             buttonColor={`${colors.primary40}`}
-            onClick={handleUseQR}
+            onClick={() => {
+              getTime();
+              handleUseQR();
+            }}
           >
             QR 발행하기
           </ModalButton>

@@ -10,7 +10,6 @@ export default function useGetUri() {
   const { web3 } = useWeb3(); // 컨트랙트와 통신을 위한 객체 저장
   const { walletType } = useRecoilValue(userState);
   const [tokenEmail, setTokenEmail] = useState('');
-  const [isAuthorized, setIsAuthorized] = useState(false);
 
   // sbtURI 가져오기
   async function getTokenUri() {
@@ -21,7 +20,7 @@ export default function useGetUri() {
       } else return;
 
       const uri = await tokenContract.methods
-        .tokenURI(17) //id값 넣어줘야됨
+        .tokenURI(17) //id(tokenId)값을 넣어줘야됨
         .call();
 
       const email = await axios
