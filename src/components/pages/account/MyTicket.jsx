@@ -108,9 +108,7 @@ const MyTicket = ({ id, image, title, date, active }) => {
   // qr코드 발행을 위한 state
 
   // qr value = `${공연정보(공연id나 제목) + ${날짜} + ${sbtId} + ${qr생성하는 현재시간}`
-  const [qrvalue, setQrvalue] = useState(
-    `${showName}${showDay}${sbtId}${Date.now()}`,
-  );
+  const [qrvalue, setQrvalue] = useState(`${showName}${showDay}${sbtId}${Date.now()}`);
 
   // 본인인증 후 첫 생성/새로고침 여부
   const [isReGenerated, setIsReGenerated] = useState(false);
@@ -161,9 +159,7 @@ const MyTicket = ({ id, image, title, date, active }) => {
         <TicketImage>{image}</TicketImage>
         <TicketContent>
           <TextWrapper>{title}</TextWrapper>
-          <DateWrapper>
-            ~{format(new Date(Number(date) * 1000), 'yyyy.MM.dd')}
-          </DateWrapper>
+          <DateWrapper>~{format(new Date(Number(date) * 1000), 'yyyy.MM.dd')}</DateWrapper>
           {!active ? (
             <TicketButtonWrapper>
               <TicketButton
@@ -272,10 +268,7 @@ const MyTicket = ({ id, image, title, date, active }) => {
           <ModalButton buttonColor={`#af00a7`} onClick={() => {}}>
             사전 예매
           </ModalButton>
-          <ModalButton
-            buttonColor={`#af00a7`}
-            onClick={() => setRaffleModal(true)}
-          >
+          <ModalButton buttonColor={`#af00a7`} onClick={() => setRaffleModal(true)}>
             래플 이벤트
           </ModalButton>
         </ModalButtonWrapper>
