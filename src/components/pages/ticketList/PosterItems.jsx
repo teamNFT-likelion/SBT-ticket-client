@@ -50,6 +50,7 @@ const PosterItems = ({ type, items }) => {
             title={data.title}
             startDate={data.startDate}
             endDate={data.endDate}
+            preTicketing={data.preTicketing}
           />
         ))}
       </PosterWrapper>
