@@ -16,6 +16,7 @@ import {
 import { walletConnectError } from '@utils/toastMessages';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@states/userState';
+import { preTicketingPeriod } from '@utils/preTicketingPeriod';
 
 const BigPoster = ({ type, items }) => {
   const [activePosterId, setActivePosterId] = useState(0);
@@ -23,14 +24,6 @@ const BigPoster = ({ type, items }) => {
   const navigate = useNavigate();
 
   const { account } = useRecoilValue(userState);
-
-  const preTicketingPeriod = (_time) => {
-    if (Date.now() >= _time[0] && Date.now() < _time[1]) {
-      return true;
-    } else {
-      return false;
-    }
-  };
 
   const onClickCard = (side) => {
     if (activePosterId === 0 && side === 'right') {
