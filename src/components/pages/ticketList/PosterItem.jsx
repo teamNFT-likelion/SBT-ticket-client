@@ -4,6 +4,7 @@ import useHover from '@hooks/useHover';
 import { format } from 'date-fns';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
+import { preTicketingPeriod } from '@utils/preTicketingPeriod';
 
 const Container = styled('div')`
   display: flex;
@@ -52,14 +53,6 @@ const PosterItem = ({
   preTicketing,
 }) => {
   const [hoverRef, isHover] = useHover();
-
-  const preTicketingPeriod = (_time) => {
-    if (Date.now() >= _time[0] && Date.now() < _time[1]) {
-      return true;
-    } else {
-      return false;
-    }
-  };
 
   return (
     <Container ref={hoverRef}>

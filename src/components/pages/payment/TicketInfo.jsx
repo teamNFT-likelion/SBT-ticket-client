@@ -10,6 +10,7 @@ import {
   tSeatState,
   tPriceState,
 } from '@states/paymentState';
+import { preTicketingPeriod } from '@utils/preTicketingPeriod';
 
 const TicketInfo = ({ data, isLoading }) => {
   const date = useRecoilValue(tDateState);
@@ -30,7 +31,10 @@ const TicketInfo = ({ data, isLoading }) => {
           alt="img"
           style={{ width: '50px', marginBottom: '6px' }}
         />
-        <div>{data.title}</div>
+        <div>
+          {(preTicketingPeriod(data.preTicketing) ? '[사전예매]  ' : '') +
+            data.title}
+        </div>
         <div
           style={{
             marginTop: '30px',

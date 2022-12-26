@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import { format } from 'date-fns';
 import { SubTitle } from '@styles/ApaymentStyles';
+import { preTicketingPeriod } from '@utils/preTicketingPeriod';
+import * as colors from '@styles/colors';
 
 const ContentsInfoBody = styled(Row)`
   // HEADER 높이 5rem + 여분 9rem
@@ -34,11 +36,20 @@ const ConcertInfoItem = styled('div')`
   font-family: sans-serif;
 `;
 
+const PreAlert = styled('div')`
+  font-size: 25px;
+  margin-bottom: 5px;
+  color: ${colors.bgRed};
+`;
+
 const DetailInfo = ({ data }) => {
   return (
     <ContentsInfoBody>
       <ContentsInfo>
         <SubTitle style={{ marginBottom: '24px', fontSize: '25px' }}>
+          {preTicketingPeriod(data.preTicketing) && (
+            <PreAlert>[사전예매]</PreAlert>
+          )}
           {data.title}
         </SubTitle>
         <ConcertInfo>
@@ -57,6 +68,11 @@ const DetailInfo = ({ data }) => {
           <ConcertInfoItem>₩ {data.cashPrice}</ConcertInfoItem>
           <ConcertInfoItem>코인구매가</ConcertInfoItem>
           <ConcertInfoItem>MATIC {data.tokenPrice}</ConcertInfoItem>
+          <ConcertInfoItem>사전예매기간</ConcertInfoItem>
+          <ConcertInfoItem style={{ color: colors.bgRed }}>
+            {format(new Date(data.preTicketing[0]), 'yyyy.MM.dd')} ~
+            {format(new Date(data.preTicketing[1]), 'yyyy.MM.dd')}
+          </ConcertInfoItem>
         </ConcertInfo>
       </ContentsInfo>
       <img src={data.posterImgUrl} width="270px" height="345px" alt="poster" />
