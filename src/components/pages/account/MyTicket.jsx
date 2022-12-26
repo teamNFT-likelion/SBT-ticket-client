@@ -88,6 +88,11 @@ const ModalButton = styled('div')`
   z-index: 10;
 `;
 
+const QRText = styled('p')`
+  font-size: 1rem;
+  margin-top: 15px;
+`;
+
 const MyTicket = ({ id, image, title, date, active }) => {
   const showName = 'blackpink2022seoul'; //아마 title
   const showDay = '1671800000'; // 아마 date
@@ -223,6 +228,12 @@ const MyTicket = ({ id, image, title, date, active }) => {
         ) : (
           <>
             <QRCode value={qrvalue} size={256} />
+            <QRText style={{ marginTop: '30px' }}>
+              사용하기 전에 새로고침을 눌러주세요.
+            </QRText>
+            <QRText style={{ color: colors.bgRed }}>
+              QR코드 유효기간은 3초 입니다.
+            </QRText>
             <ModalButtonWrapper>
               <ModalButton
                 buttonColor={`${colors.primary40}`}
