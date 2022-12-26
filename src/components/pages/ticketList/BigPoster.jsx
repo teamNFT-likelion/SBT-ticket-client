@@ -11,6 +11,7 @@ import {
   Title,
   Info,
   ButtonWrapper,
+  PreTicketingInfo,
 } from './BigPoster.style';
 import { walletConnectError } from '@utils/toastMessages';
 import { useRecoilValue } from 'recoil';
@@ -22,6 +23,14 @@ const BigPoster = ({ type, items }) => {
   const navigate = useNavigate();
 
   const { account } = useRecoilValue(userState);
+
+  const preTicketingPeriod = (_time) => {
+    if (Date.now() >= _time[0] && Date.now() < _time[1]) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   const onClickCard = (side) => {
     if (activePosterId === 0 && side === 'right') {
@@ -53,8 +62,23 @@ const BigPoster = ({ type, items }) => {
         <DescCard isOpen={activePosterId === 1}>
           <div className="card-box">
             <InfoWrapper>
-              <Title>{typeItems[0].title}</Title>
-              <Info marginTop="80px">
+              <Title>
+                {(preTicketingPeriod(typeItems[0].preTicketing)
+                  ? '[사전예매]  '
+                  : '') + typeItems[0].title}
+              </Title>
+              {preTicketingPeriod(typeItems[0].preTicketing) ? (
+                <PreTicketingInfo marginTop="30px">
+                  {'사전예매기간 : ' +
+                    format(
+                      new Date(typeItems[0].preTicketing[0]),
+                      'yyyy.MM.dd',
+                    )}{' '}
+                  ~
+                  {format(new Date(typeItems[0].preTicketing[1]), 'yyyy.MM.dd')}
+                </PreTicketingInfo>
+              ) : null}
+              <Info marginTop="50px">
                 {format(new Date(typeItems[0].startDate), 'yyyy.MM.dd')} ~
                 {format(new Date(typeItems[0].endDate), 'yyyy.MM.dd')}
               </Info>
@@ -100,18 +124,29 @@ const BigPoster = ({ type, items }) => {
         <DescCard isOpen={activePosterId === 2}>
           <div className="card-box">
             <InfoWrapper>
-              <Title>{typeItems[1].title}</Title>
-              <Info marginTop="80px" alignSelf="end">
+              <Title>
+                {(preTicketingPeriod(typeItems[1].preTicketing)
+                  ? '[사전예매]  '
+                  : '') + typeItems[1].title}
+              </Title>
+              {preTicketingPeriod(typeItems[1].preTicketing) ? (
+                <PreTicketingInfo marginTop="30px">
+                  {'사전예매기간 : ' +
+                    format(
+                      new Date(typeItems[1].preTicketing[0]),
+                      'yyyy.MM.dd',
+                    )}{' '}
+                  ~
+                  {format(new Date(typeItems[1].preTicketing[1]), 'yyyy.MM.dd')}
+                </PreTicketingInfo>
+              ) : null}
+              <Info marginTop="50px">
                 {format(new Date(typeItems[1].startDate), 'yyyy.MM.dd')} ~
                 {format(new Date(typeItems[1].endDate), 'yyyy.MM.dd')}
               </Info>
-              <Info alignSelf="end">{typeItems[1].place}</Info>
-              <Info marginTop="50px" alignSelf="end">
-                {typeItems[1].viewAgeName} 관람가능
-              </Info>
-              <Info marginTop="30px" alignSelf="end">
-                CAST : {typeItems[1].cast}
-              </Info>
+              <Info>{typeItems[1].place}</Info>
+              <Info marginTop="50px">{typeItems[1].viewAgeName} 관람가능</Info>
+              <Info marginTop="30px">CAST : {typeItems[1].cast}</Info>
             </InfoWrapper>
             <ButtonWrapper>
               <button

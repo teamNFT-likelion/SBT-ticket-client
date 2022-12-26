@@ -74,6 +74,7 @@ const TSearchPage = () => {
                 title={data.title}
                 startDate={data.startDate}
                 endDate={data.endDate}
+                preTicketing={data.preTicketing}
               />
             );
           })}

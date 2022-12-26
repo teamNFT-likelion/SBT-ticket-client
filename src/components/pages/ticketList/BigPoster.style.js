@@ -87,3 +87,11 @@ export const Info = styled('span')`
   opacity: ;
   margin-top: ${({ marginTop }) => marginTop || 0};
 `;
+
+export const PreTicketingInfo = styled('span')`
+  font-size: 20px;
+  align-self: ${({ alignSelf }) => alignSelf || 'start'};
+  opacity: ;
+  margin-top: ${({ marginTop }) => marginTop || 0};
+  color: red;
+`;

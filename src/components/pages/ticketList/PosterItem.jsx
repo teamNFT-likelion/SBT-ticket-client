@@ -26,6 +26,8 @@ const HoverWrapper = styled('div')`
 const TicketImg = styled('img')`
   width: 200px;
   flex: 4;
+  border: 3px solid
+    ${(props) => (props.preTicketing ? colors.primary80 : '#ffffff0')};
 `;
 
 const TitleWrapper = styled('div')`
@@ -41,8 +43,23 @@ const DateWrapper = styled('div')`
   color: ${colors.textSecondary};
 `;
 
-const PosterItem = ({ dataId, posterImgUrl, title, startDate, endDate }) => {
+const PosterItem = ({
+  dataId,
+  posterImgUrl,
+  title,
+  startDate,
+  endDate,
+  preTicketing,
+}) => {
   const [hoverRef, isHover] = useHover();
+
+  const preTicketingPeriod = (_time) => {
+    if (Date.now() >= _time[0] && Date.now() < _time[1]) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   return (
     <Container ref={hoverRef}>
@@ -56,8 +73,13 @@ const PosterItem = ({ dataId, posterImgUrl, title, startDate, endDate }) => {
           />
         </HoverWrapper>
       )}
-      <TicketImg src={posterImgUrl} />
-      <TitleWrapper>{title}</TitleWrapper>
+      <TicketImg
+        src={posterImgUrl}
+        preTicketing={preTicketingPeriod(preTicketing)}
+      />
+      <TitleWrapper>
+        {(preTicketingPeriod(preTicketing) ? '[사전예매]  ' : '') + title}
+      </TitleWrapper>
       <DateWrapper>
         {format(new Date(startDate), 'yyyy.MM.dd')} ~
         {format(new Date(endDate), 'yyyy.MM.dd')}
