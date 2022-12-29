@@ -28,6 +28,7 @@ const MyTickets = ({ tickets, type }) => {
           title={token.tokenTitle}
           date={token.tokenDL}
           active={token.tokenIsActive}
+          tEmail={token.tokenUserEmail}
         />
       ))}
     </>

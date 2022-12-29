@@ -101,14 +101,14 @@ const AccountPage = () => {
             price = web3.utils.fromWei(i.price.toString(), 'ether');
           } else return;
           let item = {
-            tokenId: Number(i.nftTokenId),
-            tokenURI: i.nftTokenURI,
-            tokenDL: i.deadline,
-            tokenIsActive: i.isActive,
+            tokenId: Number(i.sbtTokenId), // a
+            tokenURI: i.sbtTokenURI, // a
+            tokenDL: i.deadline, // o
+            tokenIsActive: i.isActive, // o
             tokenPrice: price,
-            tokenImage: metadata.data.image,
-            tokenTitle: metadata.data.title,
-            tokenUserEmail: metadata.data.userEmail,
+            tokenImage: metadata.data.image, // o
+            tokenTitle: metadata.data.name, // a
+            tokenUserEmail: metadata.data.email,
           };
           return item;
         }),
