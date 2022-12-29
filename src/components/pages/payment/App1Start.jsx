@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { TabButton } from '@styles/ApaymentStyles';
 import { Row } from '@components/atoms/wrapper.style';
@@ -7,14 +7,39 @@ import TDPCalendar from '@components/atoms/Calendar';
 import PartInfoContainer from '@components/articles/PartInfoContainer';
 import RemainSeatsAndPay from '@components/atoms/RemainSeatsAndPay';
 import verticalLine from '@assets/img/verticalLine.png';
-import { tDateState, tPartState } from '@states/paymentState';
+import { tDateState, tDeadlineState, tPartState } from '@states/paymentState';
 import TicketInfo from './TicketInfo';
+import {
+  tPerformIdState,
+  sbtImageState,
+  sbtNameState,
+} from '@states/paymentState';
+import { useEffect } from 'react';
 
 export const App1Start = ({ setTab, data }) => {
   const [date, setDate] = useRecoilState(tDateState);
   const [part, setPart] = useRecoilState(tPartState);
   const onDateChange = (_date) => setDate(_date);
   const onPartClick = (e) => setPart(Number(e.target.value));
+
+  const setTDeadlineState = useSetRecoilState(tDeadlineState);
+  const setTPerformIdState = useSetRecoilState(tPerformIdState);
+  const setSbtImageState = useSetRecoilState(sbtImageState);
+  const setSbtNameState = useSetRecoilState(sbtNameState);
+  // const {setSbtDescState} = useSetRecoilState(sbtDescState);
+
+  const setSbtRecoilState = (data) => {
+    setTDeadlineState(data.deadline);
+    setTPerformIdState(data.id);
+    setSbtImageState(data.posterImgUrl);
+    setSbtNameState(data.title);
+
+    return data.title;
+  };
+
+  useEffect(() => {
+    setSbtRecoilState(data);
+  });
 
   return (
     <StepBox>
@@ -85,7 +110,7 @@ const SelectInfo = styled('div')`
   justify-content: center;
   align-items: center;
   font-size: 17px;
-  algin-self: flex-start;
+  align-self: flex-start;
 `;
 /* <PageTitle>티켓 결제</PageTitle>
       <SubTitle>| 선택한 공연 정보 |</SubTitle>

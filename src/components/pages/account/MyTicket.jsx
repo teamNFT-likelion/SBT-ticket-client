@@ -7,8 +7,8 @@ import QRCode from 'qrcode.react';
 import RaffleModal from '@components/articles/RaffleModal';
 import useOauth from '@hooks/useOauth';
 import { toast } from 'react-toastify';
-import useGetUri from '@hooks/useGetUri';
 import QRCertificate from '@components/pages/account/QRCertificate';
+import axios from 'axios';
 
 const TicketWrapper = styled('div')`
   width: auto;
@@ -17,7 +17,7 @@ const TicketWrapper = styled('div')`
   border-radius: 5%;
 `;
 
-const TicketImage = styled('div')`
+const TicketImage = styled('img')`
   width: 300px;
   height: 80%;
   border-bottom: 3px solid ${colors.primary40};
@@ -55,7 +55,6 @@ const TicketButton = styled('button')`
   font-size: 16px;
   cursor: pointer;
   border-radius: 3px;
-  margin-top: 30px;
 `;
 
 const ModalButtonWrapper = styled('div')`
@@ -93,10 +92,7 @@ const QRText = styled('p')`
   margin-top: 15px;
 `;
 
-const MyTicket = ({ id, image, title, date, active }) => {
-  const showName = 'blackpink2022seoul'; //아마 title
-  const showDay = '1671800000'; // 아마 date
-  const sbtId = '35'; // 아마 id
+const MyTicket = ({ id, image, title, date, active, uri, tEmail }) => {
   // 모달을 위한 state
   const [showUseQr, setShowUseQr] = useState(false);
   const [showRefund, setShowRefund] = useState(false);
@@ -105,7 +101,6 @@ const MyTicket = ({ id, image, title, date, active }) => {
 
   // 본인인증을 위한 state
   const { email: userEmail, setPopup, popup } = useOauth();
-  const { getTokenUri, tokenEmail } = useGetUri();
 
   // 본인인증 여부
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -113,10 +108,20 @@ const MyTicket = ({ id, image, title, date, active }) => {
   // qr코드 발행을 위한 state
 
   // qr value = `${공연정보(공연id나 제목) + ${날짜} + ${sbtId} + ${qr생성하는 현재시간}`
-  const [qrvalue, setQrvalue] = useState(`${showName}${showDay}${sbtId}${Date.now()}`);
+  const [qrvalue, setQrvalue] = useState(`${title}${date}${id}${Date.now()}`);
+
+  // ipfs에 저장되어있는 이미지 url 가져오기 ; 근데 이렇게 말고 근데 원래 url 그대로 저장하면 안되나?
+  const [imgUrl, setImgUrl] = useState('');
 
   // 본인인증 후 첫 생성/새로고침 여부
   const [isReGenerated, setIsReGenerated] = useState(false);
+
+  async function imgUrlInUri() {
+    const img = await axios(image).then((res) => setImgUrl(res.data));
+    //사실 반환값 안씀;
+    return img;
+  }
+  imgUrlInUri();
 
   useEffect(() => {
     const receiveMessage = async (e) => {
@@ -134,19 +139,20 @@ const MyTicket = ({ id, image, title, date, active }) => {
 
   function handleUseQR() {
     console.log('userEmail : ', userEmail);
-    console.log('tokenEmail : ', tokenEmail);
+    console.log('tokenEmail : ', tEmail);
+    console.log(id, image, title, date, active, uri);
 
     if (!userEmail) {
       setIsAuthorized(false);
       toast.error('본인인증이 필요합니다.', { autoClose: 2000 });
-    } else if (!getTokenUri) {
+    } else if (!tEmail) {
       setIsAuthorized(false);
       toast.error('티켓 소유자의 이메일을 찾을 수 없습니다.', {
         autoClose: 2000,
       });
-    } else if (userEmail === tokenEmail) {
+    } else if (userEmail === tEmail) {
       setIsAuthorized(true);
-      setQrvalue(showName + showDay + sbtId + Date.now());
+      setQrvalue(title + date + id + Date.now());
       if (!isReGenerated) {
         toast.success('이메일과 sbt정보가 일치합니다.', { autoClose: 2000 });
       }
@@ -161,17 +167,18 @@ const MyTicket = ({ id, image, title, date, active }) => {
   return (
     <div>
       <TicketWrapper key={id}>
-        <TicketImage>{image}</TicketImage>
+        <TicketImage src={imgUrl} alt="ticket" />
         <TicketContent>
           <TextWrapper>{title}</TextWrapper>
-          <DateWrapper>~{format(new Date(Number(date) * 1000), 'yyyy.MM.dd')}</DateWrapper>
-          {!active ? (
+          <DateWrapper>
+            ~{format(new Date(Number(date) * 1000), 'yyyy.MM.dd')}
+          </DateWrapper>
+          {active ? (
             <TicketButtonWrapper>
               <TicketButton
                 buttonColor={`${colors.primary40}`}
                 onClick={() => {
                   setShowUseQr(true);
-                  getTokenUri();
                 }}
               >
                 사용

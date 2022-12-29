@@ -12,6 +12,7 @@ export const mainItems = [
     startDate: 1677250800000,
     endDate: 1677337200000,
     preTicketing: [1672061882855, 1674000000000],
+    deadline: 1671926400, // 22년 12월 25일 -> INACTIVE
     runningTime: 120,
     cast: '블랙핑크',
     viewAgeName: '15세이상',
@@ -35,6 +36,7 @@ export const mainItems = [
     startDate: 1664377200000,
     endDate: 1671980400000,
     preTicketing: [1675209600000, 1676851200000],
+    deadline: 1674000000, // 23년 1월 18일 -> ACTIVE
     runningTime: 90,
     cast: '푸에르자부르타',
     viewAgeName: '8세이상',
@@ -58,6 +60,7 @@ export const mainItems = [
     startDate: 1670425200000,
     endDate: 1680102000000,
     preTicketing: [1672061882855, 1674000000000],
+    deadline: 1671926400, // 22년 12월 25일 -> INACTIVE
     runningTime: 90,
     cast: '알버트 왓슨',
     viewAgeName: '19세이상',
@@ -81,6 +84,7 @@ export const mainItems = [
     startDate: 1648220400000,
     endDate: 1683385200000,
     preTicketing: [1675209600000, 1676851200000],
+    deadline: 1674000000, // 23년 1월 18일 -> ACTIVE
     runningTime: 90,
     cast: 'museum',
     viewAgeName: '전체관람가',
@@ -104,6 +108,7 @@ export const mainItems = [
     startDate: 1664377200000,
     endDate: 1671980400000,
     preTicketing: [1672061882855, 1674000000000],
+    deadline: 1671926400, // 22년 12월 25일 -> INACTIVE
     runningTime: 90,
     cast: '파퀴아오, DK YOO',
     viewAgeName: '15세이상',
@@ -127,6 +132,7 @@ export const mainItems = [
     startDate: 1692716400000,
     endDate: 1692716400000,
     preTicketing: [1675209600000, 1676851200000],
+    deadline: 1674000000, // 23년 1월 18일 -> ACTIVE
     runningTime: 90,
     cast: '토트넘',
     viewAgeName: '11세이상',
@@ -154,6 +160,7 @@ export const itemList = [
     startDate: 1671807600000,
     endDate: 1671894000000,
     preTicketing: [1675209600000, 1676851200000],
+    deadline: 1674000000, // 23년 1월 18일 -> ACTIVE
     runningTime: 90,
     cast: '펭수',
     viewAgeName: '8세이상',
