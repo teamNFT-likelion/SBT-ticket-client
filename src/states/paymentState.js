@@ -32,7 +32,7 @@ export const tSeatLimitState = atom({
   default: 100,
 });
 export const tInfoState = selector({
-  key: `paymentState/tInfo/${v1()}`, //token에 해당 전체 정보 형태로 변환
+  key: `paymentState/tInfo}`, //token에 해당 전체 정보 형태로 변환
   get: ({ get }) => {
     const tPart = get(tPartState);
     const tDate = get(tDateState);
