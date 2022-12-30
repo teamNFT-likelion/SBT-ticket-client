@@ -30,7 +30,7 @@ export const networks = {
   // goerli testnet
   goerli: {
     chainId: `0x${Number(5).toString(16)}`,
-    chainName: 'Polygon Testnet Mumbai',
+    chainName: 'Ethereum Testnet Goerli',
     nativeCurrency: {
       name: 'GoerliETH',
       symbol: 'GoerliETH',
