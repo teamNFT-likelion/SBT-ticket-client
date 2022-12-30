@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import metamaskImageUrl from '@assets/icon/MetaMask.png';
 import axios from 'axios';
-import { GOERLI_TTOT } from '@contracts/ContractAddress';
-import { TTOT_ABI } from '@contracts/ABI';
+import { MUMBAI_TTOTMAIN_ADDR } from '@contracts/ContractAddress';
+import { TTOT_MAIN_ABI } from '@contracts/ABI';
 import MyTickets from './account/MyTickets';
 import { useNavigate } from 'react-router-dom';
 import { walletConnectError } from '@utils/toastMessages';
@@ -89,7 +89,7 @@ const AccountPage = () => {
     async function saveMyToken() {
       let tokenContract;
       if (walletType === 'eth') {
-        tokenContract = await new web3.eth.Contract(TTOT_ABI, GOERLI_TTOT);
+        tokenContract = await new web3.eth.Contract(TTOT_MAIN_ABI, MUMBAI_TTOTMAIN_ADDR);
       } else return;
 
       const MyTokens = await tokenContract.methods.getSbtTokens(account).call();

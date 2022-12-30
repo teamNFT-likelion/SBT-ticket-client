@@ -10,7 +10,7 @@ export default function CheckWallet() {
   const [account, setAccount] = useRecoilState(userAccount);
   const setWalletType = useSetRecoilState(userWalletType);
   const [networkId, setNetworkId] = useRecoilState(userNetworkId);
-  const goerliNetwork = networks['goerli'].chainId;
+  const mumbaiNetwork = networks['mumbai'].chainId;
 
   // Metamask 권한 확인 -> 잠금 동작 인식 불가
   useEffect(() => {
@@ -91,12 +91,12 @@ export default function CheckWallet() {
 
     getChainId();
 
-    if (networkId !== goerliNetwork) {
+    if (networkId !== mumbaiNetwork) {
       handleSwitchChain();
     }
 
     const handleNetworkChanged = (chainId) => {
-      if (chainId !== goerliNetwork) {
+      if (chainId !== mumbaiNetwork) {
         setAccount('');
         setWalletType('');
         setNetworkId('');
@@ -107,7 +107,7 @@ export default function CheckWallet() {
         });
       } else {
         setNetworkId(chainId);
-        toast.success(`Goerli 네트워크로 변경되었습니다.`, {
+        toast.success(`Mumbai, polygon 테스트 네트워크로 변경되었습니다.`, {
           autoClose: 1500,
         });
       }
@@ -128,7 +128,7 @@ export default function CheckWallet() {
       // switch 네트워크
       await ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: goerliNetwork }],
+        params: [{ chainId: mumbaiNetwork }],
       });
     } catch (switchError) {
       // 네트워크가 존재하지 않으면 새로 추가
@@ -136,7 +136,7 @@ export default function CheckWallet() {
         try {
           await ethereum.request({
             method: 'wallet_addEthereumChain',
-            params: [networks['goerli']],
+            params: [networks['mumbai']],
           });
         } catch (addError) {
           // handle "add" error
