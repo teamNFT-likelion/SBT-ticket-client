@@ -9,12 +9,8 @@ import RemainSeatsAndPay from '@components/atoms/RemainSeatsAndPay';
 import verticalLine from '@assets/img/verticalLine.png';
 import { tDateState, tDeadlineState, tPartState } from '@states/paymentState';
 import TicketInfo from './TicketInfo';
-import {
-  tPerformIdState,
-  sbtImageState,
-  sbtNameState,
-} from '@states/paymentState';
-import { useEffect } from 'react';
+import { tPerformIdState, sbtImageState, sbtNameState } from '@states/paymentState';
+import { useEffect, useCallback } from 'react';
 
 export const App1Start = ({ setTab, data }) => {
   const [date, setDate] = useRecoilState(tDateState);
@@ -28,34 +24,33 @@ export const App1Start = ({ setTab, data }) => {
   const setSbtNameState = useSetRecoilState(sbtNameState);
   // const {setSbtDescState} = useSetRecoilState(sbtDescState);
 
-  const setSbtRecoilState = (data) => {
+  const setSbtRecoilState = useCallback(() => {
     setTDeadlineState(data.deadline);
     setTPerformIdState(data.id);
     setSbtImageState(data.posterImgUrl);
     setSbtNameState(data.title);
-
-    return data.title;
-  };
+  }, [
+    data.deadline,
+    data.id,
+    data.posterImgUrl,
+    data.title,
+    setSbtImageState,
+    setSbtNameState,
+    setTDeadlineState,
+    setTPerformIdState,
+  ]);
 
   useEffect(() => {
     setSbtRecoilState(data);
-  });
+  }, [data, setSbtRecoilState]);
 
   return (
     <StepBox>
       <LeftBox>
         <SelectInfo>
-          <TDPCalendar
-            dateInfo={data.dateInfo}
-            onDateChange={onDateChange}
-            value={date}
-          />
+          <TDPCalendar dateInfo={data.dateInfo} onDateChange={onDateChange} value={date} />
           <img src={verticalLine} alt="verticalLine" height="260px" />
-          <PartInfoContainer
-            data={data}
-            onPartClick={onPartClick}
-            partState={part}
-          />
+          <PartInfoContainer data={data} onPartClick={onPartClick} partState={part} />
           <img src={verticalLine} alt="verticalLine" height="260px" />
           <RemainSeatsAndPay data={data} partState={part} />
         </SelectInfo>
@@ -63,10 +58,7 @@ export const App1Start = ({ setTab, data }) => {
       <RightBox>
         <TicketInfo data={data} />
         <Row justifyContent="center" marginTop="100px">
-          <TabButton
-            value="APP_SelectSeats"
-            onClick={(e) => setTab(e.target.value)}
-          >
+          <TabButton value="APP_SelectSeats" onClick={(e) => setTab(e.target.value)}>
             다음단계
           </TabButton>
         </Row>
