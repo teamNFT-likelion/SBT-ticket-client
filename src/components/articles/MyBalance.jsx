@@ -5,14 +5,15 @@ import polygonImage from '@assets/icon/polygon.svg';
 import useWeb3 from '@hooks/useWeb3';
 
 const MyBalance = () => {
-  const { network, balance } = useWeb3();
+  const { chainId, balance } = useWeb3();
 
   const { iconSrc, symbol } = useMemo(() => {
-    //TODO : private network 구분
-    if (network === 'main' || network === 'goerli')
+    if (chainId === 137 || chainId === 80001) {
+      return { iconSrc: polygonImage, symbol: 'MATIC' };
+    } else if (chainId === 1 || chainId === 5) {
       return { iconSrc: ethereumImage, symbol: 'ETHER' };
-    return { iconSrc: polygonImage, symbol: 'MATIC' };
-  }, [network]);
+    }
+  }, [chainId]);
 
   return (
     <MyBalanceWrapper>
