@@ -3,8 +3,7 @@ export const mainItems = [
   {
     id: '41342',
     topic: '공연',
-    posterImgUrl:
-      'https://ticketimage.interpark.com/Play/image/large/22/22010748_p.gif',
+    posterImgUrl: 'https://ticketimage.interpark.com/Play/image/large/22/22010748_p.gif',
     title: 'BLACKPINK WORLD TOUR',
     place: '올림픽공원 KSPO DOME',
     cashPrice: 189000,
@@ -17,18 +16,16 @@ export const mainItems = [
     cast: '블랙핑크',
     viewAgeName: '15세이상',
     dateInfo: [
-      { date: new Date().getTime(), startTime: '9시 30분', seatCount: 12 },
+      { date: 1667174400000, startTime: '9시 30분', seatCount: 12 },
       { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
       { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
     ],
-    detailInfoImg:
-      'https://ticketimage.interpark.com/Play/image/etc/22/22010748-12.jpg',
+    detailInfoImg: 'https://ticketimage.interpark.com/Play/image/etc/22/22010748-12.jpg',
   },
   {
     id: '39958',
     topic: '공연',
-    posterImgUrl:
-      'https://image.toast.com/aaaaab/ticketlink/TKL_8/poster(220915)b.jpg',
+    posterImgUrl: 'https://image.toast.com/aaaaab/ticketlink/TKL_8/poster(220915)b.jpg',
     title: '2022 푸에르자부르타 웨이라 인 서울',
     place: '잠실종합운동장 FB씨어터',
     cashPrice: 121000,
@@ -41,18 +38,16 @@ export const mainItems = [
     cast: '푸에르자부르타',
     viewAgeName: '8세이상',
     dateInfo: [
-      { date: new Date().getTime(), startTime: '9시 30분', seatCount: 12 },
+      { date: 1667174400000, startTime: '9시 30분', seatCount: 12 },
       { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
       { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
     ],
-    detailInfoImg:
-      'http://image.toast.com/aaaaab/ticketlink/TKL_4/fu_web_1_220825.jpg',
+    detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_4/fu_web_1_220825.jpg',
   },
   {
     id: '41177',
     topic: '전시',
-    posterImgUrl:
-      'https:////image.toast.com/aaaaab/ticketlink/TKL_5/티켓링크_405x500.jpg',
+    posterImgUrl: 'https:////image.toast.com/aaaaab/ticketlink/TKL_5/티켓링크_405x500.jpg',
     title: 'WATSON, THE MAESTRO - 사진전',
     place: '예술의전당 한가람미술관 2층',
     cashPrice: 120000,
@@ -65,18 +60,16 @@ export const mainItems = [
     cast: '알버트 왓슨',
     viewAgeName: '19세이상',
     dateInfo: [
-      { date: new Date().getTime(), startTime: '9시 30분', seatCount: 12 },
+      { date: 1667174400000, startTime: '9시 30분', seatCount: 12 },
       { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
       { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
     ],
-    detailInfoImg:
-      'http://image.toast.com/aaaaab/ticketlink/TKL_3/221116_AW_700.jpg',
+    detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_3/221116_AW_700.jpg',
   },
   {
     id: '37726',
     topic: '전시',
-    posterImgUrl:
-      'https://image.toast.com/aaaaab/ticketlink/TKL_6/tech_pst0308.jpg',
+    posterImgUrl: 'https://image.toast.com/aaaaab/ticketlink/TKL_6/tech_pst0308.jpg',
     title: 'Technique of Healing - 부산',
     place: '해운대구 센텀서로 20 뮤지엄원',
     cashPrice: 18000,
@@ -89,18 +82,16 @@ export const mainItems = [
     cast: 'museum',
     viewAgeName: '전체관람가',
     dateInfo: [
-      { date: new Date().getTime(), startTime: '9시 30분', seatCount: 12 },
+      { date: 1667174400000, startTime: '9시 30분', seatCount: 12 },
       { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
       { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
     ],
-    detailInfoImg:
-      'http://image.toast.com/aaaaab/ticketlink/TKL_6/tech_info0308-01.jpg',
+    detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_6/tech_info0308-01.jpg',
   },
   {
     id: '22015838',
     topic: '스포츠',
-    posterImgUrl:
-      'https://ticketimage.interpark.com/Play/image/large/22/22015838_p.gif',
+    posterImgUrl: 'https://ticketimage.interpark.com/Play/image/large/22/22015838_p.gif',
     title: '파퀴아오 vs DK YOO',
     place: '일산 킨텍스 3F 그랜드볼룸',
     cashPrice: 3000000,
@@ -113,18 +104,16 @@ export const mainItems = [
     cast: '파퀴아오, DK YOO',
     viewAgeName: '15세이상',
     dateInfo: [
-      { date: new Date().getTime(), startTime: '9시 30분', seatCount: 12 },
+      { date: 1667174400000, startTime: '9시 30분', seatCount: 12 },
       { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
       { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
     ],
-    detailInfoImg:
-      'https://ticketimage.interpark.com/Play/image/etc/22/22015838-01.jpg',
+    detailInfoImg: 'https://ticketimage.interpark.com/Play/image/etc/22/22015838-01.jpg',
   },
   {
     id: '64100',
     topic: '스포츠',
-    posterImgUrl:
-      'https://news.nateimg.co.kr/orgImg/na/2022/04/14/5317599_high.jpg',
+    posterImgUrl: 'https://news.nateimg.co.kr/orgImg/na/2022/04/14/5317599_high.jpg',
     title: '팀 K리그 vs 토트텀 홋스퍼',
     place: '서울월드컵경기장',
     cashPrice: 80000,
@@ -137,12 +126,11 @@ export const mainItems = [
     cast: '토트넘',
     viewAgeName: '11세이상',
     dateInfo: [
-      { date: new Date().getTime(), startTime: '9시 30분', seatCount: 12 },
+      { date: 1667174400000, startTime: '9시 30분', seatCount: 12 },
       { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
       { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
     ],
-    detailInfoImg:
-      'https://www.jejutwn.com/data/photos/20220624/art_16554512927773_d72133.jpg',
+    detailInfoImg: 'https://www.jejutwn.com/data/photos/20220624/art_16554512927773_d72133.jpg',
   },
 ];
 
@@ -151,8 +139,7 @@ export const itemList = [
   {
     id: '41342',
     topic: '공연',
-    posterImgUrl:
-      'https://image.toast.com/aaaaab/ticketlink/TKL_6/펭미팅_대표이미지_405X500.jpg',
+    posterImgUrl: 'https://image.toast.com/aaaaab/ticketlink/TKL_6/펭미팅_대표이미지_405X500.jpg',
     title: '2022 펭수 연말 펭미팅',
     place: '경희대학교 평화의전당',
     cashPrice: 59000,
@@ -165,7 +152,7 @@ export const itemList = [
     cast: '펭수',
     viewAgeName: '8세이상',
     dateInfo: [
-      { date: new Date().getTime(), startTime: '9시 30분', seatCount: 12 },
+      { date: 1667174400000, startTime: '9시 30분', seatCount: 12 },
       { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
       { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
     ],
