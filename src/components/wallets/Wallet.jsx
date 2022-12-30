@@ -100,7 +100,7 @@ export default function Wallet() {
       localStorage.setItem('_user', accounts[0]);
       localStorage.setItem('_wallet', 'eth');
 
-      if (networkId !== networks['goerli'].chainId) {
+      if (networkId !== networks['mumbai'].chainId) {
         setTimeout(() => window.location.reload(), 1500);
       } else {
         toast.success(`${formatAddress(accounts[0])}님 환영합니다.`, {
@@ -151,7 +151,7 @@ export default function Wallet() {
         show={showWalletOptions}
         toggleModal={() => setShowWalletOptions(false)}
       >
-        이더리움과 폴리곤 네트워크에서 사용이 가능합니다. 확인해주세요.
+        현재 폴리곤 테스트 네트워크 MUMBAI에서 사용이 가능합니다.
         <StyledButton onClick={handleMetamaskLogin}>
           <ImageWrapper src={metamaskImageUrl} />
           Metamask

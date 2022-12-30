@@ -1,5 +1,3 @@
-//네트워크 정보임. 현재는 개발 환경이 goerli로 되어있어 goerli로 해놓을게요
-
 export const networks = {
   // polygon mainnet
   polygon: {
@@ -15,7 +13,7 @@ export const networks = {
   },
 
   // polygon mumbai testnet
-  polygonMumbai: {
+  mumbai: {
     chainId: `0x${Number(80001).toString(16)}`,
     chainName: 'Polygon Testnet Mumbai',
     nativeCurrency: {
