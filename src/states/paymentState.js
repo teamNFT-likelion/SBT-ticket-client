@@ -1,8 +1,7 @@
 import { atom, selector } from 'recoil';
-import { v1 } from 'uuid';
 
 export const tDateState = atom({
-  key: `paymentState/tDate/${v1()}`,
+  key: `paymentState/tDate/${crypto.randomUUID()}`,
   default: new Date(),
 });
 export const tPartState = atom({
@@ -32,7 +31,7 @@ export const tSeatLimitState = atom({
   default: 100,
 });
 export const tInfoState = selector({
-  key: `paymentState/tInfo}`, //token에 해당 전체 정보 형태로 변환
+  key: 'paymentState/tInfo}', //token에 해당 전체 정보 형태로 변환
   get: ({ get }) => {
     const tPart = get(tPartState);
     const tDate = get(tDateState);
