@@ -1,4 +1,4 @@
-export const TTOT_ABI = [
+export const TTOT_MAIN_ABI = [
   {
     inputs: [],
     stateMutability: 'payable',
@@ -124,7 +124,7 @@ export const TTOT_ABI = [
         type: 'uint256',
       },
     ],
-    name: 'burn',
+    name: 'burnSbtToken',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -149,26 +149,26 @@ export const TTOT_ABI = [
     type: 'function',
   },
   {
-    inputs: [],
-    name: 'getBalance',
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_addr',
+        type: 'address',
+      },
+    ],
+    name: 'getHost',
     outputs: [
       {
-        internalType: 'uint256',
+        internalType: 'contract ttot_host',
         name: '',
-        type: 'uint256',
+        type: 'address',
       },
     ],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: '_sbtTokenOwner',
-        type: 'address',
-      },
-    ],
+    inputs: [],
     name: 'getSbtTokens',
     outputs: [
       {
@@ -189,46 +189,32 @@ export const TTOT_ABI = [
             type: 'uint256',
           },
           {
-            internalType: 'bool',
-            name: 'isActive',
-            type: 'bool',
+            internalType: 'address',
+            name: 'hostAddress',
+            type: 'address',
           },
           {
             internalType: 'uint256',
             name: 'price',
             type: 'uint256',
           },
+          {
+            internalType: 'string[]',
+            name: 'seats',
+            type: 'string[]',
+          },
+          {
+            internalType: 'bool',
+            name: 'isActive',
+            type: 'bool',
+          },
         ],
-        internalType: 'struct ttot_sample.SbtTokenData[]',
+        internalType: 'struct ttot_main.sbtTokenData[]',
         name: '',
         type: 'tuple[]',
       },
     ],
     stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '_id',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: '_deadline',
-        type: 'uint256',
-      },
-    ],
-    name: 'getSeat',
-    outputs: [
-      {
-        internalType: 'string[]',
-        name: '',
-        type: 'string[]',
-      },
-    ],
-    stateMutability: 'view',
     type: 'function',
   },
   {
@@ -268,24 +254,19 @@ export const TTOT_ABI = [
         type: 'uint256',
       },
       {
+        internalType: 'address',
+        name: '_hostAddress',
+        type: 'address',
+      },
+      {
         internalType: 'uint256',
         name: '_price',
         type: 'uint256',
       },
       {
-        internalType: 'uint256',
-        name: '_id',
-        type: 'uint256',
-      },
-      {
-        internalType: 'string',
-        name: '_seat',
-        type: 'string',
-      },
-      {
-        internalType: 'uint256',
-        name: '_limit',
-        type: 'uint256',
+        internalType: 'string[]',
+        name: '_seats',
+        type: 'string[]',
       },
     ],
     name: 'mintSbt',
@@ -323,6 +304,19 @@ export const TTOT_ABI = [
       },
     ],
     stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_tokenId',
+        type: 'uint256',
+      },
+    ],
+    name: 'refundSbtToken',
+    outputs: [],
+    stateMutability: 'nonpayable',
     type: 'function',
   },
   {
@@ -379,101 +373,6 @@ export const TTOT_ABI = [
   {
     inputs: [
       {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    name: 'sbtDeadlines',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    name: 'sbtIsActives',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: '',
-        type: 'bool',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    name: 'sbtPrices',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    name: 'sbtTicketId',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    name: 'sbtTicketSeat',
-    outputs: [
-      {
-        internalType: 'string',
-        name: '',
-        type: 'string',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
         internalType: 'address',
         name: 'operator',
         type: 'address',
@@ -485,6 +384,19 @@ export const TTOT_ABI = [
       },
     ],
     name: 'setApprovalForAll',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_addr',
+        type: 'address',
+      },
+    ],
+    name: 'setHost',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -568,30 +480,11 @@ export const TTOT_ABI = [
     inputs: [
       {
         internalType: 'uint256',
-        name: '_tokenId',
+        name: 'tokenId',
         type: 'uint256',
       },
     ],
     name: 'tokenURI',
-    outputs: [
-      {
-        internalType: 'string',
-        name: '',
-        type: 'string',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    name: 'tokenURIs',
     outputs: [
       {
         internalType: 'string',
@@ -638,17 +531,109 @@ export const TTOT_ABI = [
     stateMutability: 'nonpayable',
     type: 'function',
   },
+];
+
+export const TTOT_HOST_ABI = [
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_mainContractAddress',
+        type: 'address',
+      },
+      {
+        internalType: 'string',
+        name: '_hostName',
+        type: 'string',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'constructor',
+  },
   {
     inputs: [
       {
         internalType: 'uint256',
-        name: '_amount',
+        name: '_date',
         type: 'uint256',
       },
     ],
-    name: 'transferToOwner',
+    name: 'getSeats',
+    outputs: [
+      {
+        internalType: 'string[]',
+        name: '',
+        type: 'string[]',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'mainContract',
+    outputs: [
+      {
+        internalType: 'contract ttot_main',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_date',
+        type: 'uint256',
+      },
+      {
+        internalType: 'string[]',
+        name: '_seats',
+        type: 'string[]',
+      },
+    ],
+    name: 'popSeat',
     outputs: [],
-    stateMutability: 'payable',
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_date',
+        type: 'uint256',
+      },
+      {
+        internalType: 'string[]',
+        name: '_seats',
+        type: 'string[]',
+      },
+    ],
+    name: 'pushSeat',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_date',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: '_limit',
+        type: 'uint256',
+      },
+    ],
+    name: 'setDateAndLimit',
+    outputs: [],
+    stateMutability: 'nonpayable',
     type: 'function',
   },
 ];

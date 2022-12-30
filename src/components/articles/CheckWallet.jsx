@@ -136,19 +136,7 @@ export default function CheckWallet() {
         try {
           await ethereum.request({
             method: 'wallet_addEthereumChain',
-            params: [
-              {
-                chainId: `0x${Number(5).toString(16)}`,
-                chainName: 'Polygon Testnet Mumbai',
-                nativeCurrency: {
-                  name: 'GoerliETH',
-                  symbol: 'GoerliETH',
-                  decimals: 18,
-                },
-                rpcUrls: ['https://goerli.infura.io/v3/'],
-                blockExplorerUrls: ['https://goerli.etherscan.io'],
-              },
-            ],
+            params: [networks['goerli']],
           });
         } catch (addError) {
           // handle "add" error
