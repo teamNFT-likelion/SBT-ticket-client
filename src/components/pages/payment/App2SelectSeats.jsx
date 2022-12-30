@@ -17,7 +17,7 @@ export const App2SelectSeats = ({ setTab, data }) => {
       </LeftBox>
       <RightBox>
         <TicketInfo data={data} />
-        <Row justifyContent="center" marginTop="100px">
+        <Row justifyContent="center" marginTop="70px">
           <TabButton value="APP_Start" onClick={(e) => setTab(e.target.value)}>
             뒤로가기
           </TabButton>

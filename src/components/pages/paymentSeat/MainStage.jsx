@@ -11,28 +11,28 @@ import * as layout from './layout';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { tSeatState, tPriceState } from '@states/paymentState';
 
+const SeatsContainer = styled(Column)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const SeatsInfo = styled('span')`
   font-size: 20px;
   font-weight: 400;
   color: ${colors.primary80};
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 `;
 
 //TODO: 색변경
-const SeatsSelectBox = styled(Column)`
+const SeatsSelectBox = styled('div')`
   height: auto;
-  width: 900px;
+  width: 100%;
   display: flex;
   justify-content: center;
   background-color: gray;
   border-radius: 24px;
-`;
-
-const Container = styled('div')`
   position: relative;
-  width: 750px;
-  height: 400px;
-  margin: auto;
 `;
 
 const MainStage = () => {
@@ -41,7 +41,7 @@ const MainStage = () => {
   const [scale, setScale] = useState(1);
   const [scaleToFit, setScaleToFit] = useState(1);
   const [size, setSize] = useState({
-    width: 600,
+    width: 500,
     height: 800,
     virtualWidth: 1000,
   });
@@ -140,72 +140,70 @@ const MainStage = () => {
   let lastSectionPosition = 0;
 
   return (
-    <Column>
+    <SeatsContainer>
       <SeatsInfo>
         ⭐ 선택한 매수(개인당 최대{' '}
         <span style={{ color: 'red' }}>{seatsLimit}</span>매): {seatIds.length}
         매
       </SeatsInfo>
-      <SeatsSelectBox>
-        <Container ref={containerRef}>
-          <Stage
-            ref={stageRef}
-            width={size.width}
-            height={size.height}
-            draggable
-            dragBoundFunc={(pos) => {
-              pos.x = Math.min(
-                size.width / 2,
-                Math.max(pos.x, -virtualWidth * scale + size.width / 2),
-              );
-              pos.y = Math.min(
-                size.height / 2,
-                Math.max(pos.y, -size.height / 2),
-              );
-              return pos;
-            }}
-            onDblTap={toggleScale}
-            onDblClick={toggleScale}
-            scaleX={scale}
-            scaleY={scale}
-          >
-            <Layer>
-              {SeatsData.seats.sections.map((section, index) => {
-                const height = layout.getSectionHeight(section);
-                const position = lastSectionPosition + layout.SECTIONS_MARGIN;
-                lastSectionPosition = position + height;
-                // const width = layout.getSectionWidth(section);
-                // const offset = (maxSectionWidth - width) / 2;
-                const offset = 10;
+      <SeatsSelectBox ref={containerRef}>
+        <Stage
+          ref={stageRef}
+          width={size.width}
+          height={size.height}
+          draggable
+          dragBoundFunc={(pos) => {
+            pos.x = Math.min(
+              size.width / 2,
+              Math.max(pos.x, -virtualWidth * scale + size.width / 2),
+            );
+            pos.y = Math.min(
+              size.height / 2,
+              Math.max(pos.y, -size.height / 2),
+            );
+            return pos;
+          }}
+          onDblTap={toggleScale}
+          onDblClick={toggleScale}
+          scaleX={scale}
+          scaleY={scale}
+        >
+          <Layer>
+            {SeatsData.seats.sections.map((section, index) => {
+              const height = layout.getSectionHeight(section);
+              const position = lastSectionPosition + layout.SECTIONS_MARGIN;
+              lastSectionPosition = position + height;
+              // const width = layout.getSectionWidth(section);
+              // const offset = (maxSectionWidth - width) / 2;
+              const offset = 10;
 
-                return (
-                  <Section
-                    x={offset}
-                    y={position}
-                    height={height}
-                    key={index}
-                    section={section}
-                    selectedSeatsIds={seatIds}
-                    onHoverSeat={handleHover}
-                    onSelectSeat={handleSelect}
-                    onDeselectSeat={handleDeselect}
-                  />
-                );
-              })}
-            </Layer>
-          </Stage>
-          {popup.seat && (
-            <SeatPopup
-              position={popup.position}
-              seatId={popup.seat}
-              onClose={() => {
-                setPopup({ seat: null });
-              }}
-            />
-          )}
-        </Container>
+              return (
+                <Section
+                  x={offset}
+                  y={position}
+                  height={height}
+                  key={index}
+                  section={section}
+                  selectedSeatsIds={seatIds}
+                  onHoverSeat={handleHover}
+                  onSelectSeat={handleSelect}
+                  onDeselectSeat={handleDeselect}
+                />
+              );
+            })}
+          </Layer>
+        </Stage>
+        {popup.seat && (
+          <SeatPopup
+            position={popup.position}
+            seatId={popup.seat}
+            onClose={() => {
+              setPopup({ seat: null });
+            }}
+          />
+        )}
       </SeatsSelectBox>
-    </Column>
+    </SeatsContainer>
   );
 };
 
