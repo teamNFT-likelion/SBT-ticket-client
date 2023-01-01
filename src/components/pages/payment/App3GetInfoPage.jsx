@@ -41,7 +41,7 @@ const App3GetInfoPage = ({ setTab, data }) => {
     setIsLoading(true);
     try {
       const tokenUri = await createTokenUri(_sbtInfo, _email);
-      await createSBT(tokenUri, _ticketInfo);
+      await createSBT(tokenUri, _ticketInfo, "COIN");
       setTab(e.target.value);
     } catch (error) {
       console.log('Error uploading file: ', error);

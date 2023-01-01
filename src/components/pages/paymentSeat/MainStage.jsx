@@ -142,9 +142,8 @@ const MainStage = () => {
   return (
     <SeatsContainer>
       <SeatsInfo>
-        ⭐ 선택한 매수(개인당 최대{' '}
-        <span style={{ color: 'red' }}>{seatsLimit}</span>매): {seatIds.length}
-        매
+        ⭐ 선택한 매수(개인당 최대 <span style={{ color: 'red' }}>{seatsLimit}</span>매):{' '}
+        {seatIds.length}매
       </SeatsInfo>
       <SeatsSelectBox ref={containerRef}>
         <Stage
@@ -157,10 +156,7 @@ const MainStage = () => {
               size.width / 2,
               Math.max(pos.x, -virtualWidth * scale + size.width / 2),
             );
-            pos.y = Math.min(
-              size.height / 2,
-              Math.max(pos.y, -size.height / 2),
-            );
+            pos.y = Math.min(size.height / 2, Math.max(pos.y, -size.height / 2));
             return pos;
           }}
           onDblTap={toggleScale}

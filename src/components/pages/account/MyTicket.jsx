@@ -92,7 +92,7 @@ const QRText = styled('p')`
   margin-top: 15px;
 `;
 
-const MyTicket = ({ id, image, title, date, active, uri, tEmail }) => {
+const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active }) => {
   // 모달을 위한 state
   const [showUseQr, setShowUseQr] = useState(false);
   const [showRefund, setShowRefund] = useState(false);
@@ -170,9 +170,7 @@ const MyTicket = ({ id, image, title, date, active, uri, tEmail }) => {
         <TicketImage src={imgUrl} alt="ticket" />
         <TicketContent>
           <TextWrapper>{title}</TextWrapper>
-          <DateWrapper>
-            ~{format(new Date(Number(date) * 1000), 'yyyy.MM.dd')}
-          </DateWrapper>
+          <DateWrapper>~{format(new Date(date), 'yyyy.MM.dd')}</DateWrapper>
           {active ? (
             <TicketButtonWrapper>
               <TicketButton
@@ -235,12 +233,8 @@ const MyTicket = ({ id, image, title, date, active, uri, tEmail }) => {
         ) : (
           <>
             <QRCode value={qrvalue} size={256} />
-            <QRText style={{ marginTop: '30px' }}>
-              사용하기 전에 새로고침을 눌러주세요.
-            </QRText>
-            <QRText style={{ color: colors.bgRed }}>
-              QR코드 유효기간은 3초 입니다.
-            </QRText>
+            <QRText style={{ marginTop: '30px' }}>사용하기 전에 새로고침을 눌러주세요.</QRText>
+            <QRText style={{ color: colors.bgRed }}>QR코드 유효기간은 3초 입니다.</QRText>
             <ModalButtonWrapper>
               <ModalButton
                 buttonColor={`${colors.primary40}`}
