@@ -9,6 +9,8 @@ import {
   tPartState,
   tSeatState,
   tPriceState,
+  tTokenPriceState,
+  tPricePerTokenState,
 } from '@states/paymentState';
 import { preTicketingPeriod } from '@utils/preTicketingPeriod';
 
@@ -17,7 +19,9 @@ const TicketInfo = ({ data, isLoading }) => {
   const part = useRecoilValue(tPartState);
   const seat = useRecoilValue(tSeatState);
   const price = useRecoilValue(tPriceState);
-
+  const tokenPrice = useRecoilValue(tTokenPriceState);
+  const pricePerToken = useRecoilValue(tPricePerTokenState);
+  
   return (
     <div style={{ position: 'relative' }}>
       {isLoading && (
@@ -26,15 +30,8 @@ const TicketInfo = ({ data, isLoading }) => {
         </CompletedContainer>
       )}
       <div style={{ zIndex: 1, opacity: isLoading ? 0.3 : 1 }}>
-        <img
-          src={data.posterImgUrl}
-          alt="img"
-          style={{ width: '50px', marginBottom: '6px' }}
-        />
-        <div>
-          {(preTicketingPeriod(data.preTicketing) ? '[사전예매]  ' : '') +
-            data.title}
-        </div>
+        <img src={data.posterImgUrl} alt="img" style={{ width: '50px', marginBottom: '6px' }} />
+        <div>{(preTicketingPeriod(data.preTicketing) ? '[사전예매]  ' : '') + data.title}</div>
         <div
           style={{
             marginTop: '30px',
@@ -56,8 +53,7 @@ const TicketInfo = ({ data, isLoading }) => {
         >
           <div>일시</div>
           <div>
-            {format(new Date(date), 'yyyy.MM.dd')}{' '}
-            {data.dateInfo[part].startTime}
+            {format(new Date(date), 'yyyy.MM.dd')} {data.dateInfo[part].startTime}
           </div>
         </div>
         <div
@@ -99,6 +95,21 @@ const TicketInfo = ({ data, isLoading }) => {
           >
             <div>결제 금액</div>
             <div>{price} 원</div>
+          </div>
+        )}
+        {tokenPrice > 0 && (
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              borderBottom: '1px solid white',
+              padding: '8px 0',
+            }}
+          >
+            <div>토큰 결제</div>
+            <div>
+              {tokenPrice.toFixed(2)} Matic (개당 {pricePerToken.toFixed(2)}원)
+            </div>
           </div>
         )}
       </div>

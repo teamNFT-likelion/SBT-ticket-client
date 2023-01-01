@@ -24,11 +24,13 @@ const MyTickets = ({ tickets, type }) => {
           key={token.tokenId}
           id={token.tokenId}
           uri={token.tokenURI}
+          date={token.tokenDL}
+          price={token.tokenPrice}
+          seats={token.tokenSeats}
           image={token.tokenImage}
           title={token.tokenTitle}
-          date={token.tokenDL}
-          active={token.tokenIsActive}
           tEmail={token.tokenUserEmail}
+          active={token.tokenIsActive}
         />
       ))}
     </>

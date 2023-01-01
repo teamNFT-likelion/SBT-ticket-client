@@ -92,7 +92,7 @@ const AccountPage = () => {
         tokenContract = await new web3.eth.Contract(TTOT_MAIN_ABI, MUMBAI_TTOTMAIN_ADDR);
       } else return;
 
-      const MyTokens = await tokenContract.methods.getSbtTokens(account).call();
+      const MyTokens = await tokenContract.methods.getSbtTokens().call();
       const items = await Promise.all(
         MyTokens.map(async (i) => {
           let metadata = await axios.get(i.sbtTokenURI);
@@ -101,14 +101,15 @@ const AccountPage = () => {
             price = web3.utils.fromWei(i.price.toString(), 'ether');
           } else return;
           let item = {
-            tokenId: Number(i.sbtTokenId), // a
-            tokenURI: i.sbtTokenURI, // a
-            tokenDL: i.deadline, // o
-            tokenIsActive: i.isActive, // o
+            tokenId: Number(i.sbtTokenId),
+            tokenURI: i.sbtTokenURI,
+            tokenDL: Number(i.deadline) * 1000,
             tokenPrice: price,
-            tokenImage: metadata.data.image, // o
-            tokenTitle: metadata.data.name, // a
+            tokenSeats: i.seats,
+            tokenImage: metadata.data.image,
+            tokenTitle: metadata.data.name,
             tokenUserEmail: metadata.data.email,
+            tokenIsActive: i.isActive,
           };
           return item;
         }),
@@ -117,7 +118,9 @@ const AccountPage = () => {
     }
     saveMyToken();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account]); //TODO: 린트 체크필요
+  }, [account, walletType]); //TODO: 린트 체크필요
+
+  console.log(sbtList);
 
   return (
     <Layout>
