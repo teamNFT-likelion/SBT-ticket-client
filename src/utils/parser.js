@@ -13,3 +13,12 @@ export const parseItemType = (_type) => {
   if (_type === 'exhibit') return '전시';
   if (_type === 'sports') return '스포츠';
 };
+
+export const ShowCountDown = ({ days, hours, minutes, seconds }) => {
+  const day = days < 10 ? `0${days}` : days;
+  const hour = hours < 10 ? `0${hours}` : hours;
+  const minute = minutes < 10 ? `0${minutes}` : minutes;
+  const second = seconds < 10 ? `0${seconds}` : seconds;
+
+  return `${day}:${hour}:${minute}:${second}`;
+};

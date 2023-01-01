@@ -13,6 +13,7 @@ import '@fontsource/do-hyeon';
 import Page404 from '@components/pages/Page404';
 import GetInfoPage from '@pages/GetInfoPage';
 import PaySuccess from '@pages/PaySuccess';
+import RafflePage from '@pages/RafflePage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/list" element={<TListPage />} />
+        <Route path="/raffle" element={<RafflePage />} />
         <Route path="/detail" element={<TDetailPage />} />
         <Route path="/getInfo" element={<GetInfoPage />} />
         <Route path="/search" element={<TSearchPage />} />
@@ -28,7 +30,6 @@ function App() {
         <Route path="/payment" element={<APaymentPage />}>
           <Route path="success" element={<PaySuccess />} />
         </Route>
-        {/* <Route path="/pay_success" element={<PaySuccess />} /> */}
         <Route path="*" element={<Page404 />} />
       </Routes>
     </>

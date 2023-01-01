@@ -75,6 +75,9 @@ const Header = ({ page }) => {
       <SearchBarWrapper>
         <SearchBar />
       </SearchBarWrapper>
+      <Link to="/raffle" style={{ color: 'white', textDecoration: 'none' }}>
+        <div style={{ fontSize: '24px' }}>Raffle</div>
+      </Link>
       <ButtonsWrapper>
         <Wallet />
         {accountBtn}
