@@ -22,8 +22,6 @@ export const App2SelectSeats = ({ setTab, data }) => {
       result = result[0].quotes['KRW'].price;
       setPricePerToken(result);
       setTokenPrice(price / result);
-      console.log(`tokenPerPrice: ${result}`);
-      console.log(price / result);
     }
     fetchPolygonPrice();
   }, [price]);
@@ -31,7 +29,7 @@ export const App2SelectSeats = ({ setTab, data }) => {
   return (
     <StepBox>
       <LeftBox>
-        <MainStage />
+        <MainStage data={data}/>
       </LeftBox>
       <RightBox>
         <TicketInfo data={data} />

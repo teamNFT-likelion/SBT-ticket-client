@@ -14,6 +14,9 @@ import {
   tPartState,
   tPriceState,
   tSeatState,
+  tDeadlineState,
+  tPricePerTokenState,
+  tTokenPriceState,
 } from '@states/paymentState';
 
 const TDetailPage = () => {
@@ -25,6 +28,9 @@ const TDetailPage = () => {
   const resetTicketPart = useResetRecoilState(tPartState);
   const resetTicketPrice = useResetRecoilState(tPriceState);
   const resetTicketSeat = useResetRecoilState(tSeatState);
+  const resetTicketDeadline = useResetRecoilState(tDeadlineState);
+  const resetPricePerToken = useResetRecoilState(tPricePerTokenState);
+  const resetTicketTokenPrice = useResetRecoilState(tTokenPriceState);
 
   useEffect(() => {
     // 예매하다가 팅겨나오면 리셋해줘야댐
@@ -32,7 +38,18 @@ const TDetailPage = () => {
     resetTicketPart();
     resetTicketPrice();
     resetTicketSeat();
-  }, [resetTicketDate, resetTicketPart, resetTicketPrice, resetTicketSeat]);
+    resetTicketDeadline();
+    resetPricePerToken();
+    resetTicketTokenPrice();
+  }, [
+    resetTicketDate,
+    resetTicketPart,
+    resetTicketPrice,
+    resetTicketSeat,
+    resetTicketDeadline,
+    resetPricePerToken,
+    resetTicketTokenPrice,
+  ]);
 
   if (!data) {
     return <Page404 />;

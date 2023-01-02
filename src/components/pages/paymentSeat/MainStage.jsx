@@ -6,10 +6,9 @@ import LoadingSpinner from '@atoms/LoadingSpinner';
 import { Column } from '@components/atoms/wrapper.style';
 import Section from './Section';
 import SeatPopup from './SeatPopup';
-import SeatsData from './seats-data.json';
 import * as layout from './layout';
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { tSeatState, tPriceState } from '@states/paymentState';
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
+import { tSeatState, tPriceState, tDateState, tPartState } from '@states/paymentState';
 
 const SeatsContainer = styled(Column)`
   display: flex;
@@ -35,9 +34,10 @@ const SeatsSelectBox = styled('div')`
   position: relative;
 `;
 
-const MainStage = () => {
+const MainStage = ({ data }) => {
   const containerRef = useRef(null);
   const stageRef = useRef(null);
+
   const [scale, setScale] = useState(1);
   const [scaleToFit, setScaleToFit] = useState(1);
   const [size, setSize] = useState({
@@ -46,10 +46,15 @@ const MainStage = () => {
     virtualWidth: 1000,
   });
   const [virtualWidth, setVirtualWidth] = useState(1000);
+  const [popup, setPopup] = useState({ seat: null });
+
   const [seatIds, setSeatsIds] = useRecoilState(tSeatState);
   const setSeatsPrice = useSetRecoilState(tPriceState);
+  const date = useRecoilValue(tDateState);
+  const part = useRecoilValue(tPartState);
+  const SeatsData = data.dateInfo[date.getTime()][part];
+
   const seatsLimit = 2;
-  const [popup, setPopup] = useState({ seat: null });
 
   // calculate available space for drawing
   useEffect(() => {

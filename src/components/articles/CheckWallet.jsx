@@ -13,36 +13,36 @@ export default function CheckWallet() {
   const mumbaiNetwork = networks['mumbai'].chainId;
 
   // Metamask 권한 확인 -> 잠금 동작 인식 불가
-  useEffect(() => {
-    if (!ethereum) {
-      return;
-    }
+  // useEffect(() => {
+  //   if (!ethereum) {
+  //     return;
+  //   }
 
-    async function checkPermission() {
-      const results = await Promise.all([ethereum._metamask.isUnlocked()]);
-      return results.every((res) => res);
-    }
+  //   async function checkPermission() {
+  //     const results = await Promise.all([ethereum._metamask.isUnlocked()]);
+  //     return results.every((res) => res);
+  //   }
 
-    checkPermission()
-      .then((a) => {
-        if (a === false) {
-          setAccount('');
-          setWalletType('');
-          localStorage.removeItem('_user');
-          localStorage.removeItem('_wallet');
-          toast.warn('계정이 잠겼습니다.');
-        } else {
-          return;
-        }
-      })
-      .catch((b) => {
-        setAccount('');
-        setWalletType('');
-        localStorage.removeItem('_user');
-        localStorage.removeItem('_wallet');
-        toast.warn('계정이 잠겼습니다.');
-      });
-  }, [setAccount, setWalletType]);
+  //   checkPermission()
+  //     .then((a) => {
+  //       if (a === false) {
+  //         setAccount('');
+  //         setWalletType('');
+  //         localStorage.removeItem('_user');
+  //         localStorage.removeItem('_wallet');
+  //         toast.warn('계정이 잠겼습니다.');
+  //       } else {
+  //         return;
+  //       }
+  //     })
+  //     .catch((b) => {
+  //       setAccount('');
+  //       setWalletType('');
+  //       localStorage.removeItem('_user');
+  //       localStorage.removeItem('_wallet');
+  //       toast.warn('계정이 잠겼습니다.');
+  //     });
+  // }, [setAccount, setWalletType]);
 
   // Metamask 계정 변경
   useEffect(() => {

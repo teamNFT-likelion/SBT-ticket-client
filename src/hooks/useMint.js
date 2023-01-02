@@ -27,20 +27,43 @@ export default function useMint() {
   }
 
   // 새로운 SBT 생성
-  async function createSBT(_tokenUri, _ticketInfo) {
-    const { tDeadline, tPrice, tPerformId, tSeat, tSeatLimit } = _ticketInfo;
+  async function createSBT(_tokenUri, _ticketInfo, _payType) {
+    const { tDeadline, tPerformId, tTokenPrice, tSeat } = _ticketInfo;
 
     if (walletType === 'eth') {
       const tokenContract = await new web3.eth.Contract(TTOT_MAIN_ABI, MUMBAI_TTOTMAIN_ADDR, {
         from: account,
       });
       tokenContract.options.address = MUMBAI_TTOTMAIN_ADDR;
-      console.log(tDeadline, tPrice, tPerformId, tSeat, tSeatLimit);
+
+      // 컨트랙트에 들어갈 값들 변환
+      const tokenDeadline = tDeadline / 1000;
+      let tokenValue;
+      if (_payType === 'COIN') {
+        // coin으로 결제시
+        tokenValue = String(tTokenPrice * 10 ** 18);
+      } else if (_payType === 'COIN') {
+        // cash로 결제시
+        tokenValue = String(0);
+      }
+      console.log(_tokenUri, tokenDeadline, tTokenPrice, tPerformId, tSeat, tokenValue);
+
       await tokenContract.methods
-        .mintSbt(_tokenUri, tDeadline, 0, tPerformId, tSeat.join(), tSeatLimit) // TODO: tPrice 값있으면 안됨, tsea배열일때 각각? 한번에?
-        .send({ from: account });
+        .mintSbt(_tokenUri, tokenDeadline, tPerformId, tokenValue, tSeat)
+        .send({ from: account, value: tokenValue });
     }
   }
 
-  return { createSBT, createTokenUri };
+  async function refundSBT(_tokenId) {
+    if (walletType === 'eth') {
+      const tokenContract = await new web3.eth.Contract(TTOT_MAIN_ABI, MUMBAI_TTOTMAIN_ADDR, {
+        from: account,
+      });
+      tokenContract.options.address = MUMBAI_TTOTMAIN_ADDR;
+      
+      await tokenContract.methods.refundSbtToken(_tokenId).send({ from: account });
+    }
+  }
+
+  return { createSBT, createTokenUri, refundSBT };
 }
