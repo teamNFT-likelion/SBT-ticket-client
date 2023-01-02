@@ -5,7 +5,7 @@ import * as colors from '@styles/colors';
 import { CompletedContainer } from '@styles/ApaymentStyles';
 import LoadingSpinner from '@atoms/LoadingSpinner';
 import {
-  tDateState,
+  tDeadlineState,
   tPartState,
   tSeatState,
   tPriceState,
@@ -15,12 +15,13 @@ import {
 import { preTicketingPeriod } from '@utils/preTicketingPeriod';
 
 const TicketInfo = ({ data, isLoading }) => {
-  const date = useRecoilValue(tDateState);
   const part = useRecoilValue(tPartState);
+  const deadline = useRecoilValue(tDeadlineState);
   const seat = useRecoilValue(tSeatState);
   const price = useRecoilValue(tPriceState);
   const tokenPrice = useRecoilValue(tTokenPriceState);
   const pricePerToken = useRecoilValue(tPricePerTokenState);
+
   
   return (
     <div style={{ position: 'relative' }}>
@@ -52,9 +53,7 @@ const TicketInfo = ({ data, isLoading }) => {
           }}
         >
           <div>일시</div>
-          <div>
-            {format(new Date(date), 'yyyy.MM.dd')} {data.dateInfo[part].startTime}
-          </div>
+          <div>{format(new Date(deadline), 'yyyy.MM.dd HH:mm')}</div>
         </div>
         <div
           style={{

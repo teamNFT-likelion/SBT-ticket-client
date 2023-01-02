@@ -6,12 +6,13 @@ import useWeb3 from '@hooks/useWeb3';
 
 const MyBalance = () => {
   const { chainId, balance } = useWeb3();
-
   const { iconSrc, symbol } = useMemo(() => {
     if (chainId === 137 || chainId === 80001) {
       return { iconSrc: polygonImage, symbol: 'MATIC' };
     } else if (chainId === 1 || chainId === 5) {
       return { iconSrc: ethereumImage, symbol: 'ETHER' };
+    } else {
+      return { iconSrc: null, symbol: 'UNDEFINED'};
     }
   }, [chainId]);
 

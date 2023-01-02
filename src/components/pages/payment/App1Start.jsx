@@ -1,58 +1,124 @@
-import React from 'react';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
-import { TabButton } from '@styles/ApaymentStyles';
-import { Row } from '@components/atoms/wrapper.style';
-import TDPCalendar from '@components/atoms/Calendar';
-import PartInfoContainer from '@components/articles/PartInfoContainer';
-import RemainSeatsAndPay from '@components/atoms/RemainSeatsAndPay';
+import * as colors from '@styles/colors';
 import verticalLine from '@assets/img/verticalLine.png';
-import { tDateState, tDeadlineState, tPartState } from '@states/paymentState';
+import { CalendarStyle, PartButtonContainer, SelectInfoBox } from '@styles/ticketDetailStyle';
+import { useSetRecoilState } from 'recoil';
+import { Row } from '@atoms/wrapper.style';
+import {
+  tDateState,
+  tDeadlineState,
+  tPartState,
+  tPerformIdState,
+  sbtImageState,
+  sbtNameState,
+  sbtDescState,
+} from '@states/paymentState';
+import { TabButton } from '@styles/ApaymentStyles';
+import Calendar from 'react-calendar';
 import TicketInfo from './TicketInfo';
-import { tPerformIdState, sbtImageState, sbtNameState } from '@states/paymentState';
-import { useEffect, useCallback } from 'react';
 
 export const App1Start = ({ setTab, data }) => {
-  const [date, setDate] = useRecoilState(tDateState);
-  const [part, setPart] = useRecoilState(tPartState);
-  const onDateChange = (_date) => setDate(_date);
-  const onPartClick = (e) => setPart(Number(e.target.value));
+  const minDate = new Date(data.startDate) || null;
+  const maxDate = new Date(data.endDate) || null;
 
-  const setTDeadlineState = useSetRecoilState(tDeadlineState);
-  const setTPerformIdState = useSetRecoilState(tPerformIdState);
-  const setSbtImageState = useSetRecoilState(sbtImageState);
-  const setSbtNameState = useSetRecoilState(sbtNameState);
-  // const {setSbtDescState} = useSetRecoilState(sbtDescState);
+  const [date, setDate] = useState(minDate);
+  const [part, setPart] = useState(0);
+  const [deadline, setDeadline] = useState(data.dateInfo[minDate.getTime()][0].startTime);
+
+  const setTicketDate = useSetRecoilState(tDateState);
+  const setTicketPart = useSetRecoilState(tPartState);
+  const setTicketDeadline = useSetRecoilState(tDeadlineState);
+  const setTicketPerformId = useSetRecoilState(tPerformIdState);
+  const setSbtImage = useSetRecoilState(sbtImageState);
+  const setSbtName = useSetRecoilState(sbtNameState);
+  const setSbtDesc = useSetRecoilState(sbtDescState);
 
   const setSbtRecoilState = useCallback(() => {
-    setTDeadlineState(data.deadline);
-    setTPerformIdState(data.id);
-    setSbtImageState(data.posterImgUrl);
-    setSbtNameState(data.title);
+    setTicketDate(date);
+    setTicketPart(part);
+    setTicketDeadline(deadline);
+    setTicketPerformId(data.id);
+    setSbtImage(data.posterImgUrl);
+    setSbtName(data.title);
+    setSbtDesc('');
   }, [
-    data.deadline,
+    date,
+    part,
+    deadline,
     data.id,
     data.posterImgUrl,
     data.title,
-    setSbtImageState,
-    setSbtNameState,
-    setTDeadlineState,
-    setTPerformIdState,
+    setTicketDate,
+    setTicketPart,
+    setTicketDeadline,
+    setTicketPerformId,
+    setSbtImage,
+    setSbtName,
+    setSbtDesc,
   ]);
 
   useEffect(() => {
     setSbtRecoilState(data);
   }, [data, setSbtRecoilState]);
 
+  const handleDateClick = (_date) => {
+    setDate(_date);
+    setPart(0);
+    setDeadline(data.dateInfo[_date.getTime()][0].startTime);
+  };
+  const handlePartClick = (e) => {
+    const newPart = Number(e.target.value);
+    setPart(newPart);
+    setDeadline(data.dateInfo[date.getTime()][newPart].startTime);
+  };
+
   return (
     <StepBox>
       <LeftBox>
         <SelectInfo>
-          <TDPCalendar dateInfo={data.dateInfo} onDateChange={onDateChange} value={date} />
+          <CalendarStyle>
+            <Calendar
+              onChange={handleDateClick}
+              value={date}
+              minDetail="month" // 상단 네비게이션에서 '월' 단위만 보이게 설정
+              maxDetail="month"
+              calendarType="US"
+              formatDay={(locale, date) => date.toLocaleString('en', { day: 'numeric' })}
+              minDate={minDate}
+              maxDate={maxDate}
+            />
+          </CalendarStyle>
           <img src={verticalLine} alt="verticalLine" height="260px" />
-          <PartInfoContainer data={data} onPartClick={onPartClick} partState={part} />
+          <SelectInfoBox>
+            회차
+            <PartButtonContainer>
+              {data.dateInfo[date.getTime()].map((info, index) => (
+                <TabButton
+                  key={info.startTime}
+                  value={index}
+                  onClick={handlePartClick}
+                  style={{
+                    width: '70px',
+                    height: '30px',
+                    fontSize: '15px',
+                    backgroundColor: part === index ? 'orange' : colors.primary40,
+                  }}
+                >
+                  {index + 1}회차
+                </TabButton>
+              ))}
+            </PartButtonContainer>
+            CAST
+            <span style={{ paddingTop: '10px' }}>{data.cast}</span>
+          </SelectInfoBox>
           <img src={verticalLine} alt="verticalLine" height="260px" />
-          <RemainSeatsAndPay data={data} partState={part} />
+          <SelectInfoBox>
+            잔여석
+            <span style={{ padding: '10px', fontSize: '20px', color: colors.bgRed }}>
+              {data.dateInfo[date.getTime()][part].seatCount}석
+            </span>
+          </SelectInfoBox>
         </SelectInfo>
       </LeftBox>
       <RightBox>
@@ -106,28 +172,3 @@ const SelectInfo = styled('div')`
   font-size: 17px;
   align-self: flex-start;
 `;
-/* <PageTitle>티켓 결제</PageTitle>
-      <SubTitle>| 선택한 공연 정보 |</SubTitle>
-      <DetailInfo dataId={dataId} />
-      <SubTitle>| YOUR INACTIVE TICKETS |</SubTitle>
-      <Row>
-        {DummyData.map((ticket) => (
-          <Ticket
-            id={ticket.id}
-            image={ticket.image}
-            title={ticket.title}
-            date={ticket.date}
-            active={ticket.active}
-            key={ticket.id}
-          />
-        ))}
-      </Row>
-
-      <TabButton
-        value="APP_SelectSeats"
-        onClick={(newTab) => {
-          setTab(newTab.target.value);
-        }}
-      >
-        예매하기
-      </TabButton> */

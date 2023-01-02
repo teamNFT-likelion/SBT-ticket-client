@@ -47,9 +47,7 @@ const DetailInfo = ({ data }) => {
     <ContentsInfoBody>
       <ContentsInfo>
         <SubTitle style={{ marginBottom: '24px', fontSize: '25px' }}>
-          {preTicketingPeriod(data.preTicketing) && (
-            <PreAlert>[사전예매]</PreAlert>
-          )}
+          {preTicketingPeriod(data.preTicketing) && <PreAlert>[사전예매]</PreAlert>}
           {data.title}
         </SubTitle>
         <ConcertInfo>
@@ -64,10 +62,8 @@ const DetailInfo = ({ data }) => {
           <ConcertInfoItem>{data.runningTime}분</ConcertInfoItem>
           <ConcertInfoItem>관람연령</ConcertInfoItem>
           <ConcertInfoItem>{data.viewAgeName}</ConcertInfoItem>
-          <ConcertInfoItem>현금구매가</ConcertInfoItem>
-          <ConcertInfoItem>₩ {data.cashPrice}</ConcertInfoItem>
-          <ConcertInfoItem>코인구매가</ConcertInfoItem>
-          <ConcertInfoItem>MATIC {data.tokenPrice}</ConcertInfoItem>
+          <ConcertInfoItem>구매가</ConcertInfoItem>
+          <ConcertInfoItem>{data.cashPrice.map((price) => `₩${price} `)}</ConcertInfoItem>
           <ConcertInfoItem>사전예매기간</ConcertInfoItem>
           <ConcertInfoItem style={{ color: colors.bgRed }}>
             {format(new Date(data.preTicketing[0]), 'yyyy.MM.dd')} ~

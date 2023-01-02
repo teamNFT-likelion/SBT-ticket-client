@@ -1,161 +1,7673 @@
 //빅 포스터용 데이터 6개
 export const mainItems = [
   {
-    id: '41342',
+    id: '0xF28B7529079c42aBAC7452Aac4cCB1A1226b0ca8',
     topic: '공연',
     posterImgUrl: 'https://ticketimage.interpark.com/Play/image/large/22/22010748_p.gif',
+    detailInfoImg: 'https://ticketimage.interpark.com/Play/image/etc/22/22010748-12.jpg',
     title: 'BLACKPINK WORLD TOUR',
     place: '올림픽공원 KSPO DOME',
-    cashPrice: 189000,
-    tokenPrice: 0.4,
-    startDate: 1677250800000,
-    endDate: 1677337200000,
-    preTicketing: [1672061882855, 1674000000000],
-    deadline: 1671926400, // 22년 12월 25일 -> INACTIVE
-    runningTime: 120,
     cast: '블랙핑크',
     viewAgeName: '15세이상',
-    dateInfo: [
-      { date: 1667174400000, startTime: '9시 30분', seatCount: 12 },
-      { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
-      { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
-    ],
-    detailInfoImg: 'https://ticketimage.interpark.com/Play/image/etc/22/22010748-12.jpg',
+    cashPrice: [300, 500, 700],
+    startDate: 1677164400000,
+    endDate: 1677250800000,
+    preTicketing: [1672585200000, 1673621999999],
+    runningTime: 120,
+    dateInfo: {
+      1677164400000: [
+        {
+          startTime: 1677218400000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        {
+          startTime: 1677229200000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+      1677250800000: [
+        {
+          startTime: 1677304800000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    },
   },
   {
-    id: '39958',
+    id: '0xa7f5d9656106A44f91796bEea43797c0b6350d23',
     topic: '공연',
     posterImgUrl: 'https://image.toast.com/aaaaab/ticketlink/TKL_8/poster(220915)b.jpg',
+    detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_4/fu_web_1_220825.jpg',
     title: '2022 푸에르자부르타 웨이라 인 서울',
     place: '잠실종합운동장 FB씨어터',
-    cashPrice: 121000,
-    tokenPrice: 0.04,
-    startDate: 1664377200000,
-    endDate: 1671980400000,
-    preTicketing: [1675209600000, 1676851200000],
-    deadline: 1674000000, // 23년 1월 18일 -> ACTIVE
-    runningTime: 90,
     cast: '푸에르자부르타',
-    viewAgeName: '8세이상',
-    dateInfo: [
-      { date: 1667174400000, startTime: '9시 30분', seatCount: 12 },
-      { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
-      { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
-    ],
-    detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_4/fu_web_1_220825.jpg',
+    viewAgeName: '8세 이상',
+    cashPrice: [300, 500, 700],
+    startDate: 1675954800000,
+    endDate: 1676041200000,
+    preTicketing: [1672585200000, 1673621999999],
+    runningTime: 90,
+    dateInfo: {
+      1675954800000: [
+        {
+          startTime: 1676008800000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+        {
+          startTime: 1676019600000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+      1676041200000: [
+        {
+          startTime: 1676095200000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    },
   },
   {
-    id: '41177',
+    id: '0xb05848331e1650e8b6fEFC923aC6cc39768D4B6A',
     topic: '전시',
     posterImgUrl: 'https:////image.toast.com/aaaaab/ticketlink/TKL_5/티켓링크_405x500.jpg',
+    detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_3/221116_AW_700.jpg',
     title: 'WATSON, THE MAESTRO - 사진전',
     place: '예술의전당 한가람미술관 2층',
-    cashPrice: 120000,
-    tokenPrice: 0.04,
-    startDate: 1670425200000,
-    endDate: 1680102000000,
-    preTicketing: [1672061882855, 1674000000000],
-    deadline: 1671926400, // 22년 12월 25일 -> INACTIVE
-    runningTime: 90,
     cast: '알버트 왓슨',
-    viewAgeName: '19세이상',
-    dateInfo: [
-      { date: 1667174400000, startTime: '9시 30분', seatCount: 12 },
-      { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
-      { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
-    ],
-    detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_3/221116_AW_700.jpg',
+    viewAgeName: '19세 이상',
+    cashPrice: [300, 500, 700],
+    startDate: 1674831600000,
+    endDate: 1675004400000,
+    preTicketing: [1672585200000, 1673621999999],
+    runningTime: 120,
+    dateInfo: {
+      1674831600000: [
+        {
+          startTime: 1674864000000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+      1674918000000: [
+        {
+          startTime: 1674950400000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+      1675004400000: [
+        {
+          startTime: 1675036800000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    },
   },
   {
-    id: '37726',
+    id: '0x62e6F8f9F3ccC27bAa41D4D1a017fAF053292074',
     topic: '전시',
     posterImgUrl: 'https://image.toast.com/aaaaab/ticketlink/TKL_6/tech_pst0308.jpg',
+    detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_6/tech_info0308-01.jpg',
     title: 'Technique of Healing - 부산',
     place: '해운대구 센텀서로 20 뮤지엄원',
-    cashPrice: 18000,
-    tokenPrice: 0.04,
-    startDate: 1648220400000,
-    endDate: 1683385200000,
-    preTicketing: [1675209600000, 1676851200000],
-    deadline: 1674000000, // 23년 1월 18일 -> ACTIVE
-    runningTime: 90,
     cast: 'museum',
     viewAgeName: '전체관람가',
-    dateInfo: [
-      { date: 1667174400000, startTime: '9시 30분', seatCount: 12 },
-      { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
-      { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
-    ],
-    detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_6/tech_info0308-01.jpg',
+    cashPrice: [300, 500, 700],
+    startDate: 1675177200000,
+    endDate: 1675350000000,
+    preTicketing: [1672585200000, 1673621999999],
+    runningTime: 120,
+    dateInfo: {
+      1675177200000: [
+        {
+          startTime: 1675209600000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+      1675263600000: [
+        {
+          startTime: 1675296000000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+      1675350000000: [
+        {
+          startTime: 1675382400000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    },
   },
   {
-    id: '22015838',
+    id: '0x3cFB4119E326Dff23beAbf58dbA232159158623a',
     topic: '스포츠',
     posterImgUrl: 'https://ticketimage.interpark.com/Play/image/large/22/22015838_p.gif',
+    detailInfoImg: 'https://ticketimage.interpark.com/Play/image/etc/22/22015838-01.jpg',
     title: '파퀴아오 vs DK YOO',
     place: '일산 킨텍스 3F 그랜드볼룸',
-    cashPrice: 3000000,
-    tokenPrice: 0.04,
-    startDate: 1664377200000,
-    endDate: 1671980400000,
-    preTicketing: [1672061882855, 1674000000000],
-    deadline: 1671926400, // 22년 12월 25일 -> INACTIVE
-    runningTime: 90,
     cast: '파퀴아오, DK YOO',
-    viewAgeName: '15세이상',
-    dateInfo: [
-      { date: 1667174400000, startTime: '9시 30분', seatCount: 12 },
-      { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
-      { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
-    ],
-    detailInfoImg: 'https://ticketimage.interpark.com/Play/image/etc/22/22015838-01.jpg',
+    viewAgeName: '15세 이상',
+    cashPrice: [300, 500, 700],
+    startDate: 1676386800000,
+    endDate: 1676386800000,
+    preTicketing: [1672585200000, 1673621999999],
+    runningTime: 90,
+    dateInfo: {
+      1676386800000: [
+        {
+          startTime: 1676440800000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    },
   },
   {
-    id: '64100',
+    id: '0x170E07e28fe527647B97a17Bb001E619baCECcE8',
     topic: '스포츠',
     posterImgUrl: 'https://news.nateimg.co.kr/orgImg/na/2022/04/14/5317599_high.jpg',
+    detailInfoImg: 'https://www.jejutwn.com/data/photos/20220624/art_16554512927773_d72133.jpg',
     title: '팀 K리그 vs 토트텀 홋스퍼',
     place: '서울월드컵경기장',
-    cashPrice: 80000,
-    tokenPrice: 0.04,
-    startDate: 1692716400000,
-    endDate: 1692716400000,
-    preTicketing: [1675209600000, 1676851200000],
-    deadline: 1674000000, // 23년 1월 18일 -> ACTIVE
-    runningTime: 90,
     cast: '토트넘',
-    viewAgeName: '11세이상',
-    dateInfo: [
-      { date: 1667174400000, startTime: '9시 30분', seatCount: 12 },
-      { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
-      { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
-    ],
-    detailInfoImg: 'https://www.jejutwn.com/data/photos/20220624/art_16554512927773_d72133.jpg',
+    viewAgeName: '11세 이상',
+    cashPrice: [300, 500, 700],
+    startDate: 1676818800000,
+    endDate: 1676818800000,
+    preTicketing: [1672585200000, 1673621999999],
+    runningTime: 120,
+    dateInfo: {
+      1676818800000: [
+        {
+          startTime: 1676872800000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    },
   },
 ];
 
 //TODO:일반 포스터용 데이터 15개
 export const itemList = [
   {
-    id: '41342',
+    id: '0x7e5Bb4EAB634B5F140b16b817fa09D5124fe82ad',
     topic: '공연',
     posterImgUrl: 'https://image.toast.com/aaaaab/ticketlink/TKL_6/펭미팅_대표이미지_405X500.jpg',
+    detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_2/MD_1128.jpg',
     title: '2022 펭수 연말 펭미팅',
     place: '경희대학교 평화의전당',
-    cashPrice: 59000,
-    tokenPrice: 0.04,
-    startDate: 1671807600000,
-    endDate: 1671894000000,
-    preTicketing: [1675209600000, 1676851200000],
-    deadline: 1674000000, // 23년 1월 18일 -> ACTIVE
-    runningTime: 90,
     cast: '펭수',
-    viewAgeName: '8세이상',
-    dateInfo: [
-      { date: 1667174400000, startTime: '9시 30분', seatCount: 12 },
-      { date: 1667314800000, startTime: '10시 30분', seatCount: 5 },
-      { date: 1672326000000, startTime: '23시 30분', seatCount: 8 },
-    ],
-    detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_2/MD_1128.jpg',
+    viewAgeName: '8세 이상',
+    cashPrice: [300, 500, 700],
+    startDate: 1674140400000,
+    endDate: 1674226800000,
+    runningTime: 90,
+    dateInfo: {
+      1674140400000: [
+        {
+          startTime: 1674194400000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+      1674226800000: [
+        {
+          startTime: 1674280800000,
+          seatCount: 81,
+          seats: {
+            sections: [
+              {
+                event_id: 2,
+                name: 'Bronze',
+                price: 300,
+                subsections: [
+                  {
+                    id: 18,
+                    section_id: 6,
+                    name: 'B1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 19,
+                    section_id: 6,
+                    name: 'B2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 20,
+                    section_id: 6,
+                    name: 'B3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Bronze-B3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Bronze-B3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Bronze-B3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Bronze-B3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Silver',
+                price: 500,
+                subsections: [
+                  {
+                    id: 22,
+                    section_id: 7,
+                    name: 'S1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 23,
+                    section_id: 7,
+                    name: 'S2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 24,
+                    section_id: 7,
+                    name: 'S3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Silver-S3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Silver-S3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Silver-S3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Silver-S3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+              {
+                event_id: 2,
+                name: 'Gold',
+                price: 700,
+                subsections: [
+                  {
+                    id: 26,
+                    section_id: 8,
+                    name: 'G1',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G1-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G1-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G1-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G1-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 27,
+                    section_id: 8,
+                    name: 'G2',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G2-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G2-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G2-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G2-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                  {
+                    id: 28,
+                    section_id: 8,
+                    name: 'G3',
+                    seats_by_rows: {
+                      1: [
+                        {
+                          name: 'Gold-G3-1-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-1-3',
+                          status: 'free',
+                        },
+                      ],
+                      2: [
+                        {
+                          name: 'Gold-G3-2-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-2-3',
+                          status: 'free',
+                        },
+                      ],
+                      3: [
+                        {
+                          name: 'Gold-G3-3-1',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-2',
+                          status: 'free',
+                        },
+                        {
+                          name: 'Gold-G3-3-3',
+                          status: 'free',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    },
   },
 ];

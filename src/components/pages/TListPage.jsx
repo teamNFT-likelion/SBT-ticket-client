@@ -12,6 +12,9 @@ import {
   tPartState,
   tPriceState,
   tSeatState,
+  tDeadlineState,
+  tPricePerTokenState,
+  tTokenPriceState,
 } from '@states/paymentState';
 
 const PageTypeWrapper = styled('div')`
@@ -43,6 +46,9 @@ const TListPage = () => {
   const resetTicketPart = useResetRecoilState(tPartState);
   const resetTicketPrice = useResetRecoilState(tPriceState);
   const resetTicketSeat = useResetRecoilState(tSeatState);
+  const resetTicketDeadline = useResetRecoilState(tDeadlineState);
+  const resetPricePerToken = useResetRecoilState(tPricePerTokenState);
+  const resetTicketTokenPrice = useResetRecoilState(tTokenPriceState);
 
   useEffect(() => {
     //TODO: 페이지타입별로 데이터 바꿔 줘야됨 setData 바꿔줘야댐
@@ -61,27 +67,29 @@ const TListPage = () => {
     resetTicketPart();
     resetTicketPrice();
     resetTicketSeat();
-  }, [resetTicketDate, resetTicketPart, resetTicketPrice, resetTicketSeat]);
+    resetTicketDeadline();
+    resetPricePerToken();
+    resetTicketTokenPrice();
+  }, [
+    resetTicketDate,
+    resetTicketPart,
+    resetTicketPrice,
+    resetTicketSeat,
+    resetTicketDeadline,
+    resetPricePerToken,
+    resetTicketTokenPrice,
+  ]);
 
   return (
     <Layout page="list-page">
       <PageTypeWrapper>
-        <PageTypeText
-          isActive={type === 'concert'}
-          onClick={() => navigate('/list')}
-        >
+        <PageTypeText isActive={type === 'concert'} onClick={() => navigate('/list')}>
           공연
         </PageTypeText>
-        <PageTypeText
-          isActive={type === 'exhibit'}
-          onClick={() => navigate('/list?type=exhibit')}
-        >
+        <PageTypeText isActive={type === 'exhibit'} onClick={() => navigate('/list?type=exhibit')}>
           전시
         </PageTypeText>
-        <PageTypeText
-          isActive={type === 'sports'}
-          onClick={() => navigate('/list?type=sports')}
-        >
+        <PageTypeText isActive={type === 'sports'} onClick={() => navigate('/list?type=sports')}>
           스포츠
         </PageTypeText>
       </PageTypeWrapper>
