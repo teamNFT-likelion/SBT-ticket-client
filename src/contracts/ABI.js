@@ -637,3 +637,174 @@ export const TTOT_HOST_ABI = [
     type: 'function',
   },
 ];
+
+export const RAFFLE_ABI = [
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_code',
+        type: 'string',
+      },
+    ],
+    name: 'draw',
+    outputs: [
+      {
+        internalType: 'address[]',
+        name: '',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_code',
+        type: 'string',
+      },
+    ],
+    name: 'getRaffleDescription',
+    outputs: [
+      {
+        internalType: 'string',
+        name: '',
+        type: 'string',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_code',
+        type: 'string',
+      },
+    ],
+    name: 'getRaffleEndDate',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_code',
+        type: 'string',
+      },
+    ],
+    name: 'getRaffleInputList',
+    outputs: [
+      {
+        internalType: 'address[]',
+        name: '',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_code',
+        type: 'string',
+      },
+    ],
+    name: 'getRaffleNumsOfPick',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_code',
+        type: 'string',
+      },
+    ],
+    name: 'getRaffleOutputList',
+    outputs: [
+      {
+        internalType: 'address[]',
+        name: '',
+        type: 'address[]',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_code',
+        type: 'string',
+      },
+    ],
+    name: 'join',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_code',
+        type: 'string',
+      },
+      {
+        internalType: 'string',
+        name: '_desc',
+        type: 'string',
+      },
+      {
+        internalType: 'uint256',
+        name: '_endDate',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: '_numsOfPick',
+        type: 'uint256',
+      },
+    ],
+    name: 'setRaffle',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_code',
+        type: 'string',
+      },
+    ],
+    name: 'setRaffleStart',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+];
