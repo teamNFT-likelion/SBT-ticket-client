@@ -89,17 +89,17 @@ const AccountPage = () => {
     async function saveMyToken() {
       let tokenContract;
       if (walletType === 'eth') {
-        tokenContract = await new web3.eth.Contract(TTOT_MAIN_ABI, MUMBAI_TTOTMAIN_ADDR);
+        tokenContract = await new web3.eth.Contract(TTOT_MAIN_ABI, MUMBAI_TTOTMAIN_ADDR, {
+          from: account,
+        });
+        tokenContract.options.address = MUMBAI_TTOTMAIN_ADDR;
       } else return;
 
       const MyTokens = await tokenContract.methods.getSbtTokens().call();
       const items = await Promise.all(
         MyTokens.map(async (i) => {
           let metadata = await axios.get(i.sbtTokenURI);
-          let price;
-          if (walletType === 'eth') {
-            price = web3.utils.fromWei(i.price.toString(), 'ether');
-          } else return;
+          let price = web3.utils.fromWei(i.price.toString(), 'ether');
           let item = {
             tokenId: Number(i.sbtTokenId),
             tokenURI: i.sbtTokenURI,

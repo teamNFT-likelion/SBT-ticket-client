@@ -9,18 +9,20 @@ import useOauth from '@hooks/useOauth';
 import { toast } from 'react-toastify';
 import QRCertificate from '@components/pages/account/QRCertificate';
 import axios from 'axios';
+import useMint from '@hooks/useMint';
 
 const TicketWrapper = styled('div')`
   width: auto;
-  height: 500px;
+  height: 550px;
   border: 3px solid ${colors.primary40};
   border-radius: 5%;
 `;
 
 const TicketImage = styled('img')`
   width: 300px;
-  height: 80%;
+  height: 75%;
   border-bottom: 3px solid ${colors.primary40};
+  border-radius: 5% 5% 0 0;
 `;
 
 const TicketContent = styled('div')`
@@ -28,7 +30,8 @@ const TicketContent = styled('div')`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 20%;
+  margin-top: 10px;
+  gap: 5px;
 `;
 
 const TextWrapper = styled('span')`
@@ -106,7 +109,6 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
   const [isAuthorized, setIsAuthorized] = useState(false);
 
   // qr코드 발행을 위한 state
-
   // qr value = `${공연정보(공연id나 제목) + ${날짜} + ${sbtId} + ${qr생성하는 현재시간}`
   const [qrvalue, setQrvalue] = useState(`${title}${date}${id}${Date.now()}`);
 
@@ -116,12 +118,25 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
   // 본인인증 후 첫 생성/새로고침 여부
   const [isReGenerated, setIsReGenerated] = useState(false);
 
-  async function imgUrlInUri() {
-    const img = await axios(image).then((res) => setImgUrl(res.data));
-    //사실 반환값 안씀;
-    return img;
-  }
-  imgUrlInUri();
+  // 환불
+  const { refundSBT } = useMint();
+  const handleRefund = async () => {
+    try {
+      await refundSBT(id);
+    } catch (error) {
+      console.log('Refund Error: ', error);
+      toast.error('환불 실패');
+    }
+  };
+
+  useEffect(() => {
+    async function imgUrlInUri() {
+      const img = await axios(image).then((res) => setImgUrl(res.data));
+      //사실 반환값 안씀;
+      return img;
+    }
+    imgUrlInUri();
+  }, []);
 
   useEffect(() => {
     const receiveMessage = async (e) => {
@@ -170,7 +185,8 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
         <TicketImage src={imgUrl} alt="ticket" />
         <TicketContent>
           <TextWrapper>{title}</TextWrapper>
-          <DateWrapper>~{format(new Date(date), 'yyyy.MM.dd')}</DateWrapper>
+          <TextWrapper>{seats.map((seat)=>`[${seat}] `)}</TextWrapper>
+          <DateWrapper>{format(new Date(date), 'yyyy.MM.dd')}</DateWrapper>
           {active ? (
             <TicketButtonWrapper>
               <TicketButton
@@ -261,7 +277,13 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
       <CustomModal show={showRefund} toggleModal={() => setShowRefund(false)}>
         정말 환불하시겠습니까?
         <ModalButtonWrapper>
-          <ModalButton buttonColor={`${colors.bgRed}`} onClick={() => {}}>
+          <ModalButton
+            buttonColor={`${colors.bgRed}`}
+            onClick={() => {
+              handleRefund();
+              setShowRefund(false);
+            }}
+          >
             환불 처리하기
           </ModalButton>
           <ModalButton
