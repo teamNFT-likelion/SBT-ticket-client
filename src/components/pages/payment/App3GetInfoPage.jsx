@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { toast } from 'react-toastify';
-import { Row } from '@components/atoms/wrapper.style';
+import { Row } from '@atoms/wrapper.style';
 import { TabButton } from '@styles/ApaymentStyles';
 import useOauth from '@hooks/useOauth';
-import kginicisImg from '@assets/img/kginicis.jpg';
-import CustomModal from '@components/articles/CustomModal';
 import { tInfoState, sbtInfoState } from '@states/paymentState';
 import { userState } from '@states/userState';
 import { StepBox, LeftBox, RightBox } from './App1Start';
@@ -21,7 +19,6 @@ const App3GetInfoPage = ({ setTab, data }) => {
 
   const [payType, setPayType] = useState('');
   const [cashPayType, setCashPayType] = useState('easyPay');
-  const [showUseKginicis, setShowUseKginicis] = useState(false); // 모달을 위한 state
   const [isLoading, setIsLoading] = useState(false); // 로딩중 확인
 
   const { account } = useRecoilValue(userState);
@@ -101,14 +98,6 @@ const App3GetInfoPage = ({ setTab, data }) => {
           </Row>
         </RightBox>
       </StepBox>
-
-      <TabButton value="APP_Done" onClick={(e) => setTab(e.target.value)}>
-        임시다음
-      </TabButton>
-
-      <CustomModal show={showUseKginicis} toggleModal={() => setShowUseKginicis(false)}>
-        <img src={kginicisImg} alt="견본용" />
-      </CustomModal>
     </>
   );
 };
