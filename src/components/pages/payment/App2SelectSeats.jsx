@@ -24,12 +24,12 @@ export const App2SelectSeats = ({ setTab, data }) => {
       setTokenPrice(price / result);
     }
     fetchPolygonPrice();
-  }, [price]);
+  }, [price, setPricePerToken, setTokenPrice]);
 
   return (
     <StepBox>
       <LeftBox>
-        <MainStage data={data}/>
+        <MainStage data={data} />
       </LeftBox>
       <RightBox>
         <TicketInfo data={data} />

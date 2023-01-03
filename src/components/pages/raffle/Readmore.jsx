@@ -42,7 +42,7 @@ const Readmore = forwardRef((props, ref) => {
             <ALink
               target="_blank"
               rel="noreferrer"
-              href="https://goerli.etherscan.io/address/0xc8aeDd5972304e4a0487FD7Bf03173548b5f2D0D#readContract"
+              href="https://mumbai.polygonscan.com/address/0x4d48eecc13cdb0f330b33a4eb132572cc5ff4ac2#readContract"
             >
               {'>>'} 래플내역 확인하기
             </ALink>
