@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { RAFFLE_ABI, GOERLI_RAFFLE_CA } from '@contracts';
+import { RAFFLE_ABI, MUMBAI_RAFFLE_ADDR } from '@contracts';
 
 export function useRaffleContract(web3) {
   const [contract, setContract] = useState();
@@ -35,7 +35,7 @@ export function useRaffleContract(web3) {
 
   useEffect(() => {
     if (Object.keys(web3).length > 0) {
-      const contract = new web3.eth.Contract(RAFFLE_ABI, GOERLI_RAFFLE_CA);
+      const contract = new web3.eth.Contract(RAFFLE_ABI, MUMBAI_RAFFLE_ADDR);
       setContract(contract);
     }
   }, [web3]);

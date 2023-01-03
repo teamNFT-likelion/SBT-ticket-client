@@ -111,7 +111,7 @@ const MainStage = ({ data }) => {
         }
       }
     },
-    [seatIds, setSeatsIds, setSeatsPrice],
+    [SeatsData.seats.sections, seatIds, setSeatsIds, setSeatsPrice],
   );
 
   const handleDeselect = useCallback(
@@ -127,7 +127,7 @@ const MainStage = ({ data }) => {
         setSeatsPrice((price) => price - SeatsData.seats.sections[2].price);
       }
     },
-    [seatIds, setSeatsIds, setSeatsPrice],
+    [SeatsData.seats.sections, seatIds, setSeatsIds, setSeatsPrice],
   );
 
   // const maxSectionWidth = layout.getMaximumSectionWidth(

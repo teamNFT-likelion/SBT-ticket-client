@@ -49,6 +49,7 @@ const TicketButtonWrapper = styled('div')`
   align-items: center;
   margin-top: 10px;
   gap: 10px;
+  flex-wrap: wrap; //TODO : 임시
 `;
 
 const TicketButton = styled('button')`
@@ -136,7 +137,7 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
       return img;
     }
     imgUrlInUri();
-  }, []);
+  }, [image]);
 
   useEffect(() => {
     const receiveMessage = async (e) => {
@@ -204,6 +205,15 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
                 }}
               >
                 환불
+              </TicketButton>
+              {/* TODO : 임시 버튼 없애야됨 */}
+              <TicketButton
+                buttonColor={`#af00a7`}
+                onClick={() => {
+                  setShowFan(true);
+                }}
+              >
+                팬 혜택
               </TicketButton>
             </TicketButtonWrapper>
           ) : (
