@@ -185,7 +185,7 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
         <TicketImage src={imgUrl} alt="ticket" />
         <TicketContent>
           <TextWrapper>{title}</TextWrapper>
-          <TextWrapper>{seats.map((seat)=>`[${seat}] `)}</TextWrapper>
+          <TextWrapper>{seats.map((seat) => `[${seat}] `)}</TextWrapper>
           <DateWrapper>{format(new Date(date), 'yyyy.MM.dd')}</DateWrapper>
           {active ? (
             <TicketButtonWrapper>
@@ -302,7 +302,13 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
           <ModalButton buttonColor={`#af00a7`} onClick={() => {}}>
             사전 예매
           </ModalButton>
-          <ModalButton buttonColor={`#af00a7`} onClick={() => setRaffleModal(true)}>
+          <ModalButton
+            buttonColor={`#af00a7`}
+            onClick={() => {
+              setShowFan(false);
+              setRaffleModal(true);
+            }}
+          >
             래플 이벤트
           </ModalButton>
         </ModalButtonWrapper>
@@ -321,7 +327,7 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
         </ModalButtonWrapper>
       </CustomModal>
       <CustomModal show={raffleModal} toggleModal={() => setRaffleModal(false)}>
-        <RaffleModal />
+        <RaffleModal setRaffleModal={setRaffleModal} />
       </CustomModal>
     </div>
   );
