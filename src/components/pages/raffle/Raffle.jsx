@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import raffle from '@assets/img/raffle_2.jpg';
@@ -12,8 +12,13 @@ import { BlockTitle } from './Raffle.style';
 const Raffle = ({ handleScrollByRef }) => {
   const targetDate = new Date('2023-01-18 18:00:00');
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
+  const [inputList, setInputList] = useState([]);
   const { web3 } = useWeb3();
-  const { inputLength } = useRaffleContract(web3, 'test');
+  const { getInputList } = useRaffleContract(web3);
+
+  useEffect(() => {
+    getInputList('test', (res) => setInputList(res));
+  }, [getInputList]);
 
   return (
     <Column>
@@ -25,7 +30,7 @@ const Raffle = ({ handleScrollByRef }) => {
             Web3 Monkey Concert <br />
             Grand Opening
           </RaffleTitle>
-          <Participating>{inputLength} 명 참여중</Participating>
+          <Participating>{inputList.length} 명 참여중</Participating>
         </ImageWrapper>
         <CodeWrapper>
           <div className="remain-time">

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
-import { Row, Column } from '@atoms/wrapper.style';
+import { Column } from '@atoms/wrapper.style';
 import { AiOutlineUser } from 'react-icons/ai';
 import { CiWallet } from 'react-icons/ci';
 import { GiCardRandom } from 'react-icons/gi';
