@@ -104,6 +104,7 @@ const AccountPage = () => {
             tokenId: Number(i.sbtTokenId),
             tokenURI: i.sbtTokenURI,
             tokenDL: Number(i.deadline) * 1000,
+            tokenHostAddr: i.hostAddress,
             tokenPrice: price,
             tokenSeats: i.seats,
             tokenImage: metadata.data.image,
@@ -119,8 +120,6 @@ const AccountPage = () => {
     saveMyToken();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account, walletType]); //TODO: 린트 체크필요
-
-  console.log(sbtList);
 
   return (
     <Layout>

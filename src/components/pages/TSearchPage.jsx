@@ -47,10 +47,7 @@ const TSearchPage = () => {
   // 원하는 검색어 찾기 기능
   useEffect(() => {
     const filterTitle = items.filter((q) => {
-      return q.title
-        .replace(' ', '')
-        .toLocaleLowerCase()
-        .includes(typing.toLocaleLowerCase());
+      return q.title.replace(' ', '').toLocaleLowerCase().includes(typing.toLocaleLowerCase());
     });
     setTypedItems(filterTitle);
   }, [typing]);
@@ -60,8 +57,7 @@ const TSearchPage = () => {
       <Container>
         <TitleContainer>
           <TitleWrapper>
-            ' <QueryEmphasize>{typing}</QueryEmphasize> ' 에 대한 검색 결과 (
-            {typedItems.length})
+            ' <QueryEmphasize>{typing}</QueryEmphasize> ' 에 대한 검색 결과 ({typedItems.length})
           </TitleWrapper>
         </TitleContainer>
         <PosterWrapper>

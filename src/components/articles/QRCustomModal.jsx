@@ -39,18 +39,12 @@ const ModalContent = styled('div')`
   box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.15);
 `;
 
-const PreTicketingCustomModal = ({ show, toggleModal, styles, children }) => {
-  const handleClickOutside = (e) => {
-    if (e.target === e.currentTarget) {
-      toggleModal();
-    }
-  };
-
+const QRCustomModal = ({ show, toggleModal, styles, children }) => {
   return (
-    <ModalContainer show={show} onMouseDown={handleClickOutside} style={{ ...styles }}>
+    <ModalContainer show={show} style={{ ...styles }}>
       <ModalContent>{children}</ModalContent>
     </ModalContainer>
   );
 };
 
-export default PreTicketingCustomModal;
+export default QRCustomModal;

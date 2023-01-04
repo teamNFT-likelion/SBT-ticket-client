@@ -25,11 +25,11 @@ export const tPriceState = atom({
 export const tPricePerTokenState = atom({
   key: 'paymentState/tPricePerToken',
   default: 0,
-})
+});
 export const tTokenPriceState = atom({
   key: 'paymentState/tTokenPrice',
   default: 0,
-})
+});
 export const tSeatState = atom({
   key: 'paymentState/tSeat', // token에 좌석정보 저장
   default: [],

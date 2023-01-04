@@ -5,26 +5,29 @@ import { mainItems } from '@mock/items';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 
-export default function PreTickeingModal({ setPreTicketModal }) {
+export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
   const navigate = useNavigate();
-  return (
-    <>
-      <Column justifyContent={'center'} alignItems={'center'} marginBottom={'40px'}>
-        현재 진행 중인 사전예매
-      </Column>
+  console.log(hostAddr);
+
+  const pre_ticket_list = mainItems.filter((item) => item.preTicketingList.includes(hostAddr));
+  console.log('preTicketingList : ', pre_ticket_list);
+  const PreTicketingList = ({ item }) => {
+    return (
       <ModalTempBox>
         <Row justifyContent={'space-between'} alignItems={'center'}>
-          <img src={mainItems[2].posterImgUrl} alt="WATSON전시" style={{ width: '150px' }} />
+          <img src={item.posterImgUrl} alt="WATSON전시" style={{ width: '150px' }} />
           <Column justifyContent={'center'} alignItems={'flex-end'} gap={'10px'}>
-            <p style={{ fontSize: '25px' }}>{mainItems[2].title}</p>
+            <p style={{ fontSize: '25px' }}>{item.title}</p>
             <p style={{ fontSize: '20px' }}>
-              {format(new Date(mainItems[2].startDate), 'yyyy.MM.dd')} ~
-              {format(new Date(mainItems[2].endDate), 'yyyy.MM.dd')}
+              {format(new Date(item.startDate), 'yyyy.MM.dd')} ~
+              {format(new Date(item.endDate), 'yyyy.MM.dd')}
             </p>
-            <p style={{ fontSize: '18px', color: colors.bgRed }}>
-              {'사전예매기간 : ' + format(new Date(mainItems[2].preTicketing[0]), 'yyyy.MM.dd')} ~
-              {format(new Date(mainItems[2].preTicketing[1]), 'yyyy.MM.dd')}
-            </p>
+            {item.preTicketing[0] && (
+              <p style={{ fontSize: '18px', color: colors.bgRed }}>
+                {'사전예매기간 : ' + format(new Date(item.preTicketing[0]), 'yyyy.MM.dd')} ~
+                {format(new Date(item.preTicketing[1]), 'yyyy.MM.dd')}
+              </p>
+            )}
             <TicketButtonWrapper>
               <TicketButton
                 buttonColor={`#fa0800c5`}
@@ -32,7 +35,7 @@ export default function PreTickeingModal({ setPreTicketModal }) {
                   setPreTicketModal(false);
                   navigate({
                     pathname: '/detail',
-                    search: `?id=${mainItems[2].id}`,
+                    search: `?id=${item.id}`,
                   });
                 }}
               >
@@ -42,6 +45,19 @@ export default function PreTickeingModal({ setPreTicketModal }) {
           </Column>
         </Row>
       </ModalTempBox>
+    );
+  };
+
+  return (
+    <>
+      <Column justifyContent={'center'} alignItems={'center'} marginBottom={'40px'}>
+        현재 진행 중인 사전예매
+      </Column>
+      {pre_ticket_list.length === 0 ? (
+        <p style={{ fontSize: '20px', color: colors.bgRed }}>해당 토큰과 관련된 공연이 없습니다.</p>
+      ) : (
+        pre_ticket_list.map((item) => <PreTicketingList item={item} />)
+      )}
     </>
   );
 }

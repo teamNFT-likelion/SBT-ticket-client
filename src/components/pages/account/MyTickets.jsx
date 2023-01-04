@@ -24,6 +24,7 @@ const MyTickets = ({ tickets, type }) => {
           key={token.tokenId}
           id={token.tokenId}
           uri={token.tokenURI}
+          hostAddr={token.tokenHostAddr}
           date={token.tokenDL}
           price={token.tokenPrice}
           seats={token.tokenSeats}

@@ -47,11 +47,7 @@ const CustomModal = ({ show, toggleModal, styles, children }) => {
   };
 
   return (
-    <ModalContainer
-      show={show}
-      onMouseDown={handleClickOutside}
-      style={{ ...styles }}
-    >
+    <ModalContainer show={show} onMouseDown={handleClickOutside} style={{ ...styles }}>
       <ModalContent>{children}</ModalContent>
     </ModalContainer>
   );

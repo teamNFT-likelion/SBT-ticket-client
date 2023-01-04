@@ -53,10 +53,12 @@ const BigPoster = ({ type, items }) => {
                 {(preTicketingPeriod(typeItems[0].preTicketing) ? '[사전예매]  ' : '') +
                   typeItems[0].title}
               </Title>
-              <PreTicketingInfo marginTop="30px">
-                {'사전예매기간 : ' + format(new Date(typeItems[0].preTicketing[0]), 'yyyy.MM.dd')} ~
-                {format(new Date(typeItems[0].preTicketing[1]), 'yyyy.MM.dd')}
-              </PreTicketingInfo>
+              {typeItems[0].preTicketing[0] && (
+                <PreTicketingInfo marginTop="30px">
+                  {'사전예매기간 : ' + format(new Date(typeItems[0].preTicketing[0]), 'yyyy.MM.dd')}{' '}
+                  ~{format(new Date(typeItems[0].preTicketing[1]), 'yyyy.MM.dd')}
+                </PreTicketingInfo>
+              )}
               <Info marginTop="50px">
                 {format(new Date(typeItems[0].startDate), 'yyyy.MM.dd')} ~
                 {format(new Date(typeItems[0].endDate), 'yyyy.MM.dd')}
@@ -103,10 +105,12 @@ const BigPoster = ({ type, items }) => {
                 {(preTicketingPeriod(typeItems[1].preTicketing) ? '[사전예매]  ' : '') +
                   typeItems[1].title}
               </Title>
-              <PreTicketingInfo marginTop="30px">
-                {'사전예매기간 : ' + format(new Date(typeItems[1].preTicketing[0]), 'yyyy.MM.dd')} ~
-                {format(new Date(typeItems[1].preTicketing[1]), 'yyyy.MM.dd')}
-              </PreTicketingInfo>
+              {typeItems[1].preTicketing[0] && (
+                <PreTicketingInfo marginTop="30px">
+                  {'사전예매기간 : ' + format(new Date(typeItems[1].preTicketing[0]), 'yyyy.MM.dd')}{' '}
+                  ~{format(new Date(typeItems[1].preTicketing[1]), 'yyyy.MM.dd')}
+                </PreTicketingInfo>
+              )}
               <Info marginTop="50px">
                 {format(new Date(typeItems[1].startDate), 'yyyy.MM.dd')} ~
                 {format(new Date(typeItems[1].endDate), 'yyyy.MM.dd')}
