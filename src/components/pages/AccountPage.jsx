@@ -10,6 +10,7 @@ import MyTickets from './account/MyTickets';
 import { useNavigate } from 'react-router-dom';
 import { walletConnectError } from '@utils/toastMessages';
 import useWeb3 from '@hooks/useWeb3';
+import { BiPencil } from 'react-icons/bi';
 
 const AddressWrapper = styled('div')`
   display: flex;
@@ -33,7 +34,7 @@ const TabNavigation = styled('div')`
   align-items: center;
   gap: 10px;
   width: 100%;
-  margin: 50px 0;
+  margin: 50px 0 0 0;
 `;
 
 const TabButton = styled('button')`
@@ -41,17 +42,87 @@ const TabButton = styled('button')`
   height: 64px;
   font-size: 20px;
   cursor: pointer;
-  border-radius: 5px;
   margin: 3px;
-  border: 3px solid;
   color: ${({ isActive }) => (isActive ? colors.primary80 : null)};
-  background-color: ${({ isActive }) => (isActive ? colors.primary40 : null)};
+  border-bottom: 3px solid ${({ isActive }) => (isActive ? colors.primary40 : colors.textWhite)};
+
+  &:hover {
+    color: ${colors.textSecondary};
+    border-bottom: 3px solid ${colors.textSecondary};
+  }
 `;
 
 const TicketContainer = styled('div')`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  padding: 30px;
+  margin-top: 20px;
+  border-radius: 30px;
+`;
+
+const BackLabelBox = styled('label')`
+  display: flex;
+  width: 100vw;
+  height: 20vh;
+  align-items: center;
+  justify-content: center;
+  color: ${colors.bgSecondary};
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: ${colors.bgSecondary};
+  cursor: pointer;
+  border-bottom: 3px solid ${colors.textWhite};
+
+  &:hover {
+    color: ${colors.textWhite};
+    background-color: gray;
+  }
+`;
+
+const ProfileLabelBox = styled('label')`
+  position: absolute;
+  top: -100px;
+  display: flex;
+  width: 200px;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+  color: ${colors.bgSecondary};
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: ${colors.bgSecondary};
+  cursor: pointer;
+  border-radius: 100px;
+  border: 3px solid ${colors.textWhite};
+
+  &:hover {
+    color: ${colors.textWhite};
+    background-color: gray;
+  }
+`;
+
+const ImgBox = styled('img')`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+`;
+
+const ProfileImgBox = styled(ImgBox)`
+  border-radius: 100px;
+`
+
+const InputBox = styled('input')`
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
 `;
 
 const AccountPage = () => {
@@ -69,6 +140,9 @@ const AccountPage = () => {
 
   // 내 sbt 저장
   const [sbtList, setSbtList] = useState([]);
+
+  const [backImageFile, setBackImageFile] = useState(null);
+  const [profileImageFile, setProfileImageFile] = useState(null);
 
   // account와 walletType 불러오기
   useEffect(() => {
@@ -123,6 +197,49 @@ const AccountPage = () => {
 
   return (
     <Layout>
+      <div>
+        <BackLabelBox for="fileBack">
+          {backImageFile ? (
+            <ImgBox for="fileBack" src={backImageFile} alt="preview image" />
+          ) : (
+            <BiPencil size="50px" />
+          )}
+        </BackLabelBox>
+        <InputBox
+          type="file"
+          name="file"
+          onChange={(e) => {
+            setBackImageFile(URL.createObjectURL(e.target.files[0]));
+          }}
+          id="fileBack"
+        />
+      </div>
+      <div
+        style={{
+          width: '100vw',
+          height: '100px',
+          display: 'flex',
+          justifyContent: 'center',
+          position: 'relative',
+          zIndex: '3',
+        }}
+      >
+        <ProfileLabelBox for="fileProfile">
+          {profileImageFile ? (
+            <ProfileImgBox for="fileProfile" src={profileImageFile} alt="preview image" />
+          ) : (
+            <BiPencil size="50px" />
+          )}
+        </ProfileLabelBox>
+        <InputBox
+          type="file"
+          name="file"
+          onChange={(e) => {
+            setProfileImageFile(URL.createObjectURL(e.target.files[0]));
+          }}
+          id="fileProfile"
+        />
+      </div>
       <AddressWrapper>
         {walletType === 'eth' ? <ImageWrapper src={metamaskImageUrl} /> : null}
         {account}
