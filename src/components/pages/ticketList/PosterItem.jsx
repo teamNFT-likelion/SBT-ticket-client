@@ -27,8 +27,7 @@ const HoverWrapper = styled('div')`
 const TicketImg = styled('img')`
   width: 200px;
   flex: 4;
-  border: 3px solid
-    ${(props) => (props.preTicketing ? colors.primary80 : '#ffffff0')};
+  border: 3px solid ${(props) => (props.preTicketing ? colors.primary80 : '#ffffff0')};
 `;
 
 const TitleWrapper = styled('div')`
@@ -44,14 +43,7 @@ const DateWrapper = styled('div')`
   color: ${colors.textSecondary};
 `;
 
-const PosterItem = ({
-  dataId,
-  posterImgUrl,
-  title,
-  startDate,
-  endDate,
-  preTicketing,
-}) => {
+const PosterItem = ({ dataId, posterImgUrl, title, startDate, endDate, preTicketing }) => {
   const [hoverRef, isHover] = useHover();
 
   return (
@@ -59,23 +51,13 @@ const PosterItem = ({
       {isHover && (
         <HoverWrapper>
           <LinkButton to={`/detail?id=${dataId}`} name="상세정보" />
-          <LinkButton
-            to={`/payment?id=${dataId}`}
-            name="예매하기"
-            connectCheck={true}
-          />
+          <LinkButton to={`/payment?id=${dataId}`} name="예매하기" connectCheck={true} />
         </HoverWrapper>
       )}
-      <TicketImg
-        src={posterImgUrl}
-        preTicketing={preTicketingPeriod(preTicketing)}
-      />
-      <TitleWrapper>
-        {(preTicketingPeriod(preTicketing) ? '[사전예매]  ' : '') + title}
-      </TitleWrapper>
+      <TicketImg src={posterImgUrl} preTicketing={preTicketingPeriod(preTicketing)} />
+      <TitleWrapper>{preTicketingPeriod(preTicketing) ? '[사전예매]  ' : '' + title}</TitleWrapper>
       <DateWrapper>
-        {format(new Date(startDate), 'yyyy.MM.dd')} ~
-        {format(new Date(endDate), 'yyyy.MM.dd')}
+        {format(new Date(startDate), 'yyyy.MM.dd')} ~{format(new Date(endDate), 'yyyy.MM.dd')}
       </DateWrapper>
     </Container>
   );

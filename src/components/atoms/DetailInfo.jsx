@@ -65,10 +65,12 @@ const DetailInfo = ({ data }) => {
           <ConcertInfoItem>구매가</ConcertInfoItem>
           <ConcertInfoItem>{data.cashPrice.map((price) => `₩${price} `)}</ConcertInfoItem>
           <ConcertInfoItem>사전예매기간</ConcertInfoItem>
-          <ConcertInfoItem style={{ color: colors.bgRed }}>
-            {format(new Date(data.preTicketing[0]), 'yyyy.MM.dd')} ~
-            {format(new Date(data.preTicketing[1]), 'yyyy.MM.dd')}
-          </ConcertInfoItem>
+          {preTicketingPeriod(data.preTicketing) && (
+            <ConcertInfoItem style={{ color: colors.bgRed }}>
+              {format(new Date(data.preTicketing[0]), 'yyyy.MM.dd')} ~
+              {format(new Date(data.preTicketing[1]), 'yyyy.MM.dd')}
+            </ConcertInfoItem>
+          )}
         </ConcertInfo>
       </ContentsInfo>
       <img src={data.posterImgUrl} width="270px" height="345px" alt="poster" />

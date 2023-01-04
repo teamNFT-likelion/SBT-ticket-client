@@ -12,6 +12,7 @@ import QRCertificate from '@components/pages/account/QRCertificate';
 import axios from 'axios';
 import useMint from '@hooks/useMint';
 import PreTicketingCustomModal from '@components/articles/PreTicketingCustomModal';
+import QRCustomModal from '@components/articles/QRCustomModal';
 
 const TicketWrapper = styled('div')`
   width: auto;
@@ -98,7 +99,7 @@ const QRText = styled('p')`
   margin-top: 15px;
 `;
 
-const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active }) => {
+const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail, active }) => {
   // 모달을 위한 state
   const [showUseQr, setShowUseQr] = useState(false);
   const [showRefund, setShowRefund] = useState(false);
@@ -234,7 +235,7 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
         </TicketContent>
       </TicketWrapper>
 
-      <CustomModal show={showUseQr} toggleModal={() => setShowUseQr(false)}>
+      <QRCustomModal show={showUseQr} toggleModal={() => setShowUseQr(false)}>
         {!isAuthorized ? (
           <>
             <p>QR을 발행을 위해 본인 인증을 진행해주세요.</p>
@@ -286,7 +287,7 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
             </ModalButtonWrapper>
           </>
         )}
-      </CustomModal>
+      </QRCustomModal>
       <CustomModal show={showRefund} toggleModal={() => setShowRefund(false)}>
         정말 환불하시겠습니까?
         <ModalButtonWrapper>
@@ -312,7 +313,13 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
       <CustomModal show={showFan} toggleModal={() => setShowFan(false)}>
         팬 혜택을 고르세요.
         <ModalButtonWrapper>
-          <ModalButton buttonColor={`#af00a7`} onClick={() => setPreTicketModal(true)}>
+          <ModalButton
+            buttonColor={`#af00a7`}
+            onClick={() => {
+              setShowFan(false);
+              setPreTicketModal(true);
+            }}
+          >
             사전 예매
           </ModalButton>
           <ModalButton
@@ -343,7 +350,7 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
         <RaffleModal setRaffleModal={setRaffleModal} />
       </CustomModal>
       <PreTicketingCustomModal show={preTicketModal} toddleModal={() => setPreTicketModal(false)}>
-        <PreTicketingModal setPreTicketModal={setPreTicketModal} />
+        <PreTicketingModal setPreTicketModal={setPreTicketModal} hostAddr={hostAddr} />
       </PreTicketingCustomModal>
     </div>
   );

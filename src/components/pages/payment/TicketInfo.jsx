@@ -22,7 +22,6 @@ const TicketInfo = ({ data, isLoading }) => {
   const tokenPrice = useRecoilValue(tTokenPriceState);
   const pricePerToken = useRecoilValue(tPricePerTokenState);
 
-  
   return (
     <div style={{ position: 'relative' }}>
       {isLoading && (
@@ -32,7 +31,10 @@ const TicketInfo = ({ data, isLoading }) => {
       )}
       <div style={{ zIndex: 1, opacity: isLoading ? 0.3 : 1 }}>
         <img src={data.posterImgUrl} alt="img" style={{ width: '50px', marginBottom: '6px' }} />
-        <div>{(preTicketingPeriod(data.preTicketing) ? '[사전예매]  ' : '') + data.title}</div>
+        <div>
+          {data.preTicketing &&
+            (preTicketingPeriod(data.preTicketing) ? '[사전예매]  ' : '') + data.title}
+        </div>
         <div
           style={{
             marginTop: '30px',

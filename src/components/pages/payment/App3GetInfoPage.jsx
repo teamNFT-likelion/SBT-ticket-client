@@ -25,10 +25,6 @@ const App3GetInfoPage = ({ setTab, data }) => {
   const ticketInfo = useRecoilValue(tInfoState);
   const sbtInfo = useRecoilValue(sbtInfoState);
 
-  // 결제 페이지에서 정보 잘 불러왔나 확인
-  // console.log(ticketInfo); // O
-  // console.log(sbtInfo); //O
-
   const handlePayType = (e) => setPayType(e.target.value);
   const handleCashPayType = (e) => setCashPayType(e.target.value);
 
@@ -38,7 +34,7 @@ const App3GetInfoPage = ({ setTab, data }) => {
     setIsLoading(true);
     try {
       const tokenUri = await createTokenUri(_sbtInfo, _email);
-      await createSBT(tokenUri, _ticketInfo, "COIN");
+      await createSBT(tokenUri, _ticketInfo, 'COIN');
       setTab(e.target.value);
     } catch (error) {
       console.log('Error uploading file: ', error);

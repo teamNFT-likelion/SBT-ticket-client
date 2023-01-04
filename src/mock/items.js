@@ -13,6 +13,7 @@ export const mainItems = [
     startDate: 1677164400000,
     endDate: 1677250800000,
     preTicketing: [1672585200000, 1673621999999],
+    preTicketingList: [],
     runningTime: 120,
     dateInfo: {
       1677164400000: [
@@ -1443,7 +1444,8 @@ export const mainItems = [
     cashPrice: [300, 500, 700],
     startDate: 1675954800000,
     endDate: 1676041200000,
-    preTicketing: [1675209600000, 1676851200000],
+    preTicketing: [],
+    preTicketingList: [],
     runningTime: 90,
     dateInfo: {
       1675954800000: [
@@ -2875,6 +2877,7 @@ export const mainItems = [
     startDate: 1674831600000,
     endDate: 1675004400000,
     preTicketing: [1672585200000, 1673621999999],
+    preTicketingList: [],
     runningTime: 120,
     dateInfo: {
       1674831600000: [
@@ -4307,7 +4310,8 @@ export const mainItems = [
     cashPrice: [300, 500, 700],
     startDate: 1675177200000,
     endDate: 1675350000000,
-    preTicketing: [1675209600000, 1676851200000],
+    preTicketing: [],
+    preTicketingList: [],
     runningTime: 120,
     dateInfo: {
       1675177200000: [
@@ -5741,6 +5745,7 @@ export const mainItems = [
     startDate: 1676386800000,
     endDate: 1676386800000,
     preTicketing: [1672585200000, 1673621999999],
+    preTicketingList: [],
     runningTime: 90,
     dateInfo: {
       1676386800000: [
@@ -6229,7 +6234,8 @@ export const mainItems = [
     cashPrice: [300, 500, 700],
     startDate: 1676818800000,
     endDate: 1676818800000,
-    preTicketing: [1675209600000, 1676851200000],
+    preTicketing: [],
+    preTicketingList: [],
     runningTime: 120,
     dateInfo: {
       1676818800000: [
@@ -6722,6 +6728,12 @@ export const itemList = [
     cashPrice: [300, 500, 700],
     startDate: 1674140400000,
     endDate: 1674226800000,
+    preTicketing: [],
+    preTicketingList: [
+      '0xF28B7529079c42aBAC7452Aac4cCB1A1226b0ca8',
+      '0xb05848331e1650e8b6fEFC923aC6cc39768D4B6A',
+      '0x3cFB4119E326Dff23beAbf58dbA232159158623a',
+    ],
     runningTime: 90,
     dateInfo: {
       1674140400000: [
