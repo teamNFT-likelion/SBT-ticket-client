@@ -2,6 +2,7 @@ import { userState } from '@states/userState';
 import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import Web3 from 'web3';
+import { toast } from 'react-toastify';
 
 const ethereum = window.ethereum;
 
@@ -21,7 +22,10 @@ export default function useWeb3() {
       } catch (err) {
         console.log(err);
       }
-    } else return;
+    } else {
+      console.error("No web3 provider found, Please install MetaMask.");
+      toast.error('Please install MetaMask.');
+    }
   }, []);
 
   // 내 잔고 가져오기

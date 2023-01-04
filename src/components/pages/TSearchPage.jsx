@@ -3,7 +3,7 @@ import Layout from '@articles/Layout';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import * as colors from '@styles/colors';
-import { mainItems as items } from '@mock/items.js';
+import { mainItems, restItems } from '@mock/items.js';
 import PosterItem from './ticketList/PosterItem';
 import { parse } from 'query-string';
 
@@ -42,10 +42,11 @@ const TSearchPage = () => {
   const location = useLocation();
   const parsed = parse(location.search);
   const typing = parsed.typing;
-  const [typedItems, setTypedItems] = useState(items);
+  const [typedItems, setTypedItems] = useState([]);
 
   // 원하는 검색어 찾기 기능
   useEffect(() => {
+    const items = [...mainItems, ...restItems];
     const filterTitle = items.filter((q) => {
       return q.title.replace(' ', '').toLocaleLowerCase().includes(typing.toLocaleLowerCase());
     });

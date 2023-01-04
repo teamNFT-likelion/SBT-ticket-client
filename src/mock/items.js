@@ -6715,9 +6715,9 @@ export const mainItems = [
 ];
 
 //TODO:일반 포스터용 데이터 15개
-export const itemList = [
+export const restItems = [
   {
-    id: '0x7e5Bb4EAB634B5F140b16b817fa09D5124fe82ad',
+    id: '0x7f76cF9B69d1bf8B0a037d6aaadc38E08530d1bB',
     topic: '공연',
     posterImgUrl: 'https://image.toast.com/aaaaab/ticketlink/TKL_6/펭미팅_대표이미지_405X500.jpg',
     detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_2/MD_1128.jpg',
@@ -6726,8 +6726,8 @@ export const itemList = [
     cast: '펭수',
     viewAgeName: '8세 이상',
     cashPrice: [300, 500, 700],
-    startDate: 1674140400000,
-    endDate: 1674226800000,
+    startDate: 1672326000000,
+    endDate: 1672412400000,
     preTicketing: [],
     preTicketingList: [
       '0xF28B7529079c42aBAC7452Aac4cCB1A1226b0ca8',
@@ -6736,9 +6736,9 @@ export const itemList = [
     ],
     runningTime: 90,
     dateInfo: {
-      1674140400000: [
+      1672326000000: [
         {
-          startTime: 1674194400000,
+          startTime: 1672380000000,
           seatCount: 81,
           seats: {
             sections: [
@@ -7208,9 +7208,9 @@ export const itemList = [
           },
         },
       ],
-      1674226800000: [
+      1672412400000: [
         {
-          startTime: 1674280800000,
+          startTime: 1672466400000,
           seatCount: 81,
           seats: {
             sections: [

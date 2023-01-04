@@ -17,15 +17,15 @@ import QRCustomModal from '@components/articles/QRCustomModal';
 const TicketWrapper = styled('div')`
   width: auto;
   height: 550px;
-  border: 3px solid ${colors.primary40};
-  border-radius: 5%;
+  border: 3px solid ${colors.primary80};
+  border-radius: 20px;
 `;
 
 const TicketImage = styled('img')`
   width: 300px;
   height: 75%;
-  border-bottom: 3px solid ${colors.primary40};
-  border-radius: 5% 5% 0 0;
+  border-top: 3px solid ${colors.primary80};
+  border-bottom: 3px solid ${colors.primary80};
 `;
 
 const TicketContent = styled('div')`
@@ -37,10 +37,11 @@ const TicketContent = styled('div')`
   gap: 5px;
 `;
 
-const TextWrapper = styled('span')`
+const TextWrapper = styled('div')`
   display: block;
   padding: 10px;
-  border-bottom: 3px solid ${colors.primary40};
+  border-radius: 17px 17px 0 0;
+  background-color: ${({ isActive }) => (isActive ? colors.primary40 : "#af00a7")};
 `;
 
 const ContentWrapper = styled('div')`
@@ -106,6 +107,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
   const [showUseQr, setShowUseQr] = useState(false);
   const [showRefund, setShowRefund] = useState(false);
   const [showFan, setShowFan] = useState(false);
+  const [showBurn, setShowBurn] = useState(false);
   const [raffleModal, setRaffleModal] = useState(false);
   const [preTicketModal, setPreTicketModal] = useState(false);
   const [goodsModal, setGoodsModal] = useState(false);
@@ -127,7 +129,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
   const [isReGenerated, setIsReGenerated] = useState(false);
 
   // 환불
-  const { refundSBT } = useMint();
+  const { refundSBT, burnSBT } = useMint();
   const handleRefund = async () => {
     try {
       await refundSBT(id);
@@ -137,6 +139,15 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
       toast.error('환불 실패');
     }
   };
+  const handleBurn = async () => {
+    try {
+      await burnSBT(id);
+      window.location.reload();
+    } catch (error) {
+      console.log('Burn Error: ', error);
+      toast.error('소각 실패');
+    }
+  }
 
   useEffect(() => {
     async function imgUrlInUri() {
@@ -191,7 +202,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
   return (
     <div>
       <TicketWrapper key={id}>
-        <TextWrapper>
+        <TextWrapper isActive={active}>
           {title} #{id}
         </TextWrapper>
         <TicketImage src={imgUrl} alt="ticket" />
@@ -218,15 +229,6 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
               >
                 환불
               </TicketButton>
-              {/* TODO : 임시 버튼 없애야됨 */}
-              <TicketButton
-                buttonColor={`#af00a7`}
-                onClick={() => {
-                  setShowFan(true);
-                }}
-              >
-                팬 혜택
-              </TicketButton>
             </TicketButtonWrapper>
           ) : (
             <TicketButtonWrapper>
@@ -237,6 +239,14 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
                 }}
               >
                 팬 혜택
+              </TicketButton>
+              <TicketButton
+                buttonColor={`${colors.bgRed}`}
+                onClick={() => {
+                  setShowBurn(true);
+                }}
+              >
+                소각
               </TicketButton>
             </TicketButtonWrapper>
           )}
@@ -362,6 +372,29 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
       </PreTicketingCustomModal>
       <CustomModal show={goodsModal} toggleModal={() => setGoodsModal(false)}>
         준비중입니다...
+      </CustomModal>
+
+      <CustomModal show={showBurn} toggleModal={() => setShowBurn(false)}>
+        정말 소각하시겠습니까?
+        <ModalButtonWrapper>
+          <ModalButton
+            buttonColor={`${colors.bgRed}`}
+            onClick={() => {
+              handleBurn();
+              setShowBurn(false);
+            }}
+          >
+            소각하기
+          </ModalButton>
+          <ModalButton
+            buttonColor={`${colors.bgBlack}`}
+            onClick={() => {
+              setShowBurn(false);
+            }}
+          >
+            취소
+          </ModalButton>
+        </ModalButtonWrapper>
       </CustomModal>
     </div>
   );

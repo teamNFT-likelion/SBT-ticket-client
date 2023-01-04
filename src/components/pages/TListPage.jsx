@@ -5,7 +5,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import Layout from '@articles/Layout';
 import PosterItems from './ticketList/PosterItems';
 import BigPoster from './ticketList/BigPoster';
-import { mainItems } from '@mock/items.js';
+import { mainItems, restItems } from '@mock/items.js';
 import { useResetRecoilState } from 'recoil';
 import {
   tDateState,
@@ -41,7 +41,8 @@ const TListPage = () => {
   const [searchParams] = useSearchParams();
   const paramType = searchParams.get('type');
   const [type, setType] = useState('concert');
-
+  const items = [...mainItems, ...restItems];
+  
   const resetTicketDate = useResetRecoilState(tDateState);
   const resetTicketPart = useResetRecoilState(tPartState);
   const resetTicketPrice = useResetRecoilState(tPriceState);
@@ -95,7 +96,7 @@ const TListPage = () => {
       </PageTypeWrapper>
       <BigPoster type={type} items={mainItems} />
       <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
-        <PosterItems type={type} items={mainItems} />
+        <PosterItems type={type} items={items} />
       </div>
     </Layout>
   );

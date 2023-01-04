@@ -123,7 +123,7 @@ export const App1Start = ({ setTab, data }) => {
       </LeftBox>
       <RightBox>
         <TicketInfo data={data} />
-        <Row justifyContent="center" marginTop="100px">
+        <Row justifyContent="center" marginTop="50px">
           <TabButton value="APP_SelectSeats" onClick={(e) => setTab(e.target.value)}>
             다음단계
           </TabButton>
