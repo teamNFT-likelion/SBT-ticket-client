@@ -349,7 +349,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
       <CustomModal show={raffleModal} toggleModal={() => setRaffleModal(false)}>
         <RaffleModal setRaffleModal={setRaffleModal} />
       </CustomModal>
-      <PreTicketingCustomModal show={preTicketModal} toddleModal={() => setPreTicketModal(false)}>
+      <PreTicketingCustomModal show={preTicketModal} toggleModal={() => setPreTicketModal(false)}>
         <PreTicketingModal setPreTicketModal={setPreTicketModal} hostAddr={hostAddr} />
       </PreTicketingCustomModal>
     </div>

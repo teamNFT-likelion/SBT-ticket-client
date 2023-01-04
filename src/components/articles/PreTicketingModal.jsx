@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 
 export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
   const navigate = useNavigate();
-  console.log(hostAddr);
 
   const pre_ticket_list = mainItems.filter((item) => item.preTicketingList.includes(hostAddr));
   console.log('preTicketingList : ', pre_ticket_list);
@@ -53,11 +52,15 @@ export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
       <Column justifyContent={'center'} alignItems={'center'} marginBottom={'40px'}>
         현재 진행 중인 사전예매
       </Column>
-      {pre_ticket_list.length === 0 ? (
-        <p style={{ fontSize: '20px', color: colors.bgRed }}>해당 토큰과 관련된 공연이 없습니다.</p>
-      ) : (
-        pre_ticket_list.map((item) => <PreTicketingList item={item} />)
-      )}
+      <ModalWrapper>
+        {pre_ticket_list.length === 0 ? (
+          <p style={{ fontSize: '20px', color: colors.bgRed }}>
+            해당 토큰과 관련된 공연이 없습니다.
+          </p>
+        ) : (
+          pre_ticket_list.map((item) => <PreTicketingList item={item} />)
+        )}
+      </ModalWrapper>
     </>
   );
 }
@@ -81,10 +84,27 @@ const TicketButton = styled('button')`
 
 const ModalTempBox = styled(Column)`
   width: 536px;
+  max-height: 400px;
   align-items: center;
   background-color: #3b3b40;
   padding: 20px;
   border-radius: 12px;
   justify-content: center;
   border: 2px solid ${colors.primary80};
+`;
+
+const ModalWrapper = styled(Column)`
+  display: flex;
+  align-items: center;
+  width: 600px;
+  max-height: 600px;
+  gap: 15px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #a2a2a2;
 `;
