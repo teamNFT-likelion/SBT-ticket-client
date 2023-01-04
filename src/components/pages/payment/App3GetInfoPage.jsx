@@ -84,7 +84,7 @@ const App3GetInfoPage = ({ setTab, data }) => {
         </LeftBox>
         <RightBox>
           <TicketInfo data={data} isLoading={isLoading} />
-          <Row marginTop="100px" justifyContent="center">
+          <Row marginTop="50px" justifyContent="center">
             <TabButton value="APP_SelectSeats" onClick={(e) => setTab(e.target.value)}>
               뒤로가기
             </TabButton>

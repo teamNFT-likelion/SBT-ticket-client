@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import { Column, Row } from '@components/atoms/wrapper.style';
-import { mainItems } from '@mock/items';
+import { mainItems, restItems } from '@mock/items';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 
 export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
   const navigate = useNavigate();
-
-  const pre_ticket_list = mainItems.filter((item) => item.preTicketingList.includes(hostAddr));
+  const items = [...mainItems, ...restItems];
+  const pre_ticket_list = items.filter((item) => item.preTicketingList.includes(hostAddr));
   console.log('preTicketingList : ', pre_ticket_list);
   const PreTicketingList = ({ item }) => {
     return (

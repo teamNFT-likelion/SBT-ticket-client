@@ -26,7 +26,7 @@ const SeatsInfo = styled('span')`
 //TODO: 색변경
 const SeatsSelectBox = styled('div')`
   height: auto;
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: center;
   background-color: gray;
@@ -42,7 +42,7 @@ const MainStage = ({ data }) => {
   const [scaleToFit, setScaleToFit] = useState(1);
   const [size, setSize] = useState({
     width: 500,
-    height: 800,
+    height: 1000,
     virtualWidth: 1000,
   });
   const [virtualWidth, setVirtualWidth] = useState(1000);

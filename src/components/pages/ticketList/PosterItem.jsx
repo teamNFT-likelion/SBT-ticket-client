@@ -15,7 +15,7 @@ const Container = styled('div')`
 const HoverWrapper = styled('div')`
   display: flex;
   flex-direction: column;
-  width: 95%;
+  width: 100%;
   height: 85%;
   justify-content: center;
   gap: 16px;

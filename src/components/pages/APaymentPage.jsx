@@ -8,7 +8,7 @@ import { App1Start } from './payment/App1Start';
 import { App2SelectSeats } from './payment/App2SelectSeats';
 import { App4Done } from './payment/App4Done';
 import { Container } from '@styles/ApaymentStyles';
-import { mainItems } from '@mock/items';
+import { mainItems, restItems } from '@mock/items';
 import Page404 from './Page404';
 import { userState } from '@states/userState';
 import { walletConnectError } from '@utils/toastMessages';
@@ -21,7 +21,8 @@ const APaymentPage = () => {
   const navigate = useNavigate();
 
   const { id: dataId } = parse(location.search);
-  const data = mainItems.filter((item) => item.id === dataId)[0] || false;
+  const items = [...mainItems, ...restItems];
+  const data = items.filter((item) => item.id === dataId)[0] || false;
 
   const [tab, setTab] = useState('APP_Start');
   const { account } = useRecoilValue(userState);

@@ -30,8 +30,8 @@ const TicketInfo = ({ data, isLoading }) => {
         </CompletedContainer>
       )}
       <div style={{ zIndex: 1, opacity: isLoading ? 0.3 : 1 }}>
-        <img src={data.posterImgUrl} alt="img" style={{ width: '50px', marginBottom: '6px' }} />
-        <div>
+        <img src={data.posterImgUrl} alt="img" style={{ width: '100%', padding: "5% 20%", marginBottom: '6px' }} />
+        <div style={{display: "flex", justifyContent: "center"}}>
           {data.preTicketing &&
             (preTicketingPeriod(data.preTicketing) ? '[사전예매]  ' : '') + data.title}
         </div>
@@ -40,7 +40,7 @@ const TicketInfo = ({ data, isLoading }) => {
             marginTop: '30px',
             marginBottom: '8px',
             fontSize: '24px',
-            color: colors.primary40,
+            color: colors.primary80,
           }}
         >
           예매정보
@@ -54,7 +54,7 @@ const TicketInfo = ({ data, isLoading }) => {
             padding: '8px 0',
           }}
         >
-          <div>일시</div>
+          <div style={{ color: colors.primary40 }}>일시</div>
           <div>{format(new Date(deadline), 'yyyy.MM.dd HH:mm')}</div>
         </div>
         <div
@@ -65,7 +65,7 @@ const TicketInfo = ({ data, isLoading }) => {
             padding: '8px 0',
           }}
         >
-          <div>회차</div>
+          <div style={{ color: colors.primary40 }}>회차</div>
           <div>{part + 1}회차</div>
         </div>
         {seat.length > 0 &&
@@ -76,11 +76,10 @@ const TicketInfo = ({ data, isLoading }) => {
                 style={{
                   display: 'flex',
                   justifyContent: 'space-between',
-                  borderBottom: '1px solid white',
                   padding: '8px 0',
                 }}
               >
-                <div>{i === 0 ? '좌석 정보' : ''}</div>
+                <div style={{ color: colors.primary40 }}>{i === 0 ? '좌석 정보' : ''}</div>
                 <div>{id}</div>
               </div>
             );
@@ -90,11 +89,12 @@ const TicketInfo = ({ data, isLoading }) => {
             style={{
               display: 'flex',
               justifyContent: 'space-between',
+              borderTop: '1px solid white',
               borderBottom: '1px solid white',
               padding: '8px 0',
             }}
           >
-            <div>결제 금액</div>
+            <div style={{ color: colors.primary40 }}>결제 금액</div>
             <div>{price} 원</div>
           </div>
         )}
@@ -107,9 +107,10 @@ const TicketInfo = ({ data, isLoading }) => {
               padding: '8px 0',
             }}
           >
-            <div>토큰 결제</div>
+            <div style={{ color: colors.primary40 }}>토큰 결제</div>
             <div>
-              {tokenPrice.toFixed(2)} Matic (개당 {pricePerToken.toFixed(2)}원)
+              {tokenPrice.toFixed(2)}MATIC<br/>
+              (개당 {pricePerToken.toFixed(2)}원)
             </div>
           </div>
         )}
