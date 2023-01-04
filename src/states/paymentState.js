@@ -9,6 +9,12 @@ export const tPartState = atom({
   default: 0,
 });
 
+// 현재 사전예매 기간인지 APP_1부터 저장
+export const preTicketState = atom({
+  key: 'paymentState/preTicketState', // token에 deadline 저장
+  default: false,
+});
+
 // mintSBT에 필요한 state
 export const tDeadlineState = atom({
   key: 'paymentState/tDeadline', // token에 deadline 저장

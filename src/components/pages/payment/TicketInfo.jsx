@@ -11,8 +11,8 @@ import {
   tPriceState,
   tTokenPriceState,
   tPricePerTokenState,
+  preTicketState,
 } from '@states/paymentState';
-import PreTicketingPeriod from '@utils/PreTicketingPeriod';
 
 const TicketInfo = ({ data, isLoading }) => {
   const part = useRecoilValue(tPartState);
@@ -22,6 +22,8 @@ const TicketInfo = ({ data, isLoading }) => {
   const tokenPrice = useRecoilValue(tTokenPriceState);
   const pricePerToken = useRecoilValue(tPricePerTokenState);
 
+  const preTState = useRecoilValue(preTicketState);
+
   return (
     <div style={{ position: 'relative' }}>
       {isLoading && (
@@ -30,11 +32,8 @@ const TicketInfo = ({ data, isLoading }) => {
         </CompletedContainer>
       )}
       <div style={{ zIndex: 1, opacity: isLoading ? 0.3 : 1 }}>
-        <img src={data.posterImgUrl} alt="img" style={{ width: '100%', padding: "5% 20%", marginBottom: '6px' }} />
-        <div style={{display: "flex", justifyContent: "center"}}>
-          {data.preTicketing &&
-            (PreTicketingPeriod(data.preTicketing) ? '[사전예매]  ' : '') + data.title}
-        </div>
+        <img src={data.posterImgUrl} alt="img" style={{ width: '50px', marginBottom: '6px' }} />
+        <div>{data.preTicketing && (preTState === '중' ? '[사전예매]  ' : '') + data.title}</div>
         <div
           style={{
             marginTop: '30px',
@@ -109,7 +108,8 @@ const TicketInfo = ({ data, isLoading }) => {
           >
             <div style={{ color: colors.primary40 }}>토큰 결제</div>
             <div>
-              {tokenPrice.toFixed(2)}MATIC<br/>
+              {tokenPrice.toFixed(2)}MATIC
+              <br />
               (개당 {pricePerToken.toFixed(2)}원)
             </div>
           </div>
