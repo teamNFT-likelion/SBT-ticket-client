@@ -3,7 +3,7 @@ import * as colors from '@styles/colors';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import { mainItems } from '@mock/items';
 import { format } from 'date-fns';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function PreTickeingModal({ setPreTicketModal }) {
   const navigate = useNavigate();
@@ -64,10 +64,11 @@ const TicketButton = styled('button')`
 `;
 
 const ModalTempBox = styled(Column)`
-  width: 540px;
+  width: 536px;
   align-items: center;
   background-color: #3b3b40;
   padding: 20px;
   border-radius: 12px;
-  border: 1px solid white;
+  justify-content: center;
+  border: 2px solid ${colors.primary80};
 `;
