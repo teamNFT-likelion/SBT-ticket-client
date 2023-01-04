@@ -4,7 +4,7 @@ import useHover from '@hooks/useHover';
 import { format } from 'date-fns';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
-import { preTicketingPeriod } from '@utils/preTicketingPeriod';
+import PreTicketingPeriod from '@utils/PreTicketingPeriod';
 
 const Container = styled('div')`
   display: flex;
@@ -27,7 +27,7 @@ const HoverWrapper = styled('div')`
 const TicketImg = styled('img')`
   width: 200px;
   flex: 4;
-  border: 3px solid ${(props) => (props.preTicketing ? colors.primary80 : '#ffffff0')};
+  border: 3px solid ${(props) => (props.preTicketing === '중' ? colors.primary80 : '#ffffff0')};
 `;
 
 const TitleWrapper = styled('div')`
@@ -54,8 +54,12 @@ const PosterItem = ({ dataId, posterImgUrl, title, startDate, endDate, preTicket
           <LinkButton to={`/payment?id=${dataId}`} name="예매하기" connectCheck={true} />
         </HoverWrapper>
       )}
-      <TicketImg src={posterImgUrl} preTicketing={preTicketingPeriod(preTicketing)} />
-      <TitleWrapper>{preTicketingPeriod(preTicketing) ? '[사전예매]  ' : '' + title}</TitleWrapper>
+      <TicketImg src={posterImgUrl} preTicketing={PreTicketingPeriod(preTicketing)} />
+      <TitleWrapper>
+        {(PreTicketingPeriod(preTicketing)
+          ? `[사전예매 ${PreTicketingPeriod(preTicketing)}] `
+          : '') + title}
+      </TitleWrapper>
       <DateWrapper>
         {format(new Date(startDate), 'yyyy.MM.dd')} ~{format(new Date(endDate), 'yyyy.MM.dd')}
       </DateWrapper>
