@@ -107,4 +107,5 @@ const ModalWrapper = styled(Column)`
   &::-webkit-scrollbar-thumb {
     border-radius: 2px;
     background: #a2a2a2;
+  }
 `;
