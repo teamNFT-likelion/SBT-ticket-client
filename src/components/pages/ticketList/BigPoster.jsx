@@ -16,7 +16,8 @@ import {
 import { walletConnectError } from '@utils/toastMessages';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@states/userState';
-import { preTicketingPeriod } from '@utils/preTicketingPeriod';
+import PreTicketingPeriod from '@utils/PreTicketingPeriod';
+import * as colors from '@styles/colors';
 
 const BigPoster = ({ type, items }) => {
   const [activePosterId, setActivePosterId] = useState(0);
@@ -36,7 +37,13 @@ const BigPoster = ({ type, items }) => {
   };
 
   useEffect(() => {
-    const filteredList = items.filter((item) => item.topic === parseItemType(type));
+    let filteredList = items
+      .filter((item) => item.topic === parseItemType(type))
+      .map((prev) => {
+        let cp = { ...prev, preTState: PreTicketingPeriod(prev.preTicketing) };
+        console.log(cp.preTState);
+        return cp;
+      });
 
     setTypeItems(filteredList);
     setActivePosterId(0);
@@ -50,8 +57,10 @@ const BigPoster = ({ type, items }) => {
           <div className="card-box">
             <InfoWrapper>
               <Title>
-                {(preTicketingPeriod(typeItems[0].preTicketing) ? '[사전예매]  ' : '') +
-                  typeItems[0].title}
+                <PreTicketingInfo style={{ color: colors.bgRed }}>
+                  {typeItems[0].preTState ? `[사전예매 ${typeItems[0].preTState}]` : ''}
+                </PreTicketingInfo>
+                {typeItems[0].title}
               </Title>
               {typeItems[0].preTicketing[0] && (
                 <PreTicketingInfo marginTop="30px">
@@ -78,20 +87,38 @@ const BigPoster = ({ type, items }) => {
               >
                 상세정보
               </button>
-              <button
-                onClick={() => {
-                  if (account) {
-                    navigate({
-                      pathname: '/payment',
-                      search: `?id=${typeItems[0].id}`,
-                    });
-                  } else {
-                    walletConnectError();
-                  }
-                }}
-              >
-                예매하기
-              </button>
+              {typeItems[0].preTState === '중' ? (
+                <button
+                  style={{ backgroundColor: colors.primary40 }}
+                  onClick={() => {
+                    if (account) {
+                      navigate({
+                        pathname: '/payment',
+                        search: `?id=${typeItems[0].id}`,
+                      });
+                    } else {
+                      walletConnectError();
+                    }
+                  }}
+                >
+                  사전예매
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    if (account) {
+                      navigate({
+                        pathname: '/payment',
+                        search: `?id=${typeItems[0].id}`,
+                      });
+                    } else {
+                      walletConnectError();
+                    }
+                  }}
+                >
+                  예매하기
+                </button>
+              )}
             </ButtonWrapper>
           </div>
         </DescCard>
@@ -102,8 +129,10 @@ const BigPoster = ({ type, items }) => {
           <div className="card-box">
             <InfoWrapper>
               <Title>
-                {(preTicketingPeriod(typeItems[1].preTicketing) ? '[사전예매]  ' : '') +
-                  typeItems[1].title}
+                <PreTicketingInfo style={{ color: colors.bgRed }}>
+                  {typeItems[1].preTState ? `[사전예매 ${typeItems[1].preTState}]` : ''}
+                </PreTicketingInfo>
+                {typeItems[1].title}
               </Title>
               {typeItems[1].preTicketing[0] && (
                 <PreTicketingInfo marginTop="30px">
@@ -121,29 +150,47 @@ const BigPoster = ({ type, items }) => {
             </InfoWrapper>
             <ButtonWrapper>
               <button
-                onClick={() =>
+                onClick={() => {
                   navigate({
                     pathname: '/detail',
-                    search: `?id=${typeItems[1].id}`,
-                  })
-                }
+                    search: `?id=${typeItems[0].id}`,
+                  });
+                }}
               >
                 상세정보
               </button>
-              <button
-                onClick={() => {
-                  if (account) {
-                    navigate({
-                      pathname: '/payment',
-                      search: `?id=${typeItems[1].id}`,
-                    });
-                  } else {
-                    walletConnectError();
-                  }
-                }}
-              >
-                예매하기
-              </button>
+              {typeItems[1].preTState === '중' ? (
+                <button
+                  style={{ backgroundColor: colors.primary40 }}
+                  onClick={() => {
+                    if (account) {
+                      navigate({
+                        pathname: '/payment',
+                        search: `?id=${typeItems[0].id}`,
+                      });
+                    } else {
+                      walletConnectError();
+                    }
+                  }}
+                >
+                  사전예매
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    if (account) {
+                      navigate({
+                        pathname: '/payment',
+                        search: `?id=${typeItems[0].id}`,
+                      });
+                    } else {
+                      walletConnectError();
+                    }
+                  }}
+                >
+                  예매하기
+                </button>
+              )}
             </ButtonWrapper>
           </div>
         </DescCard>

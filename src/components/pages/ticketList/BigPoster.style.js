@@ -1,3 +1,4 @@
+import { Column } from '@components/atoms/wrapper.style';
 import styled from 'styled-components';
 
 export const BigPosterWrapper = styled('div')`
@@ -69,14 +70,14 @@ export const ButtonWrapper = styled('div')`
   gap: 40px;
 
   & > button {
-    background-color: black;
+    background-color: ${({ backgroundColor }) => backgroundColor || 'black'};
     flex: 1;
     height: 50px;
     font-size: 24px;
   }
 `;
 
-export const Title = styled('span')`
+export const Title = styled(Column)`
   align-self: center;
   font-size: 30px;
 `;
@@ -93,5 +94,4 @@ export const PreTicketingInfo = styled('span')`
   align-self: ${({ alignSelf }) => alignSelf || 'start'};
   opacity: ;
   margin-top: ${({ marginTop }) => marginTop || 0};
-  color: red;
 `;
