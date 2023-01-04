@@ -19,7 +19,7 @@ const ModalContent = styled('div')`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 350px;
+  width: 600px;
   height: auto;
   font-size: 30px;
   font-weight: 400;
@@ -39,7 +39,7 @@ const ModalContent = styled('div')`
   box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.15);
 `;
 
-const PreTicketingCustomModal = ({ show, toggleModal, styles, children }) => {
+const CustomModal = ({ show, toggleModal, styles, children }) => {
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       toggleModal();
@@ -53,4 +53,4 @@ const PreTicketingCustomModal = ({ show, toggleModal, styles, children }) => {
   );
 };
 
-export default PreTicketingCustomModal;
+export default CustomModal;
