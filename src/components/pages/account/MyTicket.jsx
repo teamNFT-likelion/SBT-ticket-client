@@ -5,11 +5,13 @@ import CustomModal from '@articles/CustomModal';
 import { format } from 'date-fns';
 import QRCode from 'qrcode.react';
 import RaffleModal from '@components/articles/RaffleModal';
+import PreTicketingModal from '@components/articles/PreTicketingModal';
 import useOauth from '@hooks/useOauth';
 import { toast } from 'react-toastify';
 import QRCertificate from '@components/pages/account/QRCertificate';
 import axios from 'axios';
 import useMint from '@hooks/useMint';
+import PreTicketingCustomModal from '@components/articles/PreTicketingCustomModal';
 
 const TicketWrapper = styled('div')`
   width: auto;
@@ -102,6 +104,7 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
   const [showRefund, setShowRefund] = useState(false);
   const [showFan, setShowFan] = useState(false);
   const [raffleModal, setRaffleModal] = useState(false);
+  const [preTicketModal, setPreTicketModal] = useState(false);
 
   // 본인인증을 위한 state
   const { email: userEmail, setPopup, popup } = useOauth();
@@ -309,7 +312,7 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
       <CustomModal show={showFan} toggleModal={() => setShowFan(false)}>
         팬 혜택을 고르세요.
         <ModalButtonWrapper>
-          <ModalButton buttonColor={`#af00a7`} onClick={() => {}}>
+          <ModalButton buttonColor={`#af00a7`} onClick={() => setPreTicketModal(true)}>
             사전 예매
           </ModalButton>
           <ModalButton
@@ -339,6 +342,9 @@ const MyTicket = ({ id, uri, date, price, seats, image, title, tEmail, active })
       <CustomModal show={raffleModal} toggleModal={() => setRaffleModal(false)}>
         <RaffleModal setRaffleModal={setRaffleModal} />
       </CustomModal>
+      <PreTicketingCustomModal show={preTicketModal} toddleModal={() => setPreTicketModal(false)}>
+        <PreTicketingModal setPreTicketModal={setPreTicketModal} />
+      </PreTicketingCustomModal>
     </div>
   );
 };
