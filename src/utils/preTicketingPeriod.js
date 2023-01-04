@@ -3,7 +3,7 @@ export default function PreTicketingPeriod(_time) {
   let PreTPeriodState = '';
   if (_time.length !== 0) {
     if (Date.now() >= _time[0] && Date.now() < _time[1]) {
-      PreTPeriodState = '중';
+      PreTPeriodState = '진행중';
     } else if (Date.now() < _time[0]) {
       PreTPeriodState = '전';
     } else {

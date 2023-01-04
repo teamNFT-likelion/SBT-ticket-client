@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PosterItem from './PosterItem';
 import styled from 'styled-components';
 import { parseItemType } from '@utils/parser';
+import useSbtPreTicketHost from '@hooks/useSbtPreTicketHost';
+import PreTicketingPeriod from '@utils/PreTicketingPeriod';
 
 const Container = styled('div')`
   display: flex;
@@ -24,18 +26,48 @@ const PosterWrapper = styled('div')`
 
 const PosterItems = ({ type, items }) => {
   const [typeItems, setTypeItems] = useState(items);
+  const sbtHostList = useSbtPreTicketHost();
+
   const getTitle = (_type) => {
     if (_type === 'concert') return '공연';
     if (_type === 'exhibit') return '전시';
     if (_type === 'sports') return '스포츠';
   };
 
-  useEffect(() => {
-    const filteredList = items.filter(
-      (item) => item.topic === parseItemType(type),
-    );
+  const [preList, setPreList] = useState([]);
 
+  function getMyPreTList() {
+    if (localStorage.getItem('_user')) {
+      let mySbtPreTList = [];
+      sbtHostList.forEach((id) => {
+        const pre_ticket_list = items.filter((item) =>
+          item.preTicketingList.includes(id.tokenHostAddr),
+        );
+        [mySbtPreTList] = [...mySbtPreTList, pre_ticket_list !== [] && pre_ticket_list];
+      });
+
+      setPreList(mySbtPreTList);
+    } else {
+      return;
+    }
+  }
+
+  useEffect(() => {
+    getMyPreTList();
+    let filteredList = items
+      .filter((item) => item.topic === parseItemType(type))
+      .map((prev) => {
+        let cp = { ...prev, preTState: PreTicketingPeriod(prev.preTicketing) };
+
+        if (preList.map((i) => i.id).includes(prev.id)) {
+          cp = { ...cp, prePossible: true };
+        } else {
+          cp = { ...cp, prePossible: false };
+        }
+        return cp;
+      });
     setTypeItems(filteredList);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type, items]);
 
   return (
@@ -51,6 +83,7 @@ const PosterItems = ({ type, items }) => {
             startDate={data.startDate}
             endDate={data.endDate}
             preTicketing={data.preTicketing}
+            prePossible={data.prePossible}
           />
         ))}
       </PosterWrapper>
