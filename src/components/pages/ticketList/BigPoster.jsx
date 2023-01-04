@@ -36,9 +36,7 @@ const BigPoster = ({ type, items }) => {
   };
 
   useEffect(() => {
-    const filteredList = items.filter(
-      (item) => item.topic === parseItemType(type),
-    );
+    const filteredList = items.filter((item) => item.topic === parseItemType(type));
 
     setTypeItems(filteredList);
     setActivePosterId(0);
@@ -47,30 +45,18 @@ const BigPoster = ({ type, items }) => {
   return (
     <BigPosterWrapper>
       <PosterCard isOpen={activePosterId !== 2} flexDirection="row-reverse">
-        <ImgCard
-          src={typeItems[0].posterImgUrl}
-          alt="aa"
-          onClick={() => onClickCard('left')}
-        />
+        <ImgCard src={typeItems[0].posterImgUrl} alt="aa" onClick={() => onClickCard('left')} />
         <DescCard isOpen={activePosterId === 1}>
           <div className="card-box">
             <InfoWrapper>
               <Title>
-                {(preTicketingPeriod(typeItems[0].preTicketing)
-                  ? '[사전예매]  '
-                  : '') + typeItems[0].title}
+                {(preTicketingPeriod(typeItems[0].preTicketing) ? '[사전예매]  ' : '') +
+                  typeItems[0].title}
               </Title>
-              {preTicketingPeriod(typeItems[0].preTicketing) ? (
-                <PreTicketingInfo marginTop="30px">
-                  {'사전예매기간 : ' +
-                    format(
-                      new Date(typeItems[0].preTicketing[0]),
-                      'yyyy.MM.dd',
-                    )}{' '}
-                  ~
-                  {format(new Date(typeItems[0].preTicketing[1]), 'yyyy.MM.dd')}
-                </PreTicketingInfo>
-              ) : null}
+              <PreTicketingInfo marginTop="30px">
+                {'사전예매기간 : ' + format(new Date(typeItems[0].preTicketing[0]), 'yyyy.MM.dd')} ~
+                {format(new Date(typeItems[0].preTicketing[1]), 'yyyy.MM.dd')}
+              </PreTicketingInfo>
               <Info marginTop="50px">
                 {format(new Date(typeItems[0].startDate), 'yyyy.MM.dd')} ~
                 {format(new Date(typeItems[0].endDate), 'yyyy.MM.dd')}
@@ -109,30 +95,18 @@ const BigPoster = ({ type, items }) => {
         </DescCard>
       </PosterCard>
       <PosterCard isOpen={activePosterId !== 1}>
-        <ImgCard
-          src={typeItems[1].posterImgUrl}
-          alt="aa"
-          onClick={() => onClickCard('right')}
-        />
+        <ImgCard src={typeItems[1].posterImgUrl} alt="aa" onClick={() => onClickCard('right')} />
         <DescCard isOpen={activePosterId === 2}>
           <div className="card-box">
             <InfoWrapper>
               <Title>
-                {(preTicketingPeriod(typeItems[1].preTicketing)
-                  ? '[사전예매]  '
-                  : '') + typeItems[1].title}
+                {(preTicketingPeriod(typeItems[1].preTicketing) ? '[사전예매]  ' : '') +
+                  typeItems[1].title}
               </Title>
-              {preTicketingPeriod(typeItems[1].preTicketing) ? (
-                <PreTicketingInfo marginTop="30px">
-                  {'사전예매기간 : ' +
-                    format(
-                      new Date(typeItems[1].preTicketing[0]),
-                      'yyyy.MM.dd',
-                    )}{' '}
-                  ~
-                  {format(new Date(typeItems[1].preTicketing[1]), 'yyyy.MM.dd')}
-                </PreTicketingInfo>
-              ) : null}
+              <PreTicketingInfo marginTop="30px">
+                {'사전예매기간 : ' + format(new Date(typeItems[1].preTicketing[0]), 'yyyy.MM.dd')} ~
+                {format(new Date(typeItems[1].preTicketing[1]), 'yyyy.MM.dd')}
+              </PreTicketingInfo>
               <Info marginTop="50px">
                 {format(new Date(typeItems[1].startDate), 'yyyy.MM.dd')} ~
                 {format(new Date(typeItems[1].endDate), 'yyyy.MM.dd')}

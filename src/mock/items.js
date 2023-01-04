@@ -1443,7 +1443,7 @@ export const mainItems = [
     cashPrice: [300, 500, 700],
     startDate: 1675954800000,
     endDate: 1676041200000,
-    preTicketing: [1672585200000, 1673621999999],
+    preTicketing: [1675209600000, 1676851200000],
     runningTime: 90,
     dateInfo: {
       1675954800000: [
@@ -4307,7 +4307,7 @@ export const mainItems = [
     cashPrice: [300, 500, 700],
     startDate: 1675177200000,
     endDate: 1675350000000,
-    preTicketing: [1672585200000, 1673621999999],
+    preTicketing: [1675209600000, 1676851200000],
     runningTime: 120,
     dateInfo: {
       1675177200000: [
@@ -6229,7 +6229,7 @@ export const mainItems = [
     cashPrice: [300, 500, 700],
     startDate: 1676818800000,
     endDate: 1676818800000,
-    preTicketing: [1672585200000, 1673621999999],
+    preTicketing: [1675209600000, 1676851200000],
     runningTime: 120,
     dateInfo: {
       1676818800000: [
