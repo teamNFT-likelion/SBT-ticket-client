@@ -33,15 +33,17 @@ const TicketContent = styled('div')`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 5px;
   gap: 5px;
 `;
 
 const TextWrapper = styled('span')`
   display: block;
+  padding: 10px;
+  border-bottom: 3px solid ${colors.primary40};
 `;
 
-const DateWrapper = styled('div')`
+const ContentWrapper = styled('div')`
   color: ${colors.textSecondary};
 `;
 
@@ -50,7 +52,7 @@ const TicketButtonWrapper = styled('div')`
   flex-direction: ${(props) => props.direction};
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top:5px;
   gap: 10px;
   flex-wrap: wrap; //TODO : 임시
 `;
@@ -58,7 +60,7 @@ const TicketButtonWrapper = styled('div')`
 const TicketButton = styled('button')`
   background-color: ${(props) => props.buttonColor};
   width: 100px;
-  height: 36px;
+  height: 30px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 3px;
@@ -106,6 +108,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
   const [showFan, setShowFan] = useState(false);
   const [raffleModal, setRaffleModal] = useState(false);
   const [preTicketModal, setPreTicketModal] = useState(false);
+  const [goodsModal, setGoodsModal] = useState(false);
 
   // 본인인증을 위한 state
   const { email: userEmail, setPopup, popup } = useOauth();
@@ -128,6 +131,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
   const handleRefund = async () => {
     try {
       await refundSBT(id);
+      window.location.reload();
     } catch (error) {
       console.log('Refund Error: ', error);
       toast.error('환불 실패');
@@ -187,11 +191,15 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
   return (
     <div>
       <TicketWrapper key={id}>
+        <TextWrapper>
+          {title} #{id}
+        </TextWrapper>
         <TicketImage src={imgUrl} alt="ticket" />
         <TicketContent>
-          <TextWrapper>{title}</TextWrapper>
-          <TextWrapper>{seats.map((seat) => `[${seat}] `)}</TextWrapper>
-          <DateWrapper>{format(new Date(date), 'yyyy.MM.dd')}</DateWrapper>
+          <ContentWrapper style={{ color: colors.textWhite }}>
+            {seats.map((seat) => `[${seat}] `)}
+          </ContentWrapper>
+          <ContentWrapper>{format(new Date(date), 'yyyy.MM.dd')}</ContentWrapper>
           {active ? (
             <TicketButtonWrapper>
               <TicketButton
@@ -333,7 +341,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
           </ModalButton>
         </ModalButtonWrapper>
         <ModalButtonWrapper>
-          <ModalButton buttonColor={`#af00a7`} onClick={() => {}}>
+          <ModalButton buttonColor={`#af00a7`} onClick={() => setGoodsModal(true)}>
             굿즈 구매
           </ModalButton>
           <ModalButton
@@ -352,6 +360,9 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
       <PreTicketingCustomModal show={preTicketModal} toggleModal={() => setPreTicketModal(false)}>
         <PreTicketingModal setPreTicketModal={setPreTicketModal} hostAddr={hostAddr} />
       </PreTicketingCustomModal>
+      <CustomModal show={goodsModal} toggleModal={() => setGoodsModal(false)}>
+        준비중입니다...
+      </CustomModal>
     </div>
   );
 };
