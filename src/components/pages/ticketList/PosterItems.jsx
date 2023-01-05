@@ -29,7 +29,7 @@ const PosterItems = ({ type, items }) => {
     if (_type === 'sports') return '스포츠';
   };
 
-  const { typeItems } = useItems({ type, items });
+  const { typeItems } = useItems();
 
   return (
     <Container>

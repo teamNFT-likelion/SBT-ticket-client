@@ -1,14 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { parseItemType } from '@utils/parser';
 import useSbtPreTicketHost from '@hooks/useSbtPreTicketHost';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
 import { useCallback } from 'react';
+import { mainItems, restItems } from '@mock/items.js';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
-export default function useItems({ type, items }) {
-  const [typeItems, setTypeItems] = useState(items);
+export default function useItems() {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const paramType = searchParams.get('type');
+  const [type, setType] = useState('concert');
   const sbtHostList = useSbtPreTicketHost();
+  const items = useMemo(() => [...mainItems, ...restItems], []);
+  const [typeItems, setTypeItems] = useState(items);
 
   const [preList, setPreList] = useState([]);
+
+  useEffect(() => {
+    //TODO: 페이지타입별로 데이터 바꿔 줘야됨 setData 바꿔줘야댐
+    if (paramType === null) {
+      setType('concert');
+    } else if (paramType === 'exhibit' || paramType === 'sports') {
+      setType(paramType);
+    } else {
+      navigate('/list');
+    }
+  }, [paramType, navigate]);
 
   const getMyPreTList = useCallback(() => {
     let mySbtPreTList = [];
@@ -53,5 +71,5 @@ export default function useItems({ type, items }) {
     getMyPreTList();
   }, [getMyPreTList]);
 
-  return { typeItems, preList };
+  return { typeItems, preList, type, items };
 }
