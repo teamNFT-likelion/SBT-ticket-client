@@ -4,11 +4,16 @@ import { Column, Row } from '@components/atoms/wrapper.style';
 import { mainItems, restItems } from '@mock/items';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
+import PreTicketingPeriod from '@utils/PreTicketingPeriod';
 
 export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
   const navigate = useNavigate();
   const items = [...mainItems, ...restItems];
-  const pre_ticket_list = items.filter((item) => item.preTicketingList.includes(hostAddr));
+  const pre_ticket_list = items.filter(
+    (item) =>
+      item.preTicketingList.includes(hostAddr) &&
+      PreTicketingPeriod(item.preTicketing) === '진행중',
+  );
   const PreTicketingList = ({ item }) => {
     return (
       <ModalTempBox>
