@@ -113,7 +113,7 @@ const ImgBox = styled('img')`
 
 const ProfileImgBox = styled(ImgBox)`
   border-radius: 100px;
-`
+`;
 
 const InputBox = styled('input')`
   position: absolute;

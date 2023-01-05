@@ -9,7 +9,7 @@ import {
   PartButtonContainer,
   SelectInfoBox,
 } from '@styles/ticketDetailStyle';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import {
   tDateState,
   tDeadlineState,
@@ -22,8 +22,11 @@ import {
 import { TabButton } from '@styles/ApaymentStyles';
 import { useNavigate } from 'react-router-dom';
 import Calendar from 'react-calendar';
+import PreTicketingPeriod from '@utils/PreTicketingPeriod';
+import { walletConnectError } from '@utils/toastMessages';
+import { userState } from '@states/userState';
 
-const DateSelection = ({ data }) => {
+const DateSelection = ({ data, prePossible }) => {
   const navigate = useNavigate();
 
   const minDate = new Date(data.startDate) || null;
@@ -41,6 +44,32 @@ const DateSelection = ({ data }) => {
   const setSbtName = useSetRecoilState(sbtNameState);
   const setSbtDesc = useSetRecoilState(sbtDescState);
 
+  const { account } = useRecoilValue(userState);
+
+  const BookButton = () => {
+    if (prePossible && PreTicketingPeriod(data.preTicketing) === '진행중') {
+      return (
+        <ButtonsWrapper>
+          <Button onClick={onReserveClick}>사전예매</Button>
+        </ButtonsWrapper>
+      );
+    } else if (PreTicketingPeriod(data.preTicketing) === '전') {
+      return (
+        <ButtonsWrapper>
+          <Button disabled style={{ opacity: '0.8' }}>
+            사전예매
+          </Button>
+        </ButtonsWrapper>
+      );
+    } else {
+      return (
+        <ButtonsWrapper>
+          <Button onClick={onReserveClick}>예매하기</Button>
+        </ButtonsWrapper>
+      );
+    }
+  };
+
   const onReserveClick = () => {
     setTicketDate(date);
     setTicketPart(part);
@@ -49,9 +78,13 @@ const DateSelection = ({ data }) => {
     setSbtImage(data.posterImgUrl);
     setSbtName(data.title);
     setSbtDesc('');
-    navigate(`/payment?id=${data.id}`, {
-      state: { tab: 'APP_SelectSeats' },
-    });
+    if (!account) {
+      walletConnectError();
+    } else {
+      navigate(`/payment?id=${data.id}`, {
+        state: { tab: 'APP_SelectSeats' },
+      });
+    }
   };
 
   const handleDateClick = (_date) => {
@@ -110,9 +143,7 @@ const DateSelection = ({ data }) => {
           </span>
         </SelectInfoBox>
       </SelectInfo>
-      <ButtonsWrapper>
-        <Button onClick={onReserveClick}>예매하기</Button>
-      </ButtonsWrapper>
+      <BookButton />
     </ContentsInfoBody>
   );
 };

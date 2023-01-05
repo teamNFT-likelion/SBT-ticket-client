@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PosterItem from './PosterItem';
 import styled from 'styled-components';
-import { parseItemType } from '@utils/parser';
+import useItems from '@hooks/useItems';
 
 const Container = styled('div')`
   display: flex;
@@ -23,20 +23,13 @@ const PosterWrapper = styled('div')`
 `;
 
 const PosterItems = ({ type, items }) => {
-  const [typeItems, setTypeItems] = useState(items);
   const getTitle = (_type) => {
     if (_type === 'concert') return '공연';
     if (_type === 'exhibit') return '전시';
     if (_type === 'sports') return '스포츠';
   };
 
-  useEffect(() => {
-    const filteredList = items.filter(
-      (item) => item.topic === parseItemType(type),
-    );
-
-    setTypeItems(filteredList);
-  }, [type, items]);
+  const { typeItems } = useItems();
 
   return (
     <Container>
@@ -51,6 +44,7 @@ const PosterItems = ({ type, items }) => {
             startDate={data.startDate}
             endDate={data.endDate}
             preTicketing={data.preTicketing}
+            prePossible={data.prePossible}
           />
         ))}
       </PosterWrapper>

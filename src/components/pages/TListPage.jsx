@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Layout from '@articles/Layout';
 import PosterItems from './ticketList/PosterItems';
 import BigPoster from './ticketList/BigPoster';
-import { mainItems, restItems } from '@mock/items.js';
 import { useResetRecoilState } from 'recoil';
 import {
   tDateState,
@@ -16,6 +15,8 @@ import {
   tPricePerTokenState,
   tTokenPriceState,
 } from '@states/paymentState';
+import useItems from '@hooks/useItems';
+import { mainItems } from '@mock/items';
 
 const PageTypeWrapper = styled('div')`
   display: flex;
@@ -37,12 +38,14 @@ const PageTypeText = styled('span')`
 `;
 
 const TListPage = () => {
+  // const navigate = useNavigate();
+  // const [searchParams] = useSearchParams();
+  // const paramType = searchParams.get('type');
+  // const [type, setType] = useState('concert');
+  // const items = [...mainItems, ...restItems];
+  const { type, items } = useItems();
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const paramType = searchParams.get('type');
-  const [type, setType] = useState('concert');
-  const items = [...mainItems, ...restItems];
-  
+
   const resetTicketDate = useResetRecoilState(tDateState);
   const resetTicketPart = useResetRecoilState(tPartState);
   const resetTicketPrice = useResetRecoilState(tPriceState);
@@ -51,16 +54,16 @@ const TListPage = () => {
   const resetPricePerToken = useResetRecoilState(tPricePerTokenState);
   const resetTicketTokenPrice = useResetRecoilState(tTokenPriceState);
 
-  useEffect(() => {
-    //TODO: 페이지타입별로 데이터 바꿔 줘야됨 setData 바꿔줘야댐
-    if (paramType === null) {
-      setType('concert');
-    } else if (paramType === 'exhibit' || paramType === 'sports') {
-      setType(paramType);
-    } else {
-      navigate('/list');
-    }
-  }, [paramType, navigate]);
+  // useEffect(() => {
+  //   //TODO: 페이지타입별로 데이터 바꿔 줘야됨 setData 바꿔줘야댐
+  //   if (paramType === null) {
+  //     setType('concert');
+  //   } else if (paramType === 'exhibit' || paramType === 'sports') {
+  //     setType(paramType);
+  //   } else {
+  //     navigate('/list');
+  //   }
+  // }, [paramType, navigate]);
 
   useEffect(() => {
     // 예매하다가 팅겨나오면 리셋해줘야댐

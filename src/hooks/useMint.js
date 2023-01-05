@@ -61,20 +61,20 @@ export default function useMint() {
         from: account,
       });
       tokenContract.options.address = MUMBAI_TTOTMAIN_ADDR;
-      
+
       await tokenContract.methods.refundSbtToken(_tokenId).send({ from: account });
     }
   }
 
   // 소각
   async function burnSBT(_tokenId) {
-    if (walletType == 'eth') {
+    if (walletType === 'eth') {
       const tokenContract = await new web3.eth.Contract(TTOT_MAIN_ABI, MUMBAI_TTOTMAIN_ADDR, {
         from: account,
       });
       tokenContract.options.address = MUMBAI_TTOTMAIN_ADDR;
 
-      await tokenContract.methods.burnSbtToken(_tokenId).send({from: account});
+      await tokenContract.methods.burnSbtToken(_tokenId).send({ from: account });
     }
   }
 

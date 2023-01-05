@@ -4,7 +4,8 @@ import useHover from '@hooks/useHover';
 import { format } from 'date-fns';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
-import { preTicketingPeriod } from '@utils/preTicketingPeriod';
+import PreTicketingPeriod from '@utils/PreTicketingPeriod';
+import DisabledButton from '@components/atoms/DisabledButton';
 
 const Container = styled('div')`
   display: flex;
@@ -27,7 +28,9 @@ const HoverWrapper = styled('div')`
 const TicketImg = styled('img')`
   width: 200px;
   flex: 4;
-  border: 3px solid ${(props) => (props.preTicketing ? colors.primary80 : '#ffffff0')};
+  border: 3px solid
+    ${(props) =>
+      props.preTicketing === '진행중' && props.prePossible ? colors.primary80 : '#ffffff0'};
 `;
 
 const TitleWrapper = styled('div')`
@@ -43,19 +46,64 @@ const DateWrapper = styled('div')`
   color: ${colors.textSecondary};
 `;
 
-const PosterItem = ({ dataId, posterImgUrl, title, startDate, endDate, preTicketing }) => {
+const PosterItem = ({
+  dataId,
+  posterImgUrl,
+  title,
+  startDate,
+  endDate,
+  preTicketing,
+  prePossible,
+}) => {
   const [hoverRef, isHover] = useHover();
+
+  const Button = () => {
+    if (prePossible && PreTicketingPeriod(preTicketing) === '진행중') {
+      return (
+        <LinkButton
+          to={`/payment?id=${dataId}`}
+          name="사전예매"
+          connectCheck={true}
+          color={colors.primary40}
+        />
+      );
+    } else if (PreTicketingPeriod(preTicketing) === '전') {
+      return <DisabledButton name="사전예매" />;
+    } else if (!prePossible && PreTicketingPeriod(preTicketing) === '진행중') {
+      return <DisabledButton name="사전예매" />;
+    } else {
+      return (
+        <LinkButton
+          to={`/payment?id=${dataId}`}
+          name="예매하기"
+          connectCheck={true}
+          color={colors.primary40}
+        />
+      );
+    }
+  };
 
   return (
     <Container ref={hoverRef}>
       {isHover && (
-        <HoverWrapper>
-          <LinkButton to={`/detail?id=${dataId}`} name="상세정보" />
-          <LinkButton to={`/payment?id=${dataId}`} name="예매하기" connectCheck={true} />
-        </HoverWrapper>
+        <>
+          <HoverWrapper>
+            <LinkButton to={`/detail?id=${dataId}`} name="상세정보" prePossible={prePossible} />
+
+            <Button />
+          </HoverWrapper>
+        </>
       )}
-      <TicketImg src={posterImgUrl} preTicketing={preTicketingPeriod(preTicketing)} />
-      <TitleWrapper>{preTicketingPeriod(preTicketing) ? '[사전예매]  ' : '' + title}</TitleWrapper>
+      <TicketImg
+        src={posterImgUrl}
+        preTicketing={PreTicketingPeriod(preTicketing)}
+        prePossible={prePossible}
+      />
+      <TitleWrapper>
+        {(PreTicketingPeriod(preTicketing)
+          ? `[사전예매 ${PreTicketingPeriod(preTicketing)}] `
+          : '') + title}
+      </TitleWrapper>
       <DateWrapper>
         {format(new Date(startDate), 'yyyy.MM.dd')} ~{format(new Date(endDate), 'yyyy.MM.dd')}
       </DateWrapper>

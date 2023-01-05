@@ -13,10 +13,12 @@ import {
   sbtImageState,
   sbtNameState,
   sbtDescState,
+  preTicketState,
 } from '@states/paymentState';
 import { TabButton } from '@styles/ApaymentStyles';
 import Calendar from 'react-calendar';
 import TicketInfo from './TicketInfo';
+import PreTicketingPeriod from '@utils/PreTicketingPeriod';
 
 export const App1Start = ({ setTab, data }) => {
   const minDate = new Date(data.startDate) || null;
@@ -34,12 +36,16 @@ export const App1Start = ({ setTab, data }) => {
   const setSbtName = useSetRecoilState(sbtNameState);
   const setSbtDesc = useSetRecoilState(sbtDescState);
 
+  // 사전예매 기간 상태 저장을 위한 Recoil
+  const setPreTState = useSetRecoilState(preTicketState);
+
   const setSbtRecoilState = useCallback(() => {
     setTicketDate(date);
     setTicketPart(part);
     setTicketDeadline(deadline);
     setTicketPerformId(data.id);
     setSbtImage(data.posterImgUrl);
+    setPreTState(PreTicketingPeriod(data.preTicketing));
     setSbtName(data.title);
     setSbtDesc('');
   }, [
@@ -56,6 +62,8 @@ export const App1Start = ({ setTab, data }) => {
     setSbtImage,
     setSbtName,
     setSbtDesc,
+    data.preTicketing,
+    setPreTState,
   ]);
 
   useEffect(() => {
