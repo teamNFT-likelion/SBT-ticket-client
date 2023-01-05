@@ -14,44 +14,6 @@ import Slider from 'react-slick';
 import { SlArrowRight, SlArrowLeft } from 'react-icons/sl';
 
 const Problem = () => {
-  function NextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        style={{
-          color: 'white',
-          position: 'absolute',
-          right: '-24px',
-          top: 0,
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-        onClick={onClick}
-      >
-        <SlArrowRight size="30px" color={colors.primary80} style={{ cursor: 'pointer' }} />
-      </div>
-    );
-  }
-
-  function PrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        style={{
-          position: 'absolute',
-          left: '-24px',
-          top: 0,
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-        onClick={onClick}
-      >
-        <SlArrowLeft size="30px" color={colors.primary80} style={{ cursor: 'pointer' }} />
-      </div>
-    );
-  }
   const settings = {
     infinite: true,
     speed: 800,
@@ -147,6 +109,45 @@ const Problem = () => {
     </SliderWrapper>
   );
 };
+
+function NextArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      style={{
+        color: 'white',
+        position: 'absolute',
+        right: '-24px',
+        top: 0,
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+      }}
+      onClick={onClick}
+    >
+      <SlArrowRight size="30px" color={colors.primary80} style={{ cursor: 'pointer' }} />
+    </div>
+  );
+}
+
+function PrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: '-24px',
+        top: 0,
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+      }}
+      onClick={onClick}
+    >
+      <SlArrowLeft size="30px" color={colors.primary80} style={{ cursor: 'pointer' }} />
+    </div>
+  );
+}
 
 const SliderWrapper = styled('div')`
   width: 100%;

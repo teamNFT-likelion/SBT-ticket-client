@@ -53,14 +53,13 @@ export default function CheckWallet() {
         localStorage.setItem('_user', accounts[0]);
         // setTimeout(() => window.location.reload(), 1500);
       }
-    };
+    }
 
     ethereum?.on('accountsChanged', handleAccountsChanged);
     return () => {
       ethereum.removeListener('accountsChanged', handleAccountsChanged);
     };
-  }, [account, setAccount, setWalletType]);
-
+  }, [account, setAccount, setNetworkId, setWalletType]);
 
   // Metamask 체인 변경
   useEffect(() => {

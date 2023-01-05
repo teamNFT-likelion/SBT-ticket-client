@@ -16,7 +16,7 @@ import {
 import { walletConnectError } from '@utils/toastMessages';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@states/userState';
-import { preTicketingPeriod } from '@utils/preTicketingPeriod';
+import { preTicketingPeriod } from '@utils/PreTicketingPeriod';
 
 const BigPoster = ({ type, items }) => {
   const [activePosterId, setActivePosterId] = useState(0);

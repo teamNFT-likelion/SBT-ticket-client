@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import { format } from 'date-fns';
 import { SubTitle } from '@styles/ApaymentStyles';
-import { preTicketingPeriod } from '@utils/preTicketingPeriod';
+import { preTicketingPeriod } from '@utils/PreTicketingPeriod';
 import * as colors from '@styles/colors';
 
 const ContentsInfoBody = styled(Row)`

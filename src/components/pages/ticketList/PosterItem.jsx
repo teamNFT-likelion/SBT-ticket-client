@@ -4,7 +4,7 @@ import useHover from '@hooks/useHover';
 import { format } from 'date-fns';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
-import { preTicketingPeriod } from '@utils/preTicketingPeriod';
+import { preTicketingPeriod } from '@utils/PreTicketingPeriod';
 
 const Container = styled('div')`
   display: flex;
