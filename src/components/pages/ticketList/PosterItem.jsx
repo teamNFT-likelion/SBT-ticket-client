@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
+import DisabledButton from '@components/atoms/DisabledButton';
 
 const Container = styled('div')`
   display: flex;
@@ -45,18 +46,6 @@ const DateWrapper = styled('div')`
   color: ${colors.textSecondary};
 `;
 
-const DisabledButtonWrapper = styled('button')`
-  background-color: #526600;
-  color: white;
-  width: 100px;
-  height: 64px;
-  font-size: 20px;
-  border-radius: 5px;
-  margin: 3px;
-  cursor: pointer;
-  opacity: 0.8;
-`;
-
 const PosterItem = ({
   dataId,
   posterImgUrl,
@@ -70,23 +59,40 @@ const PosterItem = ({
 
   const Button = () => {
     if (prePossible && PreTicketingPeriod(preTicketing) === '진행중') {
-      return <LinkButton to={`/payment?id=${dataId}`} name="사전예매" connectCheck={true} />;
+      return (
+        <LinkButton
+          to={`/payment?id=${dataId}`}
+          name="사전예매"
+          connectCheck={true}
+          color={colors.primary40}
+        />
+      );
     } else if (PreTicketingPeriod(preTicketing) === '전') {
-      return <DisabledButtonWrapper disabled>사전예매</DisabledButtonWrapper>;
+      return <DisabledButton name="사전예매" />;
     } else if (!prePossible && PreTicketingPeriod(preTicketing) === '진행중') {
-      return <DisabledButtonWrapper disabled>사전예매</DisabledButtonWrapper>;
+      return <DisabledButton name="사전예매" />;
     } else {
-      return <LinkButton to={`/payment?id=${dataId}`} name="예매하기" connectCheck={true} />;
+      return (
+        <LinkButton
+          to={`/payment?id=${dataId}`}
+          name="예매하기"
+          connectCheck={true}
+          color={colors.primary40}
+        />
+      );
     }
   };
 
   return (
     <Container ref={hoverRef}>
       {isHover && (
-        <HoverWrapper>
-          <LinkButton to={`/detail?id=${dataId}`} name="상세정보" prePossible={prePossible} />
-          <Button />
-        </HoverWrapper>
+        <>
+          <HoverWrapper>
+            <LinkButton to={`/detail?id=${dataId}`} name="상세정보" prePossible={prePossible} />
+
+            <Button />
+          </HoverWrapper>
+        </>
       )}
       <TicketImg
         src={posterImgUrl}

@@ -6,7 +6,7 @@ import { useRecoilValue } from 'recoil';
 import { userState } from '@states/userState';
 
 export const ButtonWrapper = styled('button')`
-  background-color: #526600;
+  background-color: ${(props) => props.color};
   color: white;
   width: 100px;
   height: 64px;
@@ -16,7 +16,13 @@ export const ButtonWrapper = styled('button')`
   margin: 3px;
 `;
 
-const LinkButton = ({ to = '/', name = '홈으로', connectCheck = false, prePossible = false }) => {
+const LinkButton = ({
+  to = '/',
+  name = '홈으로',
+  connectCheck = false,
+  prePossible = false,
+  color = '#526600',
+}) => {
   const { account } = useRecoilValue(userState);
 
   function handleClick(e) {
@@ -25,11 +31,15 @@ const LinkButton = ({ to = '/', name = '홈으로', connectCheck = false, prePos
   }
 
   if (connectCheck && !account) {
-    return <ButtonWrapper onClick={handleClick}>{name}</ButtonWrapper>;
+    return (
+      <ButtonWrapper onClick={handleClick} color={color}>
+        {name}
+      </ButtonWrapper>
+    );
   }
   return (
     <Link to={to} state={prePossible}>
-      <ButtonWrapper>{name}</ButtonWrapper>
+      <ButtonWrapper color={color}>{name}</ButtonWrapper>
     </Link>
   );
 };
