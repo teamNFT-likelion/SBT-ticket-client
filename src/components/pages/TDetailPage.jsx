@@ -62,7 +62,7 @@ const TDetailPage = () => {
       <DetailInfo data={data} />
       <DateSelection data={data} />
       <PosterItems type="concert" items={items} />
-      <img src={data.detailInfoImg} alt="detailInfo" width={'800px'} />
+      <img src={data.detailInfoImg} alt="detailInfo" style={{width:"800px", marginTop:"100px"}}/>
     </Layout>
   );
 };
