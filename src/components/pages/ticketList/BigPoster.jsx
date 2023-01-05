@@ -1,34 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { parseItemType } from '@utils/parser';
+import React, { useState } from 'react';
 import { BigPosterWrapper, PosterCard, ImgCard, DescCard } from './BigPoster.style';
-import PreTicketingPeriod from '@utils/PreTicketingPeriod';
 import { BigPosterButton } from '@components/articles/BigPosterButton';
 import { BigPosterInfo } from '@components/articles/BigPosterInfo';
-import useSbtPreTicketHost from '@hooks/useSbtPreTicketHost';
-import { mainItems } from '@mock/items';
+import useItems from '@hooks/useItems';
 
 const BigPoster = ({ type, items }) => {
   const [activePosterId, setActivePosterId] = useState(0);
-  const [typeItems, setTypeItems] = useState(items);
-  const [preList, setPreList] = useState([]);
 
-  const sbtHostList = useSbtPreTicketHost();
-
-  function getMyPreTList() {
-    if (localStorage.getItem('_user')) {
-      let mySbtPreTList = [];
-      sbtHostList.forEach((id) => {
-        const pre_ticket_list = mainItems.filter((item) =>
-          item.preTicketingList.includes(id.tokenHostAddr),
-        );
-        [mySbtPreTList] = [...mySbtPreTList, pre_ticket_list !== [] && pre_ticket_list];
-      });
-
-      setPreList(mySbtPreTList);
-    } else {
-      return;
-    }
-  }
+  const typeItems = useItems({ type, items });
 
   const onClickCard = (side) => {
     if (activePosterId === 0 && side === 'right') {
@@ -39,26 +18,6 @@ const BigPoster = ({ type, items }) => {
       setActivePosterId(0);
     }
   };
-
-  useEffect(() => {
-    getMyPreTList();
-    let filteredList = items
-      .filter((item) => item.topic === parseItemType(type))
-      .map((prev) => {
-        let cp = { ...prev, preTState: PreTicketingPeriod(prev.preTicketing) };
-
-        if (preList.map((i) => i.id).includes(prev.id)) {
-          cp = { ...cp, prePossible: true };
-        } else {
-          cp = { ...cp, prePossible: false };
-        }
-        return cp;
-      });
-
-    setTypeItems(filteredList);
-    setActivePosterId(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [type, items]);
 
   return (
     <BigPosterWrapper>

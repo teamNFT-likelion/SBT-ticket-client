@@ -45,6 +45,18 @@ const DateWrapper = styled('div')`
   color: ${colors.textSecondary};
 `;
 
+const DisabledButtonWrapper = styled('button')`
+  background-color: #526600;
+  color: white;
+  width: 100px;
+  height: 64px;
+  font-size: 20px;
+  border-radius: 5px;
+  margin: 3px;
+  cursor: pointer;
+  opacity: 0.8;
+`;
+
 const PosterItem = ({
   dataId,
   posterImgUrl,
@@ -56,12 +68,22 @@ const PosterItem = ({
 }) => {
   const [hoverRef, isHover] = useHover();
 
+  const Button = () => {
+    if (prePossible && PreTicketingPeriod(preTicketing) === '진행중') {
+      return <DisabledButtonWrapper disabled>사전예매</DisabledButtonWrapper>;
+    } else if (PreTicketingPeriod(preTicketing) === '전') {
+      return <DisabledButtonWrapper disabled>사전예매</DisabledButtonWrapper>;
+    } else {
+      return <LinkButton to={`/payment?id=${dataId}`} name="예매하기" connectCheck={true} />;
+    }
+  };
+
   return (
     <Container ref={hoverRef}>
       {isHover && (
         <HoverWrapper>
           <LinkButton to={`/detail?id=${dataId}`} name="상세정보" />
-          <LinkButton to={`/payment?id=${dataId}`} name="예매하기" connectCheck={true} />
+          <Button />
         </HoverWrapper>
       )}
       <TicketImg

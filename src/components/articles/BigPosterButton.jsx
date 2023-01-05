@@ -15,7 +15,7 @@ export const BigPosterButton = ({ Item }) => {
     case '전':
       Button = (
         <button
-          style={{ backgroundColor: colors.primary40 }}
+          style={{ backgroundColor: colors.primary40, opacity: '0.5' }}
           onClick={() => {
             if (account) {
               navigate({
@@ -54,7 +54,7 @@ export const BigPosterButton = ({ Item }) => {
       } else {
         Button = (
           <button
-            style={{ backgroundColor: colors.primary40 }}
+            style={{ backgroundColor: colors.primary40, opacity: '0.5' }}
             onClick={() => {
               if (account) {
                 navigate({
