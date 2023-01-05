@@ -42,7 +42,7 @@ export default function useMint() {
       if (_payType === 'COIN') {
         // coin으로 결제시
         tokenValue = String(tTokenPrice * 10 ** 18);
-      } else if (_payType === 'COIN') {
+      } else if (_payType === 'CASH') {
         // cash로 결제시
         tokenValue = String(0);
       }
