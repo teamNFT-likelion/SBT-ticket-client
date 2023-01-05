@@ -4,7 +4,7 @@ import { BigPosterButton } from '@components/articles/BigPosterButton';
 import { BigPosterInfo } from '@components/articles/BigPosterInfo';
 import useItems from '@hooks/useItems';
 
-const BigPoster = ({ type, items }) => {
+const BigPoster = () => {
   const [activePosterId, setActivePosterId] = useState(0);
 
   const { typeItems } = useItems();
