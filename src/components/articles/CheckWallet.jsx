@@ -3,6 +3,7 @@ import { userAccount, userNetworkId, userWalletType } from '@states/userState';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useRecoilState, useSetRecoilState } from 'recoil';
+import { formatAddress } from '@utils/parser';
 
 const ethereum = window.ethereum;
 
@@ -12,88 +13,95 @@ export default function CheckWallet() {
   const [networkId, setNetworkId] = useRecoilState(userNetworkId);
   const mumbaiNetwork = networks['mumbai'].chainId;
 
-  // Metamask 권한 확인 -> 잠금 동작 인식 불가
-  // useEffect(() => {
-  //   if (!ethereum) {
-  //     return;
-  //   }
-
-  //   async function checkPermission() {
-  //     const results = await Promise.all([ethereum._metamask.isUnlocked()]);
-  //     return results.every((res) => res);
-  //   }
-
-  //   checkPermission()
-  //     .then((a) => {
-  //       if (a === false) {
-  //         setAccount('');
-  //         setWalletType('');
-  //         localStorage.removeItem('_user');
-  //         localStorage.removeItem('_wallet');
-  //         toast.warn('계정이 잠겼습니다.');
-  //       } else {
-  //         return;
-  //       }
-  //     })
-  //     .catch((b) => {
-  //       setAccount('');
-  //       setWalletType('');
-  //       localStorage.removeItem('_user');
-  //       localStorage.removeItem('_wallet');
-  //       toast.warn('계정이 잠겼습니다.');
-  //     });
-  // }, [setAccount, setWalletType]);
-
-  // Metamask 계정 변경
+  // Metamask 잠금 동작 인식 + 계정 변경 인식
   useEffect(() => {
     if (!ethereum) {
+      toast.error('metamask 설치 필요', {
+        position: toast.POSITION.TOP_CENTER,
+      });
       return;
     }
 
-    const changedAccount = async () => {
-      const getAccount = await ethereum?.request({
-        method: 'eth_accounts',
+    ethereum
+      .request({ method: 'eth_accounts' })
+      .then(handleAccountsChanged)
+      .catch((err) => {
+        console.error(err);
       });
-      return getAccount;
-    };
 
-    const handleChangeAccounts = async () => {
+    function handleAccountsChanged(accounts) {
       if (!account) {
         return;
       }
-      if (account !== changedAccount) {
-        toast.success(`${changedAccount.slice(0, 5)}.. 계정이 바뀌었습니다.`, {
+      if (accounts.length === 0) {
+        console.log('Please connect to MetaMask.');
+        setAccount('');
+        setWalletType('');
+        setNetworkId('');
+        localStorage.removeItem('_user');
+        localStorage.removeItem('_wallet');
+        toast.warn(`계정이 잠겼습니다. 다시 로그인 해주세요.`, {
           autoClose: 1500,
         });
-        setAccount(changedAccount);
-        localStorage.setItem('_user', changedAccount);
-        setTimeout(() => window.location.reload(), 1500);
+        // setTimeout(() => window.location.reload(), 1500);
+      } else if (accounts[0] !== account) {
+        console.log(accounts[0]);
+        toast.success(`${formatAddress(accounts[0])}으로 계정이 바뀌었습니다.`, {
+          autoClose: 1500,
+        });
+        setAccount(accounts[0]);
+        localStorage.setItem('_user', accounts[0]);
+        // setTimeout(() => window.location.reload(), 1500);
       }
     };
 
-    ethereum?.on('accountsChanged', handleChangeAccounts);
+    ethereum?.on('accountsChanged', handleAccountsChanged);
     return () => {
-      ethereum.removeListener('accountsChanged', handleChangeAccounts);
+      ethereum.removeListener('accountsChanged', handleAccountsChanged);
     };
-  }, [account, setAccount]);
+  }, [account, setAccount, setWalletType]);
+
 
   // Metamask 체인 변경
   useEffect(() => {
     if (!ethereum) {
+      toast.error('metamask 설치 필요', {
+        position: toast.POSITION.TOP_CENTER,
+      });
       return;
     }
 
     async function getChainId() {
-      await ethereum
-        .request({ method: 'eth_chainId' })
-        .then((res) => setNetworkId(res));
+      await ethereum.request({ method: 'eth_chainId' }).then((res) => setNetworkId(res));
     }
 
-    getChainId();
-
-    if (networkId !== mumbaiNetwork) {
-      handleSwitchChain();
-    }
+    const handleSwitchChain = async () => {
+      try {
+        if (account) {
+          await window.ethereum.enable();
+        }
+        // switch 네트워크
+        await ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: mumbaiNetwork }],
+        });
+      } catch (switchError) {
+        // 네트워크가 존재하지 않으면 새로 추가
+        if (switchError.code === 4902) {
+          try {
+            await ethereum.request({
+              method: 'wallet_addEthereumChain',
+              params: [networks['mumbai']],
+            });
+          } catch (addError) {
+            // handle "add" error
+            console.error('Add new network FAILED', addError);
+          }
+        }
+        // handle other "switch" errors
+        console.error('Switch network FAILED', switchError);
+      }
+    };
 
     const handleNetworkChanged = (chainId) => {
       if (chainId !== mumbaiNetwork) {
@@ -113,6 +121,12 @@ export default function CheckWallet() {
       }
     };
 
+    getChainId();
+
+    if (networkId !== mumbaiNetwork) {
+      handleSwitchChain();
+    }
+
     ethereum?.on('chainChanged', handleNetworkChanged);
     return () => {
       ethereum?.removeListener('chainChanged', handleNetworkChanged);
@@ -120,32 +134,5 @@ export default function CheckWallet() {
     // eslint-disable-next-line
   }, [setAccount, setWalletType]);
 
-  const handleSwitchChain = async () => {
-    try {
-      if (account) {
-        await window.ethereum.enable();
-      }
-      // switch 네트워크
-      await ethereum.request({
-        method: 'wallet_switchEthereumChain',
-        params: [{ chainId: mumbaiNetwork }],
-      });
-    } catch (switchError) {
-      // 네트워크가 존재하지 않으면 새로 추가
-      if (switchError.code === 4902) {
-        try {
-          await ethereum.request({
-            method: 'wallet_addEthereumChain',
-            params: [networks['mumbai']],
-          });
-        } catch (addError) {
-          // handle "add" error
-          console.error('Add new network FAILED', addError);
-        }
-      }
-      // handle other "switch" errors
-      console.error('Switch network FAILED', switchError);
-    }
-  };
   return;
 }
