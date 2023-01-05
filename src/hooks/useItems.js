@@ -33,7 +33,13 @@ export default function useItems({ type, items }) {
       .map((prev) => {
         let cp = { ...prev, preTState: PreTicketingPeriod(prev.preTicketing) };
 
-        if (preList.map((i) => i.id).includes(prev.id)) {
+        if (
+          preList
+            .map((i) => {
+              return i.id;
+            })
+            .includes(prev.id)
+        ) {
           cp = { ...cp, prePossible: true };
         } else {
           cp = { ...cp, prePossible: false };

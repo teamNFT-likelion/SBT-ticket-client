@@ -13,7 +13,7 @@ export const mainItems = [
     startDate: 1677164400000,
     endDate: 1677250800000,
     preTicketing: [1672585200000, 1673621999999],
-    preTicketingList: [],
+    preTicketingList: ['0x7f76cF9B69d1bf8B0a037d6aaadc38E08530d1bB'],
     runningTime: 120,
     dateInfo: {
       1677164400000: [
@@ -2877,7 +2877,7 @@ export const mainItems = [
     startDate: 1674831600000,
     endDate: 1675004400000,
     preTicketing: [1672585200000, 1673621999999],
-    preTicketingList: [],
+    preTicketingList: ['0x7f76cF9B69d1bf8B0a037d6aaadc38E08530d1bB'],
     runningTime: 120,
     dateInfo: {
       1674831600000: [
@@ -5745,7 +5745,7 @@ export const mainItems = [
     startDate: 1676386800000,
     endDate: 1676386800000,
     preTicketing: [1672585200000, 1673621999999],
-    preTicketingList: [],
+    preTicketingList: ['0x7f76cF9B69d1bf8B0a037d6aaadc38E08530d1bB'],
     runningTime: 90,
     dateInfo: {
       1676386800000: [
@@ -6729,11 +6729,7 @@ export const restItems = [
     startDate: 1672326000000,
     endDate: 1672412400000,
     preTicketing: [],
-    preTicketingList: [
-      '0xF28B7529079c42aBAC7452Aac4cCB1A1226b0ca8',
-      '0xb05848331e1650e8b6fEFC923aC6cc39768D4B6A',
-      '0x3cFB4119E326Dff23beAbf58dbA232159158623a',
-    ],
+    preTicketingList: [],
     runningTime: 90,
     dateInfo: {
       1672326000000: [
