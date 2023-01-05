@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import * as colors from '@styles/colors';
 import { Column } from '@atoms/wrapper.style';
 import { Title, TitleBold, Desc } from './main.style';
 import problem_1_img from '@assets/img/problem_1.png';
@@ -10,8 +11,47 @@ import problem_5_img from '@assets/img/problem_5.png';
 import problem_6_img from '@assets/img/problem_6.png';
 import { lg, sm } from '@styles/GlobalStyle';
 import Slider from 'react-slick';
+import { SlArrowRight, SlArrowLeft } from 'react-icons/sl';
 
 const Problem = () => {
+  function NextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        style={{
+          color: 'white',
+          position: 'absolute',
+          right: '-24px',
+          top: 0,
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+        onClick={onClick}
+      >
+        <SlArrowRight size="30px" color={colors.primary80} style={{ cursor: 'pointer' }} />
+      </div>
+    );
+  }
+
+  function PrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        style={{
+          position: 'absolute',
+          left: '-24px',
+          top: 0,
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+        onClick={onClick}
+      >
+        <SlArrowLeft size="30px" color={colors.primary80} style={{ cursor: 'pointer' }} />
+      </div>
+    );
+  }
   const settings = {
     infinite: true,
     speed: 800,
@@ -21,6 +61,8 @@ const Problem = () => {
     centerPadding: '90px',
     autoplay: true,
     autoplaySpeed: 7500,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   return (
@@ -127,6 +169,10 @@ const SliderWrapper = styled('div')`
     scale: 1;
     transition: scale 1s ease-in-out;
     border: 3px solid white;
+  }
+
+  & .slick-slider {
+    position: relative;
   }
 `;
 

@@ -16,30 +16,30 @@ const SubTitle = styled('div')`
   `}
 `;
 
-const LogoText = styled('div')`
-  display: flex;
-  align-items: center;
-  margin-top: 2.8rem;
+const Title = styled('span')`
+  font-family: 'Shrikhand', cursive;
+  font-size: 4rem;
+  text-align: center;
   color: ${colors.primary40};
-  font-family: 'Shrikhand';
-  font-style: italic;
-  font-weight: 400;
-  font-size: 120px;
-  letter-spacing: 1.42683px;
+  margin-bottom: 24px;
 
-  ${sm`
-    font-size: 90px;
-  `}
+  & .logo-ko {
+    font-size: 1.85rem;
+    font-weight: 100;
+  }
+`;
+
+const B = styled(Title)`
+  font-size: 7rem;
 `;
 
 const Solving = () => {
   return (
-    <Column alignItems="center" marginTop="30vh" marginBottom="20vh">
-      <SubTitle>
-        양도불가능한 신원증명 토큰(SBT)으로
-        <br /> 2차 티켓 거래를 방지하는 시스템
-      </SubTitle>
-      <LogoText>ttot</LogoText>
+    <Column alignItems="center" marginBottom="140px" marginTop="80px">
+      <Title>
+        <B>t</B>icket<B> </B> <B>to t</B>oken &nbsp;<span className="logo-ko">[ 또트 ]</span>
+      </Title>
+      <SubTitle>: 양도불가능한 신원증명 토큰(SBT)으로 2차 거래를 방지하는 플랫폼입니다.</SubTitle>
     </Column>
   );
 };

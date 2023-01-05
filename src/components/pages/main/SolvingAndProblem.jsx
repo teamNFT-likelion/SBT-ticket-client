@@ -1,9 +1,7 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Anchor from '@atoms/Anchor';
-import Solving from './Solving';
 import Problem from './Problem';
-import { APP_MAX_W } from '@constants/styleConst';
+import { APP_MAX_W, APP_HEADER_H } from '@constants/styleConst';
 
 const Container = styled('div')`
   display: flex;
@@ -13,16 +11,15 @@ const Container = styled('div')`
   position: relative;
   overflow: hidden;
   padding: 0 2.75rem;
+  margin-top: ${APP_HEADER_H};
 `;
 
-const SolvingAndProblem = forwardRef((props, ref) => {
+const SolvingAndProblem = () => {
   return (
     <Container>
-      <Anchor ref={ref} />
-      <Solving />
       <Problem />
     </Container>
   );
-});
+};
 
 export default SolvingAndProblem;
