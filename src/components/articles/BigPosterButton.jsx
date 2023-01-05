@@ -113,9 +113,10 @@ export const BigPosterButton = ({ Item }) => {
     <ButtonWrapper>
       <button
         onClick={() => {
-          navigate({
-            pathname: '/detail',
-            search: `?id=${Item.id}`,
+          navigate(`/detail?id=${Item.id}`, {
+            state: {
+              prePossible: Item.prePossible,
+            },
           });
         }}
       >

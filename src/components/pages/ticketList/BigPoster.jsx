@@ -7,7 +7,7 @@ import useItems from '@hooks/useItems';
 const BigPoster = ({ type, items }) => {
   const [activePosterId, setActivePosterId] = useState(0);
 
-  const typeItems = useItems({ type, items });
+  const { typeItems } = useItems({ type, items });
 
   const onClickCard = (side) => {
     if (activePosterId === 0 && side === 'right') {

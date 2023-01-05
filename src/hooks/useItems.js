@@ -47,5 +47,5 @@ export default function useItems({ type, items }) {
     getMyPreTList();
   }, [getMyPreTList]);
 
-  return typeItems;
+  return { typeItems, preList };
 }

@@ -106,7 +106,7 @@ export default function Wallet() {
         toast.success(`${formatAddress(accounts[0])}님 환영합니다.`, {
           autoClose: 1500,
         });
-        setTimeout(() => window.location.reload(), 1500);
+        window.location.reload();
       }
     } catch {
       toast.error('로그인 실패. 브라우저를 끄고 다시 켜주세요.', {

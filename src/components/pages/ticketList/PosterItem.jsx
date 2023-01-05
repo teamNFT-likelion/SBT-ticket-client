@@ -82,7 +82,7 @@ const PosterItem = ({
     <Container ref={hoverRef}>
       {isHover && (
         <HoverWrapper>
-          <LinkButton to={`/detail?id=${dataId}`} name="상세정보" />
+          <LinkButton to={`/detail?id=${dataId}`} name="상세정보" prePossible={prePossible} />
           <Button />
         </HoverWrapper>
       )}

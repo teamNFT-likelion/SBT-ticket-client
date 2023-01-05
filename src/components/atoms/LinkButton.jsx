@@ -16,7 +16,7 @@ export const ButtonWrapper = styled('button')`
   margin: 3px;
 `;
 
-const LinkButton = ({ to = '/', name = '홈으로', connectCheck = false }) => {
+const LinkButton = ({ to = '/', name = '홈으로', connectCheck = false, prePossible = false }) => {
   const { account } = useRecoilValue(userState);
 
   function handleClick(e) {
@@ -28,7 +28,7 @@ const LinkButton = ({ to = '/', name = '홈으로', connectCheck = false }) => {
     return <ButtonWrapper onClick={handleClick}>{name}</ButtonWrapper>;
   }
   return (
-    <Link to={to}>
+    <Link to={to} state={prePossible}>
       <ButtonWrapper>{name}</ButtonWrapper>
     </Link>
   );
