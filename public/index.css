@@ -1,0 +1,9 @@
+#root:not(:empty) ~ #loading {
+  display: none;
+}
+
+#loading {
+  background-color: #0f0f0f;
+  width: 100vw;
+  height: 100vh;
+}

@@ -106,7 +106,8 @@ export default function Wallet() {
         toast.success(`${formatAddress(accounts[0])}님 환영합니다.`, {
           autoClose: 1500,
         });
-        window.location.reload();
+        // 안기다리고 바로 reload하면서 toast는 뜨는게 뭔지 모르겠슴....아
+        setTimeout(() => window.location.reload(), 1500);
       }
     } catch {
       toast.error('로그인 실패. 브라우저를 끄고 다시 켜주세요.', {
