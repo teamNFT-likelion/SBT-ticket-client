@@ -9,7 +9,6 @@ export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
   const navigate = useNavigate();
   const items = [...mainItems, ...restItems];
   const pre_ticket_list = items.filter((item) => item.preTicketingList.includes(hostAddr));
-  console.log('preTicketingList : ', pre_ticket_list);
   const PreTicketingList = ({ item }) => {
     return (
       <ModalTempBox>
@@ -58,7 +57,7 @@ export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
             해당 토큰과 관련된 공연이 없습니다.
           </p>
         ) : (
-          pre_ticket_list.map((item) => <PreTicketingList item={item} />)
+          pre_ticket_list.map((item, i) => <PreTicketingList item={item} key={i} />)
         )}
       </ModalWrapper>
     </>

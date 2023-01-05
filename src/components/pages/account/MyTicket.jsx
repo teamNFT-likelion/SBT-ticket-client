@@ -41,7 +41,7 @@ const TextWrapper = styled('div')`
   display: block;
   padding: 10px;
   border-radius: 17px 17px 0 0;
-  background-color: ${({ isActive }) => (isActive ? colors.primary40 : "#af00a7")};
+  background-color: ${({ isActive }) => (isActive ? colors.primary40 : '#af00a7')};
 `;
 
 const ContentWrapper = styled('div')`
@@ -53,7 +53,7 @@ const TicketButtonWrapper = styled('div')`
   flex-direction: ${(props) => props.direction};
   justify-content: center;
   align-items: center;
-  margin-top:5px;
+  margin-top: 5px;
   gap: 10px;
   flex-wrap: wrap; //TODO : 임시
 `;
@@ -147,7 +147,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
       console.log('Burn Error: ', error);
       toast.error('소각 실패');
     }
-  }
+  };
 
   useEffect(() => {
     async function imgUrlInUri() {
@@ -175,7 +175,6 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
   function handleUseQR() {
     console.log('userEmail : ', userEmail);
     console.log('tokenEmail : ', tEmail);
-    console.log(id, image, title, date, active, uri);
 
     if (!userEmail) {
       setIsAuthorized(false);
