@@ -24,7 +24,6 @@ const TDetailPage = () => {
   const { id: dataId } = parse(location.search);
   const data = mainItems.filter((item) => item.id === dataId)[0] || null;
   const prePossible = location.state;
-  console.log(prePossible);
 
   const resetTicketDate = useResetRecoilState(tDateState);
   const resetTicketPart = useResetRecoilState(tPartState);

@@ -22,14 +22,14 @@ const PosterWrapper = styled('div')`
   gap: 60px;
 `;
 
-const PosterItems = ({ type, items }) => {
+const PosterItems = ({ type }) => {
+  const { typeItems } = useItems();
+
   const getTitle = (_type) => {
     if (_type === 'concert') return '공연';
     if (_type === 'exhibit') return '전시';
     if (_type === 'sports') return '스포츠';
   };
-
-  const { typeItems } = useItems();
 
   return (
     <Container>

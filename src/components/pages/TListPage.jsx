@@ -16,7 +16,6 @@ import {
   tTokenPriceState,
 } from '@states/paymentState';
 import useItems from '@hooks/useItems';
-import { mainItems } from '@mock/items';
 
 const PageTypeWrapper = styled('div')`
   display: flex;
@@ -38,12 +37,7 @@ const PageTypeText = styled('span')`
 `;
 
 const TListPage = () => {
-  // const navigate = useNavigate();
-  // const [searchParams] = useSearchParams();
-  // const paramType = searchParams.get('type');
-  // const [type, setType] = useState('concert');
-  // const items = [...mainItems, ...restItems];
-  const { type, items } = useItems();
+  const { type } = useItems();
   const navigate = useNavigate();
 
   const resetTicketDate = useResetRecoilState(tDateState);
@@ -53,17 +47,6 @@ const TListPage = () => {
   const resetTicketDeadline = useResetRecoilState(tDeadlineState);
   const resetPricePerToken = useResetRecoilState(tPricePerTokenState);
   const resetTicketTokenPrice = useResetRecoilState(tTokenPriceState);
-
-  // useEffect(() => {
-  //   //TODO: 페이지타입별로 데이터 바꿔 줘야됨 setData 바꿔줘야댐
-  //   if (paramType === null) {
-  //     setType('concert');
-  //   } else if (paramType === 'exhibit' || paramType === 'sports') {
-  //     setType(paramType);
-  //   } else {
-  //     navigate('/list');
-  //   }
-  // }, [paramType, navigate]);
 
   useEffect(() => {
     // 예매하다가 팅겨나오면 리셋해줘야댐
@@ -97,9 +80,9 @@ const TListPage = () => {
           스포츠
         </PageTypeText>
       </PageTypeWrapper>
-      <BigPoster type={type} items={mainItems} />
+      <BigPoster />
       <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
-        <PosterItems type={type} items={items} />
+        <PosterItems />
       </div>
     </Layout>
   );
