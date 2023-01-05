@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { parseItemType } from '@utils/parser';
 import useSbtPreTicketHost from '@hooks/useSbtPreTicketHost';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
+import { useCallback } from 'react';
 
 const Container = styled('div')`
   display: flex;
@@ -36,9 +37,10 @@ const PosterItems = ({ type, items }) => {
 
   const [preList, setPreList] = useState([]);
 
-  function getMyPreTList() {
+  const getMyPreTList = useCallback(() => {
+    let mySbtPreTList = [];
+
     if (localStorage.getItem('_user')) {
-      let mySbtPreTList = [];
       sbtHostList.forEach((id) => {
         const pre_ticket_list = items.filter((item) =>
           item.preTicketingList.includes(id.tokenHostAddr),
@@ -50,10 +52,9 @@ const PosterItems = ({ type, items }) => {
     } else {
       return;
     }
-  }
+  }, [setPreList, items, sbtHostList]);
 
   useEffect(() => {
-    getMyPreTList();
     let filteredList = items
       .filter((item) => item.topic === parseItemType(type))
       .map((prev) => {
@@ -67,8 +68,10 @@ const PosterItems = ({ type, items }) => {
         return cp;
       });
     setTypeItems(filteredList);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [type, items]);
+  }, [items, type, preList]);
+  useEffect(() => {
+    getMyPreTList();
+  }, [getMyPreTList]);
 
   return (
     <Container>
