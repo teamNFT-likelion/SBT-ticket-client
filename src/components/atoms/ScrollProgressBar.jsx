@@ -4,6 +4,7 @@ import * as colors from '@styles/colors';
 import { APP_HEADER_H } from '@constants/styleConst';
 
 const ScrollProgressBar = ({ scaleX }) => {
+  console.log(scaleX);
   return (
     <motion.div
       style={{
@@ -14,7 +15,7 @@ const ScrollProgressBar = ({ scaleX }) => {
         right: 0,
         height: '5px',
         background: `${colors.primary80}`,
-        transformOrigin: '0%',
+        transformOrigin: '50%',
         zIndex: 1000,
       }}
     />

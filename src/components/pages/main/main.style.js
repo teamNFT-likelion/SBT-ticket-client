@@ -3,7 +3,7 @@ import * as colors from '@styles/colors';
 import { sm } from '@styles/GlobalStyle';
 
 export const Title = styled('span')`
-  font-size: 34px;
+  font-size: 28px;
   line-height: 130%;
   letter-spacing: 0.511785px;
 
@@ -13,7 +13,7 @@ export const Title = styled('span')`
 `;
 
 export const TitleBold = styled(Title)`
-  font-size: 48px;
+  font-size: 36px;
   color: ${colors.primary80};
 
   ${sm`
