@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import Layout from '@articles/Layout';
 import PosterItems from './ticketList/PosterItems';
 import BigPoster from './ticketList/BigPoster';
-// import { mainItems, restItems } from '@mock/items.js';
 import { useResetRecoilState } from 'recoil';
 import {
   tDateState,
