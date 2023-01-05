@@ -70,7 +70,7 @@ const PosterItem = ({
 
   const Button = () => {
     if (prePossible && PreTicketingPeriod(preTicketing) === '진행중') {
-      return <DisabledButtonWrapper disabled>사전예매</DisabledButtonWrapper>;
+      return <LinkButton to={`/payment?id=${dataId}`} name="사전예매" connectCheck={true} />;
     } else if (PreTicketingPeriod(preTicketing) === '전') {
       return <DisabledButtonWrapper disabled>사전예매</DisabledButtonWrapper>;
     } else {
