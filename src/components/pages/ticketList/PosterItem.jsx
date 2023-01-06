@@ -85,6 +85,7 @@ const PosterItem = ({
 
   return (
     <Container ref={hoverRef}>
+      {console.log(prePossible)}
       {isHover && (
         <>
           <HoverWrapper>

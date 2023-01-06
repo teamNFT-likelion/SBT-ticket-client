@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { parseItemType } from '@utils/parser';
 import useSbtPreTicketHost from '@hooks/useSbtPreTicketHost';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
@@ -15,7 +15,28 @@ export default function useItems() {
   const items = useMemo(() => [...mainItems, ...restItems], []);
   const [typeItems, setTypeItems] = useState(items);
 
-  const [preList, setPreList] = useState([]);
+  const preList = useRef([]);
+  const copyFilteredList = useRef();
+
+  const getMyPreTList = useCallback(() => {
+    if (localStorage.getItem('_user') && sbtHostList && !preList.current.length) {
+      sbtHostList.forEach((id) => {
+        const pre_ticket_list = items.filter((item) =>
+          item.preTicketingList.includes(id.tokenHostAddr),
+        );
+        preList.current = [...preList.current, ...pre_ticket_list];
+      });
+    } else {
+      return;
+    }
+  }, [items, sbtHostList]);
+
+  useEffect(() => {
+    if (sbtHostList && items) {
+      getMyPreTList();
+    }
+    // eslint-disable-next-line
+  }, [sbtHostList, items]);
 
   useEffect(() => {
     //TODO: 페이지타입별로 데이터 바꿔 줘야됨 setData 바꿔줘야댐
@@ -28,48 +49,26 @@ export default function useItems() {
     }
   }, [paramType, navigate]);
 
-  const getMyPreTList = useCallback(() => {
-    let mySbtPreTList = [];
-
-    if (localStorage.getItem('_user')) {
-      sbtHostList.forEach((id) => {
-        const pre_ticket_list = items.filter((item) =>
-          item.preTicketingList.includes(id.tokenHostAddr),
-        );
-        [mySbtPreTList] = [...mySbtPreTList, pre_ticket_list !== [] && pre_ticket_list];
-      });
-
-      setPreList(mySbtPreTList);
-    } else {
-      return;
-    }
-  }, [setPreList, items, sbtHostList]);
-
   useEffect(() => {
     let filteredList = items
       .filter((item) => item.topic === parseItemType(type))
       .map((prev) => {
-        let cp = { ...prev, preTState: PreTicketingPeriod(prev.preTicketing) };
-
+        copyFilteredList.current = { ...prev, preTState: PreTicketingPeriod(prev.preTicketing) };
         if (
-          preList
+          preList.current
             .map((i) => {
               return i.id;
             })
             .includes(prev.id)
         ) {
-          cp = { ...cp, prePossible: true };
+          copyFilteredList.current = { ...copyFilteredList.current, prePossible: true };
         } else {
-          cp = { ...cp, prePossible: false };
+          copyFilteredList.current = { ...copyFilteredList.current, prePossible: false };
         }
-        return cp;
+        return copyFilteredList.current;
       });
     setTypeItems(filteredList);
-  }, [items, type, preList]);
-
-  useEffect(() => {
-    getMyPreTList();
-  }, [getMyPreTList]);
+  }, [items, type, sbtHostList, copyFilteredList]);
 
   return { typeItems, preList, type, items };
 }

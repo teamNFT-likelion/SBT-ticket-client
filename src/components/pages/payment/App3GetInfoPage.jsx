@@ -12,11 +12,11 @@ import OrdererInfo from './OrdererInfo';
 import SelectPayment from './SelectPayment';
 import useMint from '@hooks/useMint';
 import { payCardByTossPayment, payTransferByTossPayment } from '@utils/toss';
-import PreTicketingModal from '@components/articles/PreTicketingModal';
+// import PreTicketingModal from '@components/articles/PreTicketingModal';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
-import PreTicketingCustomModal from '@components/articles/PreTicketingCustomModal';
+// import PreTicketingCustomModal from '@components/articles/PreTicketingCustomModal';
 import useItems from '@hooks/useItems';
-import PreTicketingInactiveModal from '@components/articles/PreTicketingInactiveModal';
+// import PreTicketingInactiveModal from '@components/articles/PreTicketingInactiveModal';
 
 const App3GetInfoPage = ({ setTab, data }) => {
   const { email: userEmail, setPopup, popup } = useOauth();
@@ -25,7 +25,7 @@ const App3GetInfoPage = ({ setTab, data }) => {
   const [payType, setPayType] = useState('');
   const [cashPayType, setCashPayType] = useState('easyPay');
   const [isLoading, setIsLoading] = useState(false); // 로딩중 확인
-  const [preTicketModal, setPreTicketModal] = useState(false);
+  // const [preTicketModal, setPreTicketModal] = useState(false);
 
   const { account } = useRecoilValue(userState);
   const ticketInfo = useRecoilValue(tInfoState);
@@ -52,19 +52,20 @@ const App3GetInfoPage = ({ setTab, data }) => {
     }
   };
 
-  const preMint = async (e, _sbtInfo, _ticketInfo, _email) => {
-    setIsLoading(true);
-    try {
-      const tokenUri = await createTokenUri(_sbtInfo, _email);
-      await createSBT(tokenUri, _ticketInfo, 'COIN');
-      setTab(e.target.value);
-    } catch (error) {
-      console.log('Error uploading file: ', error);
-      toast.error('민팅 실패');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // 작성중..
+  // const preMint = async (e, _sbtInfo, _ticketInfo, _email) => {
+  //   setIsLoading(true);
+  //   try {
+  //     const tokenUri = await createTokenUri(_sbtInfo, _email);
+  //     await createSBT(tokenUri, _ticketInfo, 'COIN');
+  //     setTab(e.target.value);
+  //   } catch (error) {
+  //     console.log('Error uploading file: ', error);
+  //     toast.error('민팅 실패');
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   const onClickPay = (e) => {
     if (payType === 'cash' && cashPayType === 'easyPay') {
@@ -76,13 +77,13 @@ const App3GetInfoPage = ({ setTab, data }) => {
     } else if (payType === 'coin') {
       console.log('PreTicketingPeriod:', PreTicketingPeriod(data.preTicketing));
       console.log('data.id :', data.id);
-      console.log('includes:', preList.includes(data.id));
-      console.log('preList :', preList[0]);
-      if (PreTicketingPeriod(data.preTicketing) && preList.includes(data)) {
-        setPreTicketModal(true);
-      } else {
-        mint(e, sbtInfo, ticketInfo, userEmail);
-      }
+      console.log('includes:', preList.current.includes(data.id));
+      console.log('preList :', preList.current[0]);
+      // if (PreTicketingPeriod(data.preTicketing) && preList.includes(data)) {
+      //   setPreTicketModal(true);
+      // } else {
+      mint(e, sbtInfo, ticketInfo, userEmail);
+      // }
     }
   };
 
@@ -124,9 +125,9 @@ const App3GetInfoPage = ({ setTab, data }) => {
           </Row>
         </RightBox>
       </StepBox>
-      <PreTicketingCustomModal show={preTicketModal} toggleModal={() => setPreTicketModal(false)}>
+      {/* <PreTicketingCustomModal show={preTicketModal} toggleModal={() => setPreTicketModal(false)}>
         <PreTicketingInactiveModal setPreTicketModal={setPreTicketModal} hostAddr={data.id} />
-      </PreTicketingCustomModal>
+      </PreTicketingCustomModal> */}
     </>
   );
 };

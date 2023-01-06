@@ -19,16 +19,16 @@ import { TabButton } from '@styles/ApaymentStyles';
 import Calendar from 'react-calendar';
 import TicketInfo from './TicketInfo';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
-import PreTicketingCustomModal from '@components/articles/PreTicketingCustomModal';
-import PreTicketingInactiveModal from '@components/articles/PreTicketingInactiveModal';
-import useMyTickets from '@hooks/useMyTickets';
+// import PreTicketingCustomModal from '@components/articles/PreTicketingCustomModal';
+// import PreTicketingInactiveModal from '@components/articles/PreTicketingInactiveModal';
+// import useMyTickets from '@hooks/useMyTickets';
 
 export const App1Start = ({ setTab, data }) => {
   const minDate = new Date(data.startDate) || null;
   const maxDate = new Date(data.endDate) || null;
 
-  const [preTicketModal, setPreTicketModal] = useState(false);
-  const sbtList = useMyTickets();
+  // const [preTicketModal, setPreTicketModal] = useState(false);
+  // const sbtList = useMyTickets();
 
   const [date, setDate] = useState(minDate);
   const [part, setPart] = useState(0);
@@ -142,8 +142,8 @@ export const App1Start = ({ setTab, data }) => {
             <TabButton
               value="APP_SelectSeats"
               onClick={(e) => {
-                // setTab(e.target.value);
-                setPreTicketModal(true);
+                setTab(e.target.value);
+                // setPreTicketModal(true);
               }}
             >
               다음단계
@@ -151,10 +151,10 @@ export const App1Start = ({ setTab, data }) => {
           </Row>
         </RightBox>
       </StepBox>
-
+      {/* 
       <PreTicketingCustomModal show={preTicketModal} toggleModal={() => setPreTicketModal(false)}>
         <PreTicketingInactiveModal setPreTicketModal={setPreTicketModal} hostAddr={data.id} />
-      </PreTicketingCustomModal>
+      </PreTicketingCustomModal> */}
     </>
   );
 };
