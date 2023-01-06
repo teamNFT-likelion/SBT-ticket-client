@@ -47,8 +47,7 @@ const DetailInfo = ({ data }) => {
     <ContentsInfoBody>
       <ContentsInfo>
         <SubTitle style={{ marginBottom: '24px', fontSize: '25px' }}>
-          {PreTicketingPeriod(data.
-          ) && (
+          {PreTicketingPeriod(data.preTicketing) && (
             <PreAlert>[사전예매 {PreTicketingPeriod(data.preTicketing)}]</PreAlert>
           )}
           {data.title}
