@@ -9,7 +9,6 @@ import PreTicketingModal from '@components/articles/PreTicketingModal';
 import useOauth from '@hooks/useOauth';
 import { toast } from 'react-toastify';
 import QRCertificate from '@components/pages/account/QRCertificate';
-import axios from 'axios';
 import useMint from '@hooks/useMint';
 import PreTicketingCustomModal from '@components/articles/PreTicketingCustomModal';
 import QRCustomModal from '@components/articles/QRCustomModal';
@@ -122,9 +121,6 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
   // qr value = `${공연정보(공연id나 제목) + ${날짜} + ${sbtId} + ${qr생성하는 현재시간}`
   const [qrvalue, setQrvalue] = useState(`${title}${date}${id}${Date.now()}`);
 
-  // ipfs에 저장되어있는 이미지 url 가져오기 ; 근데 이렇게 말고 근데 원래 url 그대로 저장하면 안되나?
-  const [imgUrl, setImgUrl] = useState('');
-
   // 본인인증 후 첫 생성/새로고침 여부
   const [isReGenerated, setIsReGenerated] = useState(false);
 
@@ -148,15 +144,6 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
       toast.error('소각 실패');
     }
   };
-
-  useEffect(() => {
-    async function imgUrlInUri() {
-      const img = await axios(image).then((res) => setImgUrl(res.data));
-      //사실 반환값 안씀;
-      return img;
-    }
-    imgUrlInUri();
-  }, [image]);
 
   useEffect(() => {
     const receiveMessage = async (e) => {
@@ -204,7 +191,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
         <TextWrapper isActive={active}>
           {title} #{id}
         </TextWrapper>
-        <TicketImage src={imgUrl} alt="ticket" />
+        <TicketImage src={image.data} alt="ticket" />
         <TicketContent>
           <ContentWrapper style={{ color: colors.textWhite }}>
             {seats.map((seat) => `[${seat}] `)}

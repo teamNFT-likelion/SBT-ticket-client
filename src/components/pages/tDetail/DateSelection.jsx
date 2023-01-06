@@ -113,7 +113,6 @@ const DateSelection = ({ data, prePossible }) => {
 
   return (
     <ContentsInfoBody>
-      {console.log(prePossible)}
       <SelectInfo>
         <CalendarStyle>
           <Calendar

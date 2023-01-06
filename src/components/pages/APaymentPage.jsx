@@ -27,6 +27,9 @@ const APaymentPage = () => {
   const [tab, setTab] = useState('APP_Start');
   const { account } = useRecoilValue(userState);
 
+  // 사전예매에 사용하기위해 선택한 inactive 티켓 값 저장
+  const [inactiveId, setInactiveId] = useState();
+
   useLayoutEffect(() => {
     const locationTab = location.state?.tab || 'APP_Start';
     setTab(locationTab);
@@ -54,10 +57,33 @@ const APaymentPage = () => {
     <Layout page="a-payment-page">
       <AppStepHeader step={tab} />
       <Container>
-        {tab === 'APP_Start' && <App1Start setTab={setTab} data={data} />}
-        {tab === 'APP_SelectSeats' && <App2SelectSeats setTab={setTab} data={data} />}
-        {tab === 'APP_GetInfo' && <App3GetInfoPage setTab={setTab} data={data} />}
-        {tab === 'APP_Done' && <App4Done dataId={data} />}
+        {tab === 'APP_Start' && (
+          <App1Start
+            setTab={setTab}
+            data={data}
+            inactiveId={inactiveId}
+            setInactiveId={setInactiveId}
+          />
+        )}
+        {tab === 'APP_SelectSeats' && (
+          <App2SelectSeats
+            setTab={setTab}
+            data={data}
+            inactiveId={inactiveId}
+            setInactiveId={setInactiveId}
+          />
+        )}
+        {tab === 'APP_GetInfo' && (
+          <App3GetInfoPage
+            setTab={setTab}
+            data={data}
+            inactiveId={inactiveId}
+            setInactiveId={setInactiveId}
+          />
+        )}
+        {tab === 'APP_Done' && (
+          <App4Done dataId={data} inactiveId={inactiveId} setInactiveId={setInactiveId} />
+        )}
         <Outlet context={{ data }} />
       </Container>
     </Layout>
