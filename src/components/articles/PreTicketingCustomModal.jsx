@@ -39,7 +39,7 @@ const ModalContent = styled('div')`
   box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.15);
 `;
 
-const CustomModal = ({ show, toggleModal, styles, children }) => {
+const PreTicketingCustomModal = ({ show, toggleModal, styles, children }) => {
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       toggleModal();
@@ -53,4 +53,4 @@ const CustomModal = ({ show, toggleModal, styles, children }) => {
   );
 };
 
-export default CustomModal;
+export default PreTicketingCustomModal;
