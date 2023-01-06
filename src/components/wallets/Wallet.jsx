@@ -106,6 +106,8 @@ export default function Wallet() {
         toast.success(`${formatAddress(accounts[0])}님 환영합니다.`, {
           autoClose: 1500,
         });
+        // 안기다리고 바로 reload하면서 toast는 뜨는게 뭔지 모르겠슴....아
+        setTimeout(() => window.location.reload(), 1500);
       }
     } catch {
       toast.error('로그인 실패. 브라우저를 끄고 다시 켜주세요.', {
@@ -147,10 +149,7 @@ export default function Wallet() {
         </AddressContainer>
       ) : null}
 
-      <CustomModal
-        show={showWalletOptions}
-        toggleModal={() => setShowWalletOptions(false)}
-      >
+      <CustomModal show={showWalletOptions} toggleModal={() => setShowWalletOptions(false)}>
         현재 폴리곤 테스트 네트워크 MUMBAI에서 사용이 가능합니다.
         <StyledButton onClick={handleMetamaskLogin}>
           <ImageWrapper src={metamaskImageUrl} />
@@ -158,10 +157,7 @@ export default function Wallet() {
         </StyledButton>
       </CustomModal>
 
-      <CustomModal
-        show={showDisconnectWallet}
-        toggleModal={() => setShowDisconnectWallet(false)}
-      >
+      <CustomModal show={showDisconnectWallet} toggleModal={() => setShowDisconnectWallet(false)}>
         {formatAddress(account)}
         <StyledButton onClick={handleDisconnect}>
           <BiWalletAlt size="30" />

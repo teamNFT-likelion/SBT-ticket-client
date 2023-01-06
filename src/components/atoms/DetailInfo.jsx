@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import { format } from 'date-fns';
 import { SubTitle } from '@styles/ApaymentStyles';
-import { preTicketingPeriod } from '@utils/PreTicketingPeriod';
+import PreTicketingPeriod from '@utils/PreTicketingPeriod';
 import * as colors from '@styles/colors';
 
 const ContentsInfoBody = styled(Row)`
@@ -47,7 +47,10 @@ const DetailInfo = ({ data }) => {
     <ContentsInfoBody>
       <ContentsInfo>
         <SubTitle style={{ marginBottom: '24px', fontSize: '25px' }}>
-          {preTicketingPeriod(data.preTicketing) && <PreAlert>[사전예매]</PreAlert>}
+          {PreTicketingPeriod(data.
+          ) && (
+            <PreAlert>[사전예매 {PreTicketingPeriod(data.preTicketing)}]</PreAlert>
+          )}
           {data.title}
         </SubTitle>
         <ConcertInfo>
@@ -65,7 +68,7 @@ const DetailInfo = ({ data }) => {
           <ConcertInfoItem>구매가</ConcertInfoItem>
           <ConcertInfoItem>{data.cashPrice.map((price) => `₩${price} `)}</ConcertInfoItem>
           <ConcertInfoItem>사전예매기간</ConcertInfoItem>
-          {preTicketingPeriod(data.preTicketing) && (
+          {PreTicketingPeriod(data.preTicketing) && (
             <ConcertInfoItem style={{ color: colors.bgRed }}>
               {format(new Date(data.preTicketing[0]), 'yyyy.MM.dd')} ~
               {format(new Date(data.preTicketing[1]), 'yyyy.MM.dd')}

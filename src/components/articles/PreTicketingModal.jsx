@@ -4,12 +4,16 @@ import { Column, Row } from '@components/atoms/wrapper.style';
 import { mainItems, restItems } from '@mock/items';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
+import PreTicketingPeriod from '@utils/PreTicketingPeriod';
 
 export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
   const navigate = useNavigate();
   const items = [...mainItems, ...restItems];
-  const pre_ticket_list = items.filter((item) => item.preTicketingList.includes(hostAddr));
-  console.log('preTicketingList : ', pre_ticket_list);
+  const pre_ticket_list = items.filter(
+    (item) =>
+      item.preTicketingList.includes(hostAddr) &&
+      PreTicketingPeriod(item.preTicketing) === '진행중',
+  );
   const PreTicketingList = ({ item }) => {
     return (
       <ModalTempBox>
@@ -58,7 +62,7 @@ export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
             해당 토큰과 관련된 공연이 없습니다.
           </p>
         ) : (
-          pre_ticket_list.map((item) => <PreTicketingList item={item} />)
+          pre_ticket_list.map((item, i) => <PreTicketingList item={item} key={i} />)
         )}
       </ModalWrapper>
     </>
