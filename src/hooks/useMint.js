@@ -78,5 +78,30 @@ export default function useMint() {
     }
   }
 
-  return { createSBT, createTokenUri, refundSBT, burnSBT };
+  // 사전예매 선택 시 SBT 생성
+  async function preCreateSBT(_tokenUri, _ticketInfo, _payType, _inactiveId) {
+    // const { tDeadline, tPerformId, tTokenPrice, tSeat } = _ticketInfo;
+    // if (walletType === 'eth') {
+    //   const tokenContract = await new web3.eth.Contract(TTOT_MAIN_ABI, MUMBAI_TTOTMAIN_ADDR, {
+    //     from: account,
+    //   });
+    //   tokenContract.options.address = MUMBAI_TTOTMAIN_ADDR;
+    //   // 컨트랙트에 들어갈 값들 변환
+    //   const tokenDeadline = tDeadline / 1000;
+    //   let tokenValue;
+    //   if (_payType === 'COIN') {
+    //     // coin으로 결제시
+    //     tokenValue = String(tTokenPrice * 10 ** 18);
+    //   } else if (_payType === 'CASH') {
+    //     // cash로 결제시
+    //     tokenValue = String(0);
+    //   }
+    //   console.log(_tokenUri, tokenDeadline, tTokenPrice, tPerformId, tSeat, tokenValue);
+    //   await tokenContract.methods
+    //     .preMintSbt(_inactiveId, _tokenUri, tokenDeadline, tPerformId, tokenValue, tSeat)
+    //     .send({ from: account, value: tokenValue });
+    // }
+  }
+
+  return { createSBT, createTokenUri, refundSBT, burnSBT, preCreateSBT };
 }

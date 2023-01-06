@@ -8,7 +8,7 @@ import { StepBox, LeftBox, RightBox } from './App1Start';
 import TicketInfo from './TicketInfo';
 import axios from 'axios';
 
-export const App2SelectSeats = ({ setTab, data }) => {
+export const App2SelectSeats = ({ setTab, data, inactiveId, setInactive }) => {
   const price = useRecoilValue(tPriceState);
   const setPricePerToken = useSetRecoilState(tPricePerTokenState);
   const setTokenPrice = useSetRecoilState(tTokenPriceState);
@@ -32,7 +32,7 @@ export const App2SelectSeats = ({ setTab, data }) => {
         <MainStage data={data} />
       </LeftBox>
       <RightBox>
-        <TicketInfo data={data} />
+        <TicketInfo data={data} inactiveId={inactiveId} />
         <Row justifyContent="center" marginTop="50px">
           <TabButton value="APP_Start" onClick={(e) => setTab(e.target.value)}>
             뒤로가기

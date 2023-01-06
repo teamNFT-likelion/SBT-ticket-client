@@ -12,26 +12,18 @@ import OrdererInfo from './OrdererInfo';
 import SelectPayment from './SelectPayment';
 import useMint from '@hooks/useMint';
 import { payCardByTossPayment, payTransferByTossPayment } from '@utils/toss';
-// import PreTicketingModal from '@components/articles/PreTicketingModal';
-import PreTicketingPeriod from '@utils/PreTicketingPeriod';
-// import PreTicketingCustomModal from '@components/articles/PreTicketingCustomModal';
-import useItems from '@hooks/useItems';
-// import PreTicketingInactiveModal from '@components/articles/PreTicketingInactiveModal';
 
-const App3GetInfoPage = ({ setTab, data }) => {
+const App3GetInfoPage = ({ setTab, data, inactiveId, setInactiveId }) => {
   const { email: userEmail, setPopup, popup } = useOauth();
   const { createTokenUri, createSBT } = useMint();
 
   const [payType, setPayType] = useState('');
   const [cashPayType, setCashPayType] = useState('easyPay');
   const [isLoading, setIsLoading] = useState(false); // 로딩중 확인
-  // const [preTicketModal, setPreTicketModal] = useState(false);
 
   const { account } = useRecoilValue(userState);
   const ticketInfo = useRecoilValue(tInfoState);
   const sbtInfo = useRecoilValue(sbtInfoState);
-
-  const { preList } = useItems();
 
   const handlePayType = (e) => setPayType(e.target.value);
   const handleCashPayType = (e) => setCashPayType(e.target.value);
@@ -52,12 +44,11 @@ const App3GetInfoPage = ({ setTab, data }) => {
     }
   };
 
-  // 작성중..
-  // const preMint = async (e, _sbtInfo, _ticketInfo, _email) => {
+  // const preMint = async (e, _sbtInfo, _ticketInfo, _email, _inactiveId) => {
   //   setIsLoading(true);
   //   try {
   //     const tokenUri = await createTokenUri(_sbtInfo, _email);
-  //     await createSBT(tokenUri, _ticketInfo, 'COIN');
+  //     await preCreateSBT(tokenUri, _ticketInfo, 'COIN', _inactiveId);
   //     setTab(e.target.value);
   //   } catch (error) {
   //     console.log('Error uploading file: ', error);
@@ -70,20 +61,27 @@ const App3GetInfoPage = ({ setTab, data }) => {
   const onClickPay = (e) => {
     if (payType === 'cash' && cashPayType === 'easyPay') {
       localStorage.setItem('pay_data', JSON.stringify({ ticketInfo, sbtInfo }));
-      payCardByTossPayment(ticketInfo.tPrice, data.title, account, data.id);
+      if (inactiveId) {
+        console.log('~(사전예매)SBT 생성하는 로직~');
+        // prePayCardByTossPayment(ticketInfo.tPrice, data.title, account, data.id, inactiveId);
+      } else {
+        payCardByTossPayment(ticketInfo.tPrice, data.title, account, data.id);
+      }
     } else if (payType === 'cash' && cashPayType === 'transfer') {
       localStorage.setItem('pay_data', JSON.stringify({ ticketInfo, sbtInfo }));
-      payTransferByTossPayment(ticketInfo.tPrice, data.title, account, data.id);
+      if (inactiveId) {
+        console.log('~(사전예매)SBT 생성하는 로직~');
+        // prePayTransferByTossPayment(ticketInfo.tPrice, data.title, account, data.id);
+      } else {
+        payTransferByTossPayment(ticketInfo.tPrice, data.title, account, data.id);
+      }
     } else if (payType === 'coin') {
-      console.log('PreTicketingPeriod:', PreTicketingPeriod(data.preTicketing));
-      console.log('data.id :', data.id);
-      console.log('includes:', preList.current.includes(data.id));
-      console.log('preList :', preList.current[0]);
-      // if (PreTicketingPeriod(data.preTicketing) && preList.includes(data)) {
-      //   setPreTicketModal(true);
-      // } else {
-      mint(e, sbtInfo, ticketInfo, userEmail);
-      // }
+      if (inactiveId) {
+        // preMint(e, sbtInfo, ticketInfo, userEmail, inactiveId);
+        console.log('~(사전예매)SBT 생성하는 로직~');
+      } else {
+        mint(e, sbtInfo, ticketInfo, userEmail);
+      }
     }
   };
 
@@ -114,7 +112,7 @@ const App3GetInfoPage = ({ setTab, data }) => {
           />
         </LeftBox>
         <RightBox>
-          <TicketInfo data={data} isLoading={isLoading} />
+          <TicketInfo data={data} isLoading={isLoading} inactiveId={inactiveId} />
           <Row marginTop="50px" justifyContent="center">
             <TabButton value="APP_SelectSeats" onClick={(e) => setTab(e.target.value)}>
               뒤로가기
@@ -125,9 +123,6 @@ const App3GetInfoPage = ({ setTab, data }) => {
           </Row>
         </RightBox>
       </StepBox>
-      {/* <PreTicketingCustomModal show={preTicketModal} toggleModal={() => setPreTicketModal(false)}>
-        <PreTicketingInactiveModal setPreTicketModal={setPreTicketModal} hostAddr={data.id} />
-      </PreTicketingCustomModal> */}
     </>
   );
 };

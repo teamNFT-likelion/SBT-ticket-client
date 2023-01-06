@@ -14,7 +14,7 @@ import {
   preTicketState,
 } from '@states/paymentState';
 
-const TicketInfo = ({ data, isLoading }) => {
+const TicketInfo = ({ data, isLoading, inactiveId }) => {
   const part = useRecoilValue(tPartState);
   const deadline = useRecoilValue(tDeadlineState);
   const seat = useRecoilValue(tSeatState);
@@ -69,6 +69,7 @@ const TicketInfo = ({ data, isLoading }) => {
           <div style={{ color: colors.primary40 }}>회차</div>
           <div>{part + 1}회차</div>
         </div>
+
         {seat.length > 0 &&
           seat.map((id, i) => {
             return (
@@ -114,6 +115,21 @@ const TicketInfo = ({ data, isLoading }) => {
               <br />
               (개당 {pricePerToken.toFixed(2)}원)
             </div>
+          </div>
+        )}
+        {inactiveId && (
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              borderBottom: '1px solid white',
+              padding: '8px 0',
+            }}
+          >
+            <div style={{ color: colors.natural95, fontSize: '18px' }}>
+              사용할 inactive ticket ID
+            </div>
+            <div>{inactiveId}</div>
           </div>
         )}
       </div>

@@ -19,16 +19,16 @@ import { TabButton } from '@styles/ApaymentStyles';
 import Calendar from 'react-calendar';
 import TicketInfo from './TicketInfo';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
-// import PreTicketingCustomModal from '@components/articles/PreTicketingCustomModal';
-// import PreTicketingInactiveModal from '@components/articles/PreTicketingInactiveModal';
-// import useMyTickets from '@hooks/useMyTickets';
+import useMyTickets from '@hooks/useMyTickets';
+import PreTicketingCustomModal from '@components/articles/PreTicketingCustomModal';
+import PreTicketingInactiveModal from '@components/articles/PreTicketingInactiveModal';
 
-export const App1Start = ({ setTab, data }) => {
+export const App1Start = ({ setTab, data, inactiveId, setInactiveId }) => {
   const minDate = new Date(data.startDate) || null;
   const maxDate = new Date(data.endDate) || null;
 
-  // const [preTicketModal, setPreTicketModal] = useState(false);
-  // const sbtList = useMyTickets();
+  const [preTicketModal, setPreTicketModal] = useState(false);
+  const sbtList = useMyTickets();
 
   const [date, setDate] = useState(minDate);
   const [part, setPart] = useState(0);
@@ -137,13 +137,16 @@ export const App1Start = ({ setTab, data }) => {
           </SelectInfo>
         </LeftBox>
         <RightBox>
-          <TicketInfo data={data} />
+          <TicketInfo data={data} inactiveId={inactiveId} />
           <Row justifyContent="center" marginTop="50px">
             <TabButton
               value="APP_SelectSeats"
               onClick={(e) => {
-                setTab(e.target.value);
-                // setPreTicketModal(true);
+                if (PreTicketingPeriod(data.preTicketing) === '진행중' && !inactiveId) {
+                  setPreTicketModal(true);
+                } else {
+                  setTab(e.target.value);
+                }
               }}
             >
               다음단계
@@ -151,10 +154,17 @@ export const App1Start = ({ setTab, data }) => {
           </Row>
         </RightBox>
       </StepBox>
-      {/* 
-      <PreTicketingCustomModal show={preTicketModal} toggleModal={() => setPreTicketModal(false)}>
-        <PreTicketingInactiveModal setPreTicketModal={setPreTicketModal} hostAddr={data.id} />
-      </PreTicketingCustomModal> */}
+      {sbtList.length && (
+        <PreTicketingCustomModal show={preTicketModal} toggleModal={() => setPreTicketModal(false)}>
+          <PreTicketingInactiveModal
+            setPreTicketModal={setPreTicketModal}
+            hostAddr={data.id}
+            sbtList={sbtList}
+            inactiveId={inactiveId}
+            setInactiveId={setInactiveId}
+          />
+        </PreTicketingCustomModal>
+      )}
     </>
   );
 };
