@@ -56,7 +56,21 @@ const DateSelection = ({ data, prePossible }) => {
     } else if (PreTicketingPeriod(data.preTicketing) === '전') {
       return (
         <ButtonsWrapper>
-          <Button disabled style={{ opacity: '0.8' }}>
+          <Button
+            disabled
+            style={{ opacity: '0.8', backgroundColor: colors.primary40, cursor: 'default' }}
+          >
+            사전예매
+          </Button>
+        </ButtonsWrapper>
+      );
+    } else if (!prePossible && PreTicketingPeriod(data.preTicketing) === '진행중') {
+      return (
+        <ButtonsWrapper>
+          <Button
+            disabled
+            style={{ opacity: '0.8', backgroundColor: colors.primary40, cursor: 'default' }}
+          >
             사전예매
           </Button>
         </ButtonsWrapper>
@@ -99,6 +113,7 @@ const DateSelection = ({ data, prePossible }) => {
 
   return (
     <ContentsInfoBody>
+      {console.log(prePossible)}
       <SelectInfo>
         <CalendarStyle>
           <Calendar
