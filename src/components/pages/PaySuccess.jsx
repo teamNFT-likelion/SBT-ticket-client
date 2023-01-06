@@ -40,7 +40,7 @@ const PaySuccess = () => {
     const mint = async () => {
       try {
         const tokenUri = await createTokenUri(sbtInfo, userEmail);
-        await createSBT(tokenUri, ticketInfo, "CASH");
+        await createSBT(tokenUri, ticketInfo, 'CASH');
         navigate(`/payment?id=${data.id}`, {
           state: {
             tab: 'APP_Done',

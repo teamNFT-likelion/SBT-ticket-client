@@ -1,6 +1,5 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Anchor from '@atoms/Anchor';
 import { Row } from '@atoms/wrapper.style';
 import sbt_1 from '@assets/img/sbt_1.png';
 import sbt_2 from '@assets/img/sbt_2.png';
@@ -10,7 +9,8 @@ import landing_sbt from '@assets/img/landing_sbt.png';
 import { sm, lg } from '@styles/GlobalStyle';
 import { APP_MAX_W } from '@constants/styleConst';
 import { TitleBold, Title, Desc } from './main.style';
-import * as colors from '@styles/colors';
+import Solving from './Solving';
+import { BsDot } from 'react-icons/bs';
 
 const Container = styled('div')`
   position: relative;
@@ -19,15 +19,13 @@ const Container = styled('div')`
   width: 100%;
   max-width: ${APP_MAX_W}px;
   padding: 2.75rem;
-  margin-top: 7.5rem;
 `;
 
 const TechnologyImg = styled('img')`
-  width: 75%;
+  width: 60%;
   max-width: 996px;
   height: auto;
   align-self: center;
-  margin: 3.5rem 0;
 `;
 
 const PurposeWrapper = styled(Row)`
@@ -54,50 +52,49 @@ const ImgWrapper = styled('div')`
   }
 `;
 
-const Conclusion = styled('div')`
+const Text = styled(Desc)`
+  font-size: 1.5rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin-top: 8.25rem;
-
-  & .logo-en {
-    font-family: 'Shrikhand', cursive;
-    font-size: 5rem;
-    color: ${colors.primary40};
-    line-height: 1.3;
-  }
-
-  & .logo-ko {
-    font-size: 1.85rem;
-    font-weight: 100;
-    color: ${colors.primary40};
-  }
 `;
 
-const TechnologyArea = forwardRef((props, ref) => {
+const TechnologyArea = () => {
   return (
     <Container>
-      <Anchor ref={ref} />
+      <Solving />
       <TitleBold>
         SBT (Soul Bound Token) <span style={{ color: 'white' }}>란</span>
       </TitleBold>
+
       <Title>양도가 불가능한 NFT(Non-Fungible Token) 라고도 말합니다.</Title>
-      <Desc marginTop="32px">
-        타인에게 지급하거나 판매할 수 없는, 자신의 전자지갑에 완전히 귀속되는
-        개념의 토큰을 의미합니다.
-      </Desc>
-      <Desc>
-        SBT는 발행된 후, 처음 발급받은 지갑만이 해당 SBT를 가지고 있을 수
-        있습니다.
-      </Desc>
-      <TechnologyImg src={landing_sbt}></TechnologyImg>
-      <Desc>
-        당신의 지갑에 특정 SBT를 가지고 있음으로써 (발행 목적에 따라) 자격을
-        증명할 수 있습니다.
-      </Desc>
-      <Desc>
-        이런 특성을 이용해 우리는 SBT를 다음과 같은 용도로 사용합니다.
-      </Desc>
+      <div style={{ display: 'flex', marginTop: '1.5rem', gap: '24px' }}>
+        <TechnologyImg src={landing_sbt}></TechnologyImg>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '20px 0',
+            justifyContent: 'center',
+            gap: '40px',
+          }}
+        >
+          <Text>
+            <BsDot />
+            SBT는 발행된 후, 처음 발급받은 지갑만이
+            <br /> 해당 SBT를 가지고 있을 수 있습니다.
+          </Text>
+          <Text>
+            <BsDot />
+            당신의 지갑에 특정 SBT를 가지고 있음으로써 <br />
+            (발행 목적에 따라) 자격을 증명할 수 있습니다.
+          </Text>
+          <Text>
+            <BsDot />
+            이런 특성을 이용해 우리는 <br />
+            SBT를 아래와 같은 용도로 사용합니다.
+          </Text>
+        </div>
+      </div>
       <PurposeWrapper>
         <ImgWrapper>
           <img src={sbt_1} alt="커뮤니티" />
@@ -112,17 +109,8 @@ const TechnologyArea = forwardRef((props, ref) => {
           <img src={sbt_4} alt="선거권" />
         </ImgWrapper>
       </PurposeWrapper>
-      <Conclusion>
-        <div className="logo-en">
-          ttot&nbsp;
-          <span className="logo-ko">[ 또트 ]</span>
-        </div>
-        <span style={{ fontSize: '1.85rem' }}>
-          : 티켓 SBT를 통해 2차 거래를 방지하는 플랫폼입니다.
-        </span>
-      </Conclusion>
     </Container>
   );
-});
+};
 
 export default TechnologyArea;

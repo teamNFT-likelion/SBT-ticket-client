@@ -10,6 +10,8 @@ import AccountPage from '@pages/AccountPage';
 import '@fontsource/shrikhand'; // title TODO: refactoring 필요
 import '@fontsource/roboto-condensed'; // subtitle
 import '@fontsource/do-hyeon';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import Page404 from '@components/pages/Page404';
 import GetInfoPage from '@pages/GetInfoPage';
 import PaySuccess from '@pages/PaySuccess';
