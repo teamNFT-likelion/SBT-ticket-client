@@ -36,9 +36,10 @@ export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
                 buttonColor={`#fa0800c5`}
                 onClick={() => {
                   setPreTicketModal(false);
-                  navigate({
-                    pathname: '/detail',
-                    search: `?id=${item.id}`,
+                  navigate(`/payment?id=${item.id}`, {
+                    state: {
+                      prePossible: item.prePossible,
+                    },
                   });
                 }}
               >
