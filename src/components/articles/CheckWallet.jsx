@@ -51,7 +51,7 @@ export default function CheckWallet() {
         });
         setAccount(accounts[0]);
         localStorage.setItem('_user', accounts[0]);
-        // setTimeout(() => window.location.reload(), 1500);
+        setTimeout(() => window.location.reload(), 1500);
       }
     }
 
