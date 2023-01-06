@@ -19,10 +19,16 @@ import { TabButton } from '@styles/ApaymentStyles';
 import Calendar from 'react-calendar';
 import TicketInfo from './TicketInfo';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
+import PreTicketingCustomModal from '@components/articles/PreTicketingCustomModal';
+import PreTicketingInactiveModal from '@components/articles/PreTicketingInactiveModal';
+import useMyTickets from '@hooks/useMyTickets';
 
 export const App1Start = ({ setTab, data }) => {
   const minDate = new Date(data.startDate) || null;
   const maxDate = new Date(data.endDate) || null;
+
+  const [preTicketModal, setPreTicketModal] = useState(false);
+  const sbtList = useMyTickets();
 
   const [date, setDate] = useState(minDate);
   const [part, setPart] = useState(0);
@@ -82,62 +88,74 @@ export const App1Start = ({ setTab, data }) => {
   };
 
   return (
-    <StepBox>
-      <LeftBox>
-        <SelectInfo>
-          <CalendarStyle>
-            <Calendar
-              onChange={handleDateClick}
-              value={date}
-              minDetail="month" // 상단 네비게이션에서 '월' 단위만 보이게 설정
-              maxDetail="month"
-              calendarType="US"
-              formatDay={(locale, date) => date.toLocaleString('en', { day: 'numeric' })}
-              minDate={minDate}
-              maxDate={maxDate}
-            />
-          </CalendarStyle>
-          <img src={verticalLine} alt="verticalLine" height="260px" />
-          <SelectInfoBox>
-            회차
-            <PartButtonContainer>
-              {data.dateInfo[date.getTime()].map((info, index) => (
-                <TabButton
-                  key={info.startTime}
-                  value={index}
-                  onClick={handlePartClick}
-                  style={{
-                    width: '70px',
-                    height: '30px',
-                    fontSize: '15px',
-                    backgroundColor: part === index ? 'orange' : colors.primary40,
-                  }}
-                >
-                  {index + 1}회차
-                </TabButton>
-              ))}
-            </PartButtonContainer>
-            CAST
-            <span style={{ paddingTop: '10px' }}>{data.cast}</span>
-          </SelectInfoBox>
-          <img src={verticalLine} alt="verticalLine" height="260px" />
-          <SelectInfoBox>
-            잔여석
-            <span style={{ padding: '10px', fontSize: '20px', color: colors.bgRed }}>
-              {data.dateInfo[date.getTime()][part].seatCount}석
-            </span>
-          </SelectInfoBox>
-        </SelectInfo>
-      </LeftBox>
-      <RightBox>
-        <TicketInfo data={data} />
-        <Row justifyContent="center" marginTop="50px">
-          <TabButton value="APP_SelectSeats" onClick={(e) => setTab(e.target.value)}>
-            다음단계
-          </TabButton>
-        </Row>
-      </RightBox>
-    </StepBox>
+    <>
+      <StepBox>
+        <LeftBox>
+          <SelectInfo>
+            <CalendarStyle>
+              <Calendar
+                onChange={handleDateClick}
+                value={date}
+                minDetail="month" // 상단 네비게이션에서 '월' 단위만 보이게 설정
+                maxDetail="month"
+                calendarType="US"
+                formatDay={(locale, date) => date.toLocaleString('en', { day: 'numeric' })}
+                minDate={minDate}
+                maxDate={maxDate}
+              />
+            </CalendarStyle>
+            <img src={verticalLine} alt="verticalLine" height="260px" />
+            <SelectInfoBox>
+              회차
+              <PartButtonContainer>
+                {data.dateInfo[date.getTime()].map((info, index) => (
+                  <TabButton
+                    key={info.startTime}
+                    value={index}
+                    onClick={handlePartClick}
+                    style={{
+                      width: '70px',
+                      height: '30px',
+                      fontSize: '15px',
+                      backgroundColor: part === index ? 'orange' : colors.primary40,
+                    }}
+                  >
+                    {index + 1}회차
+                  </TabButton>
+                ))}
+              </PartButtonContainer>
+              CAST
+              <span style={{ paddingTop: '10px' }}>{data.cast}</span>
+            </SelectInfoBox>
+            <img src={verticalLine} alt="verticalLine" height="260px" />
+            <SelectInfoBox>
+              잔여석
+              <span style={{ padding: '10px', fontSize: '20px', color: colors.bgRed }}>
+                {data.dateInfo[date.getTime()][part].seatCount}석
+              </span>
+            </SelectInfoBox>
+          </SelectInfo>
+        </LeftBox>
+        <RightBox>
+          <TicketInfo data={data} />
+          <Row justifyContent="center" marginTop="50px">
+            <TabButton
+              value="APP_SelectSeats"
+              onClick={(e) => {
+                // setTab(e.target.value);
+                setPreTicketModal(true);
+              }}
+            >
+              다음단계
+            </TabButton>
+          </Row>
+        </RightBox>
+      </StepBox>
+
+      <PreTicketingCustomModal show={preTicketModal} toggleModal={() => setPreTicketModal(false)}>
+        <PreTicketingInactiveModal setPreTicketModal={setPreTicketModal} hostAddr={data.id} />
+      </PreTicketingCustomModal>
+    </>
   );
 };
 

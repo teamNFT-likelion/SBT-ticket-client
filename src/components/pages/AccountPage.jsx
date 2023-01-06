@@ -3,14 +3,11 @@ import Layout from '@articles/Layout';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import metamaskImageUrl from '@assets/icon/MetaMask.png';
-import axios from 'axios';
-import { MUMBAI_TTOTMAIN_ADDR } from '@contracts/ContractAddress';
-import { TTOT_MAIN_ABI } from '@contracts/ABI';
 import MyTickets from './account/MyTickets';
 import { useNavigate } from 'react-router-dom';
 import { walletConnectError } from '@utils/toastMessages';
-import useWeb3 from '@hooks/useWeb3';
 import { BiPencil } from 'react-icons/bi';
+import useMyTickets from '@hooks/useMyTickets';
 
 const AddressWrapper = styled('div')`
   display: flex;
@@ -132,14 +129,10 @@ const AccountPage = () => {
   const [account, setAccount] = useState('');
   const [walletType, setWalletType] = useState('');
 
-  // 컨트랙트와 통신을 위한 객체 저장
-  const { web3 } = useWeb3();
+  const sbtList = useMyTickets();
 
   // tap 키 저장 state
   const [tab, setTab] = useState('ALL');
-
-  // 내 sbt 저장
-  const [sbtList, setSbtList] = useState([]);
 
   const [backImageFile, setBackImageFile] = useState(null);
   const [profileImageFile, setProfileImageFile] = useState(null);
@@ -158,49 +151,12 @@ const AccountPage = () => {
     }
   }, [account, navigate]);
 
-  // 내 토큰들 불러오기
-  useEffect(() => {
-    async function saveMyToken() {
-      let tokenContract;
-      if (walletType === 'eth') {
-        tokenContract = await new web3.eth.Contract(TTOT_MAIN_ABI, MUMBAI_TTOTMAIN_ADDR, {
-          from: account,
-        });
-        tokenContract.options.address = MUMBAI_TTOTMAIN_ADDR;
-      } else return;
-
-      const MyTokens = await tokenContract.methods.getSbtTokens().call();
-      const items = await Promise.all(
-        MyTokens.map(async (i) => {
-          let metadata = await axios.get(i.sbtTokenURI);
-          let price = web3.utils.fromWei(i.price.toString(), 'ether');
-          let item = {
-            tokenId: Number(i.sbtTokenId),
-            tokenURI: i.sbtTokenURI,
-            tokenDL: Number(i.deadline) * 1000,
-            tokenHostAddr: i.hostAddress,
-            tokenPrice: price,
-            tokenSeats: i.seats,
-            tokenImage: metadata.data.image,
-            tokenTitle: metadata.data.name,
-            tokenUserEmail: metadata.data.email,
-            tokenIsActive: i.isActive,
-          };
-          return item;
-        }),
-      );
-      setSbtList(items);
-    }
-    saveMyToken();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account, walletType]); //TODO: 린트 체크필요
-
   return (
     <Layout>
       <div>
-        <BackLabelBox for="fileBack">
+        <BackLabelBox htmlfor="fileBack">
           {backImageFile ? (
-            <ImgBox for="fileBack" src={backImageFile} alt="preview image" />
+            <ImgBox htmlfor="fileBack" src={backImageFile} alt="preview image" />
           ) : (
             <BiPencil size="50px" />
           )}
@@ -224,9 +180,9 @@ const AccountPage = () => {
           zIndex: '3',
         }}
       >
-        <ProfileLabelBox for="fileProfile">
+        <ProfileLabelBox htmlfor="fileProfile">
           {profileImageFile ? (
-            <ProfileImgBox for="fileProfile" src={profileImageFile} alt="preview image" />
+            <ProfileImgBox htmlfor="fileProfile" src={profileImageFile} alt="preview image" />
           ) : (
             <BiPencil size="50px" />
           )}
