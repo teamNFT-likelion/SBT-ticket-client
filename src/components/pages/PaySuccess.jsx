@@ -23,6 +23,7 @@ const PaySuccess = () => {
   const paymentKey = params.get('paymentKey');
   const orderId = params.get('orderId');
   const amount = params.get('amount');
+  const inactiveId = params.get('inactiveId');
 
   const [status, setStatus] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,7 +41,7 @@ const PaySuccess = () => {
     const mint = async () => {
       try {
         const tokenUri = await createTokenUri(sbtInfo, userEmail);
-        await createSBT(tokenUri, ticketInfo, 'CASH');
+        await createSBT(tokenUri, ticketInfo, 'CASH', inactiveId);
         navigate(`/payment?id=${data.id}`, {
           state: {
             tab: 'APP_Done',
@@ -77,6 +78,7 @@ const PaySuccess = () => {
             paymentKey,
             orderId,
             amount,
+            inactiveId,
           },
         })
         .then((res) => {

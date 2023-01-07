@@ -18,7 +18,7 @@ import "./ttot_host.sol";
     5. 3번 지갑으로 main 컨트랙트 mintSbt 실행 msg.value값도 1ETHER. (AAA, 1671800000, host주소, 1000000000000000000, ["A1", "A2"])
     6. 아무 지갑으로 host 컨트랙트에서 자리가 잘 들어갔는지 getSeats 실행. (1671800000)
     7. 내가 가진 Sbt 확인. getSbtTokens 실행. console에 decoded output에 있음.
-    8. 내가 가진 Sbt 소각. refundSbtToken 실행. 단, deadline이 넘지않은 활성화되어 있는 토큰이어야함. (1)
+    8. 내가 가진 Sbt 환불. refundSbtToken 실행. 단, deadline이 넘지않은 활성화되어 있는 토큰이어야함. (1)
     9. getSbtTokens 실행해보고, getSeats 실행해보고, 내 잔고의 양도 확인해보면서 환불이 잘 되었는지 확인.
 */
 
@@ -41,14 +41,15 @@ contract ttot_main is ERC721Enumerable {
     Counters.Counter private _tokenIds;
 
     // sbt에 들어갈 데이터
+    enum Status {active, inactive, done}
     struct sbtTokenData {
         uint256 sbtTokenId; // id
-        string  sbtTokenURI; // image, title, userEmail ...
+        string sbtTokenURI; // image, title, userEmail ...
         uint256 deadline; // 티켓이 끝나는 시점
         address hostAddress; // 주최측의 주소
         uint256 price;  // 환불할 때 필요한 티켓 가격
         string[] seats; // 환불할 때 필요한 선택 좌석들
-        bool isActive;  // 공연이 아직 안끝났는지
+        Status status;  // 티켓의 상태
     }
     mapping (uint256 => sbtTokenData) SbtTokens;
     mapping (address => ttot_host) Hosts;
@@ -69,9 +70,15 @@ contract ttot_main is ERC721Enumerable {
 
     // 티켓 구매와 발행
     // tokenURI는 ipfs 주소, deadline은 unix timestamp 형태, price는 wei단위, hostAddress는 주최측 컨트랙트 주소, seats는 선택한 좌석들
-    function mintSbt(string memory _tokenURI, uint256 _deadline, address _hostAddress, uint256 _price, string[] memory _seats) public payable {
+    function mintSbt(string memory _tokenURI, uint256 _deadline, address _hostAddress, uint256 _price, string[] memory _seats, uint256 _inactiveId) public payable {
         require(_price <= msg.value && msg.value <= address(msg.sender).balance, "caller sent lower than price.");
+        require(SbtTokens[_inactiveId].status==Status.inactive,"This is not INACTIVE ticket.");
 
+        // _inactiveId가 0이 아니면(사전예매 시 사용할 inactiveId가 선택되었으면) inactive->done
+        if(_inactiveId!=0){
+            SbtTokens[_inactiveId].status = Status.done;
+        }
+        
         // 함수 실행 시, tokenId값 하나씩 증가
         _tokenIds.increment();
         uint256 tokenId = _tokenIds.current();
@@ -80,7 +87,7 @@ contract ttot_main is ERC721Enumerable {
         Hosts[_hostAddress].pushSeat(_deadline, _seats);
 
         // 토큰의 정보 저장 후 mint 실행
-        SbtTokens[tokenId] = sbtTokenData(tokenId, _tokenURI, _deadline, _hostAddress, _price, _seats, true);
+        SbtTokens[tokenId] = sbtTokenData(tokenId, _tokenURI, _deadline, _hostAddress, _price, _seats, Status.active);
         _mint(msg.sender, tokenId);
 
         // SBT로 만들기 위해 송금 불가로 만듦
@@ -97,7 +104,7 @@ contract ttot_main is ERC721Enumerable {
         // 오너가 가진 토큰들의 아이디를 뽑아와 새로운 배열에 저장
         for (uint256 i=0; i<balanceLength; i++) {
             uint256 sbtTokenId = tokenOfOwnerByIndex(msg.sender, i);
-            setSbtIsActive(sbtTokenId);
+            setSbtInactive(sbtTokenId);
 
             myTokenData[i] = SbtTokens[sbtTokenId];
         }
@@ -107,9 +114,9 @@ contract ttot_main is ERC721Enumerable {
 
 
     // 데드라인이 지나면 티켓 비활성화
-    function setSbtIsActive(uint256 _tokenId) private {
-        if (block.timestamp > SbtTokens[_tokenId].deadline) {
-            SbtTokens[_tokenId].isActive = false;
+    function setSbtInactive(uint256 _tokenId) private {
+        if ((block.timestamp > SbtTokens[_tokenId].deadline)&&(SbtTokens[_tokenId].status!=Status.done)) {
+            SbtTokens[_tokenId].status = Status.inactive;
         }
     }
 
@@ -119,7 +126,7 @@ contract ttot_main is ERC721Enumerable {
         // 해당 토큰의 오너를 저장.
         address addr_owner = ownerOf(_tokenId);
         require(addr_owner == msg.sender, "msg.sender is not the owner of the token");
-        require(SbtTokens[_tokenId].isActive == true, "This token was used.");
+        require(SbtTokens[_tokenId].status == Status.active, "This token was used.");
 
         // 오너에게 구매한 가격만큼 환불
         payable(addr_owner).transfer(SbtTokens[_tokenId].price);
@@ -139,7 +146,7 @@ contract ttot_main is ERC721Enumerable {
     function burnSbtToken(uint256 _tokenId) public {
         address addr_owner = ownerOf(_tokenId);
         require(addr_owner == msg.sender, "msg.sender is not the owner of the token");
-        require(SbtTokens[_tokenId].isActive == false, "This token was not used.");
+        require(SbtTokens[_tokenId].status != Status.active, "This token was not used.");
 
         // 해당 토큰은 burn
         _burn(_tokenId);
@@ -147,7 +154,6 @@ contract ttot_main is ERC721Enumerable {
         // 해당 토큰의 정보 삭제
         delete SbtTokens[_tokenId];
     }
-
 
 
 

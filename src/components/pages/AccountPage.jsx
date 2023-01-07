@@ -228,6 +228,15 @@ const AccountPage = () => {
         >
           INACTIVE
         </TabButton>
+        <TabButton
+          isActive={tab === 'DONE'}
+          value="DONE"
+          onClick={(newTab) => {
+            setTab(newTab.target.value);
+          }}
+        >
+          DONE
+        </TabButton>
       </TabNavigation>
       <TicketContainer>
         {tab === 'ALL' ? (
@@ -236,6 +245,8 @@ const AccountPage = () => {
           <MyTickets tickets={sbtList} type="active" />
         ) : tab === 'INACTIVE' ? (
           <MyTickets tickets={sbtList} type="inactive" />
+        ) : tab === 'DONE' ? (
+          <MyTickets tickets={sbtList} type="DONE" />
         ) : null}
       </TicketContainer>
     </Layout>
