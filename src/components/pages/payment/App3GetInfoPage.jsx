@@ -13,7 +13,7 @@ import SelectPayment from './SelectPayment';
 import useMint from '@hooks/useMint';
 import { payCardByTossPayment, payTransferByTossPayment } from '@utils/toss';
 
-const App3GetInfoPage = ({ setTab, data, inactiveId, setInactiveId }) => {
+const App3GetInfoPage = ({ setTab, data, inactiveId = 0, setInactiveId }) => {
   const { email: userEmail, setPopup, popup } = useOauth();
   const { createTokenUri, createSBT } = useMint();
 
@@ -30,11 +30,11 @@ const App3GetInfoPage = ({ setTab, data, inactiveId, setInactiveId }) => {
 
   //TODO: 다시 이페이지로 못들어오게 블라킹 해줘야 할거 같은데
   //TODO: 실패시 추가 처리 여부 고민
-  const mint = async (e, _sbtInfo, _ticketInfo, _email) => {
+  const mint = async (e, _sbtInfo, _ticketInfo, _email, _inactiveId) => {
     setIsLoading(true);
     try {
       const tokenUri = await createTokenUri(_sbtInfo, _email);
-      await createSBT(tokenUri, _ticketInfo, 'COIN');
+      await createSBT(tokenUri, _ticketInfo, 'COIN', _inactiveId);
       setTab(e.target.value);
     } catch (error) {
       console.log('Error uploading file: ', error);
@@ -44,44 +44,15 @@ const App3GetInfoPage = ({ setTab, data, inactiveId, setInactiveId }) => {
     }
   };
 
-  // const preMint = async (e, _sbtInfo, _ticketInfo, _email, _inactiveId) => {
-  //   setIsLoading(true);
-  //   try {
-  //     const tokenUri = await createTokenUri(_sbtInfo, _email);
-  //     await preCreateSBT(tokenUri, _ticketInfo, 'COIN', _inactiveId);
-  //     setTab(e.target.value);
-  //   } catch (error) {
-  //     console.log('Error uploading file: ', error);
-  //     toast.error('민팅 실패');
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-
   const onClickPay = (e) => {
     if (payType === 'cash' && cashPayType === 'easyPay') {
       localStorage.setItem('pay_data', JSON.stringify({ ticketInfo, sbtInfo }));
-      if (inactiveId) {
-        console.log('~(사전예매)SBT 생성하는 로직~');
-        // prePayCardByTossPayment(ticketInfo.tPrice, data.title, account, data.id, inactiveId);
-      } else {
-        payCardByTossPayment(ticketInfo.tPrice, data.title, account, data.id);
-      }
+      payCardByTossPayment(ticketInfo.tPrice, data.title, account, data.id, inactiveId);
     } else if (payType === 'cash' && cashPayType === 'transfer') {
       localStorage.setItem('pay_data', JSON.stringify({ ticketInfo, sbtInfo }));
-      if (inactiveId) {
-        console.log('~(사전예매)SBT 생성하는 로직~');
-        // prePayTransferByTossPayment(ticketInfo.tPrice, data.title, account, data.id);
-      } else {
-        payTransferByTossPayment(ticketInfo.tPrice, data.title, account, data.id);
-      }
+      payTransferByTossPayment(ticketInfo.tPrice, data.title, account, data.id, inactiveId);
     } else if (payType === 'coin') {
-      if (inactiveId) {
-        // preMint(e, sbtInfo, ticketInfo, userEmail, inactiveId);
-        console.log('~(사전예매)SBT 생성하는 로직~');
-      } else {
-        mint(e, sbtInfo, ticketInfo, userEmail);
-      }
+      mint(e, sbtInfo, ticketInfo, userEmail, inactiveId);
     }
   };
 
