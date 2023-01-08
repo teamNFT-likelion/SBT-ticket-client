@@ -7,10 +7,13 @@ const MyTickets = ({ tickets, type }) => {
   useEffect(() => {
     let filteredList;
     if (type === 'active') {
-      filteredList = tickets.filter((ticket) => ticket.tokenIsActive === true);
+      filteredList = tickets.filter((ticket) => ticket.tokenStatus === 0);
       setTypeTickets(filteredList);
     } else if (type === 'inactive') {
-      filteredList = tickets.filter((ticket) => ticket.tokenIsActive === false);
+      filteredList = tickets.filter((ticket) => ticket.tokenStatus === 1);
+      setTypeTickets(filteredList);
+    } else if (type === 'done') {
+      filteredList = tickets.filter((ticket) => ticket.tokenStatus === 2);
       setTypeTickets(filteredList);
     } else {
       setTypeTickets(tickets);
@@ -31,7 +34,7 @@ const MyTickets = ({ tickets, type }) => {
           image={token.tokenImage}
           title={token.tokenTitle}
           tEmail={token.tokenUserEmail}
-          active={token.tokenIsActive}
+          status={token.tokenStatus}
         />
       ))}
     </>

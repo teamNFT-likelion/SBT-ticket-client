@@ -246,7 +246,7 @@ const AccountPage = () => {
         ) : tab === 'INACTIVE' ? (
           <MyTickets tickets={sbtList} type="inactive" />
         ) : tab === 'DONE' ? (
-          <MyTickets tickets={sbtList} type="DONE" />
+          <MyTickets tickets={sbtList} type="done" />
         ) : null}
       </TicketContainer>
     </Layout>

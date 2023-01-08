@@ -10,8 +10,7 @@ export function payCardByTossPayment(_price, _name, _customer, _dataId, _inactiv
         orderId: crypto.randomUUID(),
         orderName: _name,
         customerName: _customer,
-        inactiveId: _inactiveId,
-        successUrl: `${window.origin}/payment/success?id=${_dataId}`,
+        successUrl: `${window.origin}/payment/success?id=${_dataId}&inactiveId=${_inactiveId}`,
         failUrl: `${window.origin}/pay_fail`,
       })
       .catch(function (error) {
@@ -32,8 +31,7 @@ export function payTransferByTossPayment(_price, _name, _customer, _dataId, _ina
         orderId: crypto.randomUUID(),
         orderName: _name,
         customerName: _customer,
-        inactiveId: _inactiveId,
-        successUrl: `${window.origin}/payment/success?id=${_dataId}`,
+        successUrl: `${window.origin}/payment/success?id=${_dataId}&inactiveId=${_inactiveId}`,
         failUrl: `${window.origin}/pay_fail`,
       })
       .catch(function (error) {

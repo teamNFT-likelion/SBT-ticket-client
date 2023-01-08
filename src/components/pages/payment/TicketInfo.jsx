@@ -117,7 +117,7 @@ const TicketInfo = ({ data, isLoading, inactiveId }) => {
             </div>
           </div>
         )}
-        {inactiveId && (
+        {inactiveId !== 0 && (
           <div
             style={{
               display: 'flex',

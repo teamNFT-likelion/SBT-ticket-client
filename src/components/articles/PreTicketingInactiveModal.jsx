@@ -3,6 +3,7 @@ import * as colors from '@styles/colors';
 import { Column, Row } from '@components/atoms/wrapper.style';
 import { useEffect, useState } from 'react';
 import useItems from '@hooks/useItems';
+import { useCallback } from 'react';
 
 export default function PreTicketingInactiveModal({
   setPreTicketModal,
@@ -16,15 +17,20 @@ export default function PreTicketingInactiveModal({
 
   const { items } = useItems();
 
+  const setHostPreTicketingList = useCallback(() => {
+    const hostPreTicketingList = items.filter((item) => item.id === hostAddr)[0].preTicketingList;
+    setInactiveTickets(sbtList.filter((item) => !item.tokenIsActive));
+    setRelativeTickets(
+      inactiveTickets.filter(
+        (item) => hostPreTicketingList.includes(item.tokenHostAddr) && item.tokenStatus === 1,
+      ),
+    );
+    // eslint-disable-next-line
+  }, [relativeTickets.length, inactiveTickets.length]);
+
   useEffect(() => {
-    if ((sbtList.length && !inactiveTickets.length) || !relativeTickets.length) {
-      const hostPreTicketingList = items.filter((item) => item.id === hostAddr)[0].preTicketingList;
-      setInactiveTickets(sbtList.filter((item) => !item.tokenIsActive));
-      setRelativeTickets(
-        inactiveTickets.filter((item) => hostPreTicketingList.includes(item.tokenHostAddr)),
-      );
-    }
-  }, [sbtList, hostAddr, inactiveTickets, items, relativeTickets]);
+    setHostPreTicketingList();
+  }, [setHostPreTicketingList]);
 
   const PreTicketingList = ({ item }) => {
     return (
@@ -65,7 +71,7 @@ export default function PreTicketingInactiveModal({
         소유 중인 관련 INACTIVE ticket
       </Column>
       <ModalWrapper>
-        {inactiveTickets &&
+        {relativeTickets &&
           relativeTickets.map((item, i) => <PreTicketingList item={item} key={i} />)}
       </ModalWrapper>
     </>
@@ -95,18 +101,21 @@ const ModalTempBox = styled(Row)`
   background-color: #3b3b40;
   padding: 20px;
   border-radius: 12px;
-  justify-content: center;
+  justify-content: flex-start;
   border: 2px solid ${colors.primary80};
 `;
 
 const ModalWrapper = styled(Row)`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 600px;
   max-height: 600px;
   gap: 15px;
   overflow-y: auto;
+  margin: auto;
+
+  flex-wrap: wrap;
 
   &::-webkit-scrollbar {
     width: 4px;

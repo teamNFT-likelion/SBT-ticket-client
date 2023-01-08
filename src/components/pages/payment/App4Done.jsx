@@ -42,7 +42,7 @@ const ContentWrapper = styled('span')`
   color: ${colors.primary40};
 `;
 
-export const App4Done = ({ data }) => {
+export const App4Done = ({ data, inactiveId }) => {
   const location = useLocation();
   const payedData = location.state?.payedData;
   console.log('payedData', payedData);
@@ -70,6 +70,9 @@ export const App4Done = ({ data }) => {
           <ContentWrapper>⭐ 코인 가격: {tTokenPrice.toFixed(2)}MATIC</ContentWrapper>
           <ContentWrapper>⭐ 자리: {tSeat.map((seat) => `[${seat}] `)}</ContentWrapper>
           <ContentWrapper>⭐ 본인 이메일: {userEmailInfo}</ContentWrapper>
+          {(inactiveId || inactiveId !== 0) && (
+            <ContentWrapper>⭐ 사전예매에 사용한 티켓 ID: {inactiveId}</ContentWrapper>
+          )}
         </ContentContainer>
       </LeftBox>
       <RightBox style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

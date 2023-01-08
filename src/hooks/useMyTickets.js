@@ -44,7 +44,7 @@ export default function useMyTickets() {
             tokenImage: await axios.get(encodeURI(metadata.data.image)),
             tokenTitle: metadata.data.name,
             tokenUserEmail: metadata.data.email,
-            tokenIsActive: i.isActive,
+            tokenStatus: Number(i.status),
           };
           return item;
         }),

@@ -13,7 +13,7 @@ import SelectPayment from './SelectPayment';
 import useMint from '@hooks/useMint';
 import { payCardByTossPayment, payTransferByTossPayment } from '@utils/toss';
 
-const App3GetInfoPage = ({ setTab, data, inactiveId = 0, setInactiveId }) => {
+const App3GetInfoPage = ({ setTab, data, inactiveId }) => {
   const { email: userEmail, setPopup, popup } = useOauth();
   const { createTokenUri, createSBT } = useMint();
 
