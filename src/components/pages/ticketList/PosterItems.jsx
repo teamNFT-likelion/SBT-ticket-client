@@ -4,16 +4,22 @@ import styled from 'styled-components';
 import useItems from '@hooks/useItems';
 
 const Container = styled('div')`
+  width: 100%;
   display: flex;
   flex-direction: column;
+  margin-top: 80px;
 `;
 
 const TitleWrapper = styled('div')`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: 25px;
-  margin: 10px 0;
+  font-size: 28px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 0.5px solid orange;
+  width: 390px;
+  color: orange;
 `;
 
 const PosterWrapper = styled('div')`
@@ -25,15 +31,9 @@ const PosterWrapper = styled('div')`
 const PosterItems = ({ type }) => {
   const { typeItems } = useItems();
 
-  const getTitle = (_type) => {
-    if (_type === 'concert') return '공연';
-    if (_type === 'exhibit') return '전시';
-    if (_type === 'sports') return '스포츠';
-  };
-
   return (
     <Container>
-      <TitleWrapper>{getTitle(type)}</TitleWrapper>
+      <TitleWrapper>TTOT LIVE</TitleWrapper>
       <PosterWrapper>
         {typeItems.map((data) => (
           <PosterItem
