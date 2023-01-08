@@ -35,9 +35,11 @@ const PaySuccess = () => {
   const setPrice = useSetRecoilState(tPriceState);
 
   const { ticketInfo, sbtInfo } = JSON.parse(localStorage.getItem('pay_data'));
-  const isMintAvailable = paymentKey && orderId && amount && Object.keys(web3).length > 0;
+  const isMintAvailable =
+    paymentKey && orderId && amount && inactiveId && Object.keys(web3).length > 0;
 
   useEffect(() => {
+    console.log(inactiveId);
     const mint = async () => {
       try {
         const tokenUri = await createTokenUri(sbtInfo, userEmail);
@@ -78,7 +80,6 @@ const PaySuccess = () => {
             paymentKey,
             orderId,
             amount,
-            inactiveId,
           },
         })
         .then((res) => {

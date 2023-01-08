@@ -72,10 +72,10 @@ contract ttot_main is ERC721Enumerable {
     // tokenURI는 ipfs 주소, deadline은 unix timestamp 형태, price는 wei단위, hostAddress는 주최측 컨트랙트 주소, seats는 선택한 좌석들
     function mintSbt(string memory _tokenURI, uint256 _deadline, address _hostAddress, uint256 _price, string[] memory _seats, uint256 _inactiveId) public payable {
         require(_price <= msg.value && msg.value <= address(msg.sender).balance, "caller sent lower than price.");
-        require(SbtTokens[_inactiveId].status==Status.inactive,"This is not INACTIVE ticket.");
-
+        
         // _inactiveId가 0이 아니면(사전예매 시 사용할 inactiveId가 선택되었으면) inactive->done
         if(_inactiveId!=0){
+            require(SbtTokens[_inactiveId].status==Status.inactive,"This is not INACTIVE ticket.");
             SbtTokens[_inactiveId].status = Status.done;
         }
         

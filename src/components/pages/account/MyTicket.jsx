@@ -101,7 +101,7 @@ const QRText = styled('p')`
   margin-top: 15px;
 `;
 
-const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail, active }) => {
+const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail, status }) => {
   // 모달을 위한 state
   const [showUseQr, setShowUseQr] = useState(false);
   const [showRefund, setShowRefund] = useState(false);
@@ -188,7 +188,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
   return (
     <div>
       <TicketWrapper key={id}>
-        <TextWrapper isActive={active}>
+        <TextWrapper isActive={status === 0}>
           {title} #{id}
         </TextWrapper>
         <TicketImage src={image.data} alt="ticket" />
@@ -197,7 +197,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
             {seats.map((seat) => `[${seat}] `)}
           </ContentWrapper>
           <ContentWrapper>{format(new Date(date), 'yyyy.MM.dd')}</ContentWrapper>
-          {active ? (
+          {status === 0 ? (
             <TicketButtonWrapper>
               <TicketButton
                 buttonColor={`${colors.primary40}`}
@@ -216,7 +216,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
                 환불
               </TicketButton>
             </TicketButtonWrapper>
-          ) : (
+          ) : status === 1 ? (
             <TicketButtonWrapper>
               <TicketButton
                 buttonColor={`#af00a7`}
@@ -226,6 +226,18 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
               >
                 팬 혜택
               </TicketButton>
+              <TicketButton
+                buttonColor={`${colors.bgRed}`}
+                onClick={() => {
+                  setShowBurn(true);
+                }}
+              >
+                소각
+              </TicketButton>
+            </TicketButtonWrapper>
+          ) : (
+            <TicketButtonWrapper>
+              사용 완료
               <TicketButton
                 buttonColor={`${colors.bgRed}`}
                 onClick={() => {

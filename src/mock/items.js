@@ -1,7 +1,7 @@
 //빅 포스터용 데이터 6개
 export const mainItems = [
   {
-    id: '0xF28B7529079c42aBAC7452Aac4cCB1A1226b0ca8',
+    id: '0x47fdA467f5289876A409b194d0E2EdfE78781b96',
     topic: '공연',
     posterImgUrl: 'https://ticketimage.interpark.com/Play/image/large/22/22010748_p.gif',
     detailInfoImg: 'https://ticketimage.interpark.com/Play/image/etc/22/22010748-12.jpg',
@@ -13,7 +13,7 @@ export const mainItems = [
     startDate: 1677164400000,
     endDate: 1677250800000,
     preTicketing: [1672585200000, 1673621999999],
-    preTicketingList: ['0x7f76cF9B69d1bf8B0a037d6aaadc38E08530d1bB'],
+    preTicketingList: ['0x11277bE59479160Ec06D648b9E5F1Cb0e08E6a74'],
     runningTime: 120,
     dateInfo: {
       1677164400000: [
@@ -1433,7 +1433,7 @@ export const mainItems = [
     },
   },
   {
-    id: '0xa7f5d9656106A44f91796bEea43797c0b6350d23',
+    id: '0x3277Bcc934e7fb1597B4DE609b3871BA5eFf550d',
     topic: '공연',
     posterImgUrl: 'https://image.toast.com/aaaaab/ticketlink/TKL_8/poster(220915)b.jpg',
     detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_4/fu_web_1_220825.jpg',
@@ -2865,7 +2865,7 @@ export const mainItems = [
     },
   },
   {
-    id: '0xb05848331e1650e8b6fEFC923aC6cc39768D4B6A',
+    id: '0xD8b2eb6573d3810fa7ef34675806c660B7eB0cc5',
     topic: '전시',
     posterImgUrl: 'https:////image.toast.com/aaaaab/ticketlink/TKL_5/티켓링크_405x500.jpg',
     detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_3/221116_AW_700.jpg',
@@ -4299,7 +4299,7 @@ export const mainItems = [
     },
   },
   {
-    id: '0x62e6F8f9F3ccC27bAa41D4D1a017fAF053292074',
+    id: '0x6AB7b875E7B912D921Ca0a07Cab8C8680afDf011',
     topic: '전시',
     posterImgUrl: 'https://image.toast.com/aaaaab/ticketlink/TKL_6/tech_pst0308.jpg',
     detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_6/tech_info0308-01.jpg',
@@ -5733,7 +5733,7 @@ export const mainItems = [
     },
   },
   {
-    id: '0x3cFB4119E326Dff23beAbf58dbA232159158623a',
+    id: '0x69478f6B9BFB0051bc8c3A4B6AACc3EA0a1Bca76',
     topic: '스포츠',
     posterImgUrl: 'https://ticketimage.interpark.com/Play/image/large/22/22015838_p.gif',
     detailInfoImg: 'https://ticketimage.interpark.com/Play/image/etc/22/22015838-01.jpg',
@@ -5745,7 +5745,7 @@ export const mainItems = [
     startDate: 1676386800000,
     endDate: 1676386800000,
     preTicketing: [1672585200000, 1672757999000],
-    preTicketingList: ['0x7f76cF9B69d1bf8B0a037d6aaadc38E08530d1bB'],
+    preTicketingList: ['0x11277bE59479160Ec06D648b9E5F1Cb0e08E6a74'],
     runningTime: 90,
     dateInfo: {
       1676386800000: [
@@ -6223,7 +6223,7 @@ export const mainItems = [
     },
   },
   {
-    id: '0x170E07e28fe527647B97a17Bb001E619baCECcE8',
+    id: '0x8f60c3388B8d1Ce506fC1796ea07897aE326758A',
     topic: '스포츠',
     posterImgUrl: 'https://news.nateimg.co.kr/orgImg/na/2022/04/14/5317599_high.jpg',
     detailInfoImg: 'https://www.jejutwn.com/data/photos/20220624/art_16554512927773_d72133.jpg',
@@ -6717,7 +6717,7 @@ export const mainItems = [
 //TODO:일반 포스터용 데이터 15개
 export const restItems = [
   {
-    id: '0x7f76cF9B69d1bf8B0a037d6aaadc38E08530d1bB',
+    id: '0x11277bE59479160Ec06D648b9E5F1Cb0e08E6a74',
     topic: '공연',
     posterImgUrl: 'https://image.toast.com/aaaaab/ticketlink/TKL_6/펭미팅_대표이미지_405X500.jpg',
     detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_2/MD_1128.jpg',
