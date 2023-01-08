@@ -169,7 +169,7 @@ const SliderWrapper = styled('div')`
   & .slick-slide.slick-center {
     scale: 1;
     transition: scale 1s ease-in-out;
-    border: 3px solid white;
+    border: 3px solid gray;
   }
 
   & .slick-slider {
