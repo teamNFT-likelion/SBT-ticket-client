@@ -1,46 +1,122 @@
-import React, { useState } from 'react';
-import { BigPosterWrapper, PosterCard, ImgCard, DescCard } from './BigPoster.style';
-import { BigPosterButton } from '@components/articles/BigPosterButton';
+import React from 'react';
+import styled from 'styled-components';
+import * as colors from '@styles/colors';
+import { ImgCard } from './BigPoster.style';
 import { BigPosterInfo } from '@components/articles/BigPosterInfo';
 import useItems from '@hooks/useItems';
+import Slider from 'react-slick';
+import { SlArrowRight, SlArrowLeft } from 'react-icons/sl';
 
 const BigPoster = () => {
-  const [activePosterId, setActivePosterId] = useState(0);
-
   const { typeItems } = useItems();
 
-  const onClickCard = (side) => {
-    if (activePosterId === 0 && side === 'right') {
-      setActivePosterId(2);
-    } else if (activePosterId === 0 && side === 'left') {
-      setActivePosterId(1);
-    } else {
-      setActivePosterId(0);
-    }
+  const settings = {
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 2,
+    centerMode: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   return (
-    <BigPosterWrapper>
-      <PosterCard isOpen={activePosterId !== 2} flexDirection="row-reverse">
-        <ImgCard src={typeItems[0].posterImgUrl} alt="aa" onClick={() => onClickCard('left')} />
-        <DescCard isOpen={activePosterId === 1}>
-          <div className="card-box">
+    <SliderWrapper>
+      <Slider {...settings}>
+        <div>
+          <div className="poster-card">
             <BigPosterInfo Item={typeItems[0]} />
-            <BigPosterButton Item={typeItems[0]} />
+            <ImgCard src={typeItems[0].posterImgUrl} alt="poster1" />
           </div>
-        </DescCard>
-      </PosterCard>
-      <PosterCard isOpen={activePosterId !== 1}>
-        <ImgCard src={typeItems[1].posterImgUrl} alt="aa" onClick={() => onClickCard('right')} />
-        <DescCard isOpen={activePosterId === 2}>
-          <div className="card-box">
+        </div>
+        <div>
+          <div className="poster-card">
             <BigPosterInfo Item={typeItems[1]} />
-            <BigPosterButton Item={typeItems[1]} />
+            <ImgCard src={typeItems[1].posterImgUrl} alt="poster2" />
           </div>
-        </DescCard>
-      </PosterCard>
-    </BigPosterWrapper>
+        </div>
+      </Slider>
+    </SliderWrapper>
   );
 };
+
+const SliderWrapper = styled('div')`
+  width: 100%;
+
+  & .slick-list {
+    height: auto;
+  }
+
+  & .slick-slide {
+    display: flex;
+    width: 100%;
+    border-radius: 30px;
+    margin: 0;
+    scale: 0.9;
+    border: 1px solid white;
+
+    & > div {
+      width: 100%;
+      display: flex;
+    }
+  }
+
+  & .slick-slide.slick-center {
+    scale: 1;
+    transition: scale 1s ease-in-out;
+    border: 3px solid gray;
+  }
+
+  & .slick-slider {
+    position: relative;
+  }
+
+  & .poster-card {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
+function NextArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      style={{
+        color: 'white',
+        position: 'absolute',
+        right: '-24px',
+        top: 0,
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+      }}
+      onClick={onClick}
+    >
+      <SlArrowRight size="30px" color={colors.primary80} style={{ cursor: 'pointer' }} />
+    </div>
+  );
+}
+
+function PrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: '-24px',
+        top: 0,
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+      }}
+      onClick={onClick}
+    >
+      <SlArrowLeft size="30px" color={colors.primary80} style={{ cursor: 'pointer' }} />
+    </div>
+  );
+}
 
 export default BigPoster;

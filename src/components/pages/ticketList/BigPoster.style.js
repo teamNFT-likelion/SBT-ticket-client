@@ -1,97 +1,57 @@
-import { Column } from '@components/atoms/wrapper.style';
 import styled from 'styled-components';
+import * as colors from '@styles/colors';
 
-export const BigPosterWrapper = styled('div')`
-  display: flex;
-  gap: 40px;
-  width: auto;
-  height: 500px;
-  justify-content: center;
-  margin-bottom: 120px;
-  white-space: nowrap;
-`;
-
-export const PosterCard = styled('div')`
-  display: flex;
-  background-color: white;
-  flex-direction: ${({ flexDirection }) => flexDirection || 'row'};
-  overflow: hidden;
-  max-width: ${({ isOpen }) => (isOpen ? '1000px' : '0')};
-  transition: max-width 530ms ease-in;
-  border-radius: 40px;
-  z-index: 1;
-
-  &::before {
-    content: '';
-    position: absolute;
-    width: 100px;
-    height: 500px;
-    background-color: #0f0f0f;
-    z-index: 2;
-  }
-`;
-
-export const DescCard = styled('div')`
-  width: ${({ isOpen }) => (isOpen ? '500px' : '0')};
-  color: black;
-  flex: 1;
-  overflow: hidden;
-  transition: width 500ms ease-in;
-
-  & .card-box {
-    opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
-    display: flex;
-    height: 100%;
-    padding: 40px;
-    flex-direction: column;
-    box-sizing: border-box;
-    justify-content: space-between;
-    transition: opacity 200ms ease-in;
-  }
-`;
 export const ImgCard = styled('img')`
-  display: flex;
-  height: 100%;
   height: 500px;
   width: auto;
-  border-radius: 40px;
-  z-index: 3;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
 `;
 
 export const InfoWrapper = styled('div')`
+  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  color: gray;
+  padding: 120px 40px 40px;
 `;
 
 export const ButtonWrapper = styled('div')`
   display: flex;
-  justify-self: self-end;
-  justify-content: space-between;
-  gap: 40px;
+  gap: 28px;
+  margin-top: 40px;
 
-  & > button {
-    background-color: ${({ backgroundColor }) => backgroundColor || 'black'};
-    flex: 1;
-    height: 50px;
+  & button {
     font-size: 24px;
+    border: 1px solid white;
+    padding: 12px 32px;
+    border-radius: 24px;
   }
 `;
 
-export const Title = styled(Column)`
-  align-self: center;
-  font-size: 30px;
+export const Title = styled('div')`
+  position: relative;
+  font-size: 48px;
+  color: white;
+  overflow-wrap: break-word;
+  word-break: keep-all
+  max-width: 600px;
 `;
 
-export const Info = styled('span')`
+export const Info = styled('div')`
   font-size: 24px;
   align-self: ${({ alignSelf }) => alignSelf || 'start'};
-  opacity: ;
   margin-top: ${({ marginTop }) => marginTop || 0};
 `;
 
-export const PreTicketingInfo = styled('span')`
-  font-size: 20px;
-  align-self: ${({ alignSelf }) => alignSelf || 'start'};
-  opacity: ;
-  margin-top: ${({ marginTop }) => marginTop || 0};
+export const Tag = styled('span')`
+  color: white;
+  background-color: ${colors.bgRed};
+  display: inline;
+  position: absolute;
+  top: -44px;
+  font-size: 24px;
+  padding: 6px 20px;
+  border-radius: 15px;
 `;
