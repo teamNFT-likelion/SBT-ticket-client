@@ -21,7 +21,7 @@ export const BigPosterInfo = ({ Item }) => {
         )}
         <Info marginTop="32px">
           {format(new Date(Item.startDate), 'yyyy. MM. dd. hh:mm')} (KST) ~{' '}
-          {format(new Date(Item.endDate), 'yyyy. MM. dd (hh:mm)')} (KST)
+          {format(new Date(Item.endDate), 'yyyy. MM. dd. hh:mm')} (KST)
         </Info>
         <BigPosterButton Item={Item} />
       </div>
