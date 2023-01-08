@@ -19,21 +19,19 @@ import useItems from '@hooks/useItems';
 
 const PageTypeWrapper = styled('div')`
   display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-  font-size: 28px;
-
-  & span:last-child {
-    border-right: none;
-  }
+  align-self: start;
+  margin-bottom: 24px;
+  font-size: 24px;
 `;
 
 const PageTypeText = styled('span')`
-  border-right: 2px solid white;
   width: 130px;
+  font-weight: 300;
   text-align: center;
   cursor: pointer;
-  color: ${({ isActive }) => (isActive ? colors.primary80 : colors.textWhite)};
+  padding-bottom: 12px;
+  color: ${({ isActive }) => (isActive ? 'orange' : colors.textWhite)};
+  border-bottom: ${({ isActive }) => (isActive ? '2px solid orange' : '0.5px solid gray')};
 `;
 
 const TListPage = () => {
@@ -81,9 +79,7 @@ const TListPage = () => {
         </PageTypeText>
       </PageTypeWrapper>
       <BigPoster />
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
-        <PosterItems />
-      </div>
+      <PosterItems />
     </Layout>
   );
 };

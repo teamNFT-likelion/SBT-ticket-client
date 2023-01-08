@@ -10,24 +10,26 @@ import DisabledButton from '@components/atoms/DisabledButton';
 const Container = styled('div')`
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
   position: relative;
 `;
 
 const HoverWrapper = styled('div')`
+  position: absolute;
+  top: 0;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 85%;
+  height: 300px;
   justify-content: center;
   gap: 16px;
   align-items: center;
-  position: absolute;
   background-color: rgba(219, 233, 175, 0.5);
 `;
 
 const TicketImg = styled('img')`
-  width: 200px;
-  flex: 4;
+  height: 300px;
+  width: auto;
   border: 3px solid
     ${(props) =>
       props.preTicketing === '진행중' && props.prePossible ? colors.primary80 : '#ffffff0'};
@@ -86,13 +88,10 @@ const PosterItem = ({
   return (
     <Container ref={hoverRef}>
       {isHover && (
-        <>
-          <HoverWrapper>
-            <LinkButton to={`/detail?id=${dataId}`} name="상세정보" prePossible={prePossible} />
-
-            <Button />
-          </HoverWrapper>
-        </>
+        <HoverWrapper>
+          <LinkButton to={`/detail?id=${dataId}`} name="상세정보" prePossible={prePossible} />
+          <Button />
+        </HoverWrapper>
       )}
       <TicketImg
         src={posterImgUrl}
