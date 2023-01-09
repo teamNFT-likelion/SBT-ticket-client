@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import verticalLine from '@assets/img/verticalLine.png';
 import { CalendarStyle, PartButtonContainer, SelectInfoBox } from '@styles/ticketDetailStyle';
-import { useSetRecoilState } from 'recoil';
+import { useSetRecoilState, useResetRecoilState } from 'recoil';
 import { Row } from '@atoms/wrapper.style';
 import {
   tDateState,
@@ -14,6 +14,10 @@ import {
   sbtNameState,
   sbtDescState,
   preTicketState,
+  tPriceState,
+  tSeatState,
+  tPricePerTokenState,
+  tTokenPriceState,
 } from '@states/paymentState';
 import { TabButton } from '@styles/ApaymentStyles';
 import Calendar from 'react-calendar';
@@ -75,16 +79,29 @@ export const App1Start = ({ setTab, data, inactiveId, setInactiveId }) => {
   useEffect(() => {
     setSbtRecoilState(data);
   }, [data, setSbtRecoilState]);
+  
+  const resetTicketPrice = useResetRecoilState(tPriceState);
+  const resetTicketSeat = useResetRecoilState(tSeatState);
+  const resetPricePerToken = useResetRecoilState(tPricePerTokenState);
+  const resetTicketTokenPrice = useResetRecoilState(tTokenPriceState);
 
   const handleDateClick = (_date) => {
     setDate(_date);
     setPart(0);
     setDeadline(data.dateInfo[_date.getTime()][0].startTime);
+    resetTicketPrice();
+    resetTicketSeat();
+    resetPricePerToken();
+    resetTicketTokenPrice();
   };
   const handlePartClick = (e) => {
     const newPart = Number(e.target.value);
     setPart(newPart);
     setDeadline(data.dateInfo[date.getTime()][newPart].startTime);
+    resetTicketPrice();
+    resetTicketSeat();
+    resetPricePerToken();
+    resetTicketTokenPrice();
   };
 
   return (
