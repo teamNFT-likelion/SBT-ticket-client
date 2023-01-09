@@ -76,9 +76,12 @@ export default function CheckWallet() {
 
     const handleSwitchChain = async () => {
       try {
-        if (account) {
-          await window.ethereum.enable();
-        }
+        // 필요한가? 모르겠음
+        // if (account) {
+        //   const accounts = await ethereum.request({method: 'eth_requestAccounts'});
+        //   console.log(accounts);
+        // }
+        
         // switch 네트워크
         await ethereum.request({
           method: 'wallet_switchEthereumChain',
