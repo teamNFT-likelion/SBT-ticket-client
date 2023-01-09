@@ -24,7 +24,7 @@ const APaymentPage = () => {
   const items = [...mainItems, ...restItems];
   const data = items.filter((item) => item.id === dataId)[0] || false;
 
-  const [tab, setTab] = useState('APP_Start');
+  const [tab, setTab] = useState('');
   const { account } = useRecoilValue(userState);
 
   // 사전예매에 사용하기위해 선택한 inactive 티켓 값 저장

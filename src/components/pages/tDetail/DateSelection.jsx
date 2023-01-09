@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
+import { format } from 'date-fns';
 import verticalLine from '@assets/img/verticalLine.png';
 import {
   ButtonsWrapper,
@@ -137,12 +138,14 @@ const DateSelection = ({ data, prePossible }) => {
                 onClick={handlePartClick}
                 style={{
                   width: '70px',
-                  height: '30px',
+                  height: '50px',
                   fontSize: '15px',
                   backgroundColor: part === index ? 'orange' : colors.primary40,
                 }}
               >
                 {index + 1}회차
+                <br/>
+                {format(new Date(info.startTime), 'HH:mm')}
               </TabButton>
             ))}
           </PartButtonContainer>

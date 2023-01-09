@@ -2,7 +2,7 @@ import { atom, selector } from 'recoil';
 
 export const tDateState = atom({
   key: `paymentState/tDate/${crypto.randomUUID()}`,
-  default: new Date(),
+  default: 0,
 });
 export const tPartState = atom({
   key: 'paymentState/tPart',
