@@ -19,6 +19,7 @@ const App3GetInfoPage = ({ setTab, data, inactiveId }) => {
 
   const [payType, setPayType] = useState('');
   const [cashPayType, setCashPayType] = useState('easyPay');
+  const [isPressed, setIsPressed] = useState('unpressed');
   const [isLoading, setIsLoading] = useState(false); // 로딩중 확인
 
   const { account } = useRecoilValue(userState);
@@ -27,6 +28,7 @@ const App3GetInfoPage = ({ setTab, data, inactiveId }) => {
 
   const handlePayType = (e) => setPayType(e.target.value);
   const handleCashPayType = (e) => setCashPayType(e.target.value);
+  const handleReCaptcha = (e) => setIsPressed(e);
 
   //TODO: 다시 이페이지로 못들어오게 블라킹 해줘야 할거 같은데
   //TODO: 실패시 추가 처리 여부 고민
@@ -78,6 +80,7 @@ const App3GetInfoPage = ({ setTab, data, inactiveId }) => {
           <SelectPayment
             onClickPayType={handlePayType}
             onClickCashPayType={handleCashPayType}
+            onClickReCaptcha={handleReCaptcha}
             payType={payType}
             cashPayType={cashPayType}
           />
@@ -88,7 +91,7 @@ const App3GetInfoPage = ({ setTab, data, inactiveId }) => {
             <TabButton value="APP_SelectSeats" onClick={(e) => setTab(e.target.value)}>
               뒤로가기
             </TabButton>
-            <TabButton value="APP_Done" onClick={onClickPay} disabled={!userEmail || !payType}>
+            <TabButton value="APP_Done" onClick={onClickPay} disabled={!userEmail || !payType || isPressed==='unpressed'}>
               결제
             </TabButton>
           </Row>

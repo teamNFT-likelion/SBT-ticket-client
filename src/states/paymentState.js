@@ -2,7 +2,7 @@ import { atom, selector } from 'recoil';
 
 export const tDateState = atom({
   key: `paymentState/tDate/${crypto.randomUUID()}`,
-  default: 0,
+  default: new Date(),
 });
 export const tPartState = atom({
   key: 'paymentState/tPart',
@@ -32,7 +32,7 @@ export const tPricePerTokenState = atom({ // 실시간 토큰 가격 저장
   key: 'paymentState/tPricePerToken',
   default: 0,
 });
-export const tTokenPriceState = atom({  // tPrice를 tPricePerToken으로 나눠서 저장
+export const tTokenPriceState = atom({  // tPrice를 tPricePerToken으로 나눠서
   key: 'paymentState/tTokenPrice',
   default: 0,
 });

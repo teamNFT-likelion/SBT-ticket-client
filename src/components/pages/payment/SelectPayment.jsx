@@ -6,33 +6,16 @@ import { Row } from '@atoms/wrapper.style';
 import MyBalance from '../../articles/MyBalance';
 import { Column } from '../../atoms/wrapper.style';
 
-const SelectPayment = ({
-  onClickPayType,
-  onClickCashPayType,
-  payType,
-  cashPayType,
-}) => {
-  function onChange(value) {
-    //TODO: 뭐해줘야 하는지 체크?
-    console.log('Captcah value:');
-  }
+const SelectPayment = ({ onClickPayType, onClickCashPayType, onClickReCaptcha, payType, cashPayType }) => {
 
   return (
     <div style={{ width: '900px' }}>
       <SubTitle>| 결제수단 선택 |</SubTitle>
       <Row>
-        <SmTabButton
-          value="coin"
-          onClick={onClickPayType}
-          isActive={payType === 'coin'}
-        >
+        <SmTabButton value="coin" onClick={onClickPayType} isActive={payType === 'coin'}>
           코인결제
         </SmTabButton>
-        <SmTabButton
-          value="cash"
-          onClick={onClickPayType}
-          isActive={payType === 'cash'}
-        >
+        <SmTabButton value="cash" onClick={onClickPayType} isActive={payType === 'cash'}>
           일반결제
         </SmTabButton>
       </Row>
@@ -58,8 +41,9 @@ const SelectPayment = ({
         )}
         <ReCAPTCHAWrapper>
           <ReCAPTCHA
-            sitekey={'6Lf2GEUjAAAAAI0WtrRYHEacUJrsrssZN-qA_H35'}
-            onChange={onChange}
+            theme="dark"
+            sitekey={process.env.REACT_APP_reCAPTCHA_CLIENT_ID}
+            onChange={onClickReCaptcha}
           />
         </ReCAPTCHAWrapper>
       </Column>
