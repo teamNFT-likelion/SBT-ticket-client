@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { walletConnectError } from '@utils/toastMessages';
 import { BiPencil } from 'react-icons/bi';
 import useMyTickets from '@hooks/useMyTickets';
+import { BiXCircle } from 'react-icons/bi';
 
 const AddressWrapper = styled('div')`
   display: flex;
@@ -28,21 +29,28 @@ const ImageWrapper = styled('img')`
 
 const TabNavigation = styled('div')`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
   width: 100%;
   margin: 50px 0 0 0;
+  border-bottom: 2px solid gray;
+`;
+
+const TabButtonWrapper = styled('div')`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 `;
 
 const TabButton = styled('button')`
-  width: 15.6%;
+  width: 100px;
   height: 64px;
   font-size: 20px;
   cursor: pointer;
   margin: 3px;
   color: ${({ isActive }) => (isActive ? colors.primary80 : null)};
-  border-bottom: 3px solid ${({ isActive }) => (isActive ? colors.primary40 : colors.textWhite)};
+  border-bottom: 5px solid ${({ isActive }) => (isActive ? colors.primary40 : colors.textWhite)};
 
   &:hover {
     color: ${colors.textSecondary};
@@ -55,8 +63,12 @@ const TicketContainer = styled('div')`
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding: 30px;
-  margin-top: 20px;
+  margin-top: 40px;
   border-radius: 30px;
+  border: 2px solid gray;
+  min-height: 550px;
+  min-width: 1284px;
+  position: relative;
 `;
 
 const BackLabelBox = styled('label')`
@@ -100,6 +112,16 @@ const ProfileLabelBox = styled('label')`
     color: ${colors.textWhite};
     background-color: gray;
   }
+`;
+
+const ContentsWrapper = styled('div')`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  color: ${colors.primary40};
+  font-size: 12px;
+  gap: 5px;
 `;
 
 const ImgBox = styled('img')`
@@ -202,44 +224,56 @@ const AccountPage = () => {
         {account}
       </AddressWrapper>
       <TabNavigation>
-        <TabButton
-          isActive={tab === 'ALL'}
-          value="ALL"
-          onClick={(newTab) => {
-            setTab(newTab.target.value);
-          }}
-        >
-          ALL
-        </TabButton>
-        <TabButton
-          isActive={tab === 'ACTIVE'}
-          value="ACTIVE"
-          onClick={(newTab) => {
-            setTab(newTab.target.value);
-          }}
-        >
-          ACTIVE
-        </TabButton>
-        <TabButton
-          isActive={tab === 'INACTIVE'}
-          value="INACTIVE"
-          onClick={(newTab) => {
-            setTab(newTab.target.value);
-          }}
-        >
-          INACTIVE
-        </TabButton>
-        <TabButton
-          isActive={tab === 'DONE'}
-          value="DONE"
-          onClick={(newTab) => {
-            setTab(newTab.target.value);
-          }}
-        >
-          DONE
-        </TabButton>
+        <TabButtonWrapper>
+          <TabButton
+            isActive={tab === 'ALL'}
+            value="ALL"
+            onClick={(newTab) => {
+              setTab(newTab.target.value);
+            }}
+          >
+            ALL
+          </TabButton>
+          <TabButton
+            isActive={tab === 'ACTIVE'}
+            value="ACTIVE"
+            onClick={(newTab) => {
+              setTab(newTab.target.value);
+            }}
+          >
+            ACTIVE
+          </TabButton>
+          <TabButton
+            isActive={tab === 'INACTIVE'}
+            value="INACTIVE"
+            onClick={(newTab) => {
+              setTab(newTab.target.value);
+            }}
+          >
+            INACTIVE
+          </TabButton>
+          <TabButton
+            isActive={tab === 'DONE'}
+            value="DONE"
+            onClick={(newTab) => {
+              setTab(newTab.target.value);
+            }}
+          >
+            DONE
+          </TabButton>
+        </TabButtonWrapper>
+        <ContentsWrapper>
+          <span>⭐ACTIVE - 아직 사용하지 않은 티켓</span>
+          <span>⭐INACTIVE - 사용하고 팬 혜택은 받지 않은 티켓</span>
+          <span>⭐DONE - 사용하고 혜택도 받은 티켓</span>
+        </ContentsWrapper>
       </TabNavigation>
       <TicketContainer>
+        {sbtList.length === 0 ? (
+          <div style={{ position: 'absolute', top: '218px', left: '635px', fontSize: '50px' }}>
+            <BiXCircle />
+          </div>
+        ) : null}
         {tab === 'ALL' ? (
           <MyTickets tickets={sbtList} type="all" />
         ) : tab === 'ACTIVE' ? (
