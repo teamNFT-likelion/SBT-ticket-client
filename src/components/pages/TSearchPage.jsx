@@ -6,30 +6,38 @@ import * as colors from '@styles/colors';
 import { mainItems, restItems } from '@mock/items.js';
 import PosterItem from './ticketList/PosterItem';
 import { parse } from 'query-string';
+import heroImg from '@assets/img/landing_hero_2.svg';
 
 const Container = styled('div')`
-  width: 1350px;
-  padding: 0 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 150px;
 `;
 
-const TitleContainer = styled('div')`
-  margin: 50px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 const TitleWrapper = styled('div')`
-  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0;
   font-size: 40px;
 `;
 
 const PosterWrapper = styled('div')`
   display: grid;
-  height: 300px;
-  grid-template-columns: repeat(5, 1fr);
+  min-height: 300px;
+  grid-template-columns: repeat(4, 1fr);
   gap: 60px;
+  background: linear-gradient(
+      to bottom,
+      rgba(15, 15, 15, 0) 50%,
+      rgba(15, 15, 15, 0.5) 60%,
+      rgba(15, 15, 15, 0.7) 70%,
+      rgba(15, 15, 15, 1) 80%,
+      rgba(15, 15, 15, 1) 100%
+    ),
+    url(${heroImg}) no-repeat center;
+  background-size: cover;
 `;
 
 const QueryEmphasize = styled('span')`
@@ -56,11 +64,9 @@ const TSearchPage = () => {
   return (
     <Layout>
       <Container>
-        <TitleContainer>
-          <TitleWrapper>
-            ' <QueryEmphasize>{typing}</QueryEmphasize> ' 에 대한 검색 결과 ({typedItems.length})
-          </TitleWrapper>
-        </TitleContainer>
+        <TitleWrapper>
+          ' <QueryEmphasize>{typing}</QueryEmphasize> ' 에 대한 검색 결과 ({typedItems.length})
+        </TitleWrapper>
         <PosterWrapper>
           {typedItems.map((data) => {
             return (

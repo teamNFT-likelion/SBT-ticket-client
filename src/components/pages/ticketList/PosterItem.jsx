@@ -29,7 +29,7 @@ const HoverWrapper = styled('div')`
 
 const TicketImg = styled('img')`
   height: 300px;
-  width: auto;
+  width: 243px;
   border: 3px solid
     ${(props) =>
       props.preTicketing === '진행중' && props.prePossible ? colors.primary80 : '#ffffff0'};
