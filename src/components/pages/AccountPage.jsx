@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '@articles/Layout';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
+import { APP_MAX_W } from '@constants/styleConst';
 import metamaskImageUrl from '@assets/icon/MetaMask.png';
 import MyTickets from './account/MyTickets';
 import { useNavigate } from 'react-router-dom';
@@ -60,7 +61,7 @@ const TicketContainer = styled('div')`
 
 const BackLabelBox = styled('label')`
   display: flex;
-  width: 100vw;
+  width: ${APP_MAX_W}px;
   height: 20vh;
   align-items: center;
   justify-content: center;
