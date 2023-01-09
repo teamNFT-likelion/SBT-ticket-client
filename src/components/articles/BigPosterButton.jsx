@@ -36,7 +36,7 @@ export const BigPosterButton = ({ Item }) => {
       if (Item.prePossible) {
         Button = (
           <button
-            style={{ backgroundColor: colors.primary40 }}
+            style={{ backgroundColor: colors.primary40, cursor: 'pointer'}}
             onClick={() => {
               if (account) {
                 navigate({
@@ -85,6 +85,7 @@ export const BigPosterButton = ({ Item }) => {
               walletConnectError();
             }
           }}
+          style={{ cursor: 'pointer' }}
         >
           예매하기
         </button>
@@ -103,6 +104,7 @@ export const BigPosterButton = ({ Item }) => {
               walletConnectError();
             }
           }}
+          style={{ cursor: 'pointer' }}
         >
           예매하기
         </button>
@@ -119,6 +121,7 @@ export const BigPosterButton = ({ Item }) => {
             },
           });
         }}
+        style={{cursor:"pointer"}}
       >
         상세정보
       </button>
