@@ -28,11 +28,11 @@ export const tPriceState = atom({
   key: 'paymentState/tPrice', // token에 price 저장
   default: 0,
 });
-export const tPricePerTokenState = atom({
+export const tPricePerTokenState = atom({ // 실시간 토큰 가격 저장
   key: 'paymentState/tPricePerToken',
   default: 0,
 });
-export const tTokenPriceState = atom({
+export const tTokenPriceState = atom({  // tPrice를 tPricePerToken으로 나눠서 저장
   key: 'paymentState/tTokenPrice',
   default: 0,
 });

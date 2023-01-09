@@ -5,8 +5,39 @@ import { mainItems, restItems } from '@mock/items';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
+import { useResetRecoilState } from 'recoil';
+import {
+  tDateState,
+  tPerformIdState,
+  tPartState,
+  tPriceState,
+  tSeatState,
+  tDeadlineState,
+  tPricePerTokenState,
+  tTokenPriceState,
+} from '@states/paymentState';
 
 export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
+  const resetTicketDate = useResetRecoilState(tDateState);
+  const resetTicketPart = useResetRecoilState(tPartState);
+  const resetTicketPrice = useResetRecoilState(tPriceState);
+  const resetTicketSeat = useResetRecoilState(tSeatState);
+  const resetTicketDeadline = useResetRecoilState(tDeadlineState);
+  const resetPricePerToken = useResetRecoilState(tPricePerTokenState);
+  const resetTicketTokenPrice = useResetRecoilState(tTokenPriceState);
+  const resetTicketPerformId = useResetRecoilState(tPerformIdState);
+
+  const handleResetData = () => {
+    resetTicketDate();
+    resetTicketPart();
+    resetTicketPrice();
+    resetTicketSeat();
+    resetTicketDeadline();
+    resetPricePerToken();
+    resetTicketTokenPrice();
+    resetTicketPerformId();
+  }
+
   const navigate = useNavigate();
   const items = [...mainItems, ...restItems];
   const pre_ticket_list = items.filter(
@@ -35,6 +66,7 @@ export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
               <TicketButton
                 buttonColor={`#fa0800c5`}
                 onClick={() => {
+                  handleResetData();
                   setPreTicketModal(false);
                   navigate(`/payment?id=${item.id}`, {
                     state: {

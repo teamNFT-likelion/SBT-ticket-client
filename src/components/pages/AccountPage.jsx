@@ -154,9 +154,9 @@ const AccountPage = () => {
   return (
     <Layout>
       <div>
-        <BackLabelBox htmlfor="fileBack">
+        <BackLabelBox for="fileBack">
           {backImageFile ? (
-            <ImgBox htmlfor="fileBack" src={backImageFile} alt="preview image" />
+            <ImgBox for="fileBack" src={backImageFile} alt="preview image" />
           ) : (
             <BiPencil size="50px" />
           )}
@@ -180,9 +180,9 @@ const AccountPage = () => {
           zIndex: '3',
         }}
       >
-        <ProfileLabelBox htmlfor="fileProfile">
+        <ProfileLabelBox for="fileProfile">
           {profileImageFile ? (
-            <ProfileImgBox htmlfor="fileProfile" src={profileImageFile} alt="preview image" />
+            <ProfileImgBox for="fileProfile" src={profileImageFile} alt="preview image" />
           ) : (
             <BiPencil size="50px" />
           )}
