@@ -18,9 +18,10 @@ export const BigPosterButton = ({ Item }) => {
           style={{ backgroundColor: colors.primary40, opacity: '0.5' }}
           onClick={() => {
             if (account) {
-              navigate({
-                pathname: '/payment',
-                search: `?id=${Item.id}`,
+              navigate(`/payment?id=${Item.id}`, {
+                state: {
+                  tab: 'APP_Start',
+                },
               });
             } else {
               walletConnectError();
@@ -39,9 +40,10 @@ export const BigPosterButton = ({ Item }) => {
             style={{ backgroundColor: colors.primary40, cursor: 'pointer'}}
             onClick={() => {
               if (account) {
-                navigate({
-                  pathname: '/payment',
-                  search: `?id=${Item.id}`,
+                navigate(`/payment?id=${Item.id}`, {
+                  state: {
+                    tab: 'APP_Start',
+                  },
                 });
               } else {
                 walletConnectError();
@@ -57,9 +59,10 @@ export const BigPosterButton = ({ Item }) => {
             style={{ backgroundColor: colors.primary40, opacity: '0.5' }}
             onClick={() => {
               if (account) {
-                navigate({
-                  pathname: '/payment',
-                  search: `?id=${Item.id}`,
+                navigate(`/payment?id=${Item.id}`, {
+                  state: {
+                    tab: 'APP_Start',
+                  },
                 });
               } else {
                 walletConnectError();
@@ -77,9 +80,10 @@ export const BigPosterButton = ({ Item }) => {
         <button
           onClick={() => {
             if (account) {
-              navigate({
-                pathname: '/payment',
-                search: `?id=${Item.id}`,
+              navigate(`/payment?id=${Item.id}`, {
+                state: {
+                  tab: 'APP_Start',
+                },
               });
             } else {
               walletConnectError();
@@ -96,9 +100,10 @@ export const BigPosterButton = ({ Item }) => {
         <button
           onClick={() => {
             if (account) {
-              navigate({
-                pathname: '/payment',
-                search: `?id=${Item.id}`,
+              navigate(`/payment?id=${Item.id}`, {
+                state: {
+                  tab: 'APP_Start',
+                },
               });
             } else {
               walletConnectError();

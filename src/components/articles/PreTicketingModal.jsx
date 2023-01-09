@@ -70,6 +70,7 @@ export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
                   setPreTicketModal(false);
                   navigate(`/payment?id=${item.id}`, {
                     state: {
+                      tab: 'APP_Start',
                       prePossible: item.prePossible,
                     },
                   });

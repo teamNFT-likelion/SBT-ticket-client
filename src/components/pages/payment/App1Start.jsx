@@ -45,9 +45,8 @@ export const App1Start = ({ setTab, data, inactiveId, setInactiveId }) => {
   const setSbtImage = useSetRecoilState(sbtImageState);
   const setSbtName = useSetRecoilState(sbtNameState);
   const setSbtDesc = useSetRecoilState(sbtDescState);
-
-  // 사전예매 기간 상태 저장을 위한 Recoil
   const setPreTState = useSetRecoilState(preTicketState);
+
 
   const setSbtRecoilState = useCallback(() => {
     setTicketDate(date);
@@ -76,32 +75,36 @@ export const App1Start = ({ setTab, data, inactiveId, setInactiveId }) => {
     setPreTState,
   ]);
 
-  useEffect(() => {
-    setSbtRecoilState(data);
-  }, [data, setSbtRecoilState]);
-  
   const resetTicketPrice = useResetRecoilState(tPriceState);
   const resetTicketSeat = useResetRecoilState(tSeatState);
   const resetPricePerToken = useResetRecoilState(tPricePerTokenState);
   const resetTicketTokenPrice = useResetRecoilState(tTokenPriceState);
 
-  const handleDateClick = (_date) => {
-    setDate(_date);
-    setPart(0);
-    setDeadline(data.dateInfo[_date.getTime()][0].startTime);
+  useEffect(() => {
+    setSbtRecoilState(data);
     resetTicketPrice();
     resetTicketSeat();
     resetPricePerToken();
     resetTicketTokenPrice();
+  }, [
+    data,
+    setSbtRecoilState,
+    resetTicketPrice,
+    resetTicketSeat,
+    resetPricePerToken,
+    resetTicketTokenPrice,
+  ]);
+  
+
+  const handleDateClick = (_date) => {
+    setDate(_date);
+    setPart(0);
+    setDeadline(data.dateInfo[_date.getTime()][0].startTime);
   };
   const handlePartClick = (e) => {
     const newPart = Number(e.target.value);
     setPart(newPart);
     setDeadline(data.dateInfo[date.getTime()][newPart].startTime);
-    resetTicketPrice();
-    resetTicketSeat();
-    resetPricePerToken();
-    resetTicketTokenPrice();
   };
 
   return (
