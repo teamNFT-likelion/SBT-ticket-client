@@ -25,6 +25,7 @@ const HoverWrapper = styled('div')`
   gap: 16px;
   align-items: center;
   background-color: rgba(219, 233, 175, 0.5);
+  border-radius: 20px;
 `;
 
 const TicketImg = styled('img')`
@@ -33,6 +34,7 @@ const TicketImg = styled('img')`
   border: 3px solid
     ${(props) =>
       props.preTicketing === '진행중' && props.prePossible ? colors.primary80 : '#ffffff0'};
+  border-radius: 20px;
 `;
 
 const TitleWrapper = styled('div')`
