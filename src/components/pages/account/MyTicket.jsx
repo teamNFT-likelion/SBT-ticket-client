@@ -187,8 +187,6 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
 
   return (
     <div>
-      {console.log(date > Date.now())}
-      {console.log(status)}
       <TicketWrapper key={id}>
         <TextWrapper isActive={status === 0}>
           {title} #{id}
