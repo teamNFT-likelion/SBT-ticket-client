@@ -8,10 +8,13 @@ import PreTicketingPeriod from '@utils/PreTicketingPeriod';
 import DisabledButton from '@components/atoms/DisabledButton';
 
 const Container = styled('div')`
+  position: relative;
+  max-width: 300px;
+  border: 0.5px solid gray;
+  border-radius: 20px;
+  height: auto;
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
-  position: relative;
 `;
 
 const HoverWrapper = styled('div')`
@@ -20,34 +23,40 @@ const HoverWrapper = styled('div')`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 300px;
+  height: 100%;
   justify-content: center;
   gap: 16px;
   align-items: center;
-  background-color: rgba(219, 233, 175, 0.5);
+  background-color: rgba(219, 233, 175, 0.3);
   border-radius: 20px;
 `;
 
 const TicketImg = styled('img')`
-  height: 300px;
-  width: 243px;
+  width: 100%;
+  height: auto;
   border: 3px solid
     ${(props) =>
       props.preTicketing === '진행중' && props.prePossible ? colors.primary80 : '#ffffff0'};
-  border-radius: 20px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 `;
 
 const TitleWrapper = styled('div')`
-  font-size: 18px;
-  width: 200px;
+  width: 100%;
+  font-size: 24px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin: 5px 0;
+  white-space: wrap;
+  word-break: keep-all;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  line-height: 30px;
 `;
 
 const DateWrapper = styled('div')`
   color: ${colors.textSecondary};
+  font-size: 18px;
+  margin-top: 16px;
 `;
 
 const PosterItem = ({
@@ -100,14 +109,24 @@ const PosterItem = ({
         preTicketing={PreTicketingPeriod(preTicketing)}
         prePossible={prePossible}
       />
-      <TitleWrapper>
-        {(PreTicketingPeriod(preTicketing)
-          ? `[사전예매 ${PreTicketingPeriod(preTicketing)}] `
-          : '') + title}
-      </TitleWrapper>
-      <DateWrapper>
-        {format(new Date(startDate), 'yyyy.MM.dd')} ~{format(new Date(endDate), 'yyyy.MM.dd')}
-      </DateWrapper>
+      <div
+        style={{
+          padding: '20px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'end',
+          flex: 1,
+        }}
+      >
+        <TitleWrapper>
+          {(PreTicketingPeriod(preTicketing)
+            ? `[사전예매 ${PreTicketingPeriod(preTicketing)}] `
+            : '') + title}
+        </TitleWrapper>
+        <DateWrapper>
+          {format(new Date(startDate), 'yyyy.MM.dd')} ~ {format(new Date(endDate), 'yyyy.MM.dd')}
+        </DateWrapper>
+      </div>
     </Container>
   );
 };
