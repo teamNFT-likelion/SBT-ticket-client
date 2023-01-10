@@ -10,6 +10,9 @@ import { SlArrowRight, SlArrowLeft } from 'react-icons/sl';
 const BigPoster = () => {
   const { typeItems } = useItems();
 
+  const Item1 = typeItems[typeItems.length - 1];
+  const Item2 = typeItems[typeItems.length - 2];
+
   const settings = {
     infinite: true,
     speed: 800,
@@ -28,14 +31,14 @@ const BigPoster = () => {
       <Slider {...settings}>
         <div>
           <div className="poster-card">
-            <BigPosterInfo Item={typeItems[0]} />
-            <ImgCard src={typeItems[0].posterImgUrl} alt="poster1" />
+            <BigPosterInfo Item={Item1} />
+            <ImgCard src={Item1.posterImgUrl} alt="poster1" />
           </div>
         </div>
         <div>
           <div className="poster-card">
-            <BigPosterInfo Item={typeItems[1]} />
-            <ImgCard src={typeItems[1].posterImgUrl} alt="poster2" />
+            <BigPosterInfo Item={Item2} />
+            <ImgCard src={Item2.posterImgUrl} alt="poster2" />
           </div>
         </div>
       </Slider>
