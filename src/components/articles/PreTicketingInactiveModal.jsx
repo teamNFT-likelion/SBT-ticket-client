@@ -19,11 +19,9 @@ export default function PreTicketingInactiveModal({
 
   const setHostPreTicketingList = useCallback(() => {
     const hostPreTicketingList = items.filter((item) => item.id === hostAddr)[0].preTicketingList;
-    setInactiveTickets(sbtList.filter((item) => !item.tokenIsActive));
+    setInactiveTickets(sbtList.filter((item) => item.tokenStatus === 1));
     setRelativeTickets(
-      inactiveTickets.filter(
-        (item) => hostPreTicketingList.includes(item.tokenHostAddr) && item.tokenStatus === 1,
-      ),
+      inactiveTickets.filter((item) => hostPreTicketingList.includes(item.tokenHostAddr)),
     );
     // eslint-disable-next-line
   }, [relativeTickets.length, inactiveTickets.length]);

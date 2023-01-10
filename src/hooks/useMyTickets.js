@@ -20,6 +20,7 @@ export default function useMyTickets() {
 
   // 내 토큰들 불러오기
   useEffect(() => {
+    console.log(sbtList);
     async function saveMyToken() {
       let tokenContract;
       if (walletType === 'eth') {
@@ -44,7 +45,8 @@ export default function useMyTickets() {
             tokenImage: await axios.get(encodeURI(metadata.data.image)),
             tokenTitle: metadata.data.name,
             tokenUserEmail: metadata.data.email,
-            tokenStatus: Number(i.status),
+            tokenIsOngoing: i.isOngoing,
+            tokenStatus: i.isOngoing ? (Number(i.deadline) * 1000 > Date.now() ? 0 : 1) : 2,
           };
           return item;
         }),

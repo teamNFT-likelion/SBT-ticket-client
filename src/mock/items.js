@@ -1,7 +1,7 @@
 //빅 포스터용 데이터 6개
 export const mainItems = [
   {
-    id: '0x47fdA467f5289876A409b194d0E2EdfE78781b96',
+    id: '0xe1044DCaB3a397e887737e760DA6D7be820d1e83',
     topic: '공연',
     posterImgUrl: 'https://ticketimage.interpark.com/Play/image/large/22/22010748_p.gif',
     detailInfoImg: 'https://ticketimage.interpark.com/Play/image/etc/22/22010748-12.jpg',
@@ -13,7 +13,7 @@ export const mainItems = [
     startDate: 1677164400000,
     endDate: 1677250800000,
     preTicketing: [1672585200000, 1673621999999],
-    preTicketingList: ['0x11277bE59479160Ec06D648b9E5F1Cb0e08E6a74'],
+    preTicketingList: ['0x5459D1cb2ec4240f230D99A98d9c4EBfC4011557'],
     runningTime: 120,
     dateInfo: {
       1677164400000: [
@@ -5745,7 +5745,7 @@ export const mainItems = [
     startDate: 1676386800000,
     endDate: 1676386800000,
     preTicketing: [1672585200000, 1672757999000],
-    preTicketingList: ['0x11277bE59479160Ec06D648b9E5F1Cb0e08E6a74'],
+    preTicketingList: ['0x5459D1cb2ec4240f230D99A98d9c4EBfC4011557'],
     runningTime: 90,
     dateInfo: {
       1676386800000: [
@@ -6717,7 +6717,7 @@ export const mainItems = [
 //TODO:일반 포스터용 데이터 15개
 export const restItems = [
   {
-    id: '0x11277bE59479160Ec06D648b9E5F1Cb0e08E6a74',
+    id: '0x5459D1cb2ec4240f230D99A98d9c4EBfC4011557',
     topic: '공연',
     posterImgUrl: 'https://image.toast.com/aaaaab/ticketlink/TKL_6/펭미팅_대표이미지_405X500.jpg',
     detailInfoImg: 'http://image.toast.com/aaaaab/ticketlink/TKL_2/MD_1128.jpg',

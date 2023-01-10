@@ -45,8 +45,10 @@ export const App1Start = ({ setTab, data, inactiveId, setInactiveId }) => {
   const setSbtImage = useSetRecoilState(sbtImageState);
   const setSbtName = useSetRecoilState(sbtNameState);
   const setSbtDesc = useSetRecoilState(sbtDescState);
-  const setPreTState = useSetRecoilState(preTicketState);
+  const setSeatsIds = useSetRecoilState(tSeatState);
 
+  // 사전예매 기간 상태 저장을 위한 Recoil
+  const setPreTState = useSetRecoilState(preTicketState);
 
   const setSbtRecoilState = useCallback(() => {
     setTicketDate(date);
@@ -57,6 +59,7 @@ export const App1Start = ({ setTab, data, inactiveId, setInactiveId }) => {
     setPreTState(PreTicketingPeriod(data.preTicketing));
     setSbtName(data.title);
     setSbtDesc('');
+    setSeatsIds([]);
   }, [
     date,
     part,
@@ -73,6 +76,7 @@ export const App1Start = ({ setTab, data, inactiveId, setInactiveId }) => {
     setSbtDesc,
     data.preTicketing,
     setPreTState,
+    setSeatsIds,
   ]);
 
   const resetTicketPrice = useResetRecoilState(tPriceState);
@@ -94,7 +98,6 @@ export const App1Start = ({ setTab, data, inactiveId, setInactiveId }) => {
     resetPricePerToken,
     resetTicketTokenPrice,
   ]);
-  
 
   const handleDateClick = (_date) => {
     setDate(_date);

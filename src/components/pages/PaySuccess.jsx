@@ -23,7 +23,7 @@ const PaySuccess = () => {
   const paymentKey = params.get('paymentKey');
   const orderId = params.get('orderId');
   const amount = params.get('amount');
-  const inactiveId = params.get('inactiveId');
+  const inactiveId = Number(params.get('inactiveId'));
 
   const [status, setStatus] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -35,8 +35,7 @@ const PaySuccess = () => {
   const setPrice = useSetRecoilState(tPriceState);
 
   const { ticketInfo, sbtInfo } = JSON.parse(localStorage.getItem('pay_data'));
-  const isMintAvailable =
-    paymentKey && orderId && amount && inactiveId && Object.keys(web3).length > 0;
+  const isMintAvailable = paymentKey && orderId && amount && Object.keys(web3).length > 0;
 
   useEffect(() => {
     console.log(inactiveId);
@@ -96,6 +95,7 @@ const PaySuccess = () => {
   }, [isMintAvailable]);
 
   useEffect(() => {
+    console.log(ticketInfo, 'CASH', inactiveId);
     console.log(sbtInfo);
     setDate(new Date(ticketInfo.tDate));
     setPart(ticketInfo.tPart);
@@ -110,7 +110,7 @@ const PaySuccess = () => {
         <PayProgress status={status} cancelInfo={cancelInfo} />
       </LeftBox>
       <RightBox>
-        <TicketInfo data={data} isLoading={isLoading} />
+        <TicketInfo data={data} isLoading={isLoading} inactiveId={inactiveId} />
         <Row marginTop="100px" justifyContent="center">
           {!isLoading && (
             <TabButton value="APP_SelectSeats" onClick={() => navigate('/list')}>
