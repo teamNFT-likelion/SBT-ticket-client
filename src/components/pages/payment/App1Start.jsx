@@ -23,16 +23,10 @@ import { TabButton } from '@styles/ApaymentStyles';
 import Calendar from 'react-calendar';
 import TicketInfo from './TicketInfo';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
-import useMyTickets from '@hooks/useMyTickets';
-import PreTicketingCustomModal from '@components/articles/PreTicketingCustomModal';
-import PreTicketingInactiveModal from '@components/articles/PreTicketingInactiveModal';
 
-export const App1Start = ({ setTab, data, inactiveId, setInactiveId }) => {
+export const App1Start = ({ setTab, data, inactiveId }) => {
   const minDate = new Date(data.startDate) || null;
   const maxDate = new Date(data.endDate) || null;
-
-  const [preTicketModal, setPreTicketModal] = useState(false);
-  const sbtList = useMyTickets();
 
   const [date, setDate] = useState(minDate);
   const [part, setPart] = useState(0);
@@ -162,32 +156,12 @@ export const App1Start = ({ setTab, data, inactiveId, setInactiveId }) => {
         <RightBox>
           <TicketInfo data={data} inactiveId={inactiveId} />
           <Row justifyContent="center" marginTop="50px">
-            <TabButton
-              value="APP_SelectSeats"
-              onClick={(e) => {
-                if (PreTicketingPeriod(data.preTicketing) === '진행중' && !inactiveId) {
-                  setPreTicketModal(true);
-                } else {
-                  setTab(e.target.value);
-                }
-              }}
-            >
+            <TabButton value="APP_SelectSeats" onClick={(e) => setTab(e.target.value)}>
               다음단계
             </TabButton>
           </Row>
         </RightBox>
       </StepBox>
-      {sbtList.length && (
-        <PreTicketingCustomModal show={preTicketModal} toggleModal={() => setPreTicketModal(false)}>
-          <PreTicketingInactiveModal
-            setPreTicketModal={setPreTicketModal}
-            hostAddr={data.id}
-            sbtList={sbtList}
-            inactiveId={inactiveId}
-            setInactiveId={setInactiveId}
-          />
-        </PreTicketingCustomModal>
-      )}
     </>
   );
 };
