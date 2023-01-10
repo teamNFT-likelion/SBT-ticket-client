@@ -63,25 +63,12 @@ export default function CheckWallet() {
 
   // Metamask 체인 변경
   useEffect(() => {
-    if (!ethereum) {
-      toast.error('metamask 설치 필요', {
-        position: toast.POSITION.TOP_CENTER,
-      });
-      return;
-    }
-
     async function getChainId() {
       await ethereum.request({ method: 'eth_chainId' }).then((res) => setNetworkId(res));
     }
 
     const handleSwitchChain = async () => {
       try {
-        // 필요한가? 모르겠음
-        // if (account) {
-        //   const accounts = await ethereum.request({method: 'eth_requestAccounts'});
-        //   console.log(accounts);
-        // }
-        
         // switch 네트워크
         await ethereum.request({
           method: 'wallet_switchEthereumChain',

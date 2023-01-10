@@ -2,7 +2,6 @@ import { userState } from '@states/userState';
 import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import Web3 from 'web3';
-import { toast } from 'react-toastify';
 
 const ethereum = window.ethereum;
 
@@ -23,8 +22,7 @@ export default function useWeb3() {
         console.log(err);
       }
     } else {
-      console.error("No web3 provider found, Please install MetaMask.");
-      toast.error('Please install MetaMask.');
+      console.error('No web3 provider found, Please install MetaMask.');
     }
   }, []);
 
