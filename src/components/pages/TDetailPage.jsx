@@ -5,7 +5,6 @@ import Layout from '@articles/Layout';
 import DetailInfo from '@components/atoms/DetailInfo';
 import CategoryNav from '@components/articles/CategoryNav';
 import PosterItems from './ticketList/PosterItems';
-import { mainItems } from '@mock/items';
 import DateSelection from './tDetail/DateSelection';
 import Page404 from './Page404';
 import { useResetRecoilState } from 'recoil';
@@ -18,11 +17,13 @@ import {
   tPricePerTokenState,
   tTokenPriceState,
 } from '@states/paymentState';
+import useItems from '@hooks/useItems';
 
 const TDetailPage = () => {
   const location = useLocation();
   const { id: dataId } = parse(location.search);
-  const data = mainItems.filter((item) => item.id === dataId)[0] || null;
+  const { items } = useItems();
+  const data = items.filter((item) => item.id === dataId)[0] || null;
   const { prePossible } = location.state;
 
   const resetTicketDate = useResetRecoilState(tDateState);
@@ -61,7 +62,7 @@ const TDetailPage = () => {
       <CategoryNav />
       <DetailInfo data={data} />
       <DateSelection data={data} prePossible={prePossible} />
-      <PosterItems type="concert" items={mainItems} />
+      <PosterItems type="concert" items={items} />
       <img src={data.detailInfoImg} alt="detailInfo" width={'800px'} />
     </Layout>
   );

@@ -29,6 +29,8 @@ export default function useMint() {
   // 새로운 SBT 생성
   async function createSBT(_tokenUri, _ticketInfo, _payType, _inactiveId) {
     const { tDeadline, tPerformId, tTokenPrice, tSeat } = _ticketInfo;
+    console.log('createSBT inactiveId:', _inactiveId);
+    console.log('createSBT inactiveIdType:', typeof _inactiveId);
 
     if (walletType === 'eth') {
       const tokenContract = await new web3.eth.Contract(TTOT_MAIN_ABI, MUMBAI_TTOTMAIN_ADDR, {
@@ -57,7 +59,7 @@ export default function useMint() {
       );
 
       await tokenContract.methods
-        .mintSbt(_tokenUri, tokenDeadline, tPerformId, tokenValue, tSeat, _inactiveId)
+        .mintSbt(_tokenUri, tokenDeadline, tPerformId, tokenValue, tSeat, Number(_inactiveId))
         .send({ from: account, value: tokenValue });
     }
   }

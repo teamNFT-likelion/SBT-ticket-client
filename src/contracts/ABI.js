@@ -86,56 +86,6 @@ export const TTOT_MAIN_ABI = [
     type: 'function',
   },
   {
-    inputs: [],
-    name: 'getSbtTokens',
-    outputs: [
-      {
-        components: [
-          {
-            internalType: 'uint256',
-            name: 'sbtTokenId',
-            type: 'uint256',
-          },
-          {
-            internalType: 'string',
-            name: 'sbtTokenURI',
-            type: 'string',
-          },
-          {
-            internalType: 'uint256',
-            name: 'deadline',
-            type: 'uint256',
-          },
-          {
-            internalType: 'address',
-            name: 'hostAddress',
-            type: 'address',
-          },
-          {
-            internalType: 'uint256',
-            name: 'price',
-            type: 'uint256',
-          },
-          {
-            internalType: 'string[]',
-            name: 'seats',
-            type: 'string[]',
-          },
-          {
-            internalType: 'enum ttot_main.Status',
-            name: 'status',
-            type: 'uint8',
-          },
-        ],
-        internalType: 'struct ttot_main.sbtTokenData[]',
-        name: '',
-        type: 'tuple[]',
-      },
-    ],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
     inputs: [
       {
         internalType: 'string',
@@ -368,6 +318,56 @@ export const TTOT_MAIN_ABI = [
         internalType: 'contract ttot_host',
         name: '',
         type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'getSbtTokens',
+    outputs: [
+      {
+        components: [
+          {
+            internalType: 'uint256',
+            name: 'sbtTokenId',
+            type: 'uint256',
+          },
+          {
+            internalType: 'string',
+            name: 'sbtTokenURI',
+            type: 'string',
+          },
+          {
+            internalType: 'uint256',
+            name: 'deadline',
+            type: 'uint256',
+          },
+          {
+            internalType: 'address',
+            name: 'hostAddress',
+            type: 'address',
+          },
+          {
+            internalType: 'uint256',
+            name: 'price',
+            type: 'uint256',
+          },
+          {
+            internalType: 'string[]',
+            name: 'seats',
+            type: 'string[]',
+          },
+          {
+            internalType: 'bool',
+            name: 'isOngoing',
+            type: 'bool',
+          },
+        ],
+        internalType: 'struct ttot_main.sbtTokenData[]',
+        name: '',
+        type: 'tuple[]',
       },
     ],
     stateMutability: 'view',
