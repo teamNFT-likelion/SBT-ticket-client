@@ -10,22 +10,24 @@
 We suggest ticketing platform (demo) using the concepts of **SBT(SoulBound Token)**.
 
 TTOT ticket is **non-transferable NFT** including information about performance and customer.
-<br><br>
+<br><br><br><br>
 
 ### for Customer
 The customers who have a ttot ticket are able to verify their fanship about interests.
 Additional, they can get benefits to be set by performance organizers from owning the ticket.
+
+<br>
 
 ### for Performance Organizer
 Performance Organizer can set benefits for their customer like
 - allowing **pre-ticketing**
 - allowing **to participate reffle system**
 - selling goods (under development)
-<br><br>
+<br><br><br>
 
 **Performance Organizers and artists can keep the value of the performance by protecting trading illegal tickets because customer would not sell their tickets to get benefit.**
 
-
+<br><br>
 # To get started
 
 [Our DEMO site](https://ttot.netlify.app/)
