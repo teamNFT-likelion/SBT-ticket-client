@@ -160,9 +160,6 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
   }, [popup, setPopup]);
 
   function handleUseQR() {
-    console.log('userEmail : ', userEmail);
-    console.log('tokenEmail : ', tEmail);
-
     if (!userEmail) {
       setIsAuthorized(false);
       toast.error('본인인증이 필요합니다.', { autoClose: 2000 });
@@ -172,6 +169,13 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
         autoClose: 2000,
       });
     } else if (userEmail === tEmail) {
+      setIsAuthorized(true);
+      setQrvalue(title + date + id + Date.now());
+      if (!isReGenerated) {
+        toast.success('이메일과 sbt정보가 일치합니다.', { autoClose: 2000 });
+      }
+    } else if (tEmail === '*') {
+      //이메일 무관한 래플은 그냥 열어주는 코드
       setIsAuthorized(true);
       setQrvalue(title + date + id + Date.now());
       if (!isReGenerated) {
@@ -191,7 +195,8 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
         <TextWrapper isActive={status === 0}>
           {title} #{id}
         </TextWrapper>
-        <TicketImage src={image.data} alt="ticket" />
+        {/* image 가 ipfs 인경우 */}
+        <TicketImage src={image.data || image} alt="ticket" />
         <TicketContent>
           <ContentWrapper style={{ color: colors.textWhite }}>
             {seats.map((seat) => `[${seat}] `)}
@@ -363,7 +368,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
         </ModalButtonWrapper>
       </CustomModal>
       <CustomModal show={raffleModal} toggleModal={() => setRaffleModal(false)}>
-        <RaffleModal setRaffleModal={setRaffleModal} />
+        <RaffleModal setRaffleModal={setRaffleModal} tokenId={id} />
       </CustomModal>
       <PreTicketingCustomModal show={preTicketModal} toggleModal={() => setPreTicketModal(false)}>
         <PreTicketingModal setPreTicketModal={setPreTicketModal} hostAddr={hostAddr} />

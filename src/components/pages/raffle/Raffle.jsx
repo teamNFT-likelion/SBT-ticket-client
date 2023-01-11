@@ -10,14 +10,14 @@ import { Column } from '@atoms/wrapper.style';
 import { BlockTitle } from './Raffle.style';
 
 const Raffle = ({ handleScrollByRef }) => {
-  const targetDate = new Date('2023-01-18 18:00:00');
+  const targetDate = new Date('2023-03-03');
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
   const [inputList, setInputList] = useState([]);
   const { web3 } = useWeb3();
   const { getInputList } = useRaffleContract(web3);
 
   useEffect(() => {
-    getInputList('test', (res) => setInputList(res));
+    getInputList('A1DMKBNZI55', (res) => setInputList(res));
   }, [getInputList]);
 
   return (

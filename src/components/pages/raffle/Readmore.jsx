@@ -20,15 +20,33 @@ const Readmore = forwardRef((props, ref) => {
           </div>
           <Column>
             <span className="readmore-text">
-              - 블랙핑크 월드투어(2022){' '}
+              - 2022 펭수 연말 펭미팅{' '}
               <span className="readmore-detail">
-                hostAddress: 0xB3449203badb6579c8938C7CB6850261351C9220
+                hostAddress: 0xA4C40d1568E1a4a94B0b4E9b787190bF529934d3
+              </span>
+            </span>
+            <span className="readmore-text">
+              - 2022년 임재범 전국투어 콘서트 - 수원{' '}
+              <span className="readmore-detail">
+                hostAddress: 0xa2e8166DC2341457779E82A1677362A9fd4a9b79
               </span>
             </span>
             <span className="readmore-text">
               - 푸에르자부르타 웨이라 인 서울 월드투어(2022){' '}
               <span className="readmore-detail">
-                hostAddress: 0xB3449203badb6579c8938C7CB6850261351C9220
+                hostAddress: 0x909304Ea4C5eF2696e581B24a112BFa0672b7dF4
+              </span>
+            </span>
+            <span className="readmore-text">
+              - 잔나비 전국투어 [판타스틱 올드 패션드 송년회] - 천안{' '}
+              <span className="readmore-detail">
+                hostAddress: 0x34684e61e4C5dd15dc0aAB63F50e2dCf6E76F4Fb
+              </span>
+            </span>
+            <span className="readmore-text">
+              - 2023 김연자 라이브 콘서트 - 대구{' '}
+              <span className="readmore-detail">
+                hostAddress: 0x8c48ADb5Ee88Da5a8f58289411DCD21Bc478eDEC
               </span>
             </span>
           </Column>
@@ -42,7 +60,7 @@ const Readmore = forwardRef((props, ref) => {
             <ALink
               target="_blank"
               rel="noreferrer"
-              href="https://mumbai.polygonscan.com/address/0x4d48eecc13cdb0f330b33a4eb132572cc5ff4ac2#readContract"
+              href="https://mumbai.polygonscan.com/address/0x5f9Bf7fd91c037F52E6BD89d1e59697770211492#readContract"
             >
               {'>>'} 래플내역 확인하기
             </ALink>
