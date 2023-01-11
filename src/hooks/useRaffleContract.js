@@ -4,13 +4,13 @@ import { RAFFLE_ABI, MUMBAI_RAFFLE_ADDR } from '@contracts';
 export function useRaffleContract(web3) {
   const [contract, setContract] = useState();
 
-  const join = (code, option, callback) => {
+  const join = (code, tokenId, option, callback) => {
     if (!contract) {
       return;
     }
 
     contract.methods
-      .join(code)
+      .join(code, tokenId)
       .send(option)
       .then((res) => {
         alert(`${code}코드 래플에 참여가 완료 되었습니다.`);

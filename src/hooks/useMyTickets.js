@@ -42,7 +42,10 @@ export default function useMyTickets() {
             tokenHostAddr: i.hostAddress,
             tokenPrice: price,
             tokenSeats: i.seats,
-            tokenImage: await axios.get(encodeURI(metadata.data.image)),
+            tokenImage:
+              metadata.data.email === '*'
+                ? metadata.data.image
+                : await axios.get(encodeURI(metadata.data.image)),
             tokenTitle: metadata.data.name,
             tokenUserEmail: metadata.data.email,
             tokenIsOngoing: i.isOngoing,

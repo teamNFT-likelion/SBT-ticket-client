@@ -2,68 +2,17 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import { Column } from '@components/atoms/wrapper.style';
-import { useCountdown } from '@hooks/useCountdown';
 import { useRaffleContract } from '@hooks/useRaffleContract';
 import useWeb3 from '@hooks/useWeb3';
 import raffle1 from '@assets/img/raffle_1.png';
-import raffle2 from '@assets/img/raffle_2.jpg';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@states/userState';
 
-export default function RaffleModal({ setRaffleModal }) {
-  const targetDate = new Date('2023-01-18 18:00:00');
-  const [days, hours, minutes, seconds] = useCountdown(targetDate);
+export default function RaffleModal({ setRaffleModal, tokenId }) {
   const [value, setValue] = useState('');
   const { account } = useRecoilValue(userState);
   const { web3 } = useWeb3();
   const { join } = useRaffleContract(web3);
-  const [isAvailable, setIsAvailable] = useState(true); //TODO: 응모불가능한상태 메인컨트랙트에 토큰아이디 별로 체크필요
-
-  const ShowCountDown = ({ days, hours, minutes, seconds }) => {
-    const day = days < 10 ? `0${days}` : days;
-    const hour = hours < 10 ? `0${hours}` : hours;
-    const minute = minutes < 10 ? `0${minutes}` : minutes;
-    const second = seconds < 10 ? `0${seconds}` : seconds;
-
-    return `${day}일 ${hour}시간 ${minute}분 ${second}초`;
-  };
-
-  if (!isAvailable) {
-    return (
-      <ModalTempBox>
-        <div style={{ position: 'relative' }}>
-          <img src={raffle2} alt="raffle2" style={{ width: '300px' }} />
-          <RaffleTitle>
-            Web3 Monkey Concert <br />
-            Grand Opening
-          </RaffleTitle>
-        </div>
-        <div
-          style={{
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-            color: colors.primary80,
-            fontSize: '32px',
-            marginTop: '16px',
-            marginBottom: '32px',
-          }}
-        >
-          <ShowCountDown
-            days={Number(days)}
-            hours={Number(hours)}
-            minutes={Number(minutes)}
-            seconds={Number(seconds)}
-          />
-        </div>
-        <TicketButtonWrapper>
-          <TicketButton buttonColor={`#fa0800c5`} onClick={() => setRaffleModal(false)}>
-            확인
-          </TicketButton>
-        </TicketButtonWrapper>
-      </ModalTempBox>
-    );
-  }
 
   return (
     <ModalTempBox>
@@ -77,9 +26,8 @@ export default function RaffleModal({ setRaffleModal }) {
         <TicketButton
           buttonColor={`#fa0800c5`}
           onClick={() => {
-            join(value, { from: account }, () => {
+            join(value, tokenId, { from: account }, () => {
               setRaffleModal(false);
-              setIsAvailable(false); // TODO: 임시코드
               setValue('');
             });
           }}
@@ -125,13 +73,4 @@ const Input = styled('input')`
   color: white;
   border-radius: 6px;
   padding-left: 12px;
-`;
-
-const RaffleTitle = styled('div')`
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  text-align: right;
-  color: rgba(239, 239, 240, 0.5);
-  font-size: 20px;
 `;
