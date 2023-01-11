@@ -24,8 +24,9 @@ const TitleWrapper = styled('div')`
 
 const PosterWrapper = styled('div')`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 60px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 60px;
 `;
 
 const PosterItems = ({ type }) => {

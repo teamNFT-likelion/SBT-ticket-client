@@ -12,7 +12,7 @@ export default function useItems() {
   const paramType = searchParams.get('type');
   const [type, setType] = useState('concert');
   const sbtHostList = useSbtPreTicketHost();
-  const items = useMemo(() => [...mainItems, ...restItems], []);
+  const items = useMemo(() => [...restItems, ...mainItems], []);
   const [typeItems, setTypeItems] = useState(items);
 
   const preList = useRef([]);
