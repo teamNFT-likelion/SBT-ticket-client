@@ -18,14 +18,13 @@ import {
   tPricePerTokenState,
   tTokenPriceState,
 } from '@states/paymentState';
-import useItems from '@hooks/useItems';
 
 const TDetailPage = () => {
   const location = useLocation();
   const { id: dataId } = parse(location.search);
   const items = [...mainItems, ...restItems];
   const data = items.filter((item) => item.id === dataId)[0] || null;
-  const { prePossible } = location.state;
+  const prePossible = location.state;
 
   const resetTicketDate = useResetRecoilState(tDateState);
   const resetTicketPart = useResetRecoilState(tPartState);
