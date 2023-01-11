@@ -9,7 +9,7 @@ const ContentWrapper = styled('div')`
   width: ${APP_MAX_W}px;
   margin-top: ${APP_HEADER_H};
   min-height: calc(100vh - ${APP_HEADER_H} - ${FOOTER_H}px - ${FOOTER_MT}px);
-  padding-top: 16px;
+  padding-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
