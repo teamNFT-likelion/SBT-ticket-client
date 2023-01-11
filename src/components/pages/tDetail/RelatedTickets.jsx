@@ -62,9 +62,6 @@ const RelatedTickets = ({ items, data }) => {
     relatedItems();
   }, [data, items]);
 
-  console.log(data);
-  console.log(preList);
-
   return (
     <Container>
       <TitleWrapper>RELATED TTOT</TitleWrapper>
