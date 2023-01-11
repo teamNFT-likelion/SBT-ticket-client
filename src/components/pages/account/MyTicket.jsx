@@ -40,7 +40,8 @@ const TextWrapper = styled('div')`
   display: block;
   padding: 10px;
   border-radius: 17px 17px 0 0;
-  background-color: ${({ isActive }) => (isActive ? colors.primary40 : '#af00a7')};
+  background-color: ${({ isActive }) =>
+    isActive === 0 ? colors.primary40 : isActive === 1 ? '#af00a7' : 'gray'};
 `;
 
 const ContentWrapper = styled('div')`
@@ -192,7 +193,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
   return (
     <div>
       <TicketWrapper key={id}>
-        <TextWrapper isActive={status === 0}>
+        <TextWrapper isActive={status}>
           {title} #{id}
         </TextWrapper>
         {/* image 가 ipfs 인경우 */}
@@ -242,7 +243,7 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
             </TicketButtonWrapper>
           ) : (
             <TicketButtonWrapper>
-              사용 완료
+              <TicketButton buttonColor={'gray'} disabled>사용 완료</TicketButton>
               <TicketButton
                 buttonColor={`${colors.bgRed}`}
                 onClick={() => {
