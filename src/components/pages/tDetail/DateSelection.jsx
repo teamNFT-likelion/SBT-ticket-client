@@ -169,7 +169,7 @@ const SelectInfo = styled('div')`
   width: 100%;
   display: flex;
   background-color: #d9d9d915;
-  border: 0.75px #eaecd9 solid;
+  border: 2px #eaecd9 solid;
   border-radius: 30px;
   justify-content: center;
   align-items: center;

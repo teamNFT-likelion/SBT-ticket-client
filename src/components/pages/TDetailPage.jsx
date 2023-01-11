@@ -4,8 +4,9 @@ import { parse } from 'query-string';
 import Layout from '@articles/Layout';
 import DetailInfo from '@components/atoms/DetailInfo';
 import CategoryNav from '@components/articles/CategoryNav';
-import PosterItems from './ticketList/PosterItems';
+import { mainItems, restItems } from '@mock/items';
 import DateSelection from './tDetail/DateSelection';
+import RelatedTickets from './tDetail/RelatedTickets';
 import Page404 from './Page404';
 import { useResetRecoilState } from 'recoil';
 import {
@@ -22,7 +23,7 @@ import useItems from '@hooks/useItems';
 const TDetailPage = () => {
   const location = useLocation();
   const { id: dataId } = parse(location.search);
-  const { items } = useItems();
+  const items = [...mainItems, ...restItems];
   const data = items.filter((item) => item.id === dataId)[0] || null;
   const { prePossible } = location.state;
 
@@ -62,8 +63,8 @@ const TDetailPage = () => {
       <CategoryNav />
       <DetailInfo data={data} />
       <DateSelection data={data} prePossible={prePossible} />
-      <PosterItems type="concert" items={items} />
-      <img src={data.detailInfoImg} alt="detailInfo" width={'800px'} />
+      <RelatedTickets items={items} data={data.preTicketingList} />
+      <img src={data.detailInfoImg} alt="detailInfo" width={'900px'} />
     </Layout>
   );
 };

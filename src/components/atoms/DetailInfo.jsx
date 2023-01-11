@@ -1,72 +1,81 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Column, Row } from '@components/atoms/wrapper.style';
+import { Row } from '@components/atoms/wrapper.style';
 import { format } from 'date-fns';
-import { SubTitle } from '@styles/ApaymentStyles';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
 import * as colors from '@styles/colors';
 
-const ContentsInfoBody = styled(Row)`
-  // HEADER 높이 5rem + 여분 9rem
-  color: white;
+const ContentsInfo = styled(Row)`
+  width: 800px;
+  height: 345px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
+  margin: 30px 0;
 `;
 
-const ContentsInfo = styled(Column)`
-  width: 273px;
-  height: 345px;
-  /* justify-content: center; */
+const SubTitle = styled('div')`
+  display: flex;
   align-items: center;
-  margin: 10px;
+  justify-content: center;
+  font-size: 40px;
+  margin: 20px 0;
+  color: ${colors.primary80};
+`;
+
+const PreAlert = styled('div')`
+  color: ${colors.bgRed};
 `;
 
 const ConcertInfo = styled('div')`
   display: grid;
-  grid-template-columns: 2fr 4fr;
-  margin-top: 20px;
-  column-gap: 0.9rem;
-  row-gap: 0.9rem;
+  grid-template-columns: 1fr 3fr;
+  gap: 2rem;
 `;
-const ConcertInfoItem = styled('div')`
-  font-size: 13px;
+
+const ConcertInfoTitle = styled('span')`
+  font-size: 20px;
+  font-weight: 500;
+`
+
+const ConcertInfoItem = styled('span')`
+  font-size: 18px;
+  font-weight: 500;
   font-family: sans-serif;
 `;
 
-const PreAlert = styled('div')`
-  font-size: 25px;
-  margin-bottom: 5px;
-  color: ${colors.bgRed};
+const ConcertImg = styled('img')`
+  width: 270px;
+  height: 345px;
+  border-radius: 20px;
+  border: 2px #eaecd9 solid;
 `;
 
 const DetailInfo = ({ data }) => {
   return (
-    <ContentsInfoBody>
+    <div>
+      <SubTitle>
+        {PreTicketingPeriod(data.preTicketing) && (
+          <PreAlert>[사전예매 {PreTicketingPeriod(data.preTicketing)}]</PreAlert>
+        )}
+        &nbsp;{data.title}
+      </SubTitle>
       <ContentsInfo>
-        <SubTitle style={{ marginBottom: '24px', fontSize: '25px' }}>
-          {PreTicketingPeriod(data.preTicketing) && (
-            <PreAlert>[사전예매 {PreTicketingPeriod(data.preTicketing)}]</PreAlert>
-          )}
-          {data.title}
-        </SubTitle>
         <ConcertInfo>
-          <ConcertInfoItem>공연기간</ConcertInfoItem>
+          <ConcertInfoTitle>공연기간</ConcertInfoTitle>
           <ConcertInfoItem>
-            {format(new Date(data.startDate), 'yyyy.MM.dd')} ~
+            {format(new Date(data.startDate), 'yyyy.MM.dd')} ~&nbsp;
             {format(new Date(data.endDate), 'yyyy.MM.dd')}
           </ConcertInfoItem>
-          <ConcertInfoItem>장소</ConcertInfoItem>
+          <ConcertInfoTitle>장소</ConcertInfoTitle>
           <ConcertInfoItem>{data.place}</ConcertInfoItem>
-          <ConcertInfoItem>공연시간</ConcertInfoItem>
+          <ConcertInfoTitle>공연시간</ConcertInfoTitle>
           <ConcertInfoItem>{data.runningTime}분</ConcertInfoItem>
-          <ConcertInfoItem>관람연령</ConcertInfoItem>
+          <ConcertInfoTitle>관람연령</ConcertInfoTitle>
           <ConcertInfoItem>{data.viewAgeName}</ConcertInfoItem>
-          <ConcertInfoItem>구매가</ConcertInfoItem>
+          <ConcertInfoTitle>구매가</ConcertInfoTitle>
           <ConcertInfoItem>{data.cashPrice.map((price) => `₩${price} `)}</ConcertInfoItem>
-          <ConcertInfoItem>사전예매기간</ConcertInfoItem>
+          <ConcertInfoTitle>사전예매기간</ConcertInfoTitle>
           {PreTicketingPeriod(data.preTicketing) && (
             <ConcertInfoItem style={{ color: colors.bgRed }}>
               {format(new Date(data.preTicketing[0]), 'yyyy.MM.dd')} ~
@@ -74,9 +83,9 @@ const DetailInfo = ({ data }) => {
             </ConcertInfoItem>
           )}
         </ConcertInfo>
+        <ConcertImg src={data.posterImgUrl} alt="poster" />
       </ContentsInfo>
-      <img src={data.posterImgUrl} width="270px" height="345px" alt="poster" />
-    </ContentsInfoBody>
+    </div>
   );
 };
 
