@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { formatAddress } from '@utils/parser';
+import { useNavigate } from 'react-router-dom';
 
 const ethereum = window.ethereum;
 
@@ -12,6 +13,7 @@ export default function CheckWallet() {
   const setWalletType = useSetRecoilState(userWalletType);
   const [networkId, setNetworkId] = useRecoilState(userNetworkId);
   const mumbaiNetwork = networks['mumbai'].chainId;
+  const navigate = useNavigate();
 
   // Metamask 잠금 동작 인식 + 계정 변경 인식
   useEffect(() => {
@@ -51,7 +53,10 @@ export default function CheckWallet() {
         });
         setAccount(accounts[0]);
         localStorage.setItem('_user', accounts[0]);
-        setTimeout(() => window.location.reload(), 1500);
+        setTimeout(() => {
+          navigate('/list');
+          window.location.reload();
+        }, 1000);
       }
     }
 
@@ -59,7 +64,7 @@ export default function CheckWallet() {
     return () => {
       ethereum.removeListener('accountsChanged', handleAccountsChanged);
     };
-  }, [account, setAccount, setNetworkId, setWalletType]);
+  }, [account, setAccount, setNetworkId, setWalletType, navigate]);
 
   // Metamask 체인 변경
   useEffect(() => {
