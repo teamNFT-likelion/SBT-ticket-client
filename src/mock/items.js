@@ -2877,7 +2877,7 @@ export const mainItems = [
     startDate: 1674831600000,
     endDate: 1675004400000,
     preTicketing: [1672585200000, 1673621999999],
-    preTicketingList: ['0xa4c40d1568e1a4a94b0b4e9b787190bf529934d3'],
+    preTicketingList: ['0xA4C40d1568E1a4a94B0b4E9b787190bF529934d3'],
     runningTime: 120,
     dateInfo: {
       1674831600000: [
