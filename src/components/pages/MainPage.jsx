@@ -8,7 +8,7 @@ import SolvingAndProblem from './main/SolvingAndProblem';
 import FAQArea from './main/FAQArea';
 import TechnologyArea from './main/TechnologyArea';
 import RoadmapArea from './main/RoadmapArea';
-import TeamArea from './main/\bTeamArea';
+import TeamArea from './main/TeamArea';
 
 const MainPage = () => {
   const { scrollYProgress } = useScroll();
