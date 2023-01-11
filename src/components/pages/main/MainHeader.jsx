@@ -45,6 +45,7 @@ const Container = styled('div')`
   background-color: ${colors.bgBlack};
   z-index: 999;
   justify-content: space-between;
+  border-bottom: solid 1px #2e2e2e;
 `;
 
 const LogoImage = styled('img')`

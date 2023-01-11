@@ -19,7 +19,8 @@ const Container = styled('div')`
   justify-content: space-between;
   width: ${APP_MAX_W}px;
   height: ${APP_HEADER_H};
-  background-color: ${colors.bgBlack};
+  background-color: #0f0f0f;
+  border-bottom: solid 1px #2e2e2e;
   z-index: 999;
 `;
 
