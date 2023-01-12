@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
 import DisabledButton from '@components/atoms/DisabledButton';
+import { useSetRecoilState } from 'recoil';
+import { myAPPStep } from '@states/paymentState';
 
 const Container = styled('div')`
   position: relative;
@@ -69,6 +71,7 @@ const PosterItem = ({
   prePossible,
 }) => {
   const [hoverRef, isHover] = useHover();
+  const setTab = useSetRecoilState(myAPPStep);
 
   const Button = () => {
     if (prePossible && PreTicketingPeriod(preTicketing) === '진행중') {
@@ -78,6 +81,7 @@ const PosterItem = ({
           name="사전예매"
           connectCheck={true}
           color={colors.primary40}
+          onClick={setTab('APP_Start')}
         />
       );
     } else if (PreTicketingPeriod(preTicketing) === '전') {
@@ -91,6 +95,7 @@ const PosterItem = ({
           name="예매하기"
           connectCheck={true}
           color={colors.primary40}
+          onClick={setTab('APP_Start')}
         />
       );
     }

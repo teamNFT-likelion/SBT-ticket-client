@@ -12,6 +12,7 @@ import {
 } from '@styles/ticketDetailStyle';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import {
+  myAPPStep,
   tDateState,
   tDeadlineState,
   tPartState,
@@ -37,6 +38,7 @@ const DateSelection = ({ data, prePossible }) => {
   const [part, setPart] = useState(0);
   const [deadline, setDeadline] = useState(data.dateInfo[minDate.getTime()][0].startTime);
 
+  const setTab = useSetRecoilState(myAPPStep);
   const setTicketDate = useSetRecoilState(tDateState);
   const setTicketPart = useSetRecoilState(tPartState);
   const setTicketDeadline = useSetRecoilState(tDeadlineState);
@@ -96,9 +98,8 @@ const DateSelection = ({ data, prePossible }) => {
     if (!account) {
       walletConnectError();
     } else {
-      navigate(`/payment?id=${data.id}`, {
-        state: { tab: 'APP_SelectSeats' },
-      });
+      setTab('APP_SelectSeats');
+      navigate(`/payment?id=${data.id}`);
     }
   };
 

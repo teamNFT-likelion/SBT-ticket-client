@@ -3,7 +3,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { TabButton } from '@styles/ApaymentStyles';
 import { Row } from '@components/atoms/wrapper.style';
 import MainStage from '../paymentSeat/MainStage';
-import { tPriceState, tPricePerTokenState, tTokenPriceState } from '@states/paymentState';
+import { myAPPStep, tPriceState, tPricePerTokenState, tTokenPriceState } from '@states/paymentState';
 import { StepBox, LeftBox, RightBox } from './App1Start';
 import TicketInfo from './TicketInfo';
 import axios from 'axios';
@@ -12,10 +12,11 @@ import PreTicketingCustomModal from '@components/articles/PreTicketingCustomModa
 import PreTicketingInactiveModal from '@components/articles/PreTicketingInactiveModal';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
 
-export const App2SelectSeats = ({ setTab, data, inactiveId, setInactiveId }) => {
+export const App2SelectSeats = ({ data, inactiveId, setInactiveId }) => {
   const price = useRecoilValue(tPriceState);
   const setPricePerToken = useSetRecoilState(tPricePerTokenState);
   const setTokenPrice = useSetRecoilState(tTokenPriceState);
+  const setTab = useSetRecoilState(myAPPStep);
 
   const [preTicketModal, setPreTicketModal] = useState(false);
   const sbtList = useMyTickets();

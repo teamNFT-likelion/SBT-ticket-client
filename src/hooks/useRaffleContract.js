@@ -14,6 +14,7 @@ export function useRaffleContract(web3) {
       .send(option)
       .then((res) => {
         alert(`${code}코드 래플에 참여가 완료 되었습니다.`);
+        window.location.reload();
       })
       .catch((err) => {
         console.error(err);

@@ -5,8 +5,9 @@ import { mainItems, restItems } from '@mock/items';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
-import { useResetRecoilState } from 'recoil';
+import { useResetRecoilState, useSetRecoilState } from 'recoil';
 import {
+  myAPPStep,
   tDateState,
   tPerformIdState,
   tPartState,
@@ -18,6 +19,7 @@ import {
 } from '@states/paymentState';
 
 export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
+  const setTab = useSetRecoilState(myAPPStep);
   const resetTicketDate = useResetRecoilState(tDateState);
   const resetTicketPart = useResetRecoilState(tPartState);
   const resetTicketPrice = useResetRecoilState(tPriceState);
@@ -36,7 +38,7 @@ export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
     resetPricePerToken();
     resetTicketTokenPrice();
     resetTicketPerformId();
-  }
+  };
 
   const navigate = useNavigate();
   const items = [...mainItems, ...restItems];
@@ -68,9 +70,9 @@ export default function PreTicketingModal({ setPreTicketModal, hostAddr }) {
                 onClick={() => {
                   handleResetData();
                   setPreTicketModal(false);
+                  setTab('APP_Start');
                   navigate(`/payment?id=${item.id}`, {
                     state: {
-                      tab: 'APP_Start',
                       prePossible: item.prePossible,
                     },
                   });
