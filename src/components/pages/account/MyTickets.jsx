@@ -16,7 +16,9 @@ const MyTickets = ({ tickets, type }) => {
       filteredList = tickets.filter((ticket) => ticket.tokenStatus === 2);
       setTypeTickets(filteredList);
     } else {
-      setTypeTickets(tickets);
+      let doneTickets = tickets.filter((ticket) => ticket.tokenStatus === 2);
+      filteredList = tickets.filter((ticket) => ticket.tokenStatus !== 2);
+      setTypeTickets([...filteredList, ...doneTickets]);
     }
   }, [tickets, type]);
 

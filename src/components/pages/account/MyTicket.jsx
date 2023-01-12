@@ -16,15 +16,16 @@ import QRCustomModal from '@components/articles/QRCustomModal';
 const TicketWrapper = styled('div')`
   width: auto;
   height: 550px;
-  border: 3px solid ${colors.primary80};
+  border: 3px solid ${({ status }) => (status !== 2 ? colors.primary80 : '#565656')};
   border-radius: 20px;
 `;
 
 const TicketImage = styled('img')`
   width: 300px;
   height: 75%;
-  border-top: 3px solid ${colors.primary80};
-  border-bottom: 3px solid ${colors.primary80};
+  border-top: 3px solid ${({ status }) => (status !== 2 ? colors.primary80 : '#565656')};
+  border-bottom: 3px solid ${({ status }) => (status !== 2 ? colors.primary80 : '#565656')};
+  opacity: ${({ status }) => (status !== 2 ? 1 : 0.5)};
 `;
 
 const TicketContent = styled('div')`
@@ -40,8 +41,8 @@ const TextWrapper = styled('div')`
   display: block;
   padding: 10px;
   border-radius: 17px 17px 0 0;
-  background-color: ${({ isActive }) =>
-    isActive === 0 ? colors.primary40 : isActive === 1 ? '#af00a7' : 'gray'};
+  background-color: ${({ status }) =>
+    status === 0 ? colors.primary40 : status === 1 ? '#af00a7' : '#565656'};
 `;
 
 const ContentWrapper = styled('div')`
@@ -192,12 +193,12 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
 
   return (
     <div>
-      <TicketWrapper key={id}>
-        <TextWrapper isActive={status}>
+      <TicketWrapper key={id} status={status}>
+        <TextWrapper status={status}>
           {title} #{id}
         </TextWrapper>
         {/* image 가 ipfs 인경우 */}
-        <TicketImage src={image.data || image} alt="ticket" />
+        <TicketImage src={image.data || image} alt="ticket" status={status} />
         <TicketContent>
           <ContentWrapper style={{ color: colors.textWhite }}>
             {seats.map((seat) => `[${seat}] `)}
@@ -243,7 +244,9 @@ const MyTicket = ({ id, uri, date, hostAddr, price, seats, image, title, tEmail,
             </TicketButtonWrapper>
           ) : (
             <TicketButtonWrapper>
-              <TicketButton buttonColor={'gray'} disabled>사용 완료</TicketButton>
+              <TicketButton buttonColor={'#565656'} disabled>
+                사용 완료
+              </TicketButton>
               <TicketButton
                 buttonColor={`${colors.bgRed}`}
                 onClick={() => {
