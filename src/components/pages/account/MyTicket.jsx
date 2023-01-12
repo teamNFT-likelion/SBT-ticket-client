@@ -15,13 +15,8 @@ import QRCustomModal from '@components/articles/QRCustomModal';
 
 const TicketWrapper = styled('div')`
   width: auto;
-<<<<<<< HEAD
-  height: 550px;
-  border: 3px solid ${({ status }) => (status !== 2 ? colors.primary80 : '#565656')};
-=======
   height: 560px;
-  border: 3px solid ${colors.primary80};
->>>>>>> 68c0f99 (fix: TDP->APP로 넘어갈때 데이터 유지 + 새로고침 버그 수정 => recoil로 변경)
+  border: 3px solid ${({ status }) => (status !== 2 ? colors.primary80 : '#565656')};
   border-radius: 20px;
 `;
 
