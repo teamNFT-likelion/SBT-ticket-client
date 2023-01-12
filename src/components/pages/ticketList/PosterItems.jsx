@@ -25,11 +25,11 @@ const TitleWrapper = styled('div')`
 const PosterWrapper = styled('div')`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 40px;
+  grid-column-gap: 65px;
   grid-row-gap: 60px;
 `;
 
-const PosterItems = ({ type }) => {
+const PosterItems = () => {
   const { typeItems } = useItems();
 
   return (

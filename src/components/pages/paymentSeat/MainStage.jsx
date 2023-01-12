@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import styled from 'styled-components';
 import * as colors from '@styles/colors';
 import { Stage, Layer } from 'react-konva';
@@ -26,28 +26,22 @@ const SeatsInfo = styled('span')`
 //TODO: 색변경
 const SeatsSelectBox = styled('div')`
   height: auto;
-  width: 80%;
   display: flex;
   justify-content: center;
-  background-color: gray;
   border-radius: 24px;
   position: relative;
 `;
 
+const size = {
+  width: 900,
+  height: 570,
+  virtualWidth: 1000,
+};
+
 const MainStage = ({ data }) => {
   const containerRef = useRef(null);
   const stageRef = useRef(null);
-
-  const [scale, setScale] = useState(1);
-  const [scaleToFit, setScaleToFit] = useState(1);
-  const [size, setSize] = useState({
-    width: 500,
-    height: 1000,
-    virtualWidth: 1000,
-  });
-  const [virtualWidth, setVirtualWidth] = useState(1000);
   const [popup, setPopup] = useState({ seat: null });
-
   const [seatIds, setSeatsIds] = useRecoilState(tSeatState);
   const setSeatsPrice = useSetRecoilState(tPriceState);
   const date = useRecoilValue(tDateState);
@@ -55,40 +49,6 @@ const MainStage = ({ data }) => {
   const SeatsData = data.dateInfo[date.getTime()][part];
 
   const seatsLimit = 2;
-
-  // calculate available space for drawing
-  useEffect(() => {
-    const newSize = {
-      width: containerRef.current.offsetWidth,
-      height: containerRef.current.offsetHeight,
-    };
-    if (newSize.width !== size.width || newSize.height !== size.height) {
-      setSize(newSize);
-    }
-  }, [size]);
-
-  // calculate initial scale
-  useEffect(() => {
-    if (!stageRef.current) {
-      return;
-    }
-    const stage = stageRef.current;
-    const clientRect = stage.getClientRect({ skipTransform: true });
-    const scaleToFit = size.width / clientRect.width;
-
-    setScale(scaleToFit);
-    setScaleToFit(scaleToFit);
-    setVirtualWidth(clientRect.width);
-  }, [size]);
-
-  // toggle scale on double clicks or taps
-  const toggleScale = useCallback(() => {
-    if (scale === 1) {
-      setScale(scaleToFit);
-    } else {
-      setScale(1);
-    }
-  }, [scale, scaleToFit]);
 
   const handleHover = useCallback((seat, pos) => {
     setPopup({
@@ -130,10 +90,6 @@ const MainStage = ({ data }) => {
     [SeatsData.seats.sections, seatIds, setSeatsIds, setSeatsPrice],
   );
 
-  // const maxSectionWidth = layout.getMaximumSectionWidth(
-  //   SeatsData.seats.sections,
-  // );
-
   if (SeatsData === null) {
     return (
       <div ref={containerRef}>
@@ -147,42 +103,24 @@ const MainStage = ({ data }) => {
   return (
     <SeatsContainer>
       <SeatsInfo>
-        ⭐ 선택한 매수(개인당 최대 <span style={{ color: 'red' }}>{seatsLimit}</span>매):{' '}
-        {seatIds.length}매
+        ⭐ 선택한 매수(개인당 최대 <span style={{ color: colors.bgRed }}>{seatsLimit}</span> 매) :{' '}
+        {seatIds.length} 매
       </SeatsInfo>
       <SeatsSelectBox ref={containerRef}>
-        <Stage
-          ref={stageRef}
-          width={size.width}
-          height={size.height}
-          draggable
-          dragBoundFunc={(pos) => {
-            pos.x = Math.min(
-              size.width / 2,
-              Math.max(pos.x, -virtualWidth * scale + size.width / 2),
-            );
-            pos.y = Math.min(size.height / 2, Math.max(pos.y, -size.height / 2));
-            return pos;
-          }}
-          onDblTap={toggleScale}
-          onDblClick={toggleScale}
-          scaleX={scale}
-          scaleY={scale}
-        >
+        <Stage ref={stageRef} width={size.width} height={size.height}>
           <Layer>
             {SeatsData.seats.sections.map((section, index) => {
               const height = layout.getSectionHeight(section);
               const position = lastSectionPosition + layout.SECTIONS_MARGIN;
               lastSectionPosition = position + height;
-              // const width = layout.getSectionWidth(section);
-              // const offset = (maxSectionWidth - width) / 2;
-              const offset = 10;
+              const offset = 5;
 
               return (
                 <Section
                   x={offset}
                   y={position}
-                  height={height}
+                  height={200}
+                  width={800}
                   key={index}
                   section={section}
                   selectedSeatsIds={seatIds}

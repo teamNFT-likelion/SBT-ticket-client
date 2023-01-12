@@ -55,8 +55,7 @@ const RelatedTickets = ({ items, data }) => {
     function relatedItems() {
       for (let i = 0; i < data.length; i++) {
         const item = items.filter((each) => each.id === data[i])[0] || null;
-        console.log(item);
-        setPreList([...preList, item]);
+        setPreList((prev) => [...prev, item]);
       }
     }
     relatedItems();

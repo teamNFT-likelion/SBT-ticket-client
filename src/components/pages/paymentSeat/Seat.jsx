@@ -1,14 +1,14 @@
 import React from 'react';
-import { Circle } from 'react-konva';
-import { SEAT_SIZE } from './layout';
+import { Rect } from 'react-konva';
+import * as colors from '@styles/colors';
 
 function getColor(isBooked, isSelected) {
   if (isSelected) {
-    return 'red';
+    return 'orange';
   } else if (isBooked) {
     return 'lightgrey';
   } else {
-    return '#1b728d';
+    return colors.primary80;
   }
 }
 
@@ -16,12 +16,15 @@ const Seat = (props) => {
   const isBooked = props.data.status === 'booked';
 
   return (
-    <Circle
+    <Rect
       x={props.x}
       y={props.y}
-      radius={SEAT_SIZE / 2}
+      width={50}
+      height={30}
+      stroke={colors.primary40}
+      cornerRadius={5}
       fill={getColor(isBooked, props.isSelected)}
-      strokeWidth={1}
+      strokeWidth={3}
       onMouseEnter={(e) => {
         e.target._clearCache();
         props.onHover(props.data.name, e.target.getAbsolutePosition());
