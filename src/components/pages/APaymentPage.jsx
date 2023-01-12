@@ -42,7 +42,7 @@ const APaymentPage = () => {
     if (location.pathname === '/payment/success') {
       setTab('APP_Pay');
     }
-  }, [location]);
+  }, [location, setTab]);
 
   if (!data) {
     return <Page404 />;
@@ -53,22 +53,12 @@ const APaymentPage = () => {
       <AppStepHeader step={tab} />
       <Container>
         {tab === 'APP_Start' && (
-          <App1Start
-            data={data}
-            inactiveId={inactiveId}
-            setInactiveId={setInactiveId}
-          />
+          <App1Start data={data} inactiveId={inactiveId} setInactiveId={setInactiveId} />
         )}
         {tab === 'APP_SelectSeats' && (
-          <App2SelectSeats
-            data={data}
-            inactiveId={inactiveId}
-            setInactiveId={setInactiveId}
-          />
+          <App2SelectSeats data={data} inactiveId={inactiveId} setInactiveId={setInactiveId} />
         )}
-        {tab === 'APP_GetInfo' && (
-          <App3GetInfoPage data={data} inactiveId={inactiveId} />
-        )}
+        {tab === 'APP_GetInfo' && <App3GetInfoPage data={data} inactiveId={inactiveId} />}
         {tab === 'APP_Done' && <App4Done dataId={data} inactiveId={inactiveId} />}
         <Outlet context={{ data }} />
       </Container>

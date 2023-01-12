@@ -20,7 +20,6 @@ const SeatsInfo = styled('span')`
   font-size: 20px;
   font-weight: 400;
   color: ${colors.primary80};
-  margin-bottom: 10px;
 `;
 
 //TODO: 색변경
