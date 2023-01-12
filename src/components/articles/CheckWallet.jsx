@@ -1,5 +1,4 @@
-import { networks } from '@constants/NetworkInfo';
-import { userAccount, userNetworkId, userWalletType } from '@states/userState';
+import { userAccount, userWalletType } from '@states/userState';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useRecoilState, useSetRecoilState } from 'recoil';
@@ -11,8 +10,6 @@ const ethereum = window.ethereum;
 export default function CheckWallet() {
   const [account, setAccount] = useRecoilState(userAccount);
   const setWalletType = useSetRecoilState(userWalletType);
-  const [networkId, setNetworkId] = useRecoilState(userNetworkId);
-  const mumbaiNetwork = networks['mumbai'].chainId;
   const navigate = useNavigate();
 
   // Metamask 잠금 동작 인식 + 계정 변경 인식
@@ -39,7 +36,6 @@ export default function CheckWallet() {
         console.log('Please connect to MetaMask.');
         setAccount('');
         setWalletType('');
-        setNetworkId('');
         localStorage.removeItem('_user');
         localStorage.removeItem('_wallet');
         toast.warn(`계정이 잠겼습니다. 다시 로그인 해주세요.`, {
@@ -64,69 +60,7 @@ export default function CheckWallet() {
     return () => {
       ethereum.removeListener('accountsChanged', handleAccountsChanged);
     };
-  }, [account, setAccount, setNetworkId, setWalletType, navigate]);
-
-  // Metamask 체인 변경
-  useEffect(() => {
-    async function getChainId() {
-      await ethereum.request({ method: 'eth_chainId' }).then((res) => setNetworkId(res));
-    }
-
-    const handleSwitchChain = async () => {
-      try {
-        // switch 네트워크
-        await ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: mumbaiNetwork }],
-        });
-      } catch (switchError) {
-        // 네트워크가 존재하지 않으면 새로 추가
-        if (switchError.code === 4902) {
-          try {
-            await ethereum.request({
-              method: 'wallet_addEthereumChain',
-              params: [networks['mumbai']],
-            });
-          } catch (addError) {
-            // handle "add" error
-            console.error('Add new network FAILED', addError);
-          }
-        }
-        // handle other "switch" errors
-        console.error('Switch network FAILED', switchError);
-      }
-    };
-
-    const handleNetworkChanged = (chainId) => {
-      if (chainId !== mumbaiNetwork) {
-        setAccount('');
-        setWalletType('');
-        setNetworkId('');
-        localStorage.removeItem('_user');
-        localStorage.removeItem('_wallet');
-        toast.warn(`네트워크가 바뀌었습니다. 다시 로그인 해주세요.`, {
-          autoClose: 1500,
-        });
-      } else {
-        setNetworkId(chainId);
-        toast.success(`Mumbai, polygon 테스트 네트워크로 변경되었습니다.`, {
-          autoClose: 1500,
-        });
-      }
-    };
-
-    getChainId();
-
-    if (networkId !== mumbaiNetwork) {
-      handleSwitchChain();
-    }
-
-    ethereum?.on('chainChanged', handleNetworkChanged);
-    return () => {
-      ethereum?.removeListener('chainChanged', handleNetworkChanged);
-    };
-    // eslint-disable-next-line
-  }, [setAccount, setWalletType]);
+  }, [account, setAccount, setWalletType, navigate]);
 
   return;
 }

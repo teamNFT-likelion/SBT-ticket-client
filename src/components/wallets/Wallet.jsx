@@ -75,6 +75,54 @@ export default function Wallet() {
   const [account, setAccount] = useRecoilState(userAccount);
   const [walletType, setWalletType] = useRecoilState(userWalletType);
   const [networkId, setNetworkId] = useRecoilState(userNetworkId);
+  const mumbaiNetwork = networks['mumbai'].chainId;
+
+  async function getChainId() {
+    await ethereum.request({ method: 'eth_chainId' }).then((res) => setNetworkId(res));
+  }
+
+  const handleNetworkChanged = (chainId) => {
+    if (chainId !== mumbaiNetwork) {
+      setAccount('');
+      setWalletType('');
+      setNetworkId('');
+      localStorage.removeItem('_user');
+      localStorage.removeItem('_wallet');
+      toast.warn(`네트워크가 바뀌었습니다. 다시 로그인 해주세요.`, {
+        autoClose: 1500,
+      });
+    } else {
+      setNetworkId(chainId);
+      toast.success(`Mumbai, polygon 테스트 네트워크로 변경되었습니다.`, {
+        autoClose: 1500,
+      });
+    }
+  };
+
+  const handleSwitchChain = async () => {
+    try {
+      // switch 네트워크
+      await ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: mumbaiNetwork }],
+      });
+    } catch (switchError) {
+      // 네트워크가 존재하지 않으면 새로 추가
+      if (switchError.code === 4902) {
+        try {
+          await ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [networks['mumbai']],
+          });
+        } catch (addError) {
+          // handle "add" error
+          console.error('Add new network FAILED', addError);
+        }
+      }
+      // handle other "switch" errors
+      console.error('Switch network FAILED', switchError);
+    }
+  };
 
   // 메타마스크 로그인
   async function loginWithMetamask() {
@@ -116,8 +164,22 @@ export default function Wallet() {
     }
   }
 
+  function handleSwitchWhenLogin() {
+    getChainId();
+
+    ethereum?.on('chainChanged', handleNetworkChanged);
+    if (networkId !== mumbaiNetwork) {
+      handleSwitchChain();
+    }
+
+    return () => {
+      ethereum?.removeListener('chainChanged', handleNetworkChanged);
+    };
+  }
+
   // 메타마스크 로그인 핸들러
   function handleMetamaskLogin() {
+    handleSwitchWhenLogin();
     loginWithMetamask();
     setShowWalletOptions(false);
   }
