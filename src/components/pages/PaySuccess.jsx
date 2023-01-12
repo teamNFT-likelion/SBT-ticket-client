@@ -10,7 +10,7 @@ import { StepBox, LeftBox, RightBox } from '@pages/payment/App1Start';
 import TicketInfo from '@pages/payment/TicketInfo';
 import { Row } from '@atoms/wrapper.style';
 import { TabButton } from '@styles/ApaymentStyles';
-import { tDateState, tPartState, tSeatState, tPriceState } from '@states/paymentState';
+import { myAPPStep, tDateState, tPartState, tSeatState, tPriceState } from '@states/paymentState';
 import PayProgress from './payment/PayProgress';
 
 const PaySuccess = () => {
@@ -29,6 +29,7 @@ const PaySuccess = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [cancelInfo, setCancelInfo] = useState('');
 
+  const setTab = useSetRecoilState(myAPPStep);
   const setDate = useSetRecoilState(tDateState);
   const setPart = useSetRecoilState(tPartState);
   const setSeat = useSetRecoilState(tSeatState);
@@ -43,9 +44,9 @@ const PaySuccess = () => {
       try {
         const tokenUri = await createTokenUri(sbtInfo, userEmail);
         await createSBT(tokenUri, ticketInfo, 'CASH', inactiveId);
+        setTab('APP_Done');
         navigate(`/payment?id=${data.id}`, {
           state: {
-            tab: 'APP_Done',
             payedData: { ticketInfo, sbtInfo },
           },
         });

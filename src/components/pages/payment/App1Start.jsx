@@ -6,6 +6,7 @@ import { CalendarStyle, PartButtonContainer, SelectInfoBox } from '@styles/ticke
 import { useSetRecoilState, useResetRecoilState } from 'recoil';
 import { Row } from '@atoms/wrapper.style';
 import {
+  myAPPStep,
   tDateState,
   tDeadlineState,
   tPartState,
@@ -24,7 +25,7 @@ import Calendar from 'react-calendar';
 import TicketInfo from './TicketInfo';
 import PreTicketingPeriod from '@utils/PreTicketingPeriod';
 
-export const App1Start = ({ setTab, data, inactiveId }) => {
+export const App1Start = ({ data, inactiveId }) => {
   const minDate = new Date(data.startDate) || null;
   const maxDate = new Date(data.endDate) || null;
 
@@ -32,6 +33,7 @@ export const App1Start = ({ setTab, data, inactiveId }) => {
   const [part, setPart] = useState(0);
   const [deadline, setDeadline] = useState(data.dateInfo[minDate.getTime()][0].startTime);
 
+  const setTab = useSetRecoilState(myAPPStep);
   const setTicketDate = useSetRecoilState(tDateState);
   const setTicketPart = useSetRecoilState(tPartState);
   const setTicketDeadline = useSetRecoilState(tDeadlineState);

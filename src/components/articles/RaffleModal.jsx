@@ -29,6 +29,7 @@ export default function RaffleModal({ setRaffleModal, tokenId }) {
             join(value, tokenId, { from: account }, () => {
               setRaffleModal(false);
               setValue('');
+              window.location.reload();
             });
           }}
         >

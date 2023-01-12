@@ -1,13 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { ButtonWrapper } from '@components/pages/ticketList/BigPoster.style';
 import { walletConnectError } from '@utils/toastMessages';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import {myAPPStep} from '@states/paymentState';
 import { userState } from '@states/userState';
 import * as colors from '@styles/colors';
 
 export const BigPosterButton = ({ Item }) => {
   const navigate = useNavigate();
 
+  const setTab = useSetRecoilState(myAPPStep);
   const { account } = useRecoilValue(userState);
   let Button;
 
@@ -18,11 +20,8 @@ export const BigPosterButton = ({ Item }) => {
           style={{ backgroundColor: colors.primary40, opacity: '0.5' }}
           onClick={() => {
             if (account) {
-              navigate(`/payment?id=${Item.id}`, {
-                state: {
-                  tab: 'APP_Start',
-                },
-              });
+              setTab('APP_Start');
+              navigate(`/payment?id=${Item.id}`);
             } else {
               walletConnectError();
             }
@@ -40,11 +39,8 @@ export const BigPosterButton = ({ Item }) => {
             style={{ backgroundColor: colors.primary40, cursor: 'pointer'}}
             onClick={() => {
               if (account) {
-                navigate(`/payment?id=${Item.id}`, {
-                  state: {
-                    tab: 'APP_Start',
-                  },
-                });
+                setTab('APP_Start');
+                navigate(`/payment?id=${Item.id}`);
               } else {
                 walletConnectError();
               }
@@ -59,11 +55,8 @@ export const BigPosterButton = ({ Item }) => {
             style={{ backgroundColor: colors.primary40, opacity: '0.5' }}
             onClick={() => {
               if (account) {
-                navigate(`/payment?id=${Item.id}`, {
-                  state: {
-                    tab: 'APP_Start',
-                  },
-                });
+                setTab('APP_Start');
+                navigate(`/payment?id=${Item.id}`);
               } else {
                 walletConnectError();
               }
@@ -80,11 +73,8 @@ export const BigPosterButton = ({ Item }) => {
         <button
           onClick={() => {
             if (account) {
-              navigate(`/payment?id=${Item.id}`, {
-                state: {
-                  tab: 'APP_Start',
-                },
-              });
+              setTab('APP_Start');
+              navigate(`/payment?id=${Item.id}`);
             } else {
               walletConnectError();
             }
@@ -100,11 +90,8 @@ export const BigPosterButton = ({ Item }) => {
         <button
           onClick={() => {
             if (account) {
-              navigate(`/payment?id=${Item.id}`, {
-                state: {
-                  tab: 'APP_Start',
-                },
-              });
+              setTab('APP_Start');
+              navigate(`/payment?id=${Item.id}`);
             } else {
               walletConnectError();
             }

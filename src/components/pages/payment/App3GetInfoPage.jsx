@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { toast } from 'react-toastify';
 import { Row } from '@atoms/wrapper.style';
 import { TabButton } from '@styles/ApaymentStyles';
 import useOauth from '@hooks/useOauth';
-import { tInfoState, sbtInfoState } from '@states/paymentState';
+import { myAPPStep, tInfoState, sbtInfoState } from '@states/paymentState';
 import { userState } from '@states/userState';
 import { StepBox, LeftBox, RightBox } from './App1Start';
 import TicketInfo from './TicketInfo';
@@ -13,7 +13,7 @@ import SelectPayment from './SelectPayment';
 import useMint from '@hooks/useMint';
 import { payCardByTossPayment, payTransferByTossPayment } from '@utils/toss';
 
-const App3GetInfoPage = ({ setTab, data, inactiveId }) => {
+const App3GetInfoPage = ({ data, inactiveId }) => {
   const { email: userEmail, setPopup, popup } = useOauth();
   const { createTokenUri, createSBT } = useMint();
 
@@ -22,6 +22,7 @@ const App3GetInfoPage = ({ setTab, data, inactiveId }) => {
   const [isPressed, setIsPressed] = useState('unpressed');
   const [isLoading, setIsLoading] = useState(false); // 로딩중 확인
 
+  const setTab = useSetRecoilState(myAPPStep);
   const { account } = useRecoilValue(userState);
   const ticketInfo = useRecoilValue(tInfoState);
   const sbtInfo = useRecoilValue(sbtInfoState);
