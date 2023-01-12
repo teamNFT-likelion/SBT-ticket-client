@@ -32,13 +32,13 @@ const TicketInfo = ({ data, isLoading, inactiveId }) => {
         </CompletedContainer>
       )}
       <div style={{ zIndex: 1, opacity: isLoading ? 0.3 : 1 }}>
-        <img src={data.posterImgUrl} alt="img" style={{ width: '50px', marginBottom: '6px' }} />
+        <img src={data.posterImgUrl} alt="img" style={{ width: '70px', marginBottom: '12px' }} />
         <div>
           {data.preTicketing && (preTState === '진행중' ? '[사전예매]  ' : '') + data.title}
         </div>
         <div
           style={{
-            marginTop: '30px',
+            marginTop: '40px',
             marginBottom: '8px',
             fontSize: '24px',
             color: colors.primary80,

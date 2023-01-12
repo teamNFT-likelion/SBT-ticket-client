@@ -172,6 +172,7 @@ export const StepBox = styled('div')`
   display: flex;
   width: 100%;
   border: 0.75px solid #eaecd9;
+  border-radius: 30px;
 `;
 
 export const LeftBox = styled('div')`
@@ -187,7 +188,7 @@ export const LeftBox = styled('div')`
 export const RightBox = styled('div')`
   flex: 1;
   flex-direction: column;
-  border-left: 1px solid white;
+  border-left: 0.5px solid #eaecd9;
   padding: 30px;
   font-size: 20px;
   min-height: 400px;
@@ -195,6 +196,25 @@ export const RightBox = styled('div')`
   justify-content: space-between;
   width: 390px;
   position: relative; // loading 위치
+
+  &::after {
+    content: '';
+    width: 40px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: -20px;
+    background-color: ${colors.bgBlack};
+  }
+  &::before {
+    content: '';
+    width: 40px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    left: -20px;
+    background-color: ${colors.bgBlack};
+  }
 `;
 
 const SelectInfo = styled('div')`

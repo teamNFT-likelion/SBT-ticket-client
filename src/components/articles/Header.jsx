@@ -13,7 +13,7 @@ import { walletConnectError } from '@utils/toastMessages';
 
 const Container = styled('div')`
   position: fixed;
-  top: 0;
+  top: ${({ isHide }) => (isHide ? `-${APP_HEADER_H}` : 0)};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,6 +22,7 @@ const Container = styled('div')`
   background-color: #0f0f0f;
   border-bottom: solid 1px #2e2e2e;
   z-index: 999;
+  transition: all 1s;
 `;
 
 const LogoImage = styled('img')`
@@ -44,7 +45,7 @@ const ButtonsWrapper = styled('div')`
   gap: 15px;
 `;
 
-const Header = ({ page }) => {
+const Header = ({ page, isHide }) => {
   const { account } = useRecoilValue(userState);
 
   let accountBtn;
@@ -68,7 +69,7 @@ const Header = ({ page }) => {
   }
 
   return (
-    <Container>
+    <Container isHide={isHide}>
       <Link to={'/list'}>
         <LogoImage src={logo_ttot} />
       </Link>

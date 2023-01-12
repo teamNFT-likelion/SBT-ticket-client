@@ -3,7 +3,12 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { TabButton } from '@styles/ApaymentStyles';
 import { Row } from '@components/atoms/wrapper.style';
 import MainStage from '../paymentSeat/MainStage';
-import { myAPPStep, tPriceState, tPricePerTokenState, tTokenPriceState } from '@states/paymentState';
+import {
+  myAPPStep,
+  tPriceState,
+  tPricePerTokenState,
+  tTokenPriceState,
+} from '@states/paymentState';
 import { StepBox, LeftBox, RightBox } from './App1Start';
 import TicketInfo from './TicketInfo';
 import axios from 'axios';

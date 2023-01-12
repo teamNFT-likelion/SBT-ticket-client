@@ -8,7 +8,7 @@ function getColor(isBooked, isSelected) {
   } else if (isBooked) {
     return 'lightgrey';
   } else {
-    return colors.primary80;
+    return '#037ef3';
   }
 }
 
@@ -21,10 +21,10 @@ const Seat = (props) => {
       y={props.y}
       width={50}
       height={30}
-      stroke={colors.primary40}
+      stroke={colors.bgRed}
       cornerRadius={5}
       fill={getColor(isBooked, props.isSelected)}
-      strokeWidth={3}
+      strokeWidth={0}
       onMouseEnter={(e) => {
         e.target._clearCache();
         props.onHover(props.data.name, e.target.getAbsolutePosition());
