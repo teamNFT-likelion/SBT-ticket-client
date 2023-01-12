@@ -25,7 +25,7 @@ Performance Organizer can set benefits for their customer like
 - selling goods (under development)
 <br><br><br>
 
-**Performance Organizers and artists can keep the value of the performance by protecting trading illegal tickets because customer would not sell their tickets to get benefit.**
+> **Performance Organizers and artists can keep the value of the performance by protecting trading illegal tickets because customer would not sell their tickets to get benefit.**
 
 <br><br>
 # To get started
