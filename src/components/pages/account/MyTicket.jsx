@@ -23,8 +23,6 @@ const TicketWrapper = styled('div')`
 const TicketImage = styled('img')`
   width: 300px;
   height: 75%;
-  border-top: 3px solid ${({ status }) => (status !== 2 ? colors.primary80 : '#565656')};
-  border-bottom: 3px solid ${({ status }) => (status !== 2 ? colors.primary80 : '#565656')};
   opacity: ${({ status }) => (status !== 2 ? 1 : 0.5)};
 `;
 
@@ -33,7 +31,7 @@ const TicketContent = styled('div')`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 5px;
+  padding-top: 5px;
   gap: 5px;
 `;
 
