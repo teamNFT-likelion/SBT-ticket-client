@@ -1,23 +1,10 @@
 import React, { memo, useRef, useEffect } from 'react';
 import { Rect, Group, Text } from 'react-konva';
 import SubSection from './SubSection';
-import {
-  SECTION_TOP_PADDING,
-  getSectionWidth,
-  getSubsectionWidth,
-} from './layout';
+import { SECTION_TOP_PADDING, getSectionWidth } from './layout';
 
 export default memo(
-  ({
-    section,
-    height,
-    x,
-    y,
-    onHoverSeat,
-    onSelectSeat,
-    onDeselectSeat,
-    selectedSeatsIds,
-  }) => {
+  ({ section, height, x, y, onHoverSeat, onSelectSeat, onDeselectSeat, selectedSeatsIds }) => {
     const containerRef = useRef();
 
     // caching will boost rendering
@@ -25,24 +12,32 @@ export default memo(
     useEffect(() => {
       containerRef.current.cache();
     }, [section, selectedSeatsIds]);
-    
+
     const width = getSectionWidth(section);
-    let lastSubsectionX = 0;
+    let lastSubsectionX = 200;
 
     return (
       <Group y={y} x={x} ref={containerRef}>
         <Rect
-          width={width}
-          height={height}
-          fill="white"
+          width={890}
+          height={170}
+          fill={'white'}
           strokeWidth={1}
-          stroke="lightgrey"
-          cornerRadius={5}
+          stroke="black"
+          cornerRadius={10}
+        />
+        <Text
+          text={`${section.name}_seat`}
+          width={width}
+          fontSize={24}
+          x={20}
+          y={77}
+          fill="black"
+          fontFamily={('sans-serif', 'Roboto Condensed', 'Do Hyeon')}
         />
         {section.subsections.map((subsection) => {
-          const subWidth = getSubsectionWidth(subsection);
           const pos = lastSubsectionX;
-          lastSubsectionX += subWidth;
+          lastSubsectionX += 240; //3*3 간격
 
           return (
             <SubSection
@@ -50,7 +45,7 @@ export default memo(
               y={SECTION_TOP_PADDING}
               key={subsection.name}
               data={subsection}
-              width={subWidth}
+              width={500}
               height={height}
               onHoverSeat={onHoverSeat}
               onSelectSeat={onSelectSeat}
@@ -59,14 +54,6 @@ export default memo(
             />
           );
         })}
-        <Text
-          text={section.name}
-          height={SECTION_TOP_PADDING}
-          width={width}
-          align="center"
-          verticalAlign="middle"
-          fontSize={20}
-        />
       </Group>
     );
   },

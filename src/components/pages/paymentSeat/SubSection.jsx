@@ -1,7 +1,6 @@
 import React from 'react';
 import { Group, Text } from 'react-konva';
 import Seat from './Seat';
-import { SEATS_DISTANCE, SUBSECTION_PADDING, SEAT_SIZE } from './layout';
 
 const SubSection = ({
   width,
@@ -23,8 +22,8 @@ const SubSection = ({
               return (
                 <Seat
                   key={seat.name}
-                  x={seatIndex * SEATS_DISTANCE + SUBSECTION_PADDING}
-                  y={rowIndex * SEATS_DISTANCE + SUBSECTION_PADDING}
+                  x={seatIndex * 62}
+                  y={rowIndex * 38}
                   data={seat}
                   onHover={onHoverSeat}
                   onSelect={onSelectSeat}
@@ -35,9 +34,9 @@ const SubSection = ({
             })}
             <Text
               text={rowKey}
-              x={SUBSECTION_PADDING - SEATS_DISTANCE}
-              y={rowIndex * SEATS_DISTANCE + SUBSECTION_PADDING - SEAT_SIZE / 2}
-              fontSize={SEAT_SIZE}
+              x={-12}
+              y={10 + rowIndex * 38}
+              fontSize={12}
               key={'label-left' + rowKey}
             />
           </React.Fragment>
@@ -47,18 +46,21 @@ const SubSection = ({
         return (
           <Text
             text={(seatIndex + 1).toString()}
-            x={seatIndex * SEATS_DISTANCE + SUBSECTION_PADDING - 50}
-            width={100}
-            y={
-              Object.keys(data.seats_by_rows).length * SEATS_DISTANCE +
-              SUBSECTION_PADDING
-            }
+            x={seatIndex * 63 + 20}
+            y={110}
             key={'label-bottom' + seatIndex}
             align="center"
           />
         );
       })}
-      <Text text={data.name} width={width} align="center" y={-10} />
+      <Text
+        text={data.name}
+        align="center"
+        y={-28}
+        x={76}
+        fontFamily={('Shrikhand', 'cursive')}
+        fontSize={20}
+      />
     </Group>
   );
 };
